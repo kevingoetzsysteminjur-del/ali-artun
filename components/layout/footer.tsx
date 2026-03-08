@@ -93,8 +93,8 @@ export default function Footer() {
                 ["Über Ali Artun", "#ueber-uns"],
                 ["So funktioniert es", "#prozess"],
                 ["Kontakt", "#kontakt"],
-                ["Impressum", "#"],
-                ["Datenschutz", "#"],
+                ["Impressum", "/impressum"],
+                ["Datenschutz", "/datenschutz"],
               ].map(([label, href]) => (
                 <li key={label}>
                   <a

@@ -26,10 +26,10 @@ export default function Testimonials() {
         </div>
 
         <h2 className="font-heading text-3xl lg:text-4xl font-bold text-stone-900 leading-[1.1] mb-4">
-          Echte Kundenstimmen folgen in Kürze.
+          Wir freuen uns auf Ihre Bewertung.
         </h2>
         <p className="text-stone-500 text-xl leading-[1.75]">
-          Hier werden bald echte Erfahrungen von Kunden stehen, die ihre Immobilie erfolgreich mit Plan A Immobilien verkauft haben.
+          Sobald unsere ersten Kunden ihre Erfahrungen teilen, finden Sie diese hier.
         </p>
       </div>
     </section>
