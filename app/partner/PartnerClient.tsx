@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
-import Maskottchen from "@/components/Maskottchen";
+import Image from "next/image";
 import { MAKLER } from "@/lib/config";
 import { Check, BookOpen, Home, Building2, BarChart2, FileText, Users, ChevronRight } from "lucide-react";
 
@@ -143,9 +143,7 @@ export default function PartnerClient() {
 
               {/* Maskottchen right side */}
               <div className="flex justify-center lg:justify-end items-center">
-                <div style={{ animation: "maskottchen-fadein 0.8s ease 0.4s both" }}>
-                  <Maskottchen size={180} animate={true} variant="full" />
-                </div>
+                <Image src="/maskottchen.png" alt="Plan A Maskottchen" width={180} height={252} style={{ width: 180, height: "auto", objectFit: "contain" }} />
               </div>
             </div>
           </div>

@@ -2,184 +2,140 @@
 
 import Image from "next/image";
 
-const particles = [
-  { left: "8%",  top: "70%", size: 10, duration: 12, delay: 0 },
-  { left: "20%", top: "30%", size: 7,  duration: 16, delay: 2 },
-  { left: "42%", top: "75%", size: 10, duration: 11, delay: 0.5 },
-  { left: "60%", top: "85%", size: 12, duration: 13, delay: 1.5 },
-  { left: "75%", top: "20%", size: 8,  duration: 10, delay: 0 },
-  { left: "88%", top: "55%", size: 10, duration: 18, delay: 1 },
-];
-
-const houses = [
-  { left: "5%",  top: "10%", size: 40, duration: 25, delay: 0 },
-  { left: "85%", top: "55%", size: 32, duration: 30, delay: 5 },
-];
-
-function HouseShape({ size }: { size: number }) {
-  const s = size;
-  const roofH = Math.round(s * 0.45);
-  const wall = Math.round(s * 0.55);
-  return (
-    <svg width={s} height={s} viewBox={`0 0 ${s} ${s}`} fill="none">
-      <polyline
-        points={`2,${roofH} ${s / 2},2 ${s - 2},${roofH}`}
-        stroke="#C5A028"
-        strokeWidth="1.5"
-        strokeLinejoin="round"
-      />
-      <rect
-        x={Math.round(s * 0.15)}
-        y={roofH}
-        width={Math.round(s * 0.7)}
-        height={wall}
-        stroke="#C5A028"
-        strokeWidth="1.5"
-      />
-      <rect
-        x={Math.round(s * 0.38)}
-        y={Math.round(roofH + wall * 0.45)}
-        width={Math.round(s * 0.24)}
-        height={Math.round(wall * 0.55)}
-        stroke="#C5A028"
-        strokeWidth="1"
-      />
-    </svg>
-  );
-}
-
 export default function VideoIntro() {
   return (
     <section
       style={{
         minHeight: "100vh",
-        background: "#F9F8F5",
+        background: "linear-gradient(160deg, #F9F8F5 0%, #F0EBE0 60%, #EDE5D6 100%)",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        padding: "32px 16px",
+        padding: "40px 16px",
         boxSizing: "border-box",
         position: "relative",
         overflow: "hidden",
       }}
     >
-      {/* Background animation */}
+      {/* Dezente Hintergrund-Ornamente */}
       <div style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
-        {particles.map((p, i) => (
-          <div
-            key={i}
-            style={{
-              position: "absolute",
-              left: p.left,
-              top: p.top,
-              width: p.size,
-              height: p.size,
-              borderRadius: "50%",
-              background: "#C5A028",
-              opacity: 0.2,
-              animation: `floatUp ${p.duration}s ${p.delay}s ease-in-out infinite`,
-            }}
-          />
-        ))}
-        {houses.map((h, i) => (
-          <div
-            key={i}
-            style={{
-              position: "absolute",
-              left: h.left,
-              top: h.top,
-              opacity: 0.06,
-              animation: `drift ${h.duration}s ${h.delay}s ease-in-out infinite`,
-            }}
-          >
-            <HouseShape size={h.size} />
-          </div>
-        ))}
+        {/* Großer Kreis oben links */}
+        <div style={{
+          position: "absolute", top: "-120px", left: "-120px",
+          width: 380, height: 380, borderRadius: "50%",
+          border: "1px solid rgba(197,160,40,0.12)",
+        }} />
+        <div style={{
+          position: "absolute", top: "-80px", left: "-80px",
+          width: 280, height: 280, borderRadius: "50%",
+          border: "1px solid rgba(197,160,40,0.08)",
+        }} />
+        {/* Großer Kreis unten rechts */}
+        <div style={{
+          position: "absolute", bottom: "-100px", right: "-100px",
+          width: 340, height: 340, borderRadius: "50%",
+          border: "1px solid rgba(197,160,40,0.1)",
+        }} />
+        {/* Gold-Punkte */}
+        <div style={{ position: "absolute", top: "15%", right: "8%", width: 6, height: 6, borderRadius: "50%", background: "#C5A028", opacity: 0.3 }} />
+        <div style={{ position: "absolute", top: "30%", right: "14%", width: 4, height: 4, borderRadius: "50%", background: "#C5A028", opacity: 0.2 }} />
+        <div style={{ position: "absolute", bottom: "25%", left: "6%", width: 5, height: 5, borderRadius: "50%", background: "#C5A028", opacity: 0.25 }} />
       </div>
 
       <style>{`
-        @keyframes floatUp {
-          0%   { transform: translate(0, 0) scale(1);       opacity: 0.12; }
-          25%  { transform: translate(20px, -15px) scale(1.1); opacity: 0.28; }
-          50%  { transform: translate(40px, 5px) scale(0.95);  opacity: 0.18; }
-          75%  { transform: translate(15px, -25px) scale(1.1); opacity: 0.3; }
-          100% { transform: translate(0, 0) scale(1);       opacity: 0.12; }
-        }
-        @keyframes drift {
-          0%   { transform: translate(0, 0) rotate(0deg); }
-          33%  { transform: translate(6px, -10px) rotate(2deg); }
-          66%  { transform: translate(-5px, 8px) rotate(-2deg); }
-          100% { transform: translate(0, 0) rotate(0deg); }
-        }
         @keyframes bounce {
           0%, 100% { transform: translateY(0); }
           50% { transform: translateY(8px); }
         }
+        @keyframes fadeSlideUp {
+          from { opacity: 0; transform: translateY(24px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
       `}</style>
 
-      {/* Content wrapper: two-column layout on desktop */}
+      {/* Haupt-Grid */}
       <div
         style={{
           width: "100%",
-          maxWidth: 1000,
+          maxWidth: 1080,
           display: "grid",
-          gridTemplateColumns: "1fr",
-          gap: 32,
+          gap: 48,
           position: "relative",
           alignItems: "center",
         }}
-        className="lg:grid-cols-[1fr_1fr] grid"
+        className="grid grid-cols-1 lg:grid-cols-[420px_1fr]"
       >
-        {/* Left: Logo + Claim */}
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 16, textAlign: "center" }}>
+        {/* Linke Spalte: Branding */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: 0,
+            textAlign: "center",
+            animation: "fadeSlideUp 0.7s ease both",
+          }}
+        >
+          {/* Logo */}
           <Image
             src="/logo.png"
             alt="Plan A Immobilien Logo"
-            width={280}
-            height={105}
+            width={260}
+            height={98}
             style={{
-              width: "min(260px, calc(100vw - 80px))",
+              width: "min(240px, calc(100vw - 80px))",
               height: "auto",
               display: "block",
-              borderRadius: 8,
-              boxShadow: "0 4px 24px rgba(197,160,40,0.3)",
+              marginBottom: 8,
             }}
+            priority
           />
-          {/* Ali cartoon if present */}
-          <Image
-            src="/ali-cartoon.png"
-            alt="Ali Artun Cartoon"
-            width={90}
-            height={90}
-            style={{
-              width: "auto",
-              height: 90,
-              display: "block",
-              filter: "drop-shadow(0 4px 16px rgba(197,160,40,0.5))",
-            }}
-            onError={(e) => {
-              (e.target as HTMLImageElement).style.display = "none";
-            }}
-          />
+
+          {/* Trennlinie Gold */}
+          <div style={{
+            width: 48, height: 2,
+            background: "linear-gradient(90deg, transparent, #C5A028, transparent)",
+            margin: "16px auto",
+            borderRadius: 2,
+          }} />
+
+          {/* Claim */}
           <p style={{
             fontFamily: "var(--font-playfair), 'Playfair Display', serif",
             fontStyle: "italic",
-            fontSize: "1.15rem",
-            color: "#C5A028",
-            letterSpacing: "0.03em",
-            margin: 0,
+            fontSize: "1.1rem",
+            color: "#8A6A18",
+            letterSpacing: "0.02em",
+            margin: "0 0 6px 0",
+            lineHeight: 1.5,
           }}>
             Entscheidungen auf einem anderen Niveau.
           </p>
+
           <p style={{
-            fontSize: "1rem",
-            color: "#6B5E4E",
-            lineHeight: 1.6,
-            maxWidth: 300,
+            fontSize: "0.9rem",
+            color: "#8B7355",
+            lineHeight: 1.65,
+            maxWidth: 280,
+            margin: "0 0 28px 0",
           }}>
-            Immobilienverkauf mit geprüfter Käuferfinanzierung in Mosbach & Umgebung
+            Immobilienverkauf mit geprüfter Käuferfinanzierung<br />
+            in Mosbach & Umgebung
           </p>
+
+          {/* Maskottchen — nur Desktop */}
+          <div className="hidden lg:flex justify-center" style={{ marginBottom: 28 }}>
+            <Image
+              src="/maskottchen.png"
+              alt="Plan A Maskottchen"
+              width={110}
+              height={154}
+              style={{ width: 110, height: "auto", objectFit: "contain" }}
+            />
+          </div>
+
+          {/* CTA Button */}
           <a
             href="#hero"
             className="btn-primary"
@@ -194,46 +150,82 @@ export default function VideoIntro() {
           </a>
         </div>
 
-        {/* Right: Video (contained, max 700px, smaller) */}
-        <div style={{ width: "100%", maxWidth: 700, margin: "0 auto" }}>
-          <div
-            style={{
-              position: "relative",
-              width: "100%",
-              paddingTop: "56.25%",
-              borderRadius: 14,
-              overflow: "hidden",
-              boxShadow: "0 6px 32px rgba(0,0,0,0.10)",
-              border: "1px solid rgba(197,160,40,0.2)",
-            }}
-          >
-            <iframe
-              style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}
-              src="https://www.youtube.com/embed/HxJ_R-bG22Q"
-              title="Plan A Immobilien & Finanzierung"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            />
+        {/* Rechte Spalte: Video */}
+        <div
+          style={{
+            width: "100%",
+            animation: "fadeSlideUp 0.7s ease 0.15s both",
+          }}
+        >
+          {/* Video-Card */}
+          <div style={{
+            background: "white",
+            borderRadius: 20,
+            padding: 12,
+            boxShadow: "0 8px 48px rgba(197,160,40,0.12), 0 2px 16px rgba(0,0,0,0.06)",
+            border: "1px solid rgba(197,160,40,0.18)",
+          }}>
+            <div
+              style={{
+                position: "relative",
+                width: "100%",
+                paddingTop: "56.25%",
+                borderRadius: 12,
+                overflow: "hidden",
+              }}
+            >
+              <iframe
+                style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}
+                src="https://www.youtube.com/embed/HxJ_R-bG22Q"
+                title="Plan A Immobilien & Finanzierung"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </div>
           </div>
-          <p style={{ textAlign: "center", marginTop: 10, color: "#8B7355", fontSize: "0.85rem" }}>
-            Ali Artun stellt sich vor
-          </p>
+
+          {/* Unter dem Video */}
+          <div style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 10,
+            marginTop: 14,
+            paddingLeft: 4,
+          }}>
+            <div style={{
+              width: 36, height: 36,
+              borderRadius: "50%",
+              overflow: "hidden",
+              border: "2px solid #C5A028",
+              flexShrink: 0,
+            }}>
+              <Image src="/ali.png" alt="Ali Artun" width={36} height={36} style={{ objectFit: "cover", width: "100%", height: "100%" }} />
+            </div>
+            <div>
+              <p style={{ margin: 0, fontSize: "0.85rem", fontWeight: 600, color: "#3D2C1A", lineHeight: 1.3 }}>
+                Ali Artun stellt sich vor
+              </p>
+              <p style={{ margin: 0, fontSize: "0.75rem", color: "#8B7355" }}>
+                Ihr Immobilienberater · Mosbach
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div style={{ marginTop: 28, position: "relative" }}>
+      {/* Scroll-Indikator */}
+      <div style={{ marginTop: 36, position: "relative" }}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="28"
-          height="28"
+          width="26"
+          height="26"
           viewBox="0 0 24 24"
           fill="none"
           stroke="#C5A028"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          style={{ animation: "bounce 1.5s infinite" }}
+          style={{ animation: "bounce 1.5s infinite", opacity: 0.6 }}
         >
           <path d="M12 5v14M5 12l7 7 7-7" />
         </svg>

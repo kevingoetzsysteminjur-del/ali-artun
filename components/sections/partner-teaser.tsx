@@ -1,7 +1,7 @@
 "use client";
 
 import { Check } from "lucide-react";
-import Maskottchen from "@/components/Maskottchen";
+import Image from "next/image";
 import { MAKLER } from "@/lib/config";
 
 const benefits = [
@@ -72,7 +72,7 @@ export default function PartnerTeaser() {
               className="rounded-3xl p-8 flex flex-col items-center gap-4 text-center w-full max-w-xs"
               style={{ background: "rgba(197,160,40,0.07)", border: "1px solid rgba(197,160,40,0.2)" }}
             >
-              <Maskottchen size={140} animate={true} variant="full" />
+              <Image src="/maskottchen.png" alt="Plan A Maskottchen" width={140} height={196} style={{ width: 140, height: "auto", objectFit: "contain" }} />
               <div>
                 <p className="font-heading font-bold text-white text-xl">Ihr Partner</p>
                 <p className="text-stone-400 text-sm mt-1">{MAKLER.name}</p>

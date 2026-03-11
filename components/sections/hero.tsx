@@ -4,7 +4,6 @@ import Image from "next/image";
 import { Phone, MessageCircle } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { MAKLER } from "@/lib/config";
-import Maskottchen from "@/components/Maskottchen";
 
 export default function Hero() {
   const { t } = useLanguage();
@@ -137,13 +136,6 @@ export default function Hero() {
               </p>
             </div>
 
-            {/* Maskottchen - positioned bottom-right, waving */}
-            <div
-              className="absolute -bottom-4 -right-4 lg:-right-8"
-              style={{ animation: "maskottchen-fadein 0.8s ease 0.6s both" }}
-            >
-              <Maskottchen size={100} animate={true} variant="full" />
-            </div>
           </div>
         </div>
       </div>
