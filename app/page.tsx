@@ -15,6 +15,8 @@ import Auszeichnungen from "@/components/Auszeichnungen";
 import PartnerLogos from "@/components/sections/partner-logos";
 import MedienLeiste from "@/components/sections/medien-leiste";
 import FAQSection from "@/components/FAQSection";
+import FinanzierungPreview from "@/components/sections/finanzierung-preview";
+import PartnerTeaser from "@/components/sections/partner-teaser";
 
 function GoldDivider() {
   return (
@@ -39,6 +41,8 @@ export default function Home() {
         <GoldDivider />
         <VorherNachher />
         <GoldDivider />
+        <FinanzierungPreview />
+        <GoldDivider />
         <Properties />
         <GoldDivider />
         <RechnerPreview />
@@ -48,6 +52,8 @@ export default function Home() {
         <Auszeichnungen />
         <GoldDivider />
         <Testimonials />
+        <GoldDivider />
+        <PartnerTeaser />
         <GoldDivider />
         <FAQSection />
         <GoldDivider />

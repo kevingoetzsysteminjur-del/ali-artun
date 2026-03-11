@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { MAKLER } from "@/lib/config";
 
 export default function WhatsAppButton() {
   const [show, setShow] = useState(false);
@@ -14,7 +15,7 @@ export default function WhatsAppButton() {
 
   return (
     <a
-      href="https://wa.me/4962611234560"
+      href={MAKLER.whatsappMsg}
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-6 right-4 sm:right-6 z-50 group"

@@ -3,47 +3,31 @@
 import Image from "next/image";
 
 const particles = [
-  { left: "8%",  top: "70%", size: 12, duration: 12, delay: 0 },
-  { left: "15%", top: "55%", size: 9,  duration: 16, delay: 2 },
-  { left: "23%", top: "80%", size: 14, duration: 14, delay: 1 },
-  { left: "31%", top: "45%", size: 9,  duration: 18, delay: 3 },
-  { left: "42%", top: "75%", size: 12, duration: 11, delay: 0.5 },
-  { left: "50%", top: "60%", size: 9,  duration: 15, delay: 4 },
-  { left: "60%", top: "85%", size: 14, duration: 13, delay: 1.5 },
-  { left: "68%", top: "50%", size: 9,  duration: 17, delay: 2.5 },
-  { left: "75%", top: "72%", size: 12, duration: 10, delay: 0 },
-  { left: "82%", top: "40%", size: 9,  duration: 19, delay: 3.5 },
-  { left: "90%", top: "65%", size: 14, duration: 12, delay: 1 },
-  { left: "5%",  top: "30%", size: 9,  duration: 14, delay: 2 },
-  { left: "18%", top: "20%", size: 12, duration: 16, delay: 0 },
-  { left: "35%", top: "15%", size: 9,  duration: 20, delay: 4.5 },
-  { left: "55%", top: "25%", size: 12, duration: 13, delay: 1 },
-  { left: "72%", top: "18%", size: 9,  duration: 15, delay: 3 },
-  { left: "88%", top: "28%", size: 14, duration: 11, delay: 0.5 },
-  { left: "95%", top: "82%", size: 9,  duration: 18, delay: 2 },
+  { left: "8%",  top: "70%", size: 10, duration: 12, delay: 0 },
+  { left: "20%", top: "30%", size: 7,  duration: 16, delay: 2 },
+  { left: "42%", top: "75%", size: 10, duration: 11, delay: 0.5 },
+  { left: "60%", top: "85%", size: 12, duration: 13, delay: 1.5 },
+  { left: "75%", top: "20%", size: 8,  duration: 10, delay: 0 },
+  { left: "88%", top: "55%", size: 10, duration: 18, delay: 1 },
 ];
 
 const houses = [
-  { left: "7%",  top: "15%", size: 48, duration: 25, delay: 0 },
-  { left: "82%", top: "60%", size: 40, duration: 30, delay: 5 },
-  { left: "55%", top: "10%", size: 36, duration: 28, delay: 10 },
-  { left: "20%", top: "65%", size: 44, duration: 22, delay: 3 },
+  { left: "5%",  top: "10%", size: 40, duration: 25, delay: 0 },
+  { left: "85%", top: "55%", size: 32, duration: 30, delay: 5 },
 ];
 
 function HouseShape({ size }: { size: number }) {
   const s = size;
-  const wall = Math.round(s * 0.55);
   const roofH = Math.round(s * 0.45);
+  const wall = Math.round(s * 0.55);
   return (
     <svg width={s} height={s} viewBox={`0 0 ${s} ${s}`} fill="none">
-      {/* roof */}
       <polyline
         points={`2,${roofH} ${s / 2},2 ${s - 2},${roofH}`}
         stroke="#C5A028"
         strokeWidth="1.5"
         strokeLinejoin="round"
       />
-      {/* walls */}
       <rect
         x={Math.round(s * 0.15)}
         y={roofH}
@@ -52,7 +36,6 @@ function HouseShape({ size }: { size: number }) {
         stroke="#C5A028"
         strokeWidth="1.5"
       />
-      {/* door */}
       <rect
         x={Math.round(s * 0.38)}
         y={Math.round(roofH + wall * 0.45)}
@@ -69,22 +52,20 @@ export default function VideoIntro() {
   return (
     <section
       style={{
-        height: "100vh",
-        minHeight: 500,
+        minHeight: "100vh",
         background: "#F9F8F5",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        padding: "24px 16px 24px",
+        padding: "32px 16px",
         boxSizing: "border-box",
         position: "relative",
         overflow: "hidden",
       }}
     >
-      {/* Hintergrund-Animation */}
+      {/* Background animation */}
       <div style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
-        {/* Goldene Partikel */}
         {particles.map((p, i) => (
           <div
             key={i}
@@ -96,13 +77,11 @@ export default function VideoIntro() {
               height: p.size,
               borderRadius: "50%",
               background: "#C5A028",
-              opacity: 0.25,
+              opacity: 0.2,
               animation: `floatUp ${p.duration}s ${p.delay}s ease-in-out infinite`,
             }}
           />
         ))}
-
-        {/* Haus-Silhouetten */}
         {houses.map((h, i) => (
           <div
             key={i}
@@ -110,7 +89,7 @@ export default function VideoIntro() {
               position: "absolute",
               left: h.left,
               top: h.top,
-              opacity: 0.08,
+              opacity: 0.06,
               animation: `drift ${h.duration}s ${h.delay}s ease-in-out infinite`,
             }}
           >
@@ -119,23 +98,19 @@ export default function VideoIntro() {
         ))}
       </div>
 
-      {/* CSS Keyframes */}
       <style>{`
         @keyframes floatUp {
-          0%   { transform: translate(0px, 0px) scale(1);        opacity: 0.15; }
-          15%  { transform: translate(30px, -20px) scale(1.1);   opacity: 0.35; }
-          30%  { transform: translate(60px, 10px) scale(0.9);    opacity: 0.25; }
-          45%  { transform: translate(40px, -35px) scale(1.2);   opacity: 0.4; }
-          60%  { transform: translate(80px, -15px) scale(1);     opacity: 0.2; }
-          75%  { transform: translate(50px, 20px) scale(1.1);    opacity: 0.35; }
-          90%  { transform: translate(20px, -10px) scale(0.95);  opacity: 0.25; }
-          100% { transform: translate(0px, 0px) scale(1);        opacity: 0.15; }
+          0%   { transform: translate(0, 0) scale(1);       opacity: 0.12; }
+          25%  { transform: translate(20px, -15px) scale(1.1); opacity: 0.28; }
+          50%  { transform: translate(40px, 5px) scale(0.95);  opacity: 0.18; }
+          75%  { transform: translate(15px, -25px) scale(1.1); opacity: 0.3; }
+          100% { transform: translate(0, 0) scale(1);       opacity: 0.12; }
         }
         @keyframes drift {
-          0%   { transform: translate(0px, 0px) rotate(0deg); }
-          33%  { transform: translate(8px, -12px) rotate(3deg); }
-          66%  { transform: translate(-6px, 10px) rotate(-2deg); }
-          100% { transform: translate(0px, 0px) rotate(0deg); }
+          0%   { transform: translate(0, 0) rotate(0deg); }
+          33%  { transform: translate(6px, -10px) rotate(2deg); }
+          66%  { transform: translate(-5px, 8px) rotate(-2deg); }
+          100% { transform: translate(0, 0) rotate(0deg); }
         }
         @keyframes bounce {
           0%, 100% { transform: translateY(0); }
@@ -143,70 +118,115 @@ export default function VideoIntro() {
         }
       `}</style>
 
-      {/* Logo + Cartoon + Claim */}
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginBottom: 30, position: "relative", gap: 12, width: "100%", maxWidth: 600 }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap", justifyContent: "center", width: "100%" }}>
+      {/* Content wrapper: two-column layout on desktop */}
+      <div
+        style={{
+          width: "100%",
+          maxWidth: 1000,
+          display: "grid",
+          gridTemplateColumns: "1fr",
+          gap: 32,
+          position: "relative",
+          alignItems: "center",
+        }}
+        className="lg:grid-cols-[1fr_1fr] grid"
+      >
+        {/* Left: Logo + Claim */}
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 16, textAlign: "center" }}>
           <Image
             src="/logo.png"
             alt="Plan A Immobilien Logo"
-            width={350}
-            height={132}
+            width={280}
+            height={105}
             style={{
-              width: "min(280px, calc(100vw - 100px))",
+              width: "min(260px, calc(100vw - 80px))",
               height: "auto",
               display: "block",
               borderRadius: 8,
-              boxShadow: "0 4px 24px rgba(197,160,40,0.35)",
+              boxShadow: "0 4px 24px rgba(197,160,40,0.3)",
             }}
           />
+          {/* Ali cartoon if present */}
           <Image
             src="/ali-cartoon.png"
             alt="Ali Artun Cartoon"
-            width={100}
-            height={100}
-            style={{ width: "auto", height: 100, display: "block", filter: "drop-shadow(0 4px 16px rgba(197,160,40,0.5))" }}
+            width={90}
+            height={90}
+            style={{
+              width: "auto",
+              height: 90,
+              display: "block",
+              filter: "drop-shadow(0 4px 16px rgba(197,160,40,0.5))",
+            }}
+            onError={(e) => {
+              (e.target as HTMLImageElement).style.display = "none";
+            }}
           />
+          <p style={{
+            fontFamily: "var(--font-playfair), 'Playfair Display', serif",
+            fontStyle: "italic",
+            fontSize: "1.15rem",
+            color: "#C5A028",
+            letterSpacing: "0.03em",
+            margin: 0,
+          }}>
+            Entscheidungen auf einem anderen Niveau.
+          </p>
+          <p style={{
+            fontSize: "1rem",
+            color: "#6B5E4E",
+            lineHeight: 1.6,
+            maxWidth: 300,
+          }}>
+            Immobilienverkauf mit geprüfter Käuferfinanzierung in Mosbach & Umgebung
+          </p>
+          <a
+            href="#hero"
+            className="btn-primary"
+            onClick={(e) => {
+              e.preventDefault();
+              document.getElementById("hero")?.scrollIntoView({ behavior: "smooth" });
+              window.scrollBy({ top: window.innerHeight, behavior: "smooth" });
+            }}
+          >
+            Zur Website
+            <span className="btn-arrow">→</span>
+          </a>
         </div>
-        <p style={{
-          fontFamily: "var(--font-playfair), 'Playfair Display', serif",
-          fontStyle: "italic",
-          fontSize: "1.25rem",
-          color: "#C5A028",
-          letterSpacing: "0.03em",
-          margin: 0,
-        }}>
-          Entscheidungen auf einem anderen Niveau.
-        </p>
+
+        {/* Right: Video (contained, max 700px, smaller) */}
+        <div style={{ width: "100%", maxWidth: 700, margin: "0 auto" }}>
+          <div
+            style={{
+              position: "relative",
+              width: "100%",
+              paddingTop: "56.25%",
+              borderRadius: 14,
+              overflow: "hidden",
+              boxShadow: "0 6px 32px rgba(0,0,0,0.10)",
+              border: "1px solid rgba(197,160,40,0.2)",
+            }}
+          >
+            <iframe
+              style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}
+              src="https://www.youtube.com/embed/HxJ_R-bG22Q"
+              title="Plan A Immobilien & Finanzierung"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
+          </div>
+          <p style={{ textAlign: "center", marginTop: 10, color: "#8B7355", fontSize: "0.85rem" }}>
+            Ali Artun stellt sich vor
+          </p>
+        </div>
       </div>
 
-      {/* Video */}
-      <div style={{ width: "100%", maxWidth: 1100, flex: "0 1 auto", position: "relative" }}>
-        <div
-          style={{
-            position: "relative",
-            width: "100%",
-            paddingTop: "56.25%",
-            borderRadius: 16,
-            overflow: "hidden",
-            boxShadow: "0 8px 40px rgba(0,0,0,0.12)",
-          }}
-        >
-          <iframe
-            style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}
-            src="https://www.youtube.com/embed/HxJ_R-bG22Q"
-            title="Plan A Immobilien & Finanzierung"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-          />
-        </div>
-      </div>
-
-      {/* Scroll-Indikator */}
-      <div style={{ marginTop: 32, position: "relative" }}>
+      {/* Scroll indicator */}
+      <div style={{ marginTop: 28, position: "relative" }}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="32"
-          height="32"
+          width="28"
+          height="28"
           viewBox="0 0 24 24"
           fill="none"
           stroke="#C5A028"

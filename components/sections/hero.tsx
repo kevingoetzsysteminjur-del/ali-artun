@@ -1,8 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { Phone } from "lucide-react";
+import { Phone, MessageCircle } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { MAKLER } from "@/lib/config";
+import Maskottchen from "@/components/Maskottchen";
 
 export default function Hero() {
   const { t } = useLanguage();
@@ -33,6 +35,20 @@ export default function Hero() {
             {/* Divider */}
             <div className="w-16 h-0.5 bg-[#C5A028]" />
 
+            {/* Second tagline / slogan */}
+            <div className="inline-flex items-center gap-2">
+              <span
+                className="text-sm font-semibold tracking-[0.15em] uppercase px-4 py-1.5 rounded-full"
+                style={{
+                  background: "linear-gradient(135deg, rgba(197,160,40,0.12) 0%, rgba(197,160,40,0.06) 100%)",
+                  border: "1px solid rgba(197,160,40,0.35)",
+                  color: "#8A6A18",
+                }}
+              >
+                Strategie bestimmt den Preis
+              </span>
+            </div>
+
             {/* Claim */}
             <p className="text-2xl lg:text-3xl text-stone-700 font-heading leading-snug">
               {t("hero.claim")}
@@ -49,32 +65,50 @@ export default function Hero() {
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4 pt-2">
+              {/* Primary: WhatsApp */}
               <a
-                href="#kontakt"
-                className="btn-primary"
+                href={MAKLER.whatsappMsg}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl text-white font-semibold text-sm tracking-wide transition-all duration-200 hover:scale-105 hover:shadow-lg"
+                style={{
+                  background: "#25D366",
+                  boxShadow: "0 4px 18px rgba(37,211,102,0.35)",
+                  letterSpacing: "0.06em",
+                  textTransform: "uppercase",
+                  textDecoration: "none",
+                }}
               >
-                {t("hero.cta")}
+                <MessageCircle size={18} />
+                Jetzt auf WhatsApp
+              </a>
+              {/* Secondary: Kostenlose Bewertung */}
+              <a
+                href="/immobilienbewertung"
+                className="btn-secondary"
+              >
+                Kostenlose Bewertung
                 <span className="btn-arrow">→</span>
               </a>
             </div>
 
             {/* Phone hint */}
             <a
-              href="tel:+4962619123456"
+              href={MAKLER.telefonHref}
               className="inline-flex items-center gap-3 text-stone-500 hover:text-[#C5A028] transition-colors"
             >
               <Phone size={17} className="text-[#C5A028]" />
               <span className="text-lg">
                 {t("hero.callLabel")}{" "}
                 <span className="font-semibold text-stone-700">
-                  {t("hero.callNumber")}
+                  {MAKLER.telefon}
                 </span>
               </span>
             </a>
           </div>
 
-          {/* Right: Ali's Photo */}
-          <div className="flex flex-col items-center justify-center gap-5 h-full">
+          {/* Right: Ali's Photo + Maskottchen */}
+          <div className="flex flex-col items-center justify-center gap-5 h-full relative">
             {/* Rundes Profilbild */}
             <div
               className="relative rounded-full overflow-hidden flex-shrink-0 w-[200px] h-[200px] sm:w-[240px] sm:h-[240px] lg:w-[280px] lg:h-[280px]"
@@ -101,6 +135,14 @@ export default function Hero() {
               <p className="text-stone-500 text-sm">
                 {t("hero.photoSub")}
               </p>
+            </div>
+
+            {/* Maskottchen - positioned bottom-right, waving */}
+            <div
+              className="absolute -bottom-4 -right-4 lg:-right-8"
+              style={{ animation: "maskottchen-fadein 0.8s ease 0.6s both" }}
+            >
+              <Maskottchen size={100} animate={true} variant="full" />
             </div>
           </div>
         </div>

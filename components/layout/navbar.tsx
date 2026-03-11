@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Phone, Menu, X } from "lucide-react";
+import { Phone, Menu, X, ChevronDown } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -12,6 +12,7 @@ export default function Navbar() {
   const [open, setOpen]       = useState(false);
   const [visible, setVisible] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [moreOpen, setMoreOpen] = useState(false);
 
   const NAV_LINKS = [
     { label: t("nav.services"),  href: "#leistungen" },
@@ -19,6 +20,11 @@ export default function Navbar() {
     { label: t("nav.about"),     href: "#ueber-uns" },
     { label: t("nav.ratgeber"),  href: "/ratgeber" },
     { label: t("nav.contact"),   href: "#kontakt" },
+  ];
+
+  const MORE_LINKS = [
+    { label: "Finanzierung", href: "/finanzierung" },
+    { label: "Objektaufbereitung", href: "/aufbereitung" },
   ];
 
   useEffect(() => {
@@ -30,6 +36,14 @@ export default function Navbar() {
     window.addEventListener("scroll", check, { passive: true });
     return () => window.removeEventListener("scroll", check);
   }, []);
+
+  // close "mehr" dropdown when clicking outside
+  useEffect(() => {
+    if (!moreOpen) return;
+    const handler = () => setMoreOpen(false);
+    document.addEventListener("click", handler);
+    return () => document.removeEventListener("click", handler);
+  }, [moreOpen]);
 
   // lock body scroll when mobile menu open
   useEffect(() => {
@@ -64,12 +78,48 @@ export default function Navbar() {
             </a>
 
             {/* Desktop Nav Links */}
-            <nav className="hidden lg:flex items-center gap-8">
+            <nav className="hidden lg:flex items-center gap-7">
               {NAV_LINKS.map((link) => (
                 <a key={link.href} href={link.href} className="nav-link">
                   {link.label}
                 </a>
               ))}
+
+              {/* "Mehr" Dropdown */}
+              <div className="relative" onClick={(e) => e.stopPropagation()}>
+                <button
+                  className="nav-link flex items-center gap-1 bg-transparent border-none cursor-pointer"
+                  onClick={() => setMoreOpen(v => !v)}
+                  aria-expanded={moreOpen}
+                >
+                  Mehr
+                  <ChevronDown
+                    size={14}
+                    style={{
+                      transition: "transform 0.2s",
+                      transform: moreOpen ? "rotate(180deg)" : "rotate(0deg)",
+                    }}
+                  />
+                </button>
+                {moreOpen && (
+                  <div
+                    className="absolute top-full left-0 mt-2 w-52 bg-[#FAF8F4] rounded-xl shadow-xl border border-[#C5A028]/15 overflow-hidden z-50"
+                    style={{ boxShadow: "0 8px 32px rgba(0,0,0,0.1)" }}
+                  >
+                    {MORE_LINKS.map((link) => (
+                      <a
+                        key={link.href}
+                        href={link.href}
+                        className="flex items-center px-4 py-3 text-sm font-medium transition-colors hover:bg-[#C5A028]/10 hover:text-[#C5A028]"
+                        style={{ color: "#4A3728", textDecoration: "none", fontFamily: "var(--font-body)" }}
+                        onClick={() => setMoreOpen(false)}
+                      >
+                        {link.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
             </nav>
 
             {/* Desktop Right: Phone + ThemeToggle + LanguageSwitcher + CTA */}
@@ -84,6 +134,21 @@ export default function Navbar() {
               </a>
               <ThemeToggle />
               <LanguageSwitcher />
+              {/* Partner werden highlighted CTA */}
+              <a
+                href="/partner"
+                className="hidden xl:inline-flex items-center gap-1 px-4 py-2 rounded-lg text-xs font-semibold tracking-wide transition-all hover:scale-105"
+                style={{
+                  background: "rgba(197,160,40,0.1)",
+                  border: "1px solid rgba(197,160,40,0.35)",
+                  color: "#8A6A18",
+                  textDecoration: "none",
+                  letterSpacing: "0.05em",
+                  textTransform: "uppercase",
+                }}
+              >
+                Partner werden
+              </a>
               <a href="/immobilienbewertung" className="btn-primary">
                 {t("nav.freeValuation")}
                 <span className="btn-arrow">→</span>
@@ -126,7 +191,7 @@ export default function Navbar() {
             </div>
 
             {/* Links */}
-            <nav className="flex flex-col gap-1 px-4 py-6 flex-1">
+            <nav className="flex flex-col gap-1 px-4 py-6 flex-1 overflow-y-auto">
               {NAV_LINKS.map((link) => (
                 <a
                   key={link.href}
@@ -138,6 +203,37 @@ export default function Navbar() {
                   {link.label}
                 </a>
               ))}
+
+              {/* Divider */}
+              <div className="h-px bg-[#C5A028]/15 my-2" />
+              <p className="px-4 py-1 text-xs font-semibold tracking-wider uppercase text-stone-400">Weitere Seiten</p>
+
+              {MORE_LINKS.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className="flex items-center px-4 py-3.5 rounded-xl text-[15px] font-medium transition-all hover:bg-[#C5A028]/10 hover:text-[#C5A028]"
+                  style={{ color: "#4A3728", fontFamily: "var(--font-body)", letterSpacing: "0.03em", textDecoration: "none" }}
+                >
+                  {link.label}
+                </a>
+              ))}
+
+              {/* Partner werden - highlighted in mobile */}
+              <a
+                href="/partner"
+                onClick={() => setOpen(false)}
+                className="flex items-center justify-center px-4 py-3.5 rounded-xl text-[15px] font-semibold mt-2 transition-all"
+                style={{
+                  background: "rgba(197,160,40,0.1)",
+                  border: "1px solid rgba(197,160,40,0.3)",
+                  color: "#8A6A18",
+                  textDecoration: "none",
+                }}
+              >
+                Partner werden ✦
+              </a>
             </nav>
 
             {/* Bottom CTAs */}
