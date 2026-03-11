@@ -1,25 +1,30 @@
+"use client";
+
 import { Play } from "lucide-react";
 import GoogleReviewsWidget from "@/components/GoogleReviewsWidget";
-
-const VIDEO_PLATZHALTER = [
-  {
-    name: "Familie aus Mosbach",
-    beschreibung: "Verkauf eines Einfamilienhauses, abgeschlossen in 7 Wochen",
-    gradient: "from-stone-200 to-stone-300",
-  },
-  {
-    name: "Eigentümer aus Buchen",
-    beschreibung: "Eigentumswohnung – geprüfte Käuferfinanzierung sicherte den Abschluss",
-    gradient: "from-amber-100 to-amber-200",
-  },
-  {
-    name: "Ehepaar aus Mosbach",
-    beschreibung: "Doppelhaushälfte – reibungsloser Prozess bis zum Notartermin",
-    gradient: "from-stone-100 to-stone-200",
-  },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Testimonials() {
+  const { t } = useLanguage();
+
+  const VIDEO_PLATZHALTER = [
+    {
+      name: t("testimonials.v1_name"),
+      beschreibung: t("testimonials.v1_desc"),
+      gradient: "from-stone-200 to-stone-300",
+    },
+    {
+      name: t("testimonials.v2_name"),
+      beschreibung: t("testimonials.v2_desc"),
+      gradient: "from-amber-100 to-amber-200",
+    },
+    {
+      name: t("testimonials.v3_name"),
+      beschreibung: t("testimonials.v3_desc"),
+      gradient: "from-stone-100 to-stone-200",
+    },
+  ];
+
   return (
     <section
       id="referenzen"
@@ -31,15 +36,15 @@ export default function Testimonials() {
           <div className="flex items-center justify-center gap-3 mb-5">
             <div className="h-0.5 w-10 bg-[#C5A028]" />
             <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#C5A028]">
-              Kundenstimmen
+              {t("testimonials.label")}
             </span>
             <div className="h-0.5 w-10 bg-[#C5A028]" />
           </div>
           <h2 className="font-heading text-4xl lg:text-5xl font-bold text-stone-900 leading-[1.1] mb-4">
-            Was unsere Kunden sagen
+            {t("testimonials.heading")}
           </h2>
           <p className="text-stone-500 text-xl leading-relaxed max-w-2xl mx-auto">
-            Echte Erfahrungen zählen mehr als leere Versprechen. Hier entsteht gerade etwas.
+            {t("testimonials.sub")}
           </p>
         </div>
 
@@ -58,9 +63,7 @@ export default function Testimonials() {
               ❝
             </div>
             <p className="text-stone-600 text-xl leading-[1.8] mb-8 max-w-xl mx-auto">
-              Wir sammeln gerade die ersten Erfahrungsberichte unserer Kunden.
-              Bald finden Sie hier echte Bewertungen von zufriedenen Verkäufern
-              aus der Region Mosbach und dem Neckar-Odenwald-Kreis.
+              {t("testimonials.placeholder")}
             </p>
             <div className="flex items-center gap-4 justify-center mb-8">
               <div className="h-px flex-1 max-w-[80px] bg-[#C5A028]/25" />
@@ -80,7 +83,7 @@ export default function Testimonials() {
                     <span key={s} style={{ color: "#C5A028", fontSize: "15px" }}>★</span>
                   ))}
                 </div>
-                <p className="text-stone-500 text-xs">Bewerten Sie uns auf Google</p>
+                <p className="text-stone-500 text-xs">{t("testimonials.rateOnGoogle")}</p>
               </div>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -90,11 +93,11 @@ export default function Testimonials() {
                 rel="noopener noreferrer"
                 className="btn-primary"
               >
-                Bewertung abgeben
+                {t("testimonials.giveReview")}
                 <span className="btn-arrow">→</span>
               </a>
               <a href="#kontakt" className="btn-secondary">
-                Erfahrung mitteilen
+                {t("testimonials.shareExperience")}
               </a>
             </div>
           </div>
@@ -105,18 +108,18 @@ export default function Testimonials() {
 
         </div>{/* end grid */}
 
-        {/* ── Video-Testimonials ─────────────────────────── */}
+        {/* Video-Testimonials */}
         <div className="reveal reveal-delay-2">
           <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-3 mb-3">
               <div className="h-px w-8 bg-[#C5A028]/40" />
               <span className="text-xs font-semibold tracking-[0.18em] uppercase text-stone-400">
-                Video-Erfahrungsberichte
+                {t("testimonials.videoLabel")}
               </span>
               <div className="h-px w-8 bg-[#C5A028]/40" />
             </div>
             <p className="text-stone-500 text-base">
-              Video-Erfahrungsberichte folgen in Kürze.
+              {t("testimonials.videoSoon")}
             </p>
           </div>
 
@@ -136,7 +139,7 @@ export default function Testimonials() {
                   </div>
                   {/* Coming soon badge */}
                   <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-[10px] font-semibold text-stone-500 px-2 py-1 rounded-full">
-                    Folgt bald
+                    {t("testimonials.comingSoon")}
                   </div>
                 </div>
 
@@ -152,7 +155,7 @@ export default function Testimonials() {
 
         {/* Hinweis */}
         <p className="text-center text-stone-400 text-sm mt-10 reveal reveal-delay-3">
-          Wir arbeiten transparent — keine erfundenen Bewertungen, nur echte Stimmen.
+          {t("testimonials.transparencyNote")}
         </p>
       </div>
     </section>

@@ -1,7 +1,29 @@
+"use client";
+
 import Image from "next/image";
 import { Phone, Mail, MapPin } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Footer() {
+  const { t } = useLanguage();
+
+  const serviceLinks = [
+    t("footer.link1"),
+    t("footer.link2"),
+    t("footer.link3"),
+    t("footer.link4"),
+  ];
+
+  const companyLinks: [string, string][] = [
+    [t("footer.nav1"), "#ueber-uns"],
+    [t("footer.nav2"), "#prozess"],
+    [t("footer.nav3"), "/ratgeber"],
+    [t("footer.nav4"), "/immobilienbewertung"],
+    [t("footer.nav5"), "#kontakt"],
+    [t("footer.nav6"), "/impressum"],
+    [t("footer.nav7"), "/datenschutz"],
+  ];
+
   return (
     <footer className="bg-stone-900 text-white border-t-2 border-[#C5A028]/30">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
@@ -31,8 +53,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-stone-400 text-base leading-relaxed">
-              Ihr Partner für den sicheren Immobilienverkauf im
-              Neckar-Odenwald-Kreis. Persönlich. Diskret. Zuverlässig.
+              {t("footer.brand")}
             </p>
             <div className="space-y-3">
               <a
@@ -60,18 +81,13 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Links */}
+          {/* Service Links */}
           <div>
             <h4 className="text-white font-semibold text-base mb-5">
-              Leistungen
+              {t("footer.servicesHeading")}
             </h4>
             <ul className="space-y-3">
-              {[
-                "Immobilienverkauf",
-                "Kostenlose Bewertung",
-                "Käuferprüfung & Finanzierung",
-                "Begleitung bis Notartermin",
-              ].map((link) => (
+              {serviceLinks.map((link) => (
                 <li key={link}>
                   <a
                     href="#leistungen"
@@ -84,20 +100,13 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* Company Links */}
           <div>
             <h4 className="text-white font-semibold text-base mb-5">
-              Unternehmen
+              {t("footer.companyHeading")}
             </h4>
             <ul className="space-y-3">
-              {[
-                ["Über Ali Artun", "#ueber-uns"],
-                ["So funktioniert es", "#prozess"],
-                ["Ratgeber", "/ratgeber"],
-                ["Kostenlose Bewertung", "/immobilienbewertung"],
-                ["Kontakt", "#kontakt"],
-                ["Impressum", "/impressum"],
-                ["Datenschutz", "/datenschutz"],
-              ].map(([label, href]) => (
+              {companyLinks.map(([label, href]) => (
                 <li key={label}>
                   <a
                     href={href}
@@ -114,9 +123,9 @@ export default function Footer() {
         {/* Bottom */}
         <div className="py-5 border-t border-stone-800 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-stone-600 text-sm">
-            © 2026 Plan A Immobilien · Ali Artun
+            {t("footer.rights")}
           </p>
-          <p className="text-stone-700 text-sm">Mosbach · Neckar-Odenwald-Kreis</p>
+          <p className="text-stone-700 text-sm">{t("footer.location")}</p>
         </div>
       </div>
     </footer>

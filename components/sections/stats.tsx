@@ -1,55 +1,55 @@
+"use client";
+
 import { ShieldCheck, UserCheck, MapPin, Clock } from "lucide-react";
 import AnimatedCounter from "@/components/AnimatedCounter";
-
-const usps = [
-  {
-    icon: ShieldCheck,
-    title: "Geprüfte Käuferfinanzierung",
-    description:
-      "Wir vermitteln ausschließlich Kaufinteressenten mit einer bestätigten Finanzierungszusage ihrer Bank.",
-    counterTarget: 100,
-    counterSuffix: "%",
-    counterLabel: "Finanzierung geprüft",
-  },
-  {
-    icon: UserCheck,
-    title: "Persönliche Beratung",
-    description:
-      "Kein anonymes Callcenter. Sie sprechen immer direkt mit Ali Artun — Ihrem festen Ansprechpartner.",
-    counterTarget: 1,
-    counterSuffix: "",
-    counterLabel: "Fester Ansprechpartner",
-  },
-  {
-    icon: MapPin,
-    title: "Lokale Expertise",
-    description:
-      "Wir kennen den Immobilienmarkt im Neckar-Odenwald-Kreis und der Region Mosbach genau.",
-    counterTarget: 100,
-    counterSuffix: "%",
-    counterLabel: "Lokale Kenntnisse",
-  },
-  {
-    icon: Clock,
-    title: "Schneller Abschluss",
-    description:
-      "Vorqualifizierte Käufer bedeuten kürzere Verhandlungen und sichere Abschlüsse ohne Überraschungen.",
-    counterTarget: 98,
-    counterSuffix: "%",
-    counterLabel: "Kundenzufriedenheit",
-  },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Stats() {
+  const { t } = useLanguage();
+
+  const usps = [
+    {
+      icon: ShieldCheck,
+      title: t("stats.item1_title"),
+      description: t("stats.item1_desc"),
+      counterTarget: 100,
+      counterSuffix: "%",
+      counterLabel: t("stats.item1_label"),
+    },
+    {
+      icon: UserCheck,
+      title: t("stats.item2_title"),
+      description: t("stats.item2_desc"),
+      counterTarget: 1,
+      counterSuffix: "",
+      counterLabel: t("stats.item2_label"),
+    },
+    {
+      icon: MapPin,
+      title: t("stats.item3_title"),
+      description: t("stats.item3_desc"),
+      counterTarget: 100,
+      counterSuffix: "%",
+      counterLabel: t("stats.item3_label"),
+    },
+    {
+      icon: Clock,
+      title: t("stats.item4_title"),
+      description: t("stats.item4_desc"),
+      counterTarget: 98,
+      counterSuffix: "%",
+      counterLabel: t("stats.item4_label"),
+    },
+  ];
+
   return (
     <section className="bg-[#EDE8DF] border-y border-[#C5A028]/25 py-16 lg:py-20">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <h2 className="reveal text-center text-stone-900 font-heading text-3xl lg:text-4xl font-bold mb-3">
-          Was uns unterscheidet
+          {t("stats.label")}
         </h2>
         <p className="reveal text-center text-stone-500 text-xl mb-12 max-w-2xl mx-auto leading-relaxed">
-          Unser Ansatz schützt Sie vor den häufigsten Fallen beim
-          Immobilienverkauf.
+          {t("stats.sub")}
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

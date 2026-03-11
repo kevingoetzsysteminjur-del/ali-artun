@@ -2,44 +2,22 @@
 
 import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
-
-const faqs = [
-  {
-    q: "Wie läuft ein Immobilienverkauf mit Plan A Immobilien ab?",
-    a: "Wir starten mit einem kostenlosen Analysegespräch, in dem wir Ihre Immobilie und Ihre Ziele kennenlernen. Dann erstellen wir eine Marktwerteinschätzung, entwickeln eine Vermarktungsstrategie und begleiten Sie persönlich bis zum notariellen Abschluss.",
-  },
-  {
-    q: "Was kostet die Vermittlung durch einen Makler?",
-    a: "Die Maklerprovision wird beim Immobilienverkauf in der Regel zwischen Käufer und Verkäufer aufgeteilt. In Baden-Württemberg sind 3,57 % (inkl. MwSt.) pro Seite üblich. Wir besprechen alle Konditionen transparent im Erstgespräch.",
-  },
-  {
-    q: "Was bedeutet geprüfte Käuferfinanzierung?",
-    a: "Bevor wir einen Kaufinteressenten zu Ihrer Immobilie vermitteln, prüfen wir seine Finanzierungsfähigkeit. Nur Käufer mit einer bestätigten Finanzierungszusage ihrer Bank werden vorgestellt — das verhindert Rückabwicklungen und spart Ihnen Zeit.",
-  },
-  {
-    q: "Wie wird der Wert meiner Immobilie ermittelt?",
-    a: "Wir analysieren vergleichbare Verkäufe in Ihrer Region, berücksichtigen Lage, Zustand, Ausstattung und aktuelle Markttrends. Das Ergebnis ist ein realistischer Marktpreis, der Ihre Immobilie weder unter- noch überbewertet.",
-  },
-  {
-    q: "Wie lange dauert ein Immobilienverkauf im Durchschnitt?",
-    a: "Mit der richtigen Strategie und vorqualifizierten Käufern ist ein Verkauf in 4–12 Wochen realistisch. Die genaue Dauer hängt von Objekt, Lage und Preissegment ab. Durch unsere Finanzierungsprüfung reduzieren wir unnötige Verzögerungen deutlich.",
-  },
-  {
-    q: "Muss ich bei Besichtigungen dabei sein?",
-    a: "Nein, das ist nicht erforderlich. Wir führen Besichtigungen professionell durch und geben Ihnen danach Feedback. Falls Sie dabei sein möchten, koordinieren wir die Termine selbstverständlich mit Ihnen.",
-  },
-  {
-    q: "Was ist der Unterschied zwischen Angebotspreis und Kaufpreis?",
-    a: "Der Angebotspreis ist der Preis, zu dem wir die Immobilie am Markt anbieten. Der Kaufpreis ist der tatsächlich erzielte Preis nach Verhandlung. Eine realistische Preisfindung von Anfang an verhindert lange Vermarktungszeiten und Preisabschläge.",
-  },
-  {
-    q: "Können Sie auch bei der Finanzierung für Käufer helfen?",
-    a: "Ja. Als Finanzierungsvermittler helfen wir Kaufinteressenten dabei, die passende Bankfinanzierung zu finden. Das beschleunigt den Kaufprozess für Sie als Verkäufer erheblich und sorgt für sichere Abschlüsse.",
-  },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function FAQSection() {
+  const { t } = useLanguage();
   const [open, setOpen] = useState<number | null>(null);
+
+  const faqs = [
+    { q: t("faq.q1"), a: t("faq.a1") },
+    { q: t("faq.q2"), a: t("faq.a2") },
+    { q: t("faq.q3"), a: t("faq.a3") },
+    { q: t("faq.q4"), a: t("faq.a4") },
+    { q: t("faq.q5"), a: t("faq.a5") },
+    { q: t("faq.q6"), a: t("faq.a6") },
+    { q: t("faq.q7"), a: t("faq.a7") },
+    { q: t("faq.q8"), a: t("faq.a8") },
+  ];
 
   return (
     <section className="bg-[#FAF8F4] py-20 lg:py-28">
@@ -48,16 +26,15 @@ export default function FAQSection() {
           <div className="flex items-center justify-center gap-3 mb-5">
             <div className="h-0.5 w-10 bg-[#C5A028]" />
             <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#C5A028]">
-              Häufige Fragen
+              {t("faq.label")}
             </span>
             <div className="h-0.5 w-10 bg-[#C5A028]" />
           </div>
           <h2 className="font-heading text-4xl lg:text-5xl font-bold text-stone-900 leading-[1.1] mb-4">
-            Ihre Fragen, unsere Antworten
+            {t("faq.heading")}
           </h2>
           <p className="text-stone-500 text-xl leading-relaxed">
-            Alles Wichtige rund um den Immobilienverkauf — klar und
-            verständlich erklärt.
+            {t("faq.sub")}
           </p>
         </div>
 

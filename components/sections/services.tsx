@@ -1,33 +1,34 @@
-import { Home, Calculator, Users, FileCheck } from "lucide-react";
+"use client";
 
-const services = [
-  {
-    icon: Home,
-    title: "Immobilienverkauf",
-    description:
-      "Wir vermarkten Ihre Immobilie professionell und diskret — und stellen sicher, dass nur ernsthafte Käufer mit bestätigter Finanzierung an Ihren Tisch kommen.",
-  },
-  {
-    icon: Calculator,
-    title: "Kostenlose Bewertung",
-    description:
-      "Sie erhalten eine ehrliche, marktgerechte Einschätzung des Wertes Ihrer Immobilie — ohne Druck, ohne versteckte Kosten.",
-  },
-  {
-    icon: Users,
-    title: "Käuferprüfung & Finanzierung",
-    description:
-      "Unser Alleinstellungsmerkmal: Wir prüfen die Finanzierungsfähigkeit jedes Kaufinteressenten vor einer Besichtigung. Nur wer wirklich kaufen kann, bekommt einen Termin.",
-  },
-  {
-    icon: FileCheck,
-    title: "Begleitung bis zum Notartermin",
-    description:
-      "Von der ersten Beratung bis zur Schlüsselübergabe sind wir an Ihrer Seite. Wir kümmern uns um alle Formalitäten und erklären jeden Schritt verständlich.",
-  },
-];
+import { Home, Calculator, Users, FileCheck } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Services() {
+  const { t } = useLanguage();
+
+  const services = [
+    {
+      icon: Home,
+      title: t("services.s1_title"),
+      description: t("services.s1_desc"),
+    },
+    {
+      icon: Calculator,
+      title: t("services.s2_title"),
+      description: t("services.s2_desc"),
+    },
+    {
+      icon: Users,
+      title: t("services.s3_title"),
+      description: t("services.s3_desc"),
+    },
+    {
+      icon: FileCheck,
+      title: t("services.s4_title"),
+      description: t("services.s4_desc"),
+    },
+  ];
+
   return (
     <section id="leistungen" className="bg-[#FAF8F4] py-20 lg:py-28">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
@@ -39,15 +40,14 @@ export default function Services() {
               className="text-xs font-semibold tracking-[0.2em] uppercase"
               style={{ color: "#C5A028" }}
             >
-              Unsere Leistungen
+              {t("services.label")}
             </span>
           </div>
           <h2 className="font-heading text-4xl lg:text-5xl font-bold text-stone-900 leading-[1.1] mb-4">
-            Alles aus einer Hand.
+            {t("services.heading")}
           </h2>
           <p className="text-stone-500 text-xl leading-relaxed">
-            Wir begleiten Sie Schritt für Schritt — verständlich, persönlich
-            und ohne Fachjargon.
+            {t("services.sub")}
           </p>
         </div>
 

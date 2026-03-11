@@ -1,7 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import { Phone } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Hero() {
+  const { t } = useLanguage();
+
   return (
     <section className="bg-[#FAF8F4] pt-20">
       <div className="max-w-[1200px] mx-auto px-8 lg:px-16 py-16 lg:py-24">
@@ -10,18 +15,18 @@ export default function Hero() {
           <div className="space-y-8">
             {/* Eyebrow */}
             <p className="text-[#C5A028] text-sm font-semibold tracking-[0.2em] uppercase">
-              Plan A Immobilien · Mosbach
+              {t("hero.eyebrow")}
             </p>
 
             {/* Headline */}
             <h1 className="font-heading text-4xl lg:text-5xl xl:text-[3.4rem] font-bold text-stone-900 leading-[1.1]">
-              Immobilienverkauf
+              {t("hero.headline1")}
               <br />
-              mit{" "}
+              {t("hero.headline2")}{" "}
               <span className="italic" style={{ color: "#C5A028" }}>
-                geprüfter
+                {t("hero.headline3")}
                 <br />
-                Käufer&shy;finanzierung.
+                {t("hero.headline4")}
               </span>
             </h1>
 
@@ -30,18 +35,16 @@ export default function Hero() {
 
             {/* Claim */}
             <p className="text-2xl lg:text-3xl text-stone-700 font-heading leading-snug">
-              Entscheidungen auf einem anderen Niveau.
+              {t("hero.claim")}
             </p>
 
             {/* Body text */}
             <p className="text-stone-600 text-xl leading-[1.75]">
-              Sie möchten Ihre Immobilie verkaufen — sicher, zum richtigen
-              Preis und ohne böse Überraschungen? Wir präsentieren Ihnen
-              ausschließlich Käufer mit{" "}
+              {t("hero.body").split(t("hero.bodyBold"))[0]}
               <strong className="text-stone-800 font-semibold">
-                bestätigter Finanzierung
+                {t("hero.bodyBold")}
               </strong>
-              . Kein Warten. Kein Abspringen.
+              {t("hero.body").split(t("hero.bodyBold"))[1]}
             </p>
 
             {/* CTAs */}
@@ -50,7 +53,7 @@ export default function Hero() {
                 href="#kontakt"
                 className="btn-primary"
               >
-                Jetzt kostenlos beraten lassen
+                {t("hero.cta")}
                 <span className="btn-arrow">→</span>
               </a>
             </div>
@@ -62,9 +65,9 @@ export default function Hero() {
             >
               <Phone size={17} className="text-[#C5A028]" />
               <span className="text-lg">
-                Oder rufen Sie uns an:{" "}
+                {t("hero.callLabel")}{" "}
                 <span className="font-semibold text-stone-700">
-                  06261 / 123 456
+                  {t("hero.callNumber")}
                 </span>
               </span>
             </a>
@@ -84,7 +87,7 @@ export default function Hero() {
             >
               <Image
                 src="/ali.png"
-                alt="Ali Artun – Ihr Immobilienberater in Mosbach"
+                alt={t("hero.photoAlt")}
                 fill
                 className="object-cover"
                 style={{ objectPosition: "40% 20%" }}
@@ -95,10 +98,10 @@ export default function Hero() {
             {/* Name unter dem Foto */}
             <div className="text-center">
               <p className="font-heading font-semibold text-stone-900 text-xl">
-                Ali Artun
+                {t("hero.photoName")}
               </p>
               <p className="text-stone-500 text-sm">
-                Ihr Immobilienberater · Mosbach
+                {t("hero.photoSub")}
               </p>
             </div>
           </div>

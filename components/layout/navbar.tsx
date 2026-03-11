@@ -5,19 +5,21 @@ import Image from "next/image";
 import { Phone, Menu, X } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
-
-const NAV_LINKS = [
-  { label: "Leistungen",        href: "#leistungen" },
-  { label: "So funktioniert es", href: "#prozess" },
-  { label: "Über Ali Artun",    href: "#ueber-uns" },
-  { label: "Ratgeber",          href: "/ratgeber" },
-  { label: "Kontakt",           href: "#kontakt" },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Navbar() {
+  const { t } = useLanguage();
   const [open, setOpen]       = useState(false);
   const [visible, setVisible] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  const NAV_LINKS = [
+    { label: t("nav.services"),  href: "#leistungen" },
+    { label: t("nav.process"),   href: "#prozess" },
+    { label: t("nav.about"),     href: "#ueber-uns" },
+    { label: t("nav.ratgeber"),  href: "/ratgeber" },
+    { label: t("nav.contact"),   href: "#kontakt" },
+  ];
 
   useEffect(() => {
     const check = () => {
@@ -64,7 +66,7 @@ export default function Navbar() {
             {/* Desktop Nav Links */}
             <nav className="hidden lg:flex items-center gap-8">
               {NAV_LINKS.map((link) => (
-                <a key={link.label} href={link.href} className="nav-link">
+                <a key={link.href} href={link.href} className="nav-link">
                   {link.label}
                 </a>
               ))}
@@ -78,12 +80,12 @@ export default function Navbar() {
                 style={{ color: "#6B5E4E", fontSize: "14px", fontFamily: "var(--font-body)", textDecoration: "none" }}
               >
                 <Phone size={14} style={{ color: "#C5A028" }} />
-                <span style={{ letterSpacing: "0.04em" }}>06261 / 123 456</span>
+                <span style={{ letterSpacing: "0.04em" }}>{t("nav.phone")}</span>
               </a>
               <ThemeToggle />
               <LanguageSwitcher />
               <a href="/immobilienbewertung" className="btn-primary">
-                Kostenlose Bewertung
+                {t("nav.freeValuation")}
                 <span className="btn-arrow">→</span>
               </a>
             </div>
@@ -127,7 +129,7 @@ export default function Navbar() {
             <nav className="flex flex-col gap-1 px-4 py-6 flex-1">
               {NAV_LINKS.map((link) => (
                 <a
-                  key={link.label}
+                  key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
                   className="flex items-center px-4 py-3.5 rounded-xl text-[15px] font-medium transition-all hover:bg-[#C5A028]/10 hover:text-[#C5A028]"
@@ -150,10 +152,10 @@ export default function Navbar() {
                 style={{ color: "#6B5E4E", fontFamily: "var(--font-body)", textDecoration: "none", border: "1px solid rgba(197,160,40,0.3)" }}
               >
                 <Phone size={15} style={{ color: "#C5A028" }} />
-                06261 / 123 456
+                {t("nav.phone")}
               </a>
               <a href="/immobilienbewertung" onClick={() => setOpen(false)} className="btn-primary w-full justify-center">
-                Kostenlose Bewertung
+                {t("nav.freeValuation")}
                 <span className="btn-arrow">→</span>
               </a>
             </div>

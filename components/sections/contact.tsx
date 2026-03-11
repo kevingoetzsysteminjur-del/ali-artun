@@ -1,6 +1,42 @@
+"use client";
+
 import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Contact() {
+  const { t } = useLanguage();
+
+  const contactMethods = [
+    {
+      icon: Phone,
+      label: t("contact.method1_label"),
+      value: t("contact.method1_value"),
+      sub: t("contact.method1_sub"),
+      href: "tel:+4962619123456",
+    },
+    {
+      icon: MessageCircle,
+      label: t("contact.method2_label"),
+      value: t("contact.method2_value"),
+      sub: t("contact.method2_sub"),
+      href: "https://wa.me/4962619123456",
+    },
+    {
+      icon: Mail,
+      label: t("contact.method3_label"),
+      value: t("contact.method3_value"),
+      sub: t("contact.method3_sub"),
+      href: "mailto:info@plana-immobilien.de",
+    },
+    {
+      icon: MapPin,
+      label: t("contact.method4_label"),
+      value: t("contact.method4_value"),
+      sub: t("contact.method4_sub"),
+      href: "#",
+    },
+  ];
+
   return (
     <section id="kontakt" className="bg-[#FAF8F4] py-20 lg:py-28">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
@@ -14,51 +50,20 @@ export default function Contact() {
                   className="text-xs font-semibold tracking-[0.2em] uppercase"
                   style={{ color: "#C5A028" }}
                 >
-                  Kontakt
+                  {t("contact.label")}
                 </span>
               </div>
               <h2 className="font-heading text-4xl lg:text-5xl font-bold text-stone-900 leading-[1.1] mb-5">
-                Sprechen Sie mit uns.
+                {t("contact.heading")}
               </h2>
               <p className="text-stone-600 text-xl leading-[1.75]">
-                Sie möchten Ihre Immobilie bewerten lassen oder haben Fragen
-                zum Verkauf? Wir sind für Sie da — persönlich, unverbindlich
-                und kostenlos.
+                {t("contact.sub")}
               </p>
             </div>
 
             {/* Contact methods */}
             <div className="space-y-4">
-              {[
-                {
-                  icon: Phone,
-                  label: "Telefon",
-                  value: "06261 / 123 456",
-                  sub: "Mo–Fr 9:00–18:00 Uhr",
-                  href: "tel:+4962619123456",
-                },
-                {
-                  icon: MessageCircle,
-                  label: "WhatsApp",
-                  value: "+49 6261 / 123 456",
-                  sub: "Schreiben Sie uns direkt",
-                  href: "https://wa.me/4962619123456",
-                },
-                {
-                  icon: Mail,
-                  label: "E-Mail",
-                  value: "info@plana-immobilien.de",
-                  sub: "Antwort innerhalb von 24 Stunden",
-                  href: "mailto:info@plana-immobilien.de",
-                },
-                {
-                  icon: MapPin,
-                  label: "Büro",
-                  value: "Mosbach",
-                  sub: "Neckar-Odenwald-Kreis",
-                  href: "#",
-                },
-              ].map((item) => {
+              {contactMethods.map((item) => {
                 const Icon = item.icon;
                 return (
                   <a
@@ -90,31 +95,31 @@ export default function Contact() {
           {/* Right: Form */}
           <div className="bg-white rounded-2xl p-8 lg:p-10 border border-[#C5A028]/25 shadow-md shadow-[#C5A028]/5">
             <h3 className="font-heading text-2xl font-bold text-stone-900 mb-2">
-              Kostenlose Erstberatung anfragen
+              {t("contact.formTitle")}
             </h3>
             <p className="text-stone-500 text-base mb-8">
-              Wir melden uns persönlich bei Ihnen — werktags innerhalb von 24 Stunden.
+              {t("contact.formSub")}
             </p>
 
             <form className="space-y-5">
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-stone-700 font-semibold text-sm mb-2">
-                    Vorname
+                    {t("contact.firstName")}
                   </label>
                   <input
                     type="text"
-                    placeholder="Max"
+                    placeholder={t("contact.firstNamePH")}
                     className="w-full px-4 py-3.5 rounded-xl border border-stone-200 bg-stone-50 text-stone-900 text-base placeholder:text-stone-300 focus:outline-none focus:border-[#C5A028] focus:bg-white transition-all"
                   />
                 </div>
                 <div>
                   <label className="block text-stone-700 font-semibold text-sm mb-2">
-                    Nachname
+                    {t("contact.lastName")}
                   </label>
                   <input
                     type="text"
-                    placeholder="Mustermann"
+                    placeholder={t("contact.lastNamePH")}
                     className="w-full px-4 py-3.5 rounded-xl border border-stone-200 bg-stone-50 text-stone-900 text-base placeholder:text-stone-300 focus:outline-none focus:border-[#C5A028] focus:bg-white transition-all"
                   />
                 </div>
@@ -122,46 +127,46 @@ export default function Contact() {
 
               <div>
                 <label className="block text-stone-700 font-semibold text-sm mb-2">
-                  Telefon
+                  {t("contact.phone")}
                 </label>
                 <input
                   type="tel"
-                  placeholder="Ihre Rufnummer"
+                  placeholder={t("contact.phonePH")}
                   className="w-full px-4 py-3.5 rounded-xl border border-stone-200 bg-stone-50 text-stone-900 text-base placeholder:text-stone-300 focus:outline-none focus:border-[#C5A028] focus:bg-white transition-all"
                 />
               </div>
 
               <div>
                 <label className="block text-stone-700 font-semibold text-sm mb-2">
-                  E-Mail
+                  {t("contact.email")}
                 </label>
                 <input
                   type="email"
-                  placeholder="max@beispiel.de"
+                  placeholder={t("contact.emailPH")}
                   className="w-full px-4 py-3.5 rounded-xl border border-stone-200 bg-stone-50 text-stone-900 text-base placeholder:text-stone-300 focus:outline-none focus:border-[#C5A028] focus:bg-white transition-all"
                 />
               </div>
 
               <div>
                 <label className="block text-stone-700 font-semibold text-sm mb-2">
-                  Art der Immobilie
+                  {t("contact.propertyType")}
                 </label>
                 <select className="w-full px-4 py-3.5 rounded-xl border border-stone-200 bg-stone-50 text-stone-700 text-base focus:outline-none focus:border-[#C5A028] focus:bg-white transition-all appearance-none cursor-pointer">
-                  <option value="">Bitte wählen...</option>
-                  <option value="haus">Haus</option>
-                  <option value="wohnung">Wohnung</option>
-                  <option value="grundstueck">Grundstück</option>
-                  <option value="sonstiges">Sonstiges</option>
+                  <option value="">{t("contact.propertyTypePH")}</option>
+                  <option value="haus">{t("contact.pt1")}</option>
+                  <option value="wohnung">{t("contact.pt2")}</option>
+                  <option value="grundstueck">{t("contact.pt3")}</option>
+                  <option value="sonstiges">{t("contact.pt4")}</option>
                 </select>
               </div>
 
               <div>
                 <label className="block text-stone-700 font-semibold text-sm mb-2">
-                  Ihre Nachricht (optional)
+                  {t("contact.message")}
                 </label>
                 <textarea
                   rows={4}
-                  placeholder="Haben Sie weitere Informationen oder Fragen?"
+                  placeholder={t("contact.messagePH")}
                   className="w-full px-4 py-3.5 rounded-xl border border-stone-200 bg-stone-50 text-stone-900 text-base placeholder:text-stone-300 focus:outline-none focus:border-[#C5A028] focus:bg-white transition-all resize-none"
                 />
               </div>
@@ -170,14 +175,14 @@ export default function Contact() {
                 type="submit"
                 className="btn-primary w-full justify-center"
               >
-                Anfrage kostenlos absenden
+                {t("contact.submit")}
                 <span className="btn-arrow">→</span>
               </button>
 
               <p className="text-stone-400 text-sm text-center leading-relaxed">
-                Ihre Daten werden vertraulich behandelt.{" "}
+                {t("contact.privacyNote")}{" "}
                 <a href="/datenschutz" className="underline hover:text-[#C5A028]">
-                  Datenschutzerklärung
+                  {t("contact.privacyLink")}
                 </a>
               </p>
             </form>
@@ -194,7 +199,7 @@ export default function Contact() {
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            title="Plan A Immobilien – Mosbach"
+            title={t("contact.mapTitle")}
           />
         </div>
       </div>

@@ -1,41 +1,42 @@
-import { Award, Users, FileCheck, ShieldCheck } from "lucide-react";
+"use client";
 
-const ZERTIFIKATE = [
-  {
-    icon: FileCheck,
-    titel: "§ 34c GewO",
-    untertitel: "Gewerbezulassung",
-    beschreibung:
-      "Staatlich zugelassener Immobilienmakler gemäß § 34c Gewerbeordnung – Voraussetzung für die professionelle Immobilienvermittlung in Deutschland.",
-    farbe: "#C5A028",
-  },
-  {
-    icon: Award,
-    titel: "IHK Zertifiziert",
-    untertitel: "Geprüfter Immobilienmakler",
-    beschreibung:
-      "IHK-zertifizierte Ausbildung und Sachkunde im Immobilien- und Maklerrecht, Wertermittlung und Verkaufsprozessen.",
-    farbe: "#C5A028",
-  },
-  {
-    icon: Users,
-    titel: "IVD Mitglied",
-    untertitel: "Immobilienverband Deutschland",
-    beschreibung:
-      "Mitglied im Immobilienverband IVD – dem führenden Fachverband für Immobilienberufe mit verbindlichem Ethik-Kodex.",
-    farbe: "#C5A028",
-  },
-  {
-    icon: ShieldCheck,
-    titel: "DSGVO Konform",
-    untertitel: "Datenschutz & Sicherheit",
-    beschreibung:
-      "Alle Kundendaten werden gemäß DSGVO verarbeitet und gespeichert. Transparenter Umgang mit Ihren Informationen.",
-    farbe: "#C5A028",
-  },
-];
+import { Award, Users, FileCheck, ShieldCheck } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Auszeichnungen() {
+  const { t } = useLanguage();
+
+  const ZERTIFIKATE = [
+    {
+      icon: FileCheck,
+      titel: t("auszeichnungen.z1_titel"),
+      untertitel: t("auszeichnungen.z1_untertitel"),
+      beschreibung: t("auszeichnungen.z1_desc"),
+      farbe: "#C5A028",
+    },
+    {
+      icon: Award,
+      titel: t("auszeichnungen.z2_titel"),
+      untertitel: t("auszeichnungen.z2_untertitel"),
+      beschreibung: t("auszeichnungen.z2_desc"),
+      farbe: "#C5A028",
+    },
+    {
+      icon: Users,
+      titel: t("auszeichnungen.z3_titel"),
+      untertitel: t("auszeichnungen.z3_untertitel"),
+      beschreibung: t("auszeichnungen.z3_desc"),
+      farbe: "#C5A028",
+    },
+    {
+      icon: ShieldCheck,
+      titel: t("auszeichnungen.z4_titel"),
+      untertitel: t("auszeichnungen.z4_untertitel"),
+      beschreibung: t("auszeichnungen.z4_desc"),
+      farbe: "#C5A028",
+    },
+  ];
+
   return (
     <section className="bg-[#FAF8F4] py-16 lg:py-20">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
@@ -44,16 +45,15 @@ export default function Auszeichnungen() {
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="h-0.5 w-10 bg-[#C5A028]" />
             <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#C5A028]">
-              Qualifikationen
+              {t("auszeichnungen.label")}
             </span>
             <div className="h-0.5 w-10 bg-[#C5A028]" />
           </div>
           <h2 className="font-heading text-3xl lg:text-4xl font-bold text-stone-900 leading-tight mb-3">
-            Zertifiziert & zugelassen
+            {t("auszeichnungen.heading")}
           </h2>
           <p className="text-stone-500 text-lg max-w-xl mx-auto">
-            Ihre Immobilie ist in professionellen Händen – mit allen notwendigen
-            Zulassungen und Qualifikationen.
+            {t("auszeichnungen.sub")}
           </p>
         </div>
 

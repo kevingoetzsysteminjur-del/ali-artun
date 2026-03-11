@@ -1,14 +1,19 @@
-import { Shield, Star, Lock, MapPin, CheckCircle } from "lucide-react";
+"use client";
 
-const badges = [
-  { icon: Shield, label: "IHK Zertifiziert", sub: "Gewerberecht §34c" },
-  { icon: Star, label: "IVD Mitglied", sub: "Immobilienverband" },
-  { icon: Lock, label: "DSGVO Konform", sub: "Datenschutz" },
-  { icon: MapPin, label: "Lokaler Experte", sub: "Neckar-Odenwald-Kreis" },
-  { icon: CheckCircle, label: "Geprüfte Finanzierung", sub: "Nur geprüfte Käufer" },
-];
+import { Shield, Star, Lock, MapPin, CheckCircle } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function TrustBadges() {
+  const { t } = useLanguage();
+
+  const badges = [
+    { icon: Shield, label: t("trustbadges.item1"), sub: t("trustbadges.item1_sub") },
+    { icon: Star, label: t("trustbadges.item2"), sub: t("trustbadges.item2_sub") },
+    { icon: Lock, label: t("trustbadges.item3"), sub: t("trustbadges.item3_sub") },
+    { icon: MapPin, label: t("trustbadges.item4"), sub: t("trustbadges.item4_sub") },
+    { icon: CheckCircle, label: t("trustbadges.item5"), sub: t("trustbadges.item5_sub") },
+  ];
+
   return (
     <section className="bg-stone-50 border-y border-[#C5A028]/15 py-10">
       <div className="max-w-5xl mx-auto px-6 lg:px-8">

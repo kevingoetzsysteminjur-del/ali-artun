@@ -1,15 +1,20 @@
+"use client";
+
 import Image from "next/image";
 import { CheckCircle, Phone } from "lucide-react";
-
-const points = [
-  "Zertifizierter Immobilienmakler (IHK)",
-  "Mitglied im IVD (Immobilienverband Deutschland)",
-  "Spezialist für geprüfte Käuferfinanzierung",
-  "Persönliche Beratung auf Augenhöhe",
-  "Für Sie erreichbar: Deutsch, Englisch, Türkisch",
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function About() {
+  const { t } = useLanguage();
+
+  const points = [
+    t("about.point1"),
+    t("about.point2"),
+    t("about.point3"),
+    t("about.point4"),
+    t("about.point5"),
+  ];
+
   return (
     <section
       id="ueber-uns"
@@ -30,7 +35,7 @@ export default function About() {
             >
               <Image
                 src="/ali.png"
-                alt="Ali Artun – Ihr Immobilienberater in Mosbach"
+                alt={t("about.photoAlt")}
                 fill
                 className="object-cover"
                 style={{
@@ -49,29 +54,23 @@ export default function About() {
                   className="text-xs font-semibold tracking-[0.2em] uppercase"
                   style={{ color: "#C5A028" }}
                 >
-                  Über Ali Artun
+                  {t("about.label")}
                 </span>
               </div>
               <h2 className="font-heading text-4xl lg:text-5xl font-bold text-stone-900 leading-[1.1] mb-5">
-                Ihr persönlicher
+                {t("about.heading1")}
                 <br />
                 <span className="italic" style={{ color: "#C5A028" }}>
-                  Ansprechpartner.
+                  {t("about.heading2")}
                 </span>
               </h2>
               <p className="text-stone-600 text-xl leading-[1.75]">
-                Als Gründer von Plan A Immobilien habe ich mir von Anfang an
-                ein Ziel gesetzt: Den Immobilienverkauf so zu gestalten, wie
-                ich ihn selbst als Verkäufer erleben möchte — ehrlich,
-                persönlich und ohne unangenehme Überraschungen.
+                {t("about.desc1")}
               </p>
             </div>
 
             <p className="text-stone-500 text-lg leading-[1.75]">
-              Mein Konzept der geprüften Käuferfinanzierung stellt sicher, dass
-              Sie als Verkäufer nur mit Interessenten sprechen, die auch
-              wirklich kaufen können. Das spart Ihnen Zeit, Nerven und schützt
-              Sie vor Enttäuschungen.
+              {t("about.desc2")}
             </p>
 
             <ul className="space-y-3">
@@ -112,10 +111,10 @@ export default function About() {
               </div>
               <div>
                 <p className="font-heading font-semibold text-stone-900 text-lg leading-tight">
-                  Ali Artun
+                  {t("about.sigTitle")}
                 </p>
                 <p className="text-stone-500 text-sm">
-                  Geschäftsführer · Plan A Immobilien
+                  {t("about.sigSub")}
                 </p>
               </div>
             </div>
@@ -126,7 +125,7 @@ export default function About() {
                 href="#kontakt"
                 className="btn-primary"
               >
-                Persönliches Gespräch
+                {t("about.cta")}
                 <span className="btn-arrow">→</span>
               </a>
               <a
