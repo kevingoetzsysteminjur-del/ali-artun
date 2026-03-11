@@ -261,6 +261,41 @@ html {
   animation: slideInRight 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+/* ── Gold Range Slider ───────────────────────────────────────── */
+.gold-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  height: 20px;
+}
+.gold-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #C5A028;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(197,160,40,0.45);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.gold-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.25);
+  box-shadow: 0 4px 14px rgba(197,160,40,0.6);
+}
+.gold-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #C5A028;
+  border-radius: 50%;
+  border: none;
+  box-shadow: 0 2px 8px rgba(197,160,40,0.45);
+  cursor: pointer;
+}
+.gold-slider::-webkit-slider-runnable-track { background: transparent; }
+.gold-slider::-moz-range-track { background: transparent; }
+.gold-slider:focus { outline: none; }
+
 /* ── Ratgeber Card Hover ─────────────────────────────────────── */
 .ratgeber-card { transition: transform 0.25s ease, box-shadow 0.25s ease; }
 .ratgeber-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); }

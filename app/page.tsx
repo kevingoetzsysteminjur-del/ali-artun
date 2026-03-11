@@ -4,7 +4,9 @@ import VideoIntro from "@/components/sections/video-intro";
 import Hero from "@/components/sections/hero";
 import Stats from "@/components/sections/stats";
 import Services from "@/components/sections/services";
+import VorherNachher from "@/components/sections/vorher-nachher";
 import Properties from "@/components/sections/properties";
+import RechnerPreview from "@/components/sections/rechner-preview";
 import About from "@/components/sections/about";
 import Testimonials from "@/components/sections/testimonials";
 import Contact from "@/components/sections/contact";
@@ -30,7 +32,11 @@ export default function Home() {
         <GoldDivider />
         <Services />
         <GoldDivider />
+        <VorherNachher />
+        <GoldDivider />
         <Properties />
+        <GoldDivider />
+        <RechnerPreview />
         <GoldDivider />
         <About />
         <GoldDivider />

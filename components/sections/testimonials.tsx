@@ -1,3 +1,23 @@
+import { Play } from "lucide-react";
+
+const VIDEO_PLATZHALTER = [
+  {
+    name: "Familie aus Mosbach",
+    beschreibung: "Verkauf eines Einfamilienhauses, abgeschlossen in 7 Wochen",
+    gradient: "from-stone-200 to-stone-300",
+  },
+  {
+    name: "Eigentümer aus Buchen",
+    beschreibung: "Eigentumswohnung – geprüfte Käuferfinanzierung sicherte den Abschluss",
+    gradient: "from-amber-100 to-amber-200",
+  },
+  {
+    name: "Ehepaar aus Mosbach",
+    beschreibung: "Doppelhaushälfte – reibungsloser Prozess bis zum Notartermin",
+    gradient: "from-stone-100 to-stone-200",
+  },
+];
+
 export default function Testimonials() {
   return (
     <section
@@ -22,13 +42,10 @@ export default function Testimonials() {
           </p>
         </div>
 
-        {/* Platzhalter-Karte */}
-        <div className="reveal reveal-delay-1 bg-white rounded-3xl border border-[#C5A028]/20 shadow-sm overflow-hidden max-w-3xl mx-auto">
-          {/* Gold accent top bar */}
+        {/* Text-Platzhalter */}
+        <div className="reveal reveal-delay-1 bg-white rounded-3xl border border-[#C5A028]/20 shadow-sm overflow-hidden max-w-3xl mx-auto mb-16">
           <div className="h-1 bg-gradient-to-r from-[#C5A028]/40 via-[#C5A028] to-[#C5A028]/40" />
-
           <div className="px-10 py-12 text-center">
-            {/* Big quotation mark */}
             <div
               className="text-[80px] leading-none font-heading font-bold mb-4"
               style={{ color: "#C5A028", opacity: 0.35 }}
@@ -36,23 +53,17 @@ export default function Testimonials() {
             >
               ❝
             </div>
-
             <p className="text-stone-600 text-xl leading-[1.8] mb-8 max-w-xl mx-auto">
               Wir sammeln gerade die ersten Erfahrungsberichte unserer Kunden.
               Bald finden Sie hier echte Bewertungen von zufriedenen Verkäufern
               aus der Region Mosbach und dem Neckar-Odenwald-Kreis.
             </p>
-
-            {/* Divider */}
             <div className="flex items-center gap-4 justify-center mb-8">
               <div className="h-px flex-1 max-w-[80px] bg-[#C5A028]/25" />
               <div className="w-1.5 h-1.5 rounded-full bg-[#C5A028]/50" />
               <div className="h-px flex-1 max-w-[80px] bg-[#C5A028]/25" />
             </div>
-
-            {/* Google Bewertung Platzhalter */}
             <div className="inline-flex items-center gap-3 bg-stone-50 border border-stone-200 rounded-2xl px-6 py-3.5 mb-8">
-              {/* Google "G" icon */}
               <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
                 <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
@@ -68,8 +79,6 @@ export default function Testimonials() {
                 <p className="text-stone-500 text-xs">Bewerten Sie uns auf Google</p>
               </div>
             </div>
-
-            {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <a
                 href="https://g.page/r/plan-a-immobilien/review"
@@ -87,8 +96,53 @@ export default function Testimonials() {
           </div>
         </div>
 
-        {/* Subtile Vertrauensnote darunter */}
-        <p className="text-center text-stone-400 text-sm mt-8 reveal reveal-delay-2">
+        {/* ── Video-Testimonials ─────────────────────────── */}
+        <div className="reveal reveal-delay-2">
+          <div className="text-center mb-8">
+            <div className="flex items-center justify-center gap-3 mb-3">
+              <div className="h-px w-8 bg-[#C5A028]/40" />
+              <span className="text-xs font-semibold tracking-[0.18em] uppercase text-stone-400">
+                Video-Erfahrungsberichte
+              </span>
+              <div className="h-px w-8 bg-[#C5A028]/40" />
+            </div>
+            <p className="text-stone-500 text-base">
+              Video-Erfahrungsberichte folgen in Kürze.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+            {VIDEO_PLATZHALTER.map((v, i) => (
+              <div
+                key={i}
+                className="group relative overflow-hidden rounded-2xl border border-[#C5A028]/15 bg-white shadow-sm"
+              >
+                {/* Thumbnail-Platzhalter */}
+                <div className={`aspect-video bg-gradient-to-br ${v.gradient} relative`}>
+                  {/* Play-Button */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-14 h-14 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-200">
+                      <Play size={20} style={{ color: "#C5A028", marginLeft: "2px" }} fill="#C5A028" />
+                    </div>
+                  </div>
+                  {/* Coming soon badge */}
+                  <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-[10px] font-semibold text-stone-500 px-2 py-1 rounded-full">
+                    Folgt bald
+                  </div>
+                </div>
+
+                {/* Info */}
+                <div className="p-4">
+                  <p className="text-stone-900 font-semibold text-sm mb-0.5">{v.name}</p>
+                  <p className="text-stone-400 text-xs leading-relaxed">{v.beschreibung}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Hinweis */}
+        <p className="text-center text-stone-400 text-sm mt-10 reveal reveal-delay-3">
           Wir arbeiten transparent — keine erfundenen Bewertungen, nur echte Stimmen.
         </p>
       </div>
