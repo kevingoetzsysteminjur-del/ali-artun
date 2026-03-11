@@ -1,4 +1,5 @@
 import { Play } from "lucide-react";
+import GoogleReviewsWidget from "@/components/GoogleReviewsWidget";
 
 const VIDEO_PLATZHALTER = [
   {
@@ -42,8 +43,11 @@ export default function Testimonials() {
           </p>
         </div>
 
+        {/* Text + Google Widget nebeneinander */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-16 reveal reveal-delay-1 items-start">
+
         {/* Text-Platzhalter */}
-        <div className="reveal reveal-delay-1 bg-white rounded-3xl border border-[#C5A028]/20 shadow-sm overflow-hidden max-w-3xl mx-auto mb-16">
+        <div className="bg-white rounded-3xl border border-[#C5A028]/20 shadow-sm overflow-hidden">
           <div className="h-1 bg-gradient-to-r from-[#C5A028]/40 via-[#C5A028] to-[#C5A028]/40" />
           <div className="px-10 py-12 text-center">
             <div
@@ -95,6 +99,11 @@ export default function Testimonials() {
             </div>
           </div>
         </div>
+
+        {/* Google Reviews Widget */}
+        <GoogleReviewsWidget />
+
+        </div>{/* end grid */}
 
         {/* ── Video-Testimonials ─────────────────────────── */}
         <div className="reveal reveal-delay-2">

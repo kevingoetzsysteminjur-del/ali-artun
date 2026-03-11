@@ -296,6 +296,20 @@ html {
 .gold-slider::-moz-range-track { background: transparent; }
 .gold-slider:focus { outline: none; }
 
+/* ── Partner Marquee ─────────────────────────────────────────── */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.partner-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+.partner-marquee:hover {
+  animation-play-state: paused;
+}
+
 /* ── Ratgeber Card Hover ─────────────────────────────────────── */
 .ratgeber-card { transition: transform 0.25s ease, box-shadow 0.25s ease; }
 .ratgeber-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); }

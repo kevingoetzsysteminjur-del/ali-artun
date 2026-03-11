@@ -11,6 +11,9 @@ import About from "@/components/sections/about";
 import Testimonials from "@/components/sections/testimonials";
 import Contact from "@/components/sections/contact";
 import TrustBadges from "@/components/TrustBadges";
+import Auszeichnungen from "@/components/Auszeichnungen";
+import PartnerLogos from "@/components/sections/partner-logos";
+import MedienLeiste from "@/components/sections/medien-leiste";
 import FAQSection from "@/components/FAQSection";
 
 function GoldDivider() {
@@ -27,10 +30,12 @@ export default function Home() {
         <Navbar />
         <Hero />
         <TrustBadges />
+        <MedienLeiste />
         <GoldDivider />
         <Stats />
         <GoldDivider />
         <Services />
+        <PartnerLogos />
         <GoldDivider />
         <VorherNachher />
         <GoldDivider />
@@ -39,6 +44,8 @@ export default function Home() {
         <RechnerPreview />
         <GoldDivider />
         <About />
+        <GoldDivider />
+        <Auszeichnungen />
         <GoldDivider />
         <Testimonials />
         <GoldDivider />
