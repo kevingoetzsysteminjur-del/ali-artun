@@ -146,7 +146,7 @@ export default function VideoIntro() {
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginBottom: 30, position: "relative", gap: 12 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
           <Image
-            src="/logo.jpg"
+            src="/logo.png"
             alt="Plan A Immobilien Logo"
             width={350}
             height={132}

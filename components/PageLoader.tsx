@@ -20,12 +20,12 @@ export default function PageLoader() {
 
   return (
     <div
-      className="fixed inset-0 z-[9999] flex items-center justify-center bg-stone-900 transition-opacity duration-300"
+      className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#FAF8F4] transition-opacity duration-300"
       style={{ opacity: fading ? 0 : 1 }}
     >
       <div className="text-center">
         <Image
-          src="/logo.jpg"
+          src="/logo.png"
           alt="Plan A Immobilien"
           width={200}
           height={80}

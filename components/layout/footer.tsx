@@ -12,7 +12,7 @@ export default function Footer() {
             <div className="flex items-center gap-3">
               <div className="relative h-10 w-10 flex-shrink-0">
                 <Image
-                  src="/logo.jpg"
+                  src="/logo.png"
                   alt="Plan A Immobilien"
                   fill
                   className="object-contain"

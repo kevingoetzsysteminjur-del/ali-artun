@@ -50,7 +50,7 @@ export default function Navbar() {
             {/* Logo */}
             <a href="/" className="flex-shrink-0">
               <Image
-                src="/logo.jpg"
+                src="/logo.png"
                 alt="Plan A Immobilien"
                 width={150}
                 height={52}
@@ -110,7 +110,7 @@ export default function Navbar() {
           >
             {/* Panel Header */}
             <div className="flex items-center justify-between px-6 py-5 border-b border-[#C5A028]/20">
-              <Image src="/logo.jpg" alt="Plan A Immobilien" width={120} height={40} className="h-9 w-auto object-contain" />
+              <Image src="/logo.png" alt="Plan A Immobilien" width={120} height={40} className="h-9 w-auto object-contain" />
               <button
                 onClick={() => setOpen(false)}
                 className="flex items-center justify-center w-9 h-9 rounded-lg hover:bg-[#C5A028]/10 transition-colors"
