@@ -152,3 +152,159 @@ html {
     @apply bg-background text-foreground;
   }
 }
+
+/* ── Premium Buttons ──────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 28px;
+  background: linear-gradient(135deg, #C9A96E 0%, #A6894D 100%);
+  color: #fff;
+  font-family: var(--font-body, sans-serif);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 4px 18px rgba(166,137,77,0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  white-space: nowrap;
+}
+.btn-primary:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 28px rgba(166,137,77,0.55);
+  filter: brightness(1.08);
+}
+.btn-primary .btn-arrow {
+  transition: transform 0.2s ease;
+  display: inline-block;
+}
+.btn-primary:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 26px;
+  background: transparent;
+  color: #C9A96E;
+  font-family: var(--font-body, sans-serif);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1.5px solid #C9A96E;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  white-space: nowrap;
+}
+.btn-secondary:hover {
+  background: linear-gradient(135deg, #C9A96E 0%, #A6894D 100%);
+  color: #fff;
+  transform: scale(1.02);
+  box-shadow: 0 6px 20px rgba(166,137,77,0.4);
+}
+.btn-secondary .btn-arrow {
+  transition: transform 0.2s ease;
+  display: inline-block;
+}
+.btn-secondary:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+/* ── Nav Link Hover Underline ─────────────────────────────────── */
+.nav-link {
+  position: relative;
+  color: #4A3728;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  padding-bottom: 3px;
+  transition: color 0.2s ease;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: linear-gradient(90deg, #C9A96E, #A6894D);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after { width: 100%; }
+.nav-link:hover { color: #1a1a1a; }
+
+/* ── Navbar Glassmorphism ─────────────────────────────────────── */
+.nav-glass {
+  background: rgba(250, 248, 244, 0.88) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 2px 24px rgba(0,0,0,0.08);
+}
+
+/* ── Mobile Nav Overlay ───────────────────────────────────────── */
+@keyframes slideInRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+.mobile-nav-panel {
+  animation: slideInRight 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ── Ratgeber Card Hover ─────────────────────────────────────── */
+.ratgeber-card { transition: transform 0.25s ease, box-shadow 0.25s ease; }
+.ratgeber-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
+
+/* ── Artikel Typografie ─────────────────────────────────────── */
+.artikel-inhalt p {
+  font-family: var(--font-body, serif);
+  font-size: 16px;
+  line-height: 1.85;
+  color: #3D3027;
+  margin-bottom: 20px;
+}
+.artikel-inhalt h2 {
+  font-family: var(--font-heading, serif);
+  font-size: clamp(1.3rem, 3vw, 1.7rem);
+  font-weight: 400;
+  color: #1a1a1a;
+  letter-spacing: 0.04em;
+  margin: 40px 0 16px;
+}
+.artikel-inhalt h3 {
+  font-family: var(--font-heading, serif);
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #2A1F17;
+  margin: 28px 0 12px;
+}
+.artikel-inhalt ul, .artikel-inhalt ol {
+  font-family: var(--font-body, serif);
+  font-size: 16px;
+  color: #3D3027;
+  line-height: 1.8;
+  padding-left: 24px;
+  margin-bottom: 20px;
+}
+.artikel-inhalt li { margin-bottom: 6px; }
+.artikel-highlight {
+  border-left: 3px solid #C9A96E;
+  padding: 16px 20px;
+  background: rgba(201,169,110,0.06);
+  margin: 28px 0;
+  font-family: var(--font-body, serif);
+  font-size: 15px;
+  color: #4A3728;
+  line-height: 1.7;
+  font-style: italic;
+}

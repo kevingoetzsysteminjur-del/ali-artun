@@ -1,137 +1,129 @@
 import type { Metadata } from "next";
-import Navbar from "@/components/layout/navbar";
-import Footer from "@/components/layout/footer";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Ratgeber Immobilien Mosbach | Plan A Immobilien",
-  description:
-    "Nützliche Tipps und Ratgeber rund um Immobilienverkauf, Bewertung und Finanzierung im Neckar-Odenwald-Kreis. Von Experte Ali Artun, Plan A Immobilien Mosbach.",
-  keywords: [
-    "Immobilien Ratgeber Mosbach",
-    "Immobilie verkaufen Tipps",
-    "Immobilienbewertung Neckar-Odenwald-Kreis",
-    "Baufinanzierung Mosbach",
-  ],
+  description: "Expertenwissen rund um Immobilienverkauf, Käuferfinanzierung und Marktentwicklung im Neckar-Odenwald-Kreis. Tipps von Ali Artun, Plan A Immobilien.",
 };
 
-const articles = [
+const artikel = [
   {
-    category: "Verkauf",
-    title: "Immobilie verkaufen in Mosbach – Das müssen Sie wissen",
-    excerpt:
-      "Der Immobilienmarkt in Mosbach und dem Neckar-Odenwald-Kreis hat seine eigenen Spielregeln. Erfahren Sie, worauf es beim erfolgreichen Verkauf wirklich ankommt.",
-    gradient: "from-amber-100 via-orange-50 to-stone-100",
-    href: "#",
+    slug: "immobilie-verkaufen-mosbach",
+    kategorie: "Verkauf",
+    kategorieColor: "#2D6A4F",
+    titel: "Immobilie verkaufen in Mosbach – Das müssen Sie wissen",
+    vorschau: "Wer seine Immobilie im Neckar-Odenwald-Kreis verkaufen möchte, steht vor vielen Fragen. Erfahren Sie, worauf es wirklich ankommt – von der Bewertung bis zum Notartermin.",
+    datum: "15. März 2026",
+    lesezeit: "8 Min.",
+    gradient: "linear-gradient(135deg, #E8DDD0 0%, #D4C4A8 50%, #C9A96E22 100%)",
+    icon: "🏡",
   },
   {
-    category: "Finanzierung",
-    title: "Geprüfte Käuferfinanzierung – So funktioniert es",
-    excerpt:
-      "Warum scheitern so viele Immobilienverkäufe kurz vor dem Notartermin? Und wie schützt eine vorgeprüfte Finanzierung Verkäufer und Käufer gleichermaßen.",
-    gradient: "from-stone-100 via-amber-50 to-orange-100",
-    href: "#",
+    slug: "kaeuferfinanzierung-erklaert",
+    kategorie: "Finanzierung",
+    kategorieColor: "#1B4F72",
+    titel: "Geprüfte Käuferfinanzierung – Was bedeutet das für Sie?",
+    vorschau: "Viele Immobilienverkäufe scheitern kurz vor dem Notartermin an geplatzten Finanzierungen. Plan A Immobilien geht dieses Risiko anders an – mit geprüfter Käuferfinanzierung.",
+    datum: "10. März 2026",
+    lesezeit: "7 Min.",
+    gradient: "linear-gradient(135deg, #D6E4F0 0%, #AED6F1 50%, #1B4F7222 100%)",
+    icon: "🏦",
   },
   {
-    category: "Markt",
-    title: "Wann ist der richtige Zeitpunkt zum Verkauf?",
-    excerpt:
-      "Frühjahr, Herbst oder doch im Winter? Wir erklären, welche Faktoren den Verkaufszeitpunkt wirklich beeinflussen — und warum der richtige Preis wichtiger ist als die Jahreszeit.",
-    gradient: "from-orange-50 via-stone-100 to-amber-100",
-    href: "#",
+    slug: "richtiger-zeitpunkt-verkauf",
+    kategorie: "Markt",
+    kategorieColor: "#7B3F00",
+    titel: "Wann ist der richtige Zeitpunkt, Ihre Immobilie zu verkaufen?",
+    vorschau: "Viele Eigentümer warten auf den 'perfekten Moment'. Doch wann ist der wirklich? Wir erklären, welche Faktoren den optimalen Verkaufszeitpunkt bestimmen.",
+    datum: "5. März 2026",
+    lesezeit: "6 Min.",
+    gradient: "linear-gradient(135deg, #FAF0E6 0%, #EDCFB0 50%, #C9A96E33 100%)",
+    icon: "📅",
   },
   {
-    category: "Bewertung",
-    title: "Immobilienbewertung: Diese Faktoren bestimmen den Preis",
-    excerpt:
-      "Lage, Zustand, Baujahr — was wirklich zählt. Ein Überblick über die wichtigsten Wertfaktoren und häufige Fehler bei der Preisfindung.",
-    gradient: "from-amber-50 via-orange-50 to-stone-50",
-    href: "#",
+    slug: "immobilienbewertung-tipps",
+    kategorie: "Bewertung",
+    kategorieColor: "#4A3728",
+    titel: "Immobilienbewertung – So erfahren Sie den wahren Wert Ihrer Immobilie",
+    vorschau: "Was ist Ihre Immobilie wirklich wert? Online-Rechner geben grobe Schätzwerte – doch für einen erfolgreichen Verkauf brauchen Sie eine präzise Marktpreisanalyse.",
+    datum: "1. März 2026",
+    lesezeit: "9 Min.",
+    gradient: "linear-gradient(135deg, #F5F0E8 0%, #E8D8C0 50%, #A6894D22 100%)",
+    icon: "📊",
   },
 ];
 
 export default function RatgeberPage() {
   return (
-    <>
-      <Navbar />
-      <main className="min-h-screen bg-[#F9F8F5] pt-24 pb-20">
-        <div className="max-w-5xl mx-auto px-6 lg:px-8">
-          {/* Header */}
-          <div className="text-center mb-14">
-            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#C9A96E]">
-              Wissen & Ratgeber
-            </span>
-            <h1 className="font-heading text-4xl lg:text-5xl font-bold text-stone-900 mt-3 mb-4 leading-[1.1]">
-              Ihr Immobilien-Ratgeber
-            </h1>
-            <p className="text-stone-500 text-xl leading-relaxed max-w-2xl mx-auto">
-              Praxisnahe Informationen für Verkäufer und Käufer im
-              Neckar-Odenwald-Kreis — direkt von Ali Artun.
-            </p>
-          </div>
+    <div style={{ backgroundColor: "#FAFAF8", minHeight: "100vh" }}>
+      {/* Hero */}
+      <section style={{ padding: "120px 24px 60px", backgroundColor: "#FAF8F4", textAlign: "center" }}>
+        <p style={{ fontFamily: "var(--font-body)", fontSize: "11px", letterSpacing: "0.3em", textTransform: "uppercase", color: "#C9A96E", marginBottom: "14px" }}>
+          Expertenwissen
+        </p>
+        <h1 style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(2rem, 5vw, 3rem)", fontWeight: 400, letterSpacing: "0.06em", color: "#1a1a1a", marginBottom: "16px" }}>
+          Ratgeber & Einblicke
+        </h1>
+        <p style={{ fontFamily: "var(--font-body)", fontSize: "16px", color: "#6B5E4E", maxWidth: "520px", margin: "0 auto", lineHeight: 1.7 }}>
+          Fundiertes Wissen rund um Immobilienverkauf, Finanzierung und Marktentwicklung im Neckar-Odenwald-Kreis.
+        </p>
+      </section>
 
-          {/* Articles Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {articles.map((article, i) => (
-              <article
-                key={i}
-                className="bg-white rounded-2xl border border-[#C9A96E]/15 overflow-hidden hover:border-[#C9A96E]/40 hover:shadow-md transition-all duration-300 group"
-              >
-                {/* Image placeholder with gradient */}
-                <div
-                  className={`h-48 bg-gradient-to-br ${article.gradient} flex items-center justify-center`}
-                >
-                  <span className="text-[#C9A96E]/40 text-6xl font-heading font-bold">
-                    {article.category[0]}
+      {/* Artikel Grid */}
+      <section style={{ maxWidth: "1100px", margin: "0 auto", padding: "48px 24px 80px" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "32px" }}>
+          {artikel.map((a) => (
+            <article
+              key={a.slug}
+              className="ratgeber-card"
+              style={{ backgroundColor: "#fff", border: "1px solid rgba(201,169,110,0.2)", overflow: "hidden" }}
+            >
+              {/* Bild-Bereich */}
+              <div style={{ height: "200px", background: a.gradient, display: "flex", alignItems: "center", justifyContent: "center", position: "relative" }}>
+                <span style={{ fontSize: "56px" }}>{a.icon}</span>
+                <span style={{ position: "absolute", top: "16px", left: "16px", padding: "4px 12px", backgroundColor: "rgba(255,255,255,0.9)", color: a.kategorieColor, fontSize: "10px", letterSpacing: "0.15em", textTransform: "uppercase", fontFamily: "var(--font-body)", fontWeight: 600, borderRadius: "20px" }}>
+                  {a.kategorie}
+                </span>
+              </div>
+              {/* Content */}
+              <div style={{ padding: "28px" }}>
+                <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "1.2rem", fontWeight: 400, color: "#1a1a1a", marginBottom: "12px", lineHeight: 1.4, letterSpacing: "0.02em" }}>
+                  {a.titel}
+                </h2>
+                <p style={{ fontFamily: "var(--font-body)", fontSize: "14px", color: "#6B5E4E", lineHeight: 1.7, marginBottom: "20px" }}>
+                  {a.vorschau}
+                </p>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", borderTop: "1px solid rgba(201,169,110,0.15)", paddingTop: "16px" }}>
+                  <span style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "#9E9189" }}>
+                    {a.datum} · {a.lesezeit}
                   </span>
-                </div>
-
-                <div className="p-7">
-                  <span className="inline-block text-xs font-bold tracking-widest uppercase text-[#C9A96E] bg-[#C9A96E]/10 px-3 py-1 rounded-full mb-4">
-                    {article.category}
-                  </span>
-                  <h2 className="font-heading text-xl font-bold text-stone-900 mb-3 leading-snug group-hover:text-[#C9A96E] transition-colors">
-                    {article.title}
-                  </h2>
-                  <p className="text-stone-500 text-base leading-relaxed mb-5">
-                    {article.excerpt}
-                  </p>
-                  <a
-                    href={article.href}
-                    className="inline-flex items-center gap-2 text-[#C9A96E] font-semibold text-base hover:gap-3 transition-all"
+                  <Link
+                    href={`/ratgeber/${a.slug}`}
+                    className="btn-secondary"
+                    style={{ fontSize: "11px", padding: "7px 16px" }}
                   >
-                    Weiterlesen →
-                  </a>
+                    Weiterlesen <span className="btn-arrow">→</span>
+                  </Link>
                 </div>
-              </article>
-            ))}
-          </div>
-
-          {/* CTA */}
-          <div className="mt-16 bg-white rounded-2xl border border-[#C9A96E]/25 p-10 text-center shadow-sm">
-            <h2 className="font-heading text-3xl font-bold text-stone-900 mb-4">
-              Haben Sie eine konkrete Frage?
-            </h2>
-            <p className="text-stone-500 text-xl mb-8 leading-relaxed">
-              Sprechen Sie direkt mit Ali Artun — kostenlos und unverbindlich.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="tel:+4962619123456"
-                className="bg-[#C9A96E] hover:bg-[#B8952A] text-white font-bold px-8 py-4 rounded-xl transition-all hover:shadow-lg text-base"
-              >
-                06261 / 123 456 anrufen
-              </a>
-              <a
-                href="/#kontakt"
-                className="border border-[#C9A96E] text-[#C9A96E] hover:bg-[#C9A96E] hover:text-white font-semibold px-8 py-4 rounded-xl transition-all text-base"
-              >
-                Nachricht senden
-              </a>
-            </div>
-          </div>
+              </div>
+            </article>
+          ))}
         </div>
-      </main>
-      <Footer />
-    </>
+
+        {/* CTA Box */}
+        <div style={{ marginTop: "64px", textAlign: "center", padding: "48px 32px", backgroundColor: "#FAF8F4", border: "1px solid rgba(201,169,110,0.25)" }}>
+          <p style={{ fontFamily: "var(--font-body)", fontSize: "11px", letterSpacing: "0.25em", textTransform: "uppercase", color: "#C9A96E", marginBottom: "12px" }}>Persönliche Beratung</p>
+          <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "1.8rem", fontWeight: 400, color: "#1a1a1a", marginBottom: "12px", letterSpacing: "0.04em" }}>
+            Fragen zu Ihrer Immobilie?
+          </h2>
+          <p style={{ fontFamily: "var(--font-body)", fontSize: "15px", color: "#6B5E4E", marginBottom: "28px", maxWidth: "400px", margin: "0 auto 28px" }}>
+            Ali Artun berät Sie persönlich und kostenlos – vor Ort im Neckar-Odenwald-Kreis.
+          </p>
+          <a href="/#kontakt" className="btn-primary">
+            Kostenloses Erstgespräch <span className="btn-arrow">→</span>
+          </a>
+        </div>
+      </section>
+    </div>
   );
 }
