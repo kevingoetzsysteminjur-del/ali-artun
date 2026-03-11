@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArrowRight, Phone } from "lucide-react";
+import { Phone } from "lucide-react";
 
 export default function Hero() {
   return (
@@ -9,7 +9,7 @@ export default function Hero() {
           {/* Left: Text */}
           <div className="space-y-8">
             {/* Eyebrow */}
-            <p className="text-[#C9A96E] text-sm font-semibold tracking-[0.2em] uppercase">
+            <p className="text-[#C5A028] text-sm font-semibold tracking-[0.2em] uppercase">
               Plan A Immobilien · Mosbach
             </p>
 
@@ -18,7 +18,7 @@ export default function Hero() {
               Immobilienverkauf
               <br />
               mit{" "}
-              <span className="italic" style={{ color: "#C9A96E" }}>
+              <span className="italic" style={{ color: "#C5A028" }}>
                 geprüfter
                 <br />
                 Käufer&shy;finanzierung.
@@ -26,7 +26,7 @@ export default function Hero() {
             </h1>
 
             {/* Divider */}
-            <div className="w-16 h-0.5 bg-[#C9A96E]" />
+            <div className="w-16 h-0.5 bg-[#C5A028]" />
 
             {/* Claim */}
             <p className="text-2xl lg:text-3xl text-stone-700 font-heading leading-snug">
@@ -48,19 +48,19 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row gap-4 pt-2">
               <a
                 href="#kontakt"
-                className="inline-flex items-center justify-center gap-2 bg-[#C9A96E] hover:bg-[#B8952A] text-white font-semibold px-8 py-4 rounded-full transition-all hover:shadow-xl hover:shadow-[#C9A96E]/30 hover:ring-4 hover:ring-[#C9A96E]/15 text-lg"
+                className="btn-primary"
               >
                 Jetzt kostenlos beraten lassen
-                <ArrowRight size={18} />
+                <span className="btn-arrow">→</span>
               </a>
             </div>
 
             {/* Phone hint */}
             <a
               href="tel:+4962619123456"
-              className="inline-flex items-center gap-3 text-stone-500 hover:text-[#C9A96E] transition-colors"
+              className="inline-flex items-center gap-3 text-stone-500 hover:text-[#C5A028] transition-colors"
             >
-              <Phone size={17} className="text-[#C9A96E]" />
+              <Phone size={17} className="text-[#C5A028]" />
               <span className="text-lg">
                 Oder rufen Sie uns an:{" "}
                 <span className="font-semibold text-stone-700">
@@ -78,8 +78,8 @@ export default function Hero() {
               style={{
                 width: 280,
                 height: 280,
-                border: "3px solid #C9A96E",
-                boxShadow: "0 0 0 6px rgba(201,169,110,0.12)",
+                border: "3px solid #C5A028",
+                boxShadow: "0 0 0 6px rgba(197,160,40,0.12)",
               }}
             >
               <Image

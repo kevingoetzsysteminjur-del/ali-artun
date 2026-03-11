@@ -94,8 +94,8 @@ export default function ChatBot() {
         className="fixed bottom-6 right-24 z-[201] w-14 h-14 rounded-full flex items-center justify-center transition-all hover:scale-110 duration-200"
         style={{
           backgroundColor: "#1a1a1a",
-          border: "2px solid #C9A96E",
-          color: "#C9A96E",
+          border: "2px solid #C5A028",
+          color: "#C5A028",
           boxShadow: "0 8px 30px rgba(0,0,0,0.25)",
         }}
         aria-label="Chat öffnen"
@@ -113,7 +113,7 @@ export default function ChatBot() {
             width: "340px",
             maxHeight: "520px",
             backgroundColor: "#fff",
-            border: "1px solid rgba(201,169,110,0.3)",
+            border: "1px solid rgba(197,160,40,0.3)",
             boxShadow: "0 20px 60px rgba(0,0,0,0.2)",
           }}
         >
@@ -122,7 +122,7 @@ export default function ChatBot() {
             style={{
               padding: "16px 20px",
               backgroundColor: "#1a1a1a",
-              borderBottom: "1px solid rgba(201,169,110,0.3)",
+              borderBottom: "1px solid rgba(197,160,40,0.3)",
             }}
           >
             <p
@@ -139,7 +139,7 @@ export default function ChatBot() {
               style={{
                 fontFamily: "var(--font-geist-sans), sans-serif",
                 fontSize: "11px",
-                color: "#C9A96E",
+                color: "#C5A028",
                 margin: 0,
                 letterSpacing: "0.1em",
               }}
@@ -165,7 +165,7 @@ export default function ChatBot() {
                   style={{
                     padding: "10px 14px",
                     backgroundColor:
-                      m.from === "user" ? "#C9A96E" : "#F5F0E8",
+                      m.from === "user" ? "#C5A028" : "#F5F0E8",
                     color: m.from === "user" ? "#fff" : "#1a1a1a",
                     fontFamily: "var(--font-geist-sans), sans-serif",
                     fontSize: "13px",
@@ -189,7 +189,7 @@ export default function ChatBot() {
             <div
               style={{
                 padding: "8px 16px",
-                borderTop: "1px solid rgba(201,169,110,0.15)",
+                borderTop: "1px solid rgba(197,160,40,0.15)",
                 display: "flex",
                 flexWrap: "wrap",
                 gap: "6px",
@@ -201,7 +201,7 @@ export default function ChatBot() {
                   onClick={() => handleFaq(faq)}
                   style={{
                     padding: "5px 10px",
-                    border: "1px solid rgba(201,169,110,0.4)",
+                    border: "1px solid rgba(197,160,40,0.4)",
                     backgroundColor: "transparent",
                     color: "#6B5E4E",
                     fontFamily: "var(--font-geist-sans), sans-serif",
@@ -220,7 +220,7 @@ export default function ChatBot() {
           <div
             style={{
               padding: "12px 16px",
-              borderTop: "1px solid rgba(201,169,110,0.2)",
+              borderTop: "1px solid rgba(197,160,40,0.2)",
               display: "flex",
               gap: "8px",
             }}
@@ -233,7 +233,7 @@ export default function ChatBot() {
               style={{
                 flex: 1,
                 padding: "8px 12px",
-                border: "1px solid rgba(201,169,110,0.3)",
+                border: "1px solid rgba(197,160,40,0.3)",
                 fontFamily: "var(--font-geist-sans), sans-serif",
                 fontSize: "13px",
                 outline: "none",
@@ -246,7 +246,7 @@ export default function ChatBot() {
               style={{
                 width: "36px",
                 height: "36px",
-                backgroundColor: "#C9A96E",
+                backgroundColor: "#C5A028",
                 border: "none",
                 color: "#fff",
                 display: "flex",

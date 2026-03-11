@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 export default function PageLoader() {
   const [visible, setVisible] = useState(true);
@@ -23,20 +24,15 @@ export default function PageLoader() {
       style={{ opacity: fading ? 0 : 1 }}
     >
       <div className="text-center">
-        <div
-          className="inline-flex items-center justify-center w-16 h-16 rounded-full border-2 mb-4"
-          style={{ borderColor: "#C9A96E" }}
-        >
-          <span
-            className="font-heading font-bold text-xl"
-            style={{ color: "#C9A96E" }}
-          >
-            PA
-          </span>
-        </div>
-        <p className="text-stone-400 text-sm tracking-widest uppercase">
-          Immobilien
-        </p>
+        <Image
+          src="/logo.jpg"
+          alt="Plan A Immobilien"
+          width={200}
+          height={80}
+          className="w-auto object-contain"
+          style={{ maxWidth: "200px", maxHeight: "80px" }}
+          priority
+        />
       </div>
     </div>
   );

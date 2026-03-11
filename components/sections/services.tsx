@@ -34,10 +34,10 @@ export default function Services() {
         {/* Header */}
         <div className="max-w-2xl mb-14 reveal">
           <div className="flex items-center gap-3 mb-5">
-            <div className="h-0.5 w-10 bg-[#C9A96E]" />
+            <div className="h-0.5 w-10 bg-[#C5A028]" />
             <span
               className="text-xs font-semibold tracking-[0.2em] uppercase"
-              style={{ color: "#C9A96E" }}
+              style={{ color: "#C5A028" }}
             >
               Unsere Leistungen
             </span>
@@ -58,13 +58,13 @@ export default function Services() {
             return (
               <div
                 key={i}
-                className={`reveal reveal-delay-${i + 1} bg-white border border-[#C9A96E]/20 rounded-2xl p-8 hover:border-[#C9A96E]/50 hover:shadow-lg hover:shadow-[#C9A96E]/8 transition-all`}
+                className={`reveal reveal-delay-${i + 1} bg-white border border-[#C5A028]/20 rounded-2xl p-8 hover:border-[#C5A028]/50 hover:shadow-lg hover:shadow-[#C5A028]/8 transition-all`}
               >
                 <div
                   className="w-13 h-13 rounded-xl flex items-center justify-center mb-5 w-14 h-14"
-                  style={{ backgroundColor: "rgba(201,169,110,0.12)" }}
+                  style={{ backgroundColor: "rgba(197,160,40,0.12)" }}
                 >
-                  <Icon size={26} style={{ color: "#C9A96E" }} />
+                  <Icon size={26} style={{ color: "#C5A028" }} />
                 </div>
                 <h3 className="font-heading font-bold text-2xl text-stone-900 mb-3">
                   {service.title}

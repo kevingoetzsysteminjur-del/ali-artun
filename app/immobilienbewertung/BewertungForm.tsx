@@ -59,12 +59,12 @@ export default function BewertungForm() {
 
   if (submitted) {
     return (
-      <div className="bg-white rounded-2xl p-10 border border-[#C9A96E]/25 shadow-md text-center">
+      <div className="bg-white rounded-2xl p-10 border border-[#C5A028]/25 shadow-md text-center">
         <div
           className="inline-flex items-center justify-center w-20 h-20 rounded-full mb-6"
-          style={{ backgroundColor: "rgba(201,169,110,0.12)" }}
+          style={{ backgroundColor: "rgba(197,160,40,0.12)" }}
         >
-          <CheckCircle2 size={40} style={{ color: "#C9A96E" }} />
+          <CheckCircle2 size={40} style={{ color: "#C5A028" }} />
         </div>
         <h2 className="font-heading text-3xl font-bold text-stone-900 mb-3">
           Vielen Dank!
@@ -81,20 +81,21 @@ export default function BewertungForm() {
         </div>
         <a
           href="/"
-          className="inline-block bg-[#C9A96E] hover:bg-[#B8952A] text-white font-bold py-3.5 px-8 rounded-xl transition-all hover:shadow-lg"
+          className="btn-primary"
         >
           Zurück zur Startseite
+          <span className="btn-arrow">→</span>
         </a>
       </div>
     );
   }
 
   return (
-    <div className="bg-white rounded-2xl border border-[#C9A96E]/25 shadow-md overflow-hidden">
+    <div className="bg-white rounded-2xl border border-[#C5A028]/25 shadow-md overflow-hidden">
       {/* Progress bar */}
       <div className="h-1.5 bg-stone-100">
         <div
-          className="h-full bg-[#C9A96E] transition-all duration-500 ease-out"
+          className="h-full bg-[#C5A028] transition-all duration-500 ease-out"
           style={{ width: `${progress}%` }}
         />
       </div>
@@ -107,9 +108,9 @@ export default function BewertungForm() {
               <div
                 className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-all ${
                   s === step
-                    ? "bg-[#C9A96E] text-white"
+                    ? "bg-[#C5A028] text-white"
                     : s < step
-                    ? "bg-[#C9A96E]/20 text-[#C9A96E]"
+                    ? "bg-[#C5A028]/20 text-[#C5A028]"
                     : "bg-stone-100 text-stone-400"
                 }`}
               >
@@ -118,7 +119,7 @@ export default function BewertungForm() {
               {s < 3 && (
                 <div
                   className={`h-0.5 w-12 transition-all ${
-                    s < step ? "bg-[#C9A96E]" : "bg-stone-200"
+                    s < step ? "bg-[#C5A028]" : "bg-stone-200"
                   }`}
                 />
               )}
@@ -144,9 +145,9 @@ export default function BewertungForm() {
                   key={value}
                   type="button"
                   onClick={() => setForm((f) => ({ ...f, objectType: value }))}
-                  className={`p-6 rounded-xl border-2 text-center transition-all hover:border-[#C9A96E]/60 ${
+                  className={`p-6 rounded-xl border-2 text-center transition-all hover:border-[#C5A028]/60 ${
                     form.objectType === value
-                      ? "border-[#C9A96E] bg-[#C9A96E]/5"
+                      ? "border-[#C5A028] bg-[#C5A028]/5"
                       : "border-stone-200"
                   }`}
                 >
@@ -155,7 +156,7 @@ export default function BewertungForm() {
                     className="mx-auto mb-3"
                     style={{
                       color:
-                        form.objectType === value ? "#C9A96E" : "#9ca3af",
+                        form.objectType === value ? "#C5A028" : "#9ca3af",
                     }}
                   />
                   <span
@@ -174,9 +175,10 @@ export default function BewertungForm() {
               type="button"
               disabled={!canNextStep1}
               onClick={() => setStep(2)}
-              className="w-full bg-[#C9A96E] hover:bg-[#B8952A] disabled:bg-stone-200 disabled:text-stone-400 text-white font-bold py-4 rounded-xl transition-all text-lg"
+              className="btn-primary w-full justify-center disabled:opacity-40 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none"
             >
-              Weiter →
+              Weiter
+              <span className="btn-arrow">→</span>
             </button>
           </div>
         )}
@@ -203,7 +205,7 @@ export default function BewertungForm() {
                     onChange={(e) =>
                       setForm((f) => ({ ...f, area: e.target.value }))
                     }
-                    className="w-full px-4 py-3.5 rounded-xl border border-stone-200 bg-stone-50 text-stone-900 text-base focus:outline-none focus:border-[#C9A96E] focus:bg-white transition-all"
+                    className="w-full px-4 py-3.5 rounded-xl border border-stone-200 bg-stone-50 text-stone-900 text-base focus:outline-none focus:border-[#C5A028] focus:bg-white transition-all"
                   />
                 </div>
                 <div>
@@ -217,7 +219,7 @@ export default function BewertungForm() {
                     onChange={(e) =>
                       setForm((f) => ({ ...f, year: e.target.value }))
                     }
-                    className="w-full px-4 py-3.5 rounded-xl border border-stone-200 bg-stone-50 text-stone-900 text-base focus:outline-none focus:border-[#C9A96E] focus:bg-white transition-all"
+                    className="w-full px-4 py-3.5 rounded-xl border border-stone-200 bg-stone-50 text-stone-900 text-base focus:outline-none focus:border-[#C5A028] focus:bg-white transition-all"
                   />
                 </div>
               </div>
@@ -232,7 +234,7 @@ export default function BewertungForm() {
                   onChange={(e) =>
                     setForm((f) => ({ ...f, plz: e.target.value }))
                   }
-                  className="w-full px-4 py-3.5 rounded-xl border border-stone-200 bg-stone-50 text-stone-900 text-base focus:outline-none focus:border-[#C9A96E] focus:bg-white transition-all"
+                  className="w-full px-4 py-3.5 rounded-xl border border-stone-200 bg-stone-50 text-stone-900 text-base focus:outline-none focus:border-[#C5A028] focus:bg-white transition-all"
                 />
               </div>
               <div>
@@ -249,8 +251,8 @@ export default function BewertungForm() {
                       }
                       className={`py-3 px-4 rounded-xl border-2 text-sm font-semibold transition-all ${
                         form.condition === value
-                          ? "border-[#C9A96E] bg-[#C9A96E]/5 text-stone-900"
-                          : "border-stone-200 text-stone-500 hover:border-[#C9A96E]/40"
+                          ? "border-[#C5A028] bg-[#C5A028]/5 text-stone-900"
+                          : "border-stone-200 text-stone-500 hover:border-[#C5A028]/40"
                       }`}
                     >
                       {label}
@@ -271,9 +273,10 @@ export default function BewertungForm() {
                 type="button"
                 disabled={!canNextStep2}
                 onClick={() => setStep(3)}
-                className="flex-2 flex-grow bg-[#C9A96E] hover:bg-[#B8952A] disabled:bg-stone-200 disabled:text-stone-400 text-white font-bold py-4 rounded-xl transition-all text-base"
+                className="btn-primary flex-grow justify-center disabled:opacity-40 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none"
               >
-                Weiter →
+                Weiter
+                <span className="btn-arrow">→</span>
               </button>
             </div>
           </div>
@@ -301,7 +304,7 @@ export default function BewertungForm() {
                   onChange={(e) =>
                     setForm((f) => ({ ...f, name: e.target.value }))
                   }
-                  className="w-full px-4 py-3.5 rounded-xl border border-stone-200 bg-stone-50 text-stone-900 text-base focus:outline-none focus:border-[#C9A96E] focus:bg-white transition-all"
+                  className="w-full px-4 py-3.5 rounded-xl border border-stone-200 bg-stone-50 text-stone-900 text-base focus:outline-none focus:border-[#C5A028] focus:bg-white transition-all"
                 />
               </div>
               <div>
@@ -316,7 +319,7 @@ export default function BewertungForm() {
                   onChange={(e) =>
                     setForm((f) => ({ ...f, phone: e.target.value }))
                   }
-                  className="w-full px-4 py-3.5 rounded-xl border border-stone-200 bg-stone-50 text-stone-900 text-base focus:outline-none focus:border-[#C9A96E] focus:bg-white transition-all"
+                  className="w-full px-4 py-3.5 rounded-xl border border-stone-200 bg-stone-50 text-stone-900 text-base focus:outline-none focus:border-[#C5A028] focus:bg-white transition-all"
                 />
               </div>
               <div>
@@ -330,7 +333,7 @@ export default function BewertungForm() {
                   onChange={(e) =>
                     setForm((f) => ({ ...f, email: e.target.value }))
                   }
-                  className="w-full px-4 py-3.5 rounded-xl border border-stone-200 bg-stone-50 text-stone-900 text-base focus:outline-none focus:border-[#C9A96E] focus:bg-white transition-all"
+                  className="w-full px-4 py-3.5 rounded-xl border border-stone-200 bg-stone-50 text-stone-900 text-base focus:outline-none focus:border-[#C5A028] focus:bg-white transition-all"
                 />
               </div>
             </div>
@@ -345,16 +348,17 @@ export default function BewertungForm() {
               <button
                 type="submit"
                 disabled={!canSubmit}
-                className="flex-grow bg-[#C9A96E] hover:bg-[#B8952A] disabled:bg-stone-200 disabled:text-stone-400 text-white font-bold py-4 rounded-xl transition-all hover:shadow-xl hover:shadow-[#C9A96E]/25 text-base"
+                className="btn-primary flex-grow justify-center disabled:opacity-40 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none"
               >
                 Kostenlose Bewertung anfragen
+                <span className="btn-arrow">→</span>
               </button>
             </div>
             <p className="text-stone-400 text-sm text-center mt-4">
               Ihre Daten sind sicher.{" "}
               <a
                 href="/datenschutz"
-                className="underline hover:text-[#C9A96E]"
+                className="underline hover:text-[#C5A028]"
               >
                 Datenschutzerklärung
               </a>

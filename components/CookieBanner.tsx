@@ -27,7 +27,7 @@ export default function CookieBanner() {
       <div className="max-w-6xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <p className="text-stone-600 text-sm leading-relaxed max-w-2xl">
           Wir verwenden Cookies, um Ihnen die beste Erfahrung auf unserer Website zu bieten.{" "}
-          <a href="/datenschutz" className="text-[#C9A96E] underline hover:text-stone-900 transition-colors">
+          <a href="/datenschutz" className="text-[#C5A028] underline hover:text-stone-900 transition-colors">
             Datenschutzerklärung
           </a>
         </p>
@@ -40,7 +40,7 @@ export default function CookieBanner() {
           </button>
           <button
             onClick={accept}
-            className="text-sm font-semibold text-white bg-[#C9A96E] hover:bg-[#B8952A] transition-colors px-5 py-2 rounded-full"
+            className="text-sm font-semibold text-white bg-[#C5A028] hover:bg-[#B8952A] transition-colors px-5 py-2 rounded-full"
           >
             Akzeptieren
           </button>

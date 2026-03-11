@@ -49,12 +49,12 @@ export default function DatenschutzPage() {
                 Mosbach, Neckar-Odenwald-Kreis
                 <br />
                 E-Mail:{" "}
-                <span className="text-[#C9A96E] font-medium">
+                <span className="text-[#C5A028] font-medium">
                   [E-Mail-Adresse – bitte eintragen]
                 </span>
                 <br />
                 Telefon:{" "}
-                <span className="text-[#C9A96E] font-medium">
+                <span className="text-[#C5A028] font-medium">
                   [Telefonnummer – bitte eintragen]
                 </span>
               </p>

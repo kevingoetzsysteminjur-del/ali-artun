@@ -9,10 +9,10 @@ export default function Contact() {
           <div className="space-y-8">
             <div>
               <div className="flex items-center gap-3 mb-5">
-                <div className="h-0.5 w-10 bg-[#C9A96E]" />
+                <div className="h-0.5 w-10 bg-[#C5A028]" />
                 <span
                   className="text-xs font-semibold tracking-[0.2em] uppercase"
-                  style={{ color: "#C9A96E" }}
+                  style={{ color: "#C5A028" }}
                 >
                   Kontakt
                 </span>
@@ -64,13 +64,13 @@ export default function Contact() {
                   <a
                     key={item.label}
                     href={item.href}
-                    className="flex items-center gap-4 p-5 bg-white rounded-xl border border-[#C9A96E]/20 hover:border-[#C9A96E]/50 hover:shadow-sm transition-all group"
+                    className="flex items-center gap-4 p-5 bg-white rounded-xl border border-[#C5A028]/20 hover:border-[#C5A028]/50 hover:shadow-sm transition-all group"
                   >
                     <div
                       className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
-                      style={{ backgroundColor: "rgba(201,169,110,0.1)" }}
+                      style={{ backgroundColor: "rgba(197,160,40,0.1)" }}
                     >
-                      <Icon size={20} style={{ color: "#C9A96E" }} />
+                      <Icon size={20} style={{ color: "#C5A028" }} />
                     </div>
                     <div>
                       <p className="text-stone-400 text-sm mb-0.5">
@@ -88,7 +88,7 @@ export default function Contact() {
           </div>
 
           {/* Right: Form */}
-          <div className="bg-white rounded-2xl p-8 lg:p-10 border border-[#C9A96E]/25 shadow-md shadow-[#C9A96E]/5">
+          <div className="bg-white rounded-2xl p-8 lg:p-10 border border-[#C5A028]/25 shadow-md shadow-[#C5A028]/5">
             <h3 className="font-heading text-2xl font-bold text-stone-900 mb-2">
               Kostenlose Erstberatung anfragen
             </h3>
@@ -105,7 +105,7 @@ export default function Contact() {
                   <input
                     type="text"
                     placeholder="Max"
-                    className="w-full px-4 py-3.5 rounded-xl border border-stone-200 bg-stone-50 text-stone-900 text-base placeholder:text-stone-300 focus:outline-none focus:border-[#C9A96E] focus:bg-white transition-all"
+                    className="w-full px-4 py-3.5 rounded-xl border border-stone-200 bg-stone-50 text-stone-900 text-base placeholder:text-stone-300 focus:outline-none focus:border-[#C5A028] focus:bg-white transition-all"
                   />
                 </div>
                 <div>
@@ -115,7 +115,7 @@ export default function Contact() {
                   <input
                     type="text"
                     placeholder="Mustermann"
-                    className="w-full px-4 py-3.5 rounded-xl border border-stone-200 bg-stone-50 text-stone-900 text-base placeholder:text-stone-300 focus:outline-none focus:border-[#C9A96E] focus:bg-white transition-all"
+                    className="w-full px-4 py-3.5 rounded-xl border border-stone-200 bg-stone-50 text-stone-900 text-base placeholder:text-stone-300 focus:outline-none focus:border-[#C5A028] focus:bg-white transition-all"
                   />
                 </div>
               </div>
@@ -127,7 +127,7 @@ export default function Contact() {
                 <input
                   type="tel"
                   placeholder="Ihre Rufnummer"
-                  className="w-full px-4 py-3.5 rounded-xl border border-stone-200 bg-stone-50 text-stone-900 text-base placeholder:text-stone-300 focus:outline-none focus:border-[#C9A96E] focus:bg-white transition-all"
+                  className="w-full px-4 py-3.5 rounded-xl border border-stone-200 bg-stone-50 text-stone-900 text-base placeholder:text-stone-300 focus:outline-none focus:border-[#C5A028] focus:bg-white transition-all"
                 />
               </div>
 
@@ -138,7 +138,7 @@ export default function Contact() {
                 <input
                   type="email"
                   placeholder="max@beispiel.de"
-                  className="w-full px-4 py-3.5 rounded-xl border border-stone-200 bg-stone-50 text-stone-900 text-base placeholder:text-stone-300 focus:outline-none focus:border-[#C9A96E] focus:bg-white transition-all"
+                  className="w-full px-4 py-3.5 rounded-xl border border-stone-200 bg-stone-50 text-stone-900 text-base placeholder:text-stone-300 focus:outline-none focus:border-[#C5A028] focus:bg-white transition-all"
                 />
               </div>
 
@@ -146,7 +146,7 @@ export default function Contact() {
                 <label className="block text-stone-700 font-semibold text-sm mb-2">
                   Art der Immobilie
                 </label>
-                <select className="w-full px-4 py-3.5 rounded-xl border border-stone-200 bg-stone-50 text-stone-700 text-base focus:outline-none focus:border-[#C9A96E] focus:bg-white transition-all appearance-none cursor-pointer">
+                <select className="w-full px-4 py-3.5 rounded-xl border border-stone-200 bg-stone-50 text-stone-700 text-base focus:outline-none focus:border-[#C5A028] focus:bg-white transition-all appearance-none cursor-pointer">
                   <option value="">Bitte wählen...</option>
                   <option value="haus">Haus</option>
                   <option value="wohnung">Wohnung</option>
@@ -162,25 +162,40 @@ export default function Contact() {
                 <textarea
                   rows={4}
                   placeholder="Haben Sie weitere Informationen oder Fragen?"
-                  className="w-full px-4 py-3.5 rounded-xl border border-stone-200 bg-stone-50 text-stone-900 text-base placeholder:text-stone-300 focus:outline-none focus:border-[#C9A96E] focus:bg-white transition-all resize-none"
+                  className="w-full px-4 py-3.5 rounded-xl border border-stone-200 bg-stone-50 text-stone-900 text-base placeholder:text-stone-300 focus:outline-none focus:border-[#C5A028] focus:bg-white transition-all resize-none"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-[#C9A96E] hover:bg-[#B8952A] text-white font-bold py-4 rounded-xl transition-all hover:shadow-xl hover:shadow-[#C9A96E]/30 hover:ring-4 hover:ring-[#C9A96E]/15 text-lg"
+                className="btn-primary w-full justify-center"
               >
                 Anfrage kostenlos absenden
+                <span className="btn-arrow">→</span>
               </button>
 
               <p className="text-stone-400 text-sm text-center leading-relaxed">
                 Ihre Daten werden vertraulich behandelt.{" "}
-                <a href="#" className="underline hover:text-[#C9A96E]">
+                <a href="/datenschutz" className="underline hover:text-[#C5A028]">
                   Datenschutzerklärung
                 </a>
               </p>
             </form>
           </div>
+        </div>
+
+        {/* Google Maps */}
+        <div className="mt-16 rounded-2xl overflow-hidden border border-[#C5A028]/20 shadow-sm">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d41882.48!2d9.1125!3d49.3523!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47985c3d57b8f1af%3A0x5cd56f1dc7e3a24c!2sMosbach!5e0!3m2!1sde!2sde!4v1700000000000!5m2!1sde!2sde"
+            width="100%"
+            height="300"
+            style={{ border: 0, display: "block" }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Plan A Immobilien – Mosbach"
+          />
         </div>
       </div>
     </section>

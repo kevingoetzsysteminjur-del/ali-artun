@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { CheckCircle, Phone, ArrowRight } from "lucide-react";
+import { CheckCircle, Phone } from "lucide-react";
 
 const points = [
   "Zertifizierter Immobilienmakler (IHK)",
@@ -24,8 +24,8 @@ export default function About() {
               style={{
                 width: 280,
                 height: 280,
-                border: "3px solid #C9A96E",
-                boxShadow: "0 0 0 6px rgba(201,169,110,0.12)",
+                border: "3px solid #C5A028",
+                boxShadow: "0 0 0 6px rgba(197,160,40,0.12)",
               }}
             >
               <Image
@@ -44,10 +44,10 @@ export default function About() {
           <div className="space-y-7 order-1 lg:order-2 reveal reveal-right">
             <div>
               <div className="flex items-center gap-3 mb-5">
-                <div className="h-0.5 w-10 bg-[#C9A96E]" />
+                <div className="h-0.5 w-10 bg-[#C5A028]" />
                 <span
                   className="text-xs font-semibold tracking-[0.2em] uppercase"
-                  style={{ color: "#C9A96E" }}
+                  style={{ color: "#C5A028" }}
                 >
                   Über Ali Artun
                 </span>
@@ -55,7 +55,7 @@ export default function About() {
               <h2 className="font-heading text-4xl lg:text-5xl font-bold text-stone-900 leading-[1.1] mb-5">
                 Ihr persönlicher
                 <br />
-                <span className="italic" style={{ color: "#C9A96E" }}>
+                <span className="italic" style={{ color: "#C5A028" }}>
                   Ansprechpartner.
                 </span>
               </h2>
@@ -80,7 +80,7 @@ export default function About() {
                   <CheckCircle
                     size={20}
                     className="flex-shrink-0 mt-0.5"
-                    style={{ color: "#C9A96E" }}
+                    style={{ color: "#C5A028" }}
                   />
                   <span className="text-stone-700 text-lg">{p}</span>
                 </li>
@@ -88,14 +88,14 @@ export default function About() {
             </ul>
 
             {/* Signatur mit rundem Profilbild */}
-            <div className="flex items-center gap-4 py-5 border-t border-b border-[#C9A96E]/20">
+            <div className="flex items-center gap-4 py-5 border-t border-b border-[#C5A028]/20">
               <div
                 className="relative flex-shrink-0 rounded-full overflow-hidden"
                 style={{
                   width: 56,
                   height: 56,
-                  border: "2px solid rgba(201,169,110,0.55)",
-                  boxShadow: "0 0 0 4px rgba(201,169,110,0.12)",
+                  border: "2px solid rgba(197,160,40,0.55)",
+                  boxShadow: "0 0 0 4px rgba(197,160,40,0.12)",
                 }}
               >
                 <Image
@@ -124,14 +124,14 @@ export default function About() {
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
               <a
                 href="#kontakt"
-                className="inline-flex items-center gap-2 bg-[#C9A96E] hover:bg-[#B8952A] text-white font-semibold px-7 py-3.5 rounded-full transition-all hover:shadow-xl hover:shadow-[#C9A96E]/30 hover:ring-4 hover:ring-[#C9A96E]/15 text-lg"
+                className="btn-primary"
               >
                 Persönliches Gespräch
-                <ArrowRight size={17} />
+                <span className="btn-arrow">→</span>
               </a>
               <a
                 href="tel:+4962619123456"
-                className="inline-flex items-center gap-2 text-stone-600 hover:text-[#C9A96E] transition-colors text-lg"
+                className="inline-flex items-center gap-2 text-stone-600 hover:text-[#C5A028] transition-colors text-lg"
               >
                 <Phone size={17} />
                 06261 / 123 456

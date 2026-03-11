@@ -42,7 +42,7 @@ const usps = [
 
 export default function Stats() {
   return (
-    <section className="bg-[#EDE8DF] border-y border-[#C9A96E]/25 py-16 lg:py-20">
+    <section className="bg-[#EDE8DF] border-y border-[#C5A028]/25 py-16 lg:py-20">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <h2 className="reveal text-center text-stone-900 font-heading text-3xl lg:text-4xl font-bold mb-3">
           Was uns unterscheidet
@@ -58,17 +58,17 @@ export default function Stats() {
             return (
               <div
                 key={i}
-                className={`reveal reveal-delay-${i + 1} bg-[#FAF8F4] rounded-2xl p-7 border border-[#C9A96E]/20 shadow-sm hover:border-[#C9A96E]/45 hover:shadow-md transition-all`}
+                className={`reveal reveal-delay-${i + 1} bg-[#FAF8F4] rounded-2xl p-7 border border-[#C5A028]/20 shadow-sm hover:border-[#C5A028]/45 hover:shadow-md transition-all`}
               >
                 <div
                   className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
-                  style={{ backgroundColor: "rgba(201,169,110,0.12)" }}
+                  style={{ backgroundColor: "rgba(197,160,40,0.12)" }}
                 >
-                  <Icon size={22} style={{ color: "#C9A96E" }} />
+                  <Icon size={22} style={{ color: "#C5A028" }} />
                 </div>
                 <div
                   className="font-heading text-3xl font-bold mb-1"
-                  style={{ color: "#C9A96E" }}
+                  style={{ color: "#C5A028" }}
                 >
                   <AnimatedCounter target={usp.counterTarget} suffix={usp.counterSuffix} />
                 </div>

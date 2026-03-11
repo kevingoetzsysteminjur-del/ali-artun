@@ -39,7 +39,7 @@ function HouseShape({ size }: { size: number }) {
       {/* roof */}
       <polyline
         points={`2,${roofH} ${s / 2},2 ${s - 2},${roofH}`}
-        stroke="#C9A96E"
+        stroke="#C5A028"
         strokeWidth="1.5"
         strokeLinejoin="round"
       />
@@ -49,7 +49,7 @@ function HouseShape({ size }: { size: number }) {
         y={roofH}
         width={Math.round(s * 0.7)}
         height={wall}
-        stroke="#C9A96E"
+        stroke="#C5A028"
         strokeWidth="1.5"
       />
       {/* door */}
@@ -58,7 +58,7 @@ function HouseShape({ size }: { size: number }) {
         y={Math.round(roofH + wall * 0.45)}
         width={Math.round(s * 0.24)}
         height={Math.round(wall * 0.55)}
-        stroke="#C9A96E"
+        stroke="#C5A028"
         strokeWidth="1"
       />
     </svg>
@@ -94,7 +94,7 @@ export default function VideoIntro() {
               width: p.size,
               height: p.size,
               borderRadius: "50%",
-              background: "#C9A96E",
+              background: "#C5A028",
               opacity: 0.25,
               animation: `floatUp ${p.duration}s ${p.delay}s ease-in-out infinite`,
             }}
@@ -146,7 +146,7 @@ export default function VideoIntro() {
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginBottom: 30, position: "relative", gap: 12 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
           <Image
-            src="/logo_transparent.png"
+            src="/logo.jpg"
             alt="Plan A Immobilien Logo"
             width={350}
             height={132}
@@ -155,7 +155,7 @@ export default function VideoIntro() {
               height: "auto",
               display: "block",
               borderRadius: 8,
-              boxShadow: "0 4px 24px rgba(201,169,110,0.35)",
+              boxShadow: "0 4px 24px rgba(197,160,40,0.35)",
             }}
           />
           <Image
@@ -163,14 +163,14 @@ export default function VideoIntro() {
             alt="Ali Artun Cartoon"
             width={100}
             height={100}
-            style={{ width: "auto", height: 130, display: "block", filter: "drop-shadow(0 4px 16px rgba(201,169,110,0.5))" }}
+            style={{ width: "auto", height: 130, display: "block", filter: "drop-shadow(0 4px 16px rgba(197,160,40,0.5))" }}
           />
         </div>
         <p style={{
           fontFamily: "var(--font-playfair), 'Playfair Display', serif",
           fontStyle: "italic",
           fontSize: "1.25rem",
-          color: "#C9A96E",
+          color: "#C5A028",
           letterSpacing: "0.03em",
           margin: 0,
         }}>
@@ -208,7 +208,7 @@ export default function VideoIntro() {
           height="32"
           viewBox="0 0 24 24"
           fill="none"
-          stroke="#C9A96E"
+          stroke="#C5A028"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"

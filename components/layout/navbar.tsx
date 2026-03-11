@@ -4,116 +4,154 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Phone, Menu, X } from "lucide-react";
 
-const links = [
-  { label: "Leistungen", href: "#leistungen" },
+const NAV_LINKS = [
+  { label: "Leistungen",        href: "#leistungen" },
   { label: "So funktioniert es", href: "#prozess" },
-  { label: "Über Ali Artun", href: "#ueber-uns" },
-  { label: "Kontakt", href: "#kontakt" },
+  { label: "Über Ali Artun",    href: "#ueber-uns" },
+  { label: "Ratgeber",          href: "/ratgeber" },
+  { label: "Kontakt",           href: "#kontakt" },
 ];
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen]       = useState(false);
   const [visible, setVisible] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const check = () => setVisible(window.scrollY >= window.innerHeight - 10);
+    const check = () => {
+      setVisible(window.scrollY >= window.innerHeight - 10);
+      setScrolled(window.scrollY > 80);
+    };
     check();
     window.addEventListener("scroll", check, { passive: true });
     return () => window.removeEventListener("scroll", check);
   }, []);
 
+  // lock body scroll when mobile menu open
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [open]);
+
   if (!visible) return null;
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#FAF8F4] border-b border-[#C9A96E]/25">
-      <div className="max-w-6xl mx-auto px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <a href="/" className="flex items-center gap-3">
-            <Image
-              src="/logo_transparent.png"
-              alt="Plan A Immobilien"
-              width={160}
-              height={48}
-              className="h-11 w-auto object-contain"
-              priority
-            />
-          </a>
+    <>
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${
+          scrolled
+            ? "nav-glass border-[#C5A028]/20"
+            : "bg-[#FAF8F4] border-[#C5A028]/15"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-5 lg:px-8">
+          <div className={`flex items-center justify-between transition-all duration-300 ${scrolled ? "h-16" : "h-20"}`}>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-8">
-            {links.map((link) => (
+            {/* Logo */}
+            <a href="/" className="flex-shrink-0">
+              <Image
+                src="/logo.jpg"
+                alt="Plan A Immobilien"
+                width={150}
+                height={52}
+                className={`w-auto object-contain transition-all duration-300 ${scrolled ? "h-9" : "h-11"}`}
+                priority
+              />
+            </a>
+
+            {/* Desktop Nav Links */}
+            <nav className="hidden lg:flex items-center gap-8">
+              {NAV_LINKS.map((link) => (
+                <a key={link.label} href={link.href} className="nav-link">
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+
+            {/* Desktop Right: Phone + CTA */}
+            <div className="hidden lg:flex items-center gap-5">
               <a
-                key={link.label}
-                href={link.href}
-                className="text-base font-medium text-stone-600 hover:text-stone-900 transition-colors"
+                href="tel:+4962611234560"
+                className="flex items-center gap-2 transition-colors hover:text-[#C5A028]"
+                style={{ color: "#6B5E4E", fontSize: "14px", fontFamily: "var(--font-body)", textDecoration: "none" }}
               >
-                {link.label}
+                <Phone size={14} style={{ color: "#C5A028" }} />
+                <span style={{ letterSpacing: "0.04em" }}>06261 / 123 456</span>
               </a>
-            ))}
-          </nav>
+              <a href="/immobilienbewertung" className="btn-primary">
+                Kostenlose Bewertung
+                <span className="btn-arrow">→</span>
+              </a>
+            </div>
 
-          {/* Phone + CTA */}
-          <div className="hidden md:flex items-center gap-5">
-            <a
-              href="tel:+4962619123456"
-              className="flex items-center gap-2 text-stone-700 hover:text-[#C9A96E] transition-colors font-medium"
+            {/* Mobile Hamburger */}
+            <button
+              onClick={() => setOpen(true)}
+              className="lg:hidden flex items-center justify-center w-10 h-10 rounded-lg transition-colors hover:bg-[#C5A028]/10"
+              aria-label="Menu öffnen"
             >
-              <Phone size={16} className="text-[#C9A96E]" />
-              <span className="text-base">06261 / 123 456</span>
-            </a>
-            <a
-              href="#kontakt"
-              className="bg-[#C9A96E] hover:bg-[#B8952A] text-white text-base font-semibold px-6 py-2.5 rounded-full transition-all hover:shadow-lg hover:shadow-[#C9A96E]/20"
-            >
-              Kostenlose Bewertung
-            </a>
+              <Menu size={22} style={{ color: "#4A3728" }} />
+            </button>
           </div>
-
-          {/* Mobile toggle */}
-          <button
-            className="lg:hidden p-2 rounded-lg text-stone-900 hover:bg-stone-100 transition-colors"
-            onClick={() => setOpen(!open)}
-            aria-label="Menü"
-          >
-            {open ? <X size={24} /> : <Menu size={24} />}
-          </button>
         </div>
+      </header>
 
-        {/* Mobile menu */}
-        {open && (
-          <div className="lg:hidden border-t border-stone-100 bg-white">
-            <nav className="py-4">
-              {links.map((link) => (
+      {/* Mobile Menu Overlay */}
+      {open && (
+        <div className="fixed inset-0 z-[200] lg:hidden">
+          {/* Backdrop */}
+          <div
+            className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+            onClick={() => setOpen(false)}
+          />
+          {/* Panel */}
+          <div
+            className="mobile-nav-panel absolute top-0 right-0 bottom-0 w-80 bg-[#FAF8F4] flex flex-col shadow-2xl"
+          >
+            {/* Panel Header */}
+            <div className="flex items-center justify-between px-6 py-5 border-b border-[#C5A028]/20">
+              <Image src="/logo.jpg" alt="Plan A Immobilien" width={120} height={40} className="h-9 w-auto object-contain" />
+              <button
+                onClick={() => setOpen(false)}
+                className="flex items-center justify-center w-9 h-9 rounded-lg hover:bg-[#C5A028]/10 transition-colors"
+              >
+                <X size={20} style={{ color: "#4A3728" }} />
+              </button>
+            </div>
+
+            {/* Links */}
+            <nav className="flex flex-col gap-1 px-4 py-6 flex-1">
+              {NAV_LINKS.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
-                  className="flex items-center px-4 py-4 text-stone-700 hover:text-stone-900 hover:bg-stone-50 transition-colors text-lg"
                   onClick={() => setOpen(false)}
+                  className="flex items-center px-4 py-3.5 rounded-xl text-[15px] font-medium transition-all hover:bg-[#C5A028]/10 hover:text-[#C5A028]"
+                  style={{ color: "#4A3728", fontFamily: "var(--font-body)", letterSpacing: "0.03em", textDecoration: "none" }}
                 >
                   {link.label}
                 </a>
               ))}
-              <div className="px-4 pt-4 pb-4 border-t border-stone-100 mt-2 space-y-3">
-                <a
-                  href="tel:+4962619123456"
-                  className="flex items-center gap-3 text-stone-700 text-lg font-medium"
-                >
-                  <Phone size={18} className="text-[#C9A96E]" />
-                  06261 / 123 456
-                </a>
-                <a
-                  href="#kontakt"
-                  className="flex justify-center w-full bg-[#C9A96E] hover:bg-[#B8952A] text-white text-lg font-semibold px-5 py-3.5 rounded-full transition-colors"
-                  onClick={() => setOpen(false)}
-                >
-                  Kostenlose Bewertung
-                </a>
-              </div>
             </nav>
+
+            {/* Bottom CTAs */}
+            <div className="px-6 pb-8 space-y-3 border-t border-[#C5A028]/15 pt-5">
+              <a
+                href="tel:+4962611234560"
+                className="flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm transition-colors hover:bg-[#C5A028]/10"
+                style={{ color: "#6B5E4E", fontFamily: "var(--font-body)", textDecoration: "none", border: "1px solid rgba(197,160,40,0.3)" }}
+              >
+                <Phone size={15} style={{ color: "#C5A028" }} />
+                06261 / 123 456
+              </a>
+              <a href="/immobilienbewertung" onClick={() => setOpen(false)} className="btn-primary w-full justify-center">
+                Kostenlose Bewertung
+                <span className="btn-arrow">→</span>
+              </a>
+            </div>
           </div>
-        )}
-      </div>
-    </header>
+        </div>
+      )}
+    </>
   );
 }

@@ -13,7 +13,7 @@ import FAQSection from "@/components/FAQSection";
 
 function GoldDivider() {
   return (
-    <div className="h-px bg-gradient-to-r from-transparent via-[#C9A96E]/30 to-transparent" />
+    <div className="h-px bg-gradient-to-r from-transparent via-[#C5A028]/30 to-transparent" />
   );
 }
 

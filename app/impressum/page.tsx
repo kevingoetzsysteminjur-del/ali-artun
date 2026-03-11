@@ -26,11 +26,11 @@ export default function ImpressumPage() {
                 <br />
                 Plan A Immobilien &amp; Finanzierung
                 <br />
-                <span className="text-[#C9A96E] font-medium">
+                <span className="text-[#C5A028] font-medium">
                   [Straße und Hausnummer – bitte eintragen]
                 </span>
                 <br />
-                <span className="text-[#C9A96E] font-medium">
+                <span className="text-[#C5A028] font-medium">
                   [PLZ] Mosbach, Neckar-Odenwald-Kreis
                 </span>
               </p>
@@ -42,12 +42,12 @@ export default function ImpressumPage() {
               </h2>
               <p>
                 Telefon:{" "}
-                <span className="text-[#C9A96E] font-medium">
+                <span className="text-[#C5A028] font-medium">
                   [Telefonnummer – bitte eintragen]
                 </span>
                 <br />
                 E-Mail:{" "}
-                <span className="text-[#C9A96E] font-medium">
+                <span className="text-[#C5A028] font-medium">
                   [E-Mail-Adresse – bitte eintragen]
                 </span>
               </p>
@@ -58,7 +58,7 @@ export default function ImpressumPage() {
                 Steuernummer
               </h2>
               <p>
-                <span className="text-[#C9A96E] font-medium">
+                <span className="text-[#C5A028] font-medium">
                   [Steuernummer – bitte eintragen]
                 </span>
               </p>
@@ -69,7 +69,7 @@ export default function ImpressumPage() {
                 Handelsregister
               </h2>
               <p>
-                <span className="text-[#C9A96E] font-medium">
+                <span className="text-[#C5A028] font-medium">
                   [Handelsregisternummer und Registergericht – falls vorhanden,
                   bitte eintragen, sonst diese Zeile entfernen]
                 </span>
@@ -83,7 +83,7 @@ export default function ImpressumPage() {
               <p>
                 Gewerbetreibender gemäß § 34c GewO (Immobilienmakler).
                 Zuständige Behörde:{" "}
-                <span className="text-[#C9A96E] font-medium">
+                <span className="text-[#C5A028] font-medium">
                   [zuständige Gewerbebehörde – bitte eintragen]
                 </span>
               </p>

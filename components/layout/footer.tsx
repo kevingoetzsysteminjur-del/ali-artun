@@ -3,7 +3,7 @@ import { Phone, Mail, MapPin } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-stone-900 text-white border-t-2 border-[#C9A96E]/30">
+    <footer className="bg-stone-900 text-white border-t-2 border-[#C5A028]/30">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         {/* Main */}
         <div className="py-14 grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -12,7 +12,7 @@ export default function Footer() {
             <div className="flex items-center gap-3">
               <div className="relative h-10 w-10 flex-shrink-0">
                 <Image
-                  src="/logo_transparent.png"
+                  src="/logo.jpg"
                   alt="Plan A Immobilien"
                   fill
                   className="object-contain"
@@ -24,7 +24,7 @@ export default function Footer() {
                 </p>
                 <p
                   className="text-xs tracking-[0.2em] uppercase font-semibold"
-                  style={{ color: "#C9A96E" }}
+                  style={{ color: "#C5A028" }}
                 >
                   Immobilien
                 </p>
@@ -39,21 +39,21 @@ export default function Footer() {
                 href="tel:+4962619123456"
                 className="flex items-center gap-3 text-stone-400 text-base hover:text-white transition-colors"
               >
-                <Phone size={15} style={{ color: "#C9A96E" }} />
+                <Phone size={15} style={{ color: "#C5A028" }} />
                 06261 / 123 456
               </a>
               <a
                 href="mailto:info@plana-immobilien.de"
                 className="flex items-center gap-3 text-stone-400 text-base hover:text-white transition-colors"
               >
-                <Mail size={15} style={{ color: "#C9A96E" }} />
+                <Mail size={15} style={{ color: "#C5A028" }} />
                 info@plana-immobilien.de
               </a>
               <div className="flex items-start gap-3 text-stone-500 text-base">
                 <MapPin
                   size={15}
                   className="flex-shrink-0 mt-1"
-                  style={{ color: "#C9A96E" }}
+                  style={{ color: "#C5A028" }}
                 />
                 <span>Mosbach, Neckar-Odenwald-Kreis</span>
               </div>
@@ -92,6 +92,8 @@ export default function Footer() {
               {[
                 ["Über Ali Artun", "#ueber-uns"],
                 ["So funktioniert es", "#prozess"],
+                ["Ratgeber", "/ratgeber"],
+                ["Kostenlose Bewertung", "/immobilienbewertung"],
                 ["Kontakt", "#kontakt"],
                 ["Impressum", "/impressum"],
                 ["Datenschutz", "/datenschutz"],
@@ -112,7 +114,7 @@ export default function Footer() {
         {/* Bottom */}
         <div className="py-5 border-t border-stone-800 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-stone-600 text-sm">
-            © {new Date().getFullYear()} Plan A Immobilien · Ali Artun
+            © 2026 Plan A Immobilien · Ali Artun
           </p>
           <p className="text-stone-700 text-sm">Mosbach · Neckar-Odenwald-Kreis</p>
         </div>
