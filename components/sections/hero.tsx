@@ -108,22 +108,36 @@ export default function Hero() {
 
           {/* Right: Ali's Photo + Maskottchen */}
           <div className="flex flex-col items-center justify-center gap-5 h-full relative">
-            {/* Rundes Profilbild */}
-            <div
-              className="relative rounded-full overflow-hidden flex-shrink-0 w-[200px] h-[200px] sm:w-[240px] sm:h-[240px] lg:w-[280px] lg:h-[280px]"
-              style={{
-                border: "3px solid #C5A028",
-                boxShadow: "0 0 0 6px rgba(197,160,40,0.12)",
-              }}
-            >
-              <Image
-                src="/ali.png"
-                alt={t("hero.photoAlt")}
-                fill
-                className="object-cover"
-                style={{ objectPosition: "40% 20%" }}
-                priority
-              />
+            {/* Foto + Maskottchen nebeneinander */}
+            <div className="flex items-end gap-4">
+              {/* Rundes Profilbild */}
+              <div
+                className="relative rounded-full overflow-hidden flex-shrink-0 w-[200px] h-[200px] sm:w-[240px] sm:h-[240px] lg:w-[280px] lg:h-[280px]"
+                style={{
+                  border: "3px solid #C5A028",
+                  boxShadow: "0 0 0 6px rgba(197,160,40,0.12)",
+                }}
+              >
+                <Image
+                  src="/ali.png"
+                  alt={t("hero.photoAlt")}
+                  fill
+                  className="object-cover"
+                  style={{ objectPosition: "40% 20%" }}
+                  priority
+                />
+              </div>
+
+              {/* Maskottchen — nur Desktop */}
+              <div className="hidden lg:block flex-shrink-0" style={{ marginBottom: -8 }}>
+                <Image
+                  src="/images/maskottchen.png"
+                  alt="Plan A Maskottchen"
+                  width={100}
+                  height={140}
+                  style={{ width: 100, height: "auto", objectFit: "contain" }}
+                />
+              </div>
             </div>
 
             {/* Name unter dem Foto */}

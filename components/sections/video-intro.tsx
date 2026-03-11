@@ -127,7 +127,7 @@ export default function VideoIntro() {
           {/* Maskottchen — nur Desktop */}
           <div className="hidden lg:flex justify-center" style={{ marginBottom: 28 }}>
             <Image
-              src="/maskottchen.png"
+              src="/images/maskottchen.png"
               alt="Plan A Maskottchen"
               width={110}
               height={154}

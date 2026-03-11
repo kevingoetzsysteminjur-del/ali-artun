@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { MAKLER } from "@/lib/config";
 
 export default function WhatsAppButton() {
@@ -21,11 +22,22 @@ export default function WhatsAppButton() {
       className="fixed bottom-6 right-4 sm:right-6 z-50 group"
       aria-label="Chat auf WhatsApp"
     >
-      <div className="relative">
+      <div className="relative flex flex-col items-center">
         {/* Tooltip */}
         <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-stone-900 text-white text-sm px-3 py-1.5 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
           Chat auf WhatsApp
         </span>
+
+        {/* Maskottchen Avatar über dem Button */}
+        <div className="mb-1 w-10 h-14 relative opacity-90 group-hover:opacity-100 transition-opacity">
+          <Image
+            src="/images/maskottchen.png"
+            alt="Plan A Maskottchen"
+            fill
+            style={{ objectFit: "contain" }}
+          />
+        </div>
+
         <button
           className="wa-pulse w-14 h-14 rounded-full flex items-center justify-center text-white shadow-lg hover:scale-110 transition-transform duration-200"
           style={{ backgroundColor: "#25D366" }}

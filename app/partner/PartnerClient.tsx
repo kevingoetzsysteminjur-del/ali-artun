@@ -143,7 +143,7 @@ export default function PartnerClient() {
 
               {/* Maskottchen right side */}
               <div className="flex justify-center lg:justify-end items-center">
-                <Image src="/maskottchen.png" alt="Plan A Maskottchen" width={180} height={252} style={{ width: 180, height: "auto", objectFit: "contain" }} />
+                <Image src="/images/maskottchen.png" alt="Plan A Maskottchen" width={180} height={252} style={{ width: 180, height: "auto", objectFit: "contain" }} />
               </div>
             </div>
           </div>
