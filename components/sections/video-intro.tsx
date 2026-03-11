@@ -167,16 +167,19 @@ export default function VideoIntro() {
           }}>
             <div
               style={{
+                position: "relative",
+                width: "100%",
+                paddingTop: "56.25%",
                 borderRadius: 12,
                 overflow: "hidden",
-                background: "#000",
               }}
             >
-              <video
-                src="/images/video.mp4"
-                controls
-                playsInline
-                style={{ width: "100%", display: "block", maxHeight: 480 }}
+              <iframe
+                style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}
+                src="https://www.youtube.com/embed/HxJ_R-bG22Q"
+                title="Plan A Immobilien & Finanzierung"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
               />
             </div>
           </div>

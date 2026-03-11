@@ -17,6 +17,7 @@ import MedienLeiste from "@/components/sections/medien-leiste";
 import FAQSection from "@/components/FAQSection";
 import FinanzierungPreview from "@/components/sections/finanzierung-preview";
 import PartnerTeaser from "@/components/sections/partner-teaser";
+import VideoClip from "@/components/sections/video-clip";
 
 function GoldDivider() {
   return (
@@ -48,6 +49,8 @@ export default function Home() {
         <RechnerPreview />
         <GoldDivider />
         <About />
+        <GoldDivider />
+        <VideoClip />
         <GoldDivider />
         <Auszeichnungen />
         <GoldDivider />
