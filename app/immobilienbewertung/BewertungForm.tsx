@@ -59,7 +59,7 @@ export default function BewertungForm() {
 
   if (submitted) {
     return (
-      <div className="bg-white rounded-2xl p-10 border border-[#C5A028]/25 shadow-md text-center">
+      <div className="bg-white rounded-2xl p-6 sm:p-10 border border-[#C5A028]/25 shadow-md text-center">
         <div
           className="inline-flex items-center justify-center w-20 h-20 rounded-full mb-6"
           style={{ backgroundColor: "rgba(197,160,40,0.12)" }}
@@ -100,7 +100,7 @@ export default function BewertungForm() {
         />
       </div>
 
-      <div className="p-8 lg:p-10">
+      <div className="p-5 sm:p-8 lg:p-10">
         {/* Step indicator */}
         <div className="flex items-center gap-2 mb-8">
           {[1, 2, 3].map((s) => (
@@ -118,7 +118,7 @@ export default function BewertungForm() {
               </div>
               {s < 3 && (
                 <div
-                  className={`h-0.5 w-12 transition-all ${
+                  className={`h-0.5 w-8 sm:w-12 transition-all ${
                     s < step ? "bg-[#C5A028]" : "bg-stone-200"
                   }`}
                 />
@@ -193,7 +193,7 @@ export default function BewertungForm() {
               Diese Informationen helfen uns bei der Einschätzung.
             </p>
             <div className="space-y-5 mb-8">
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-stone-700 font-semibold text-sm mb-2">
                     Wohnfläche (m²)

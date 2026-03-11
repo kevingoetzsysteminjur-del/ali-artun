@@ -39,7 +39,7 @@ export default function Auszeichnungen() {
 
   return (
     <section className="bg-[#FAF8F4] py-16 lg:py-20">
-      <div className="max-w-6xl mx-auto px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-10 reveal">
           <div className="flex items-center justify-center gap-3 mb-4">

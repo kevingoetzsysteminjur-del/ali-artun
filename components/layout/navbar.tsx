@@ -48,7 +48,7 @@ export default function Navbar() {
             : "bg-[#FAF8F4] border-[#C5A028]/15"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-5 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 lg:px-8">
           <div className={`flex items-center justify-between transition-all duration-300 ${scrolled ? "h-16" : "h-20"}`}>
 
             {/* Logo */}

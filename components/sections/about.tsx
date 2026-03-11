@@ -20,15 +20,13 @@ export default function About() {
       id="ueber-uns"
       className="bg-[#FAF8F4] py-20 lg:py-28 overflow-hidden"
     >
-      <div className="max-w-6xl mx-auto px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
           {/* Photo */}
           <div className="flex flex-col items-center lg:items-start gap-5 order-2 lg:order-1 reveal reveal-left">
             <div
-              className="relative rounded-full overflow-hidden flex-shrink-0"
+              className="relative rounded-full overflow-hidden flex-shrink-0 w-[200px] h-[200px] sm:w-[240px] sm:h-[240px] lg:w-[280px] lg:h-[280px]"
               style={{
-                width: 280,
-                height: 280,
                 border: "3px solid #C5A028",
                 boxShadow: "0 0 0 6px rgba(197,160,40,0.12)",
               }}

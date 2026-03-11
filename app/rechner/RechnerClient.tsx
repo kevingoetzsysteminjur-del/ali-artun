@@ -178,7 +178,7 @@ function Nebenkostenrechner() {
           <p className="text-4xl font-bold tabular-nums">
             {fmtEur(kaufpreis + kosten.gesamt)}
           </p>
-          <div className="mt-3 flex justify-between text-white/90 text-sm">
+          <div className="mt-3 flex flex-col sm:flex-row sm:justify-between text-white/90 text-sm gap-1">
             <span>Kaufpreis: {fmtEur(kaufpreis)}</span>
             <span>Nebenkosten: {fmtEur(kosten.gesamt)}</span>
           </div>
@@ -411,7 +411,7 @@ export default function RechnerClient() {
   const [tab, setTab] = useState<"nebenkosten" | "finanzierung">("nebenkosten");
 
   return (
-    <div className="max-w-5xl mx-auto px-6 lg:px-8">
+    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Page Header */}
       <div className="text-center mb-12">
         <div className="flex items-center justify-center gap-3 mb-5">
@@ -431,7 +431,7 @@ export default function RechnerClient() {
       </div>
 
       {/* Tab-Switcher */}
-      <div className="flex rounded-2xl bg-[#EDE8DF] p-1 mb-8 max-w-md mx-auto">
+      <div className="flex rounded-2xl bg-[#EDE8DF] p-1 mb-8 w-full sm:max-w-md sm:mx-auto">
         <button
           onClick={() => setTab("nebenkosten")}
           className={`flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-medium transition-all ${
@@ -457,12 +457,12 @@ export default function RechnerClient() {
       </div>
 
       {/* Rechner-Box */}
-      <div className="bg-white rounded-3xl border border-[#C5A028]/15 shadow-sm p-8 lg:p-10 mb-10">
+      <div className="bg-white rounded-3xl border border-[#C5A028]/15 shadow-sm p-5 sm:p-8 lg:p-10 mb-10">
         {tab === "nebenkosten" ? <Nebenkostenrechner /> : <Finanzierungsrechner />}
       </div>
 
       {/* CTA */}
-      <div className="bg-gradient-to-br from-stone-900 to-stone-800 rounded-3xl p-8 lg:p-10 text-center">
+      <div className="bg-gradient-to-br from-stone-900 to-stone-800 rounded-3xl p-6 sm:p-8 lg:p-10 text-center">
         <div
           className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-5"
           style={{ background: "rgba(197,160,40,0.2)" }}

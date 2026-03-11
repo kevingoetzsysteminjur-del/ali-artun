@@ -16,7 +16,7 @@ export default function TrustBadges() {
 
   return (
     <section className="bg-stone-50 border-y border-[#C5A028]/15 py-10">
-      <div className="max-w-5xl mx-auto px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-wrap justify-center gap-8 lg:gap-12">
           {badges.map((badge) => {
             const Icon = badge.icon;

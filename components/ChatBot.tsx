@@ -63,7 +63,7 @@ export default function ChatBot() {
       {/* Float Button */}
       <button
         onClick={() => setOpen(!open)}
-        className="fixed bottom-6 right-6 z-[201] w-14 h-14 rounded-full flex items-center justify-center transition-all hover:scale-105 duration-200 shadow-xl"
+        className="fixed bottom-24 right-4 sm:bottom-6 sm:right-24 z-[201] w-14 h-14 rounded-full flex items-center justify-center transition-all hover:scale-105 duration-200 shadow-xl"
         style={{ backgroundColor: "#1a1a1a", border: "2px solid #C5A028", color: "#C5A028" }}
         aria-label="Chat öffnen"
       >
@@ -80,10 +80,10 @@ export default function ChatBot() {
         <div
           className="fixed z-[200] flex flex-col rounded-2xl overflow-hidden shadow-2xl"
           style={{
-            bottom: "88px",
+            bottom: "112px",
             right: "16px",
-            width: "360px",
-            maxHeight: "580px",
+            width: "min(360px, calc(100vw - 32px))",
+            maxHeight: "min(580px, calc(100vh - 140px))",
             backgroundColor: "#fff",
             border: "1px solid rgba(197,160,40,0.25)",
           }}

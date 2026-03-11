@@ -89,7 +89,7 @@ function SliderKarte({ beispiel }: { beispiel: typeof BEISPIELE[0] }) {
 export default function VorherNachher() {
   return (
     <section className="bg-white py-20 lg:py-28">
-      <div className="max-w-6xl mx-auto px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12 reveal">
           <div className="flex items-center justify-center gap-3 mb-5">

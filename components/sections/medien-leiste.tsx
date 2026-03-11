@@ -8,7 +8,7 @@ const MEDIEN = [
 export default function MedienLeiste() {
   return (
     <section className="bg-stone-50 border-y border-stone-200/60 py-10">
-      <div className="max-w-5xl mx-auto px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <p className="text-center text-xs font-semibold tracking-[0.2em] uppercase text-stone-400 mb-7">
           Regionale Medien & Präsenz
         </p>

@@ -39,7 +39,7 @@ export default function Contact() {
 
   return (
     <section id="kontakt" className="bg-[#FAF8F4] py-20 lg:py-28">
-      <div className="max-w-6xl mx-auto px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-start">
           {/* Left: Info */}
           <div className="space-y-8">
@@ -93,7 +93,7 @@ export default function Contact() {
           </div>
 
           {/* Right: Form */}
-          <div className="bg-white rounded-2xl p-8 lg:p-10 border border-[#C5A028]/25 shadow-md shadow-[#C5A028]/5">
+          <div className="bg-white rounded-2xl p-5 sm:p-8 lg:p-10 border border-[#C5A028]/25 shadow-md shadow-[#C5A028]/5">
             <h3 className="font-heading text-2xl font-bold text-stone-900 mb-2">
               {t("contact.formTitle")}
             </h3>
@@ -102,7 +102,7 @@ export default function Contact() {
             </p>
 
             <form className="space-y-5">
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-stone-700 font-semibold text-sm mb-2">
                     {t("contact.firstName")}

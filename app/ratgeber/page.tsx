@@ -57,7 +57,7 @@ export default function RatgeberPage() {
   return (
     <div style={{ backgroundColor: "#FAFAF8", minHeight: "100vh" }}>
       {/* Hero */}
-      <section style={{ padding: "120px 24px 60px", backgroundColor: "#FAF8F4", textAlign: "center" }}>
+      <section style={{ padding: "120px 16px 60px", backgroundColor: "#FAF8F4", textAlign: "center" }}>
         <p style={{ fontFamily: "var(--font-body)", fontSize: "11px", letterSpacing: "0.3em", textTransform: "uppercase", color: "#C5A028", marginBottom: "14px" }}>
           Expertenwissen
         </p>
@@ -70,8 +70,8 @@ export default function RatgeberPage() {
       </section>
 
       {/* Artikel Grid */}
-      <section style={{ maxWidth: "1100px", margin: "0 auto", padding: "48px 24px 80px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "32px" }}>
+      <section style={{ maxWidth: "1100px", margin: "0 auto", padding: "48px 16px 80px" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(300px, 100%), 1fr))", gap: "32px" }}>
           {artikel.map((a) => (
             <article
               key={a.slug}

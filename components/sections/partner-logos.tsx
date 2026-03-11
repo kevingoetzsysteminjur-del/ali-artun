@@ -30,7 +30,7 @@ function LogoItem({ name, farbe, schrift, dunkel }: { name: string; farbe: strin
 export default function PartnerLogos() {
   return (
     <section className="bg-white py-14 border-y border-[#C5A028]/10 overflow-hidden">
-      <div className="max-w-6xl mx-auto px-6 lg:px-8 mb-8 text-center">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 text-center">
         <p className="text-xs font-semibold tracking-[0.2em] uppercase text-stone-400">
           Starke Partner für Ihre Finanzierung
         </p>

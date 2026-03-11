@@ -70,12 +70,13 @@ export default function VideoIntro() {
     <section
       style={{
         height: "100vh",
+        minHeight: 500,
         background: "#F9F8F5",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        padding: "40px 24px 24px",
+        padding: "24px 16px 24px",
         boxSizing: "border-box",
         position: "relative",
         overflow: "hidden",
@@ -143,15 +144,15 @@ export default function VideoIntro() {
       `}</style>
 
       {/* Logo + Cartoon + Claim */}
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginBottom: 30, position: "relative", gap: 12 }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginBottom: 30, position: "relative", gap: 12, width: "100%", maxWidth: 600 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap", justifyContent: "center", width: "100%" }}>
           <Image
             src="/logo.png"
             alt="Plan A Immobilien Logo"
             width={350}
             height={132}
             style={{
-              width: 350,
+              width: "min(280px, calc(100vw - 100px))",
               height: "auto",
               display: "block",
               borderRadius: 8,
@@ -163,7 +164,7 @@ export default function VideoIntro() {
             alt="Ali Artun Cartoon"
             width={100}
             height={100}
-            style={{ width: "auto", height: 130, display: "block", filter: "drop-shadow(0 4px 16px rgba(197,160,40,0.5))" }}
+            style={{ width: "auto", height: 100, display: "block", filter: "drop-shadow(0 4px 16px rgba(197,160,40,0.5))" }}
           />
         </div>
         <p style={{

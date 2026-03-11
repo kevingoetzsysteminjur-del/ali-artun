@@ -30,7 +30,7 @@ export default function Properties() {
 
   return (
     <section id="prozess" className="bg-[#EDE8DF] border-y border-[#C5A028]/25 py-20 lg:py-28">
-      <div className="max-w-6xl mx-auto px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <div className="flex items-center justify-center gap-3 mb-5">
@@ -56,7 +56,7 @@ export default function Properties() {
           {steps.map((step, i) => (
             <div
               key={i}
-              className="bg-[#FAF8F4] rounded-2xl p-8 border border-[#C5A028]/20 shadow-sm hover:border-[#C5A028]/45 hover:shadow-md transition-all flex gap-6 items-start"
+              className="bg-[#FAF8F4] rounded-2xl p-5 sm:p-8 border border-[#C5A028]/20 shadow-sm hover:border-[#C5A028]/45 hover:shadow-md transition-all flex gap-4 sm:gap-6 items-start"
             >
               {/* Step number */}
               <div className="flex-shrink-0 w-14 h-14 rounded-full border-2 border-[#C5A028]/30 flex items-center justify-center">

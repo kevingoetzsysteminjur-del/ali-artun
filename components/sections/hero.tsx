@@ -9,7 +9,7 @@ export default function Hero() {
 
   return (
     <section className="bg-[#FAF8F4] pt-20">
-      <div className="max-w-[1200px] mx-auto px-8 lg:px-16 py-16 lg:py-24">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-8 lg:px-16 py-16 lg:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center justify-center">
           {/* Left: Text */}
           <div className="space-y-8">
@@ -77,10 +77,8 @@ export default function Hero() {
           <div className="flex flex-col items-center justify-center gap-5 h-full">
             {/* Rundes Profilbild */}
             <div
-              className="relative rounded-full overflow-hidden flex-shrink-0"
+              className="relative rounded-full overflow-hidden flex-shrink-0 w-[200px] h-[200px] sm:w-[240px] sm:h-[240px] lg:w-[280px] lg:h-[280px]"
               style={{
-                width: 280,
-                height: 280,
                 border: "3px solid #C5A028",
                 boxShadow: "0 0 0 6px rgba(197,160,40,0.12)",
               }}

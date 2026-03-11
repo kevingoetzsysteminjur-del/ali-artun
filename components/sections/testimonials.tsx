@@ -30,7 +30,7 @@ export default function Testimonials() {
       id="referenzen"
       className="bg-[#EDE8DF] border-y border-[#C5A028]/25 py-20 lg:py-28"
     >
-      <div className="max-w-5xl mx-auto px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-14 reveal">
           <div className="flex items-center justify-center gap-3 mb-5">
@@ -54,7 +54,7 @@ export default function Testimonials() {
         {/* Text-Platzhalter */}
         <div className="bg-white rounded-3xl border border-[#C5A028]/20 shadow-sm overflow-hidden">
           <div className="h-1 bg-gradient-to-r from-[#C5A028]/40 via-[#C5A028] to-[#C5A028]/40" />
-          <div className="px-10 py-12 text-center">
+          <div className="px-5 py-8 sm:px-10 sm:py-12 text-center">
             <div
               className="text-[80px] leading-none font-heading font-bold mb-4"
               style={{ color: "#C5A028", opacity: 0.35 }}

@@ -44,7 +44,7 @@ export default function Stats() {
 
   return (
     <section className="bg-[#EDE8DF] border-y border-[#C5A028]/25 py-16 lg:py-20">
-      <div className="max-w-6xl mx-auto px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="reveal text-center text-stone-900 font-heading text-3xl lg:text-4xl font-bold mb-3">
           {t("stats.label")}
         </h2>

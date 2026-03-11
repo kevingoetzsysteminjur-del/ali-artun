@@ -17,7 +17,7 @@ export default function ScrollToTop() {
   return (
     <button
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-      className="fixed bottom-6 right-24 z-50 w-11 h-11 rounded-full bg-white border border-[#C5A028]/40 flex items-center justify-center shadow-md hover:bg-[#C5A028] hover:border-[#C5A028] hover:text-white transition-all duration-200 group"
+      className="fixed bottom-[88px] right-4 sm:bottom-6 sm:right-[148px] z-50 w-11 h-11 rounded-full bg-white border border-[#C5A028]/40 flex items-center justify-center shadow-md hover:bg-[#C5A028] hover:border-[#C5A028] hover:text-white transition-all duration-200 group"
       aria-label="Nach oben scrollen"
     >
       <ChevronUp size={20} className="text-[#C5A028] group-hover:text-white transition-colors" />

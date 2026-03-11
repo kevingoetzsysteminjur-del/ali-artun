@@ -21,7 +21,7 @@ export default function FAQSection() {
 
   return (
     <section className="bg-[#FAF8F4] py-20 lg:py-28">
-      <div className="max-w-3xl mx-auto px-6 lg:px-8">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-3 mb-5">
             <div className="h-0.5 w-10 bg-[#C5A028]" />
@@ -47,7 +47,7 @@ export default function FAQSection() {
               <button
                 type="button"
                 onClick={() => setOpen(open === i ? null : i)}
-                className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left"
+                className="w-full flex items-center justify-between gap-3 px-4 py-4 sm:px-6 sm:py-5 text-left"
               >
                 <span className="text-stone-900 font-semibold text-lg leading-snug pr-2">
                   {faq.q}
@@ -74,7 +74,7 @@ export default function FAQSection() {
                   maxHeight: open === i ? "500px" : "0px",
                 }}
               >
-                <p className="px-6 pb-6 text-stone-500 text-lg leading-[1.75]">
+                <p className="px-4 pb-4 sm:px-6 sm:pb-6 text-stone-500 text-base sm:text-lg leading-[1.75]">
                   {faq.a}
                 </p>
               </div>
