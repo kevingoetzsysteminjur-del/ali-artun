@@ -1,263 +1,205 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
-import { MessageCircle, X, Send } from "lucide-react";
+import { MessageCircle, X, Send, ChevronRight } from "lucide-react";
+import Image from "next/image";
 
-const faqs = [
-  {
-    frage: "Wie läuft der Verkaufsprozess ab?",
-    antwort:
-      "Unser Prozess: 1. Kostenlose Bewertung 2. Strategie & Unterlagen 3. Vermarktung 4. Käuferprüfung 5. Notartermin. Wir begleiten Sie durch jeden Schritt.",
-  },
-  {
-    frage: "Was kostet ein Makler?",
-    antwort:
-      "Die Provision wird gesetzlich zwischen Käufer und Verkäufer geteilt. Gerne besprechen wir die Konditionen persönlich. Kontakt: 06261 / 123 456.",
-  },
-  {
-    frage: "Was ist geprüfte Käuferfinanzierung?",
-    antwort:
-      "Bevor wir Käufer vermitteln, prüfen wir deren Finanzierungsfähigkeit. So platzen keine Deals kurz vor dem Notartermin.",
-  },
-  {
-    frage: "Wie lange dauert ein Verkauf?",
-    antwort:
-      "Mit unserer Methode dauert ein Verkauf in der Regel 2–4 Monate. Wir arbeiten effizient und transparent.",
-  },
-  {
-    frage: "Arbeiten Sie auch außerhalb Mosbachs?",
-    antwort:
-      "Ja! Unser Schwerpunkt ist Mosbach und der gesamte Neckar-Odenwald-Kreis.",
-  },
-  {
-    frage: "Kann ich meine Immobilie bewerten lassen?",
-    antwort:
-      "Ja, kostenlos! Nutzen Sie unser Bewertungstool oder rufen Sie uns an: 06261 / 123 456.",
-  },
-  {
-    frage: "Wie kontaktiere ich Ali Artun?",
-    antwort:
-      "📞 06261 / 123 456\n📧 info@plana-immobilien.de\nOder nutzen Sie das Kontaktformular auf dieser Seite.",
-  },
-  {
-    frage: "Welche Immobilien verkaufen Sie?",
-    antwort:
-      "Häuser, Wohnungen, Grundstücke und Gewerbeimmobilien – im gesamten Neckar-Odenwald-Kreis.",
-  },
+const FAQS = [
+  { frage: "Wie läuft der Verkauf ab?", antwort: "Unser Prozess: 1. Kostenlose Bewertung → 2. Strategie & Unterlagen → 3. Vermarktung → 4. Käuferprüfung → 5. Notartermin. Wir begleiten Sie durch jeden Schritt." },
+  { frage: "Was kostet ein Makler?", antwort: "Die Provision wird gesetzlich zwischen Käufer und Verkäufer geteilt. Gerne besprechen wir die Konditionen persönlich. Tel: 06261 / 123 456." },
+  { frage: "Was ist geprüfte Finanzierung?", antwort: "Vor der Vermittlung prüfen wir die Finanzierungsfähigkeit jedes Käufers. So platzen keine Deals kurz vor dem Notartermin." },
+  { frage: "Wie lange dauert ein Verkauf?", antwort: "Mit unserer Methode dauert ein Verkauf in der Regel 2–4 Monate. Wir arbeiten effizient und transparent." },
+  { frage: "Gilt das nur für Mosbach?", antwort: "Nein! Unser Schwerpunkt ist Mosbach und der gesamte Neckar-Odenwald-Kreis." },
+  { frage: "Kostenlose Immobilienbewertung?", antwort: "Ja, kostenlos! Nutzen Sie unser Bewertungstool unter /immobilienbewertung oder rufen Sie uns an: 06261 / 123 456." },
+  { frage: "Wie kontaktiere ich Ali?", antwort: "📞 06261 / 123 456\n📧 info@plana-immobilien.de\nOder nutzen Sie das Kontaktformular auf dieser Seite." },
+  { frage: "Welche Immobilien verkaufen Sie?", antwort: "Häuser, Wohnungen, Grundstücke und Gewerbeimmobilien – im gesamten Neckar-Odenwald-Kreis." },
 ];
 
-interface Message {
-  text: string;
-  from: "user" | "bot";
+interface Message { text: string; from: "user" | "bot"; time: string; }
+
+function getNow() {
+  return new Date().toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" });
 }
 
 export default function ChatBot() {
   const [open, setOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      text: "Guten Tag! Wie kann ich Ihnen helfen? Wählen Sie eine Frage oder schreiben Sie mir direkt.",
-      from: "bot",
-    },
-  ]);
+  const [messages, setMessages] = useState<Message[]>([{
+    text: "Guten Tag! Ich bin der Assistent von Ali Artun. Wie kann ich Ihnen helfen?",
+    from: "bot",
+    time: getNow(),
+  }]);
   const [input, setInput] = useState("");
+  const [typing, setTyping] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+  }, [messages, typing]);
 
-  const handleFaq = (faq: (typeof faqs)[0]) => {
-    setMessages((prev) => [
-      ...prev,
-      { text: faq.frage, from: "user" },
-      { text: faq.antwort, from: "bot" },
-    ]);
+  const addBotResponse = (text: string) => {
+    setTyping(true);
+    setTimeout(() => {
+      setTyping(false);
+      setMessages((prev) => [...prev, { text, from: "bot", time: getNow() }]);
+    }, 800);
+  };
+
+  const handleFaq = (faq: typeof FAQS[0]) => {
+    setMessages((prev) => [...prev, { text: faq.frage, from: "user", time: getNow() }]);
+    addBotResponse(faq.antwort);
   };
 
   const handleSend = () => {
     if (!input.trim()) return;
-    setMessages((prev) => [
-      ...prev,
-      { text: input, from: "user" },
-      {
-        text: "Danke für Ihre Nachricht! Wir melden uns schnellstmöglich. Oder rufen Sie uns an: 06261 / 123 456",
-        from: "bot",
-      },
-    ]);
+    const text = input.trim();
     setInput("");
+    setMessages((prev) => [...prev, { text, from: "user", time: getNow() }]);
+    addBotResponse("Danke für Ihre Nachricht! Wir melden uns schnellstmöglich. Sie können uns auch direkt anrufen: 06261 / 123 456");
   };
+
+  const showFaqs = messages.length <= 1;
 
   return (
     <>
       {/* Float Button */}
       <button
         onClick={() => setOpen(!open)}
-        className="fixed bottom-6 right-24 z-[201] w-14 h-14 rounded-full flex items-center justify-center transition-all hover:scale-110 duration-200"
-        style={{
-          backgroundColor: "#1a1a1a",
-          border: "2px solid #C5A028",
-          color: "#C5A028",
-          boxShadow: "0 8px 30px rgba(0,0,0,0.25)",
-        }}
+        className="fixed bottom-6 right-6 z-[201] w-14 h-14 rounded-full flex items-center justify-center transition-all hover:scale-105 duration-200 shadow-xl"
+        style={{ backgroundColor: "#1a1a1a", border: "2px solid #C5A028", color: "#C5A028" }}
         aria-label="Chat öffnen"
       >
-        {open ? <X size={22} /> : <MessageCircle size={22} />}
+        <div className="transition-all duration-200">
+          {open ? <X size={22} /> : <MessageCircle size={22} />}
+        </div>
+        {!open && (
+          <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-green-400 rounded-full border-2 border-white" />
+        )}
       </button>
 
       {/* Chat Window */}
       {open && (
         <div
-          className="fixed z-[200] flex flex-col rounded-xl overflow-hidden"
+          className="fixed z-[200] flex flex-col rounded-2xl overflow-hidden shadow-2xl"
           style={{
-            bottom: "96px",
-            right: "96px",
-            width: "340px",
-            maxHeight: "520px",
+            bottom: "88px",
+            right: "16px",
+            width: "360px",
+            maxHeight: "580px",
             backgroundColor: "#fff",
-            border: "1px solid rgba(197,160,40,0.3)",
-            boxShadow: "0 20px 60px rgba(0,0,0,0.2)",
+            border: "1px solid rgba(197,160,40,0.25)",
           }}
         >
           {/* Header */}
           <div
-            style={{
-              padding: "16px 20px",
-              backgroundColor: "#1a1a1a",
-              borderBottom: "1px solid rgba(197,160,40,0.3)",
-            }}
+            className="flex items-center gap-3 px-4 py-3.5 flex-shrink-0"
+            style={{ backgroundColor: "#1a1a1a", borderBottom: "1px solid rgba(197,160,40,0.2)" }}
           >
-            <p
-              style={{
-                fontFamily: "var(--font-playfair), serif",
-                fontSize: "1rem",
-                color: "#fff",
-                margin: 0,
-              }}
+            <div className="relative flex-shrink-0">
+              <Image
+                src="/ali.png"
+                alt="Ali Artun"
+                width={40}
+                height={40}
+                className="rounded-full object-cover object-top"
+                style={{ width: 40, height: 40 }}
+              />
+              <span className="absolute bottom-0 right-0 w-3 h-3 bg-green-400 rounded-full border-2 border-[#1a1a1a]" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-white font-semibold text-sm leading-none">Ali Artun</p>
+              <p className="text-[#C5A028] text-[11px] mt-0.5">Plan A Immobilien · Online</p>
+            </div>
+            <button
+              onClick={() => setOpen(false)}
+              className="w-8 h-8 rounded-lg flex items-center justify-center text-stone-400 hover:text-white hover:bg-white/10 transition-colors flex-shrink-0"
             >
-              Plan A Immobilien
-            </p>
-            <p
-              style={{
-                fontFamily: "var(--font-geist-sans), sans-serif",
-                fontSize: "11px",
-                color: "#C5A028",
-                margin: 0,
-                letterSpacing: "0.1em",
-              }}
-            >
-              Ali Artun · Online
-            </p>
+              <X size={16} />
+            </button>
           </div>
 
           {/* Messages */}
-          <div
-            className="flex flex-col gap-2.5 overflow-y-auto"
-            style={{ flex: 1, padding: "16px" }}
-          >
+          <div className="flex-1 overflow-y-auto p-4 space-y-3" style={{ backgroundColor: "#FAFAF8" }}>
             {messages.map((m, i) => (
-              <div
-                key={i}
-                style={{
-                  alignSelf: m.from === "user" ? "flex-end" : "flex-start",
-                  maxWidth: "85%",
-                }}
-              >
-                <div
-                  style={{
-                    padding: "10px 14px",
-                    backgroundColor:
-                      m.from === "user" ? "#C5A028" : "#F5F0E8",
-                    color: m.from === "user" ? "#fff" : "#1a1a1a",
-                    fontFamily: "var(--font-geist-sans), sans-serif",
-                    fontSize: "13px",
-                    lineHeight: 1.5,
-                    borderRadius:
-                      m.from === "user"
-                        ? "12px 12px 2px 12px"
-                        : "12px 12px 12px 2px",
-                    whiteSpace: "pre-line",
-                  }}
-                >
-                  {m.text}
+              <div key={i} className={`flex ${m.from === "user" ? "justify-end" : "justify-start"}`}>
+                <div style={{ maxWidth: "82%" }}>
+                  <div
+                    className="px-3.5 py-2.5 text-[13px] leading-relaxed"
+                    style={{
+                      backgroundColor: m.from === "user" ? "#C5A028" : "#FFFFFF",
+                      color: m.from === "user" ? "#fff" : "#1a1a1a",
+                      borderRadius: m.from === "user" ? "14px 14px 3px 14px" : "14px 14px 14px 3px",
+                      boxShadow: "0 1px 4px rgba(0,0,0,0.08)",
+                      whiteSpace: "pre-line",
+                    }}
+                  >
+                    {m.text}
+                  </div>
+                  <p className="text-[10px] text-stone-400 mt-1 px-1" style={{ textAlign: m.from === "user" ? "right" : "left" }}>
+                    {m.time}
+                  </p>
                 </div>
               </div>
             ))}
+
+            {/* Typing indicator */}
+            {typing && (
+              <div className="flex justify-start">
+                <div className="px-4 py-3 bg-white rounded-2xl rounded-bl-sm shadow-sm flex gap-1 items-center">
+                  {[0, 1, 2].map((i) => (
+                    <span
+                      key={i}
+                      className="w-1.5 h-1.5 bg-stone-400 rounded-full animate-bounce"
+                      style={{ animationDelay: `${i * 0.15}s` }}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
             <div ref={bottomRef} />
           </div>
 
-          {/* FAQ Chips – show only at start */}
-          {messages.length <= 2 && (
-            <div
-              style={{
-                padding: "8px 16px",
-                borderTop: "1px solid rgba(197,160,40,0.15)",
-                display: "flex",
-                flexWrap: "wrap",
-                gap: "6px",
-              }}
-            >
-              {faqs.slice(0, 4).map((faq, i) => (
-                <button
-                  key={i}
-                  onClick={() => handleFaq(faq)}
-                  style={{
-                    padding: "5px 10px",
-                    border: "1px solid rgba(197,160,40,0.4)",
-                    backgroundColor: "transparent",
-                    color: "#6B5E4E",
-                    fontFamily: "var(--font-geist-sans), sans-serif",
-                    fontSize: "11px",
-                    cursor: "pointer",
-                    borderRadius: "20px",
-                  }}
-                >
-                  {faq.frage}
-                </button>
-              ))}
+          {/* FAQ Quick Replies */}
+          {showFaqs && (
+            <div className="border-t border-stone-100 p-3 bg-white flex-shrink-0">
+              <p className="text-stone-400 text-[10px] uppercase tracking-widest font-medium mb-2">
+                Häufige Fragen
+              </p>
+              <div className="grid grid-cols-2 gap-1.5">
+                {FAQS.map((faq, i) => (
+                  <button
+                    key={i}
+                    onClick={() => handleFaq(faq)}
+                    className="text-left px-2.5 py-2 rounded-lg border border-stone-200 text-[11px] text-stone-600 hover:border-[#C5A028]/50 hover:bg-[#C5A028]/5 hover:text-stone-800 transition-all leading-tight"
+                  >
+                    {faq.frage}
+                  </button>
+                ))}
+              </div>
+              {/* Termin CTA */}
+              <a
+                href="/termin"
+                className="flex items-center justify-between mt-2 px-3 py-2 rounded-lg text-[11px] font-semibold text-[#C5A028] border border-[#C5A028]/30 hover:bg-[#C5A028]/8 transition-all"
+              >
+                <span>📅 Termin vereinbaren</span>
+                <ChevronRight size={12} />
+              </a>
             </div>
           )}
 
           {/* Input */}
-          <div
-            style={{
-              padding: "12px 16px",
-              borderTop: "1px solid rgba(197,160,40,0.2)",
-              display: "flex",
-              gap: "8px",
-            }}
-          >
+          <div className="px-3 py-3 border-t border-stone-100 bg-white flex gap-2 flex-shrink-0">
             <input
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleSend()}
               placeholder="Ihre Frage..."
-              style={{
-                flex: 1,
-                padding: "8px 12px",
-                border: "1px solid rgba(197,160,40,0.3)",
-                fontFamily: "var(--font-geist-sans), sans-serif",
-                fontSize: "13px",
-                outline: "none",
-                backgroundColor: "#FAFAF8",
-                borderRadius: "6px",
-              }}
+              className="flex-1 px-3.5 py-2.5 text-[13px] rounded-xl border border-stone-200 focus:outline-none focus:border-[#C5A028]/50 focus:ring-2 focus:ring-[#C5A028]/15 text-stone-800 bg-white transition-all"
             />
             <button
               onClick={handleSend}
-              style={{
-                width: "36px",
-                height: "36px",
-                backgroundColor: "#C5A028",
-                border: "none",
-                color: "#fff",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                cursor: "pointer",
-                borderRadius: "6px",
-                flexShrink: 0,
-              }}
+              className="w-10 h-10 rounded-xl flex items-center justify-center text-white flex-shrink-0 hover:brightness-110 transition-all"
+              style={{ backgroundColor: "#C5A028" }}
             >
-              <Send size={16} />
+              <Send size={15} />
             </button>
           </div>
         </div>

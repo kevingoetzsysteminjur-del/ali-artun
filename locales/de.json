@@ -1,0 +1,56 @@
+{
+  "nav": {
+    "services": "Leistungen",
+    "process": "So funktioniert es",
+    "about": "Über Ali Artun",
+    "ratgeber": "Ratgeber",
+    "contact": "Kontakt",
+    "freeValuation": "Kostenlose Bewertung",
+    "phone": "06261 / 123 456"
+  },
+  "hero": {
+    "badge": "Mosbach & Neckar-Odenwald-Kreis",
+    "headline": "Immobilienverkauf mit geprüfter Käuferfinanzierung",
+    "sub": "Planbare Abschlüsse durch Strategie, Struktur und Finanzierungsprüfung.",
+    "cta1": "Kostenlose Bewertung",
+    "cta2": "Mehr erfahren",
+    "tag1": "Geprüfte Finanzierung",
+    "tag2": "Lokaler Experte",
+    "tag3": "Transparenter Prozess"
+  },
+  "common": {
+    "contactUs": "Jetzt Kontakt aufnehmen",
+    "learnMore": "Mehr erfahren",
+    "booking": "Termin vereinbaren",
+    "freeValuation": "Kostenlose Bewertung",
+    "calculator": "Zum Rechner"
+  },
+  "booking": {
+    "title": "Termin vereinbaren",
+    "subtitle": "Wählen Sie einen Termin für Ihr persönliches Beratungsgespräch.",
+    "selectDate": "Datum wählen",
+    "selectTime": "Uhrzeit wählen",
+    "name": "Ihr Name",
+    "phone": "Telefonnummer",
+    "email": "E-Mail-Adresse",
+    "topic": "Ihr Anliegen",
+    "topic1": "Immobilie verkaufen",
+    "topic2": "Immobilienbewertung",
+    "topic3": "Finanzierungsberatung",
+    "topic4": "Allgemeine Beratung",
+    "topic5": "Sonstiges",
+    "submit": "Termin anfragen",
+    "confirmTitle": "Terminanfrage gesendet!",
+    "confirmText": "Vielen Dank! Wir melden uns innerhalb von 24 Stunden zur Bestätigung.",
+    "note": "Terminanfragen werden innerhalb von 24 Stunden bestätigt."
+  },
+  "footer": {
+    "tagline": "Entscheidungen auf einem anderen Niveau.",
+    "links": "Schnelllinks",
+    "legal": "Rechtliches",
+    "impressum": "Impressum",
+    "datenschutz": "Datenschutz",
+    "contact": "Kontakt",
+    "rights": "Alle Rechte vorbehalten."
+  }
+}

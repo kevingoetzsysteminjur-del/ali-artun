@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Phone, Menu, X } from "lucide-react";
+import ThemeToggle from "@/components/ThemeToggle";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 const NAV_LINKS = [
   { label: "Leistungen",        href: "#leistungen" },
@@ -68,8 +70,8 @@ export default function Navbar() {
               ))}
             </nav>
 
-            {/* Desktop Right: Phone + CTA */}
-            <div className="hidden lg:flex items-center gap-5">
+            {/* Desktop Right: Phone + ThemeToggle + LanguageSwitcher + CTA */}
+            <div className="hidden lg:flex items-center gap-3">
               <a
                 href="tel:+4962611234560"
                 className="flex items-center gap-2 transition-colors hover:text-[#C5A028]"
@@ -78,6 +80,8 @@ export default function Navbar() {
                 <Phone size={14} style={{ color: "#C5A028" }} />
                 <span style={{ letterSpacing: "0.04em" }}>06261 / 123 456</span>
               </a>
+              <ThemeToggle />
+              <LanguageSwitcher />
               <a href="/immobilienbewertung" className="btn-primary">
                 Kostenlose Bewertung
                 <span className="btn-arrow">→</span>
@@ -136,6 +140,10 @@ export default function Navbar() {
 
             {/* Bottom CTAs */}
             <div className="px-6 pb-8 space-y-3 border-t border-[#C5A028]/15 pt-5">
+              <div className="flex items-center justify-between mb-1">
+                <LanguageSwitcher />
+                <ThemeToggle />
+              </div>
               <a
                 href="tel:+4962611234560"
                 className="flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm transition-colors hover:bg-[#C5A028]/10"

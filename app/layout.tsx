@@ -8,6 +8,8 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import ScrollToTop from "@/components/ScrollToTop";
 import ScrollReveal from "@/components/ScrollReveal";
 import ChatBot from "@/components/ChatBot";
+import { ThemeProvider } from "@/contexts/ThemeContext";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 
 const geist = Geist({
   variable: "--font-geist-sans",
@@ -89,21 +91,30 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="de">
+    <html lang="de" suppressHydrationWarning>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{var t=localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.classList.toggle('dark',t==='dark')}catch(e){}`,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
         />
       </head>
       <body className={`${geist.variable} ${playfair.variable} antialiased`}>
-        <PageLoader />
-        <ScrollReveal />
-        {children}
-        <CookieBanner />
-        <WhatsAppButton />
-        <ScrollToTop />
-        <ChatBot />
+        <ThemeProvider>
+          <LanguageProvider>
+            <PageLoader />
+            <ScrollReveal />
+            {children}
+            <CookieBanner />
+            <WhatsAppButton />
+            <ScrollToTop />
+            <ChatBot />
+          </LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

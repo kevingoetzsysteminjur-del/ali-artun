@@ -1,0 +1,56 @@
+{
+  "nav": {
+    "services": "Hizmetler",
+    "process": "Nasıl çalışır",
+    "about": "Ali Artun Hakkında",
+    "ratgeber": "Rehber",
+    "contact": "İletişim",
+    "freeValuation": "Ücretsiz Değerleme",
+    "phone": "06261 / 123 456"
+  },
+  "hero": {
+    "badge": "Mosbach ve Neckar-Odenwald Bölgesi",
+    "headline": "Onaylı alıcı finansmanıyla gayrimenkul satışı",
+    "sub": "Strateji, yapı ve finansman kontrolü ile güvenilir kapanışlar.",
+    "cta1": "Ücretsiz Değerleme",
+    "cta2": "Daha fazla bilgi",
+    "tag1": "Onaylı Finansman",
+    "tag2": "Yerel Uzman",
+    "tag3": "Şeffaf Süreç"
+  },
+  "common": {
+    "contactUs": "Şimdi iletişime geçin",
+    "learnMore": "Daha fazla bilgi",
+    "booking": "Randevu alın",
+    "freeValuation": "Ücretsiz Değerleme",
+    "calculator": "Hesap makinesine git"
+  },
+  "booking": {
+    "title": "Randevu Alın",
+    "subtitle": "Kişisel danışmanlık görüşmeniz için tarih ve saat seçin.",
+    "selectDate": "Tarih seçin",
+    "selectTime": "Saat seçin",
+    "name": "Adınız",
+    "phone": "Telefon numarası",
+    "email": "E-posta adresi",
+    "topic": "Talebiniz",
+    "topic1": "Gayrimenkul satışı",
+    "topic2": "Gayrimenkul değerlemesi",
+    "topic3": "Finansman danışmanlığı",
+    "topic4": "Genel danışmanlık",
+    "topic5": "Diğer",
+    "submit": "Randevu talep edin",
+    "confirmTitle": "Randevu talebiniz gönderildi!",
+    "confirmText": "Teşekkürler! 24 saat içinde onay için size geri döneceğiz.",
+    "note": "Randevu talepleri 24 saat içinde onaylanır."
+  },
+  "footer": {
+    "tagline": "Farklı bir düzeyde kararlar.",
+    "links": "Hızlı bağlantılar",
+    "legal": "Hukuki",
+    "impressum": "Künyemiz",
+    "datenschutz": "Gizlilik politikası",
+    "contact": "İletişim",
+    "rights": "Tüm hakları saklıdır."
+  }
+}

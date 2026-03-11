@@ -1,0 +1,56 @@
+{
+  "nav": {
+    "services": "Services",
+    "process": "How it works",
+    "about": "About Ali Artun",
+    "ratgeber": "Guide",
+    "contact": "Contact",
+    "freeValuation": "Free Valuation",
+    "phone": "06261 / 123 456"
+  },
+  "hero": {
+    "badge": "Mosbach & Neckar-Odenwald district",
+    "headline": "Real estate sales with verified buyer financing",
+    "sub": "Predictable closings through strategy, structure, and financing checks.",
+    "cta1": "Free Valuation",
+    "cta2": "Learn more",
+    "tag1": "Verified Financing",
+    "tag2": "Local Expert",
+    "tag3": "Transparent Process"
+  },
+  "common": {
+    "contactUs": "Get in touch now",
+    "learnMore": "Learn more",
+    "booking": "Schedule appointment",
+    "freeValuation": "Free Valuation",
+    "calculator": "To calculator"
+  },
+  "booking": {
+    "title": "Schedule an Appointment",
+    "subtitle": "Choose a date and time for your personal consultation.",
+    "selectDate": "Choose a date",
+    "selectTime": "Choose a time",
+    "name": "Your name",
+    "phone": "Phone number",
+    "email": "Email address",
+    "topic": "Your concern",
+    "topic1": "Sell a property",
+    "topic2": "Property valuation",
+    "topic3": "Financing advice",
+    "topic4": "General consultation",
+    "topic5": "Other",
+    "submit": "Request appointment",
+    "confirmTitle": "Appointment request sent!",
+    "confirmText": "Thank you! We will get back to you within 24 hours to confirm.",
+    "note": "Appointment requests are confirmed within 24 hours."
+  },
+  "footer": {
+    "tagline": "Decisions on a different level.",
+    "links": "Quick links",
+    "legal": "Legal",
+    "impressum": "Legal notice",
+    "datenschutz": "Privacy policy",
+    "contact": "Contact",
+    "rights": "All rights reserved."
+  }
+}
