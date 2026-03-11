@@ -2,6 +2,12 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import { Playfair_Display } from "next/font/google";
 import "./globals.css";
+import PageLoader from "@/components/PageLoader";
+import CookieBanner from "@/components/CookieBanner";
+import WhatsAppButton from "@/components/WhatsAppButton";
+import ScrollToTop from "@/components/ScrollToTop";
+import ScrollReveal from "@/components/ScrollReveal";
+import ChatBot from "@/components/ChatBot";
 
 const geist = Geist({
   variable: "--font-geist-sans",
@@ -16,9 +22,65 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Plan A Immobilien – Premium Immobilienmakler München",
+  title: {
+    default: "Immobilienmakler Mosbach | Plan A Immobilien – Ali Artun",
+    template: "%s | Plan A Immobilien",
+  },
   description:
-    "Plan A Immobilien – Ihr vertrauenswürdiger Partner für Immobilienkauf, Verkauf und Bewertung in München. Mit Expertise und Leidenschaft zur Traumimmobilie.",
+    "Ihr Immobilienmakler in Mosbach und Neckar-Odenwald-Kreis. Plan A Immobilien verkauft Ihre Immobilie sicher mit geprüfter Käuferfinanzierung. ✓ Kostenlose Bewertung ✓ Lokaler Experte",
+  keywords: [
+    "Immobilienmakler Mosbach",
+    "Haus verkaufen Mosbach",
+    "Wohnung verkaufen Mosbach",
+    "Immobilien Neckar-Odenwald-Kreis",
+    "Immobilienbewertung Mosbach",
+    "Makler Mosbach",
+    "Plan A Immobilien",
+    "Ali Artun",
+    "Baufinanzierung Mosbach",
+    "Immobilien verkaufen Baden-Württemberg",
+  ],
+  openGraph: {
+    type: "website",
+    locale: "de_DE",
+    siteName: "Plan A Immobilien",
+    title: "Immobilienmakler Mosbach | Plan A Immobilien",
+    description:
+      "Sicherer Immobilienverkauf mit geprüfter Käuferfinanzierung im Neckar-Odenwald-Kreis.",
+    url: "https://plan-a-immobilien.de",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Plan A Immobilien Mosbach",
+    description:
+      "Ihr lokaler Immobilienmakler mit geprüfter Käuferfinanzierung.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "RealEstateAgent",
+  name: "Plan A Immobilien & Finanzierung",
+  description:
+    "Immobilienmakler in Mosbach mit geprüfter Käuferfinanzierung. Planbare Abschlüsse durch Strategie, Struktur und Finanzierungsprüfung.",
+  url: "https://plan-a-immobilien.de",
+  telephone: "+496261123456",
+  email: "info@plana-immobilien.de",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Mosbach",
+    addressRegion: "Baden-Württemberg",
+    addressCountry: "DE",
+  },
+  areaServed: "Neckar-Odenwald-Kreis",
+  founder: {
+    "@type": "Person",
+    name: "Ali Artun",
+  },
 };
 
 export default function RootLayout({
@@ -28,8 +90,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="de">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        />
+      </head>
       <body className={`${geist.variable} ${playfair.variable} antialiased`}>
+        <PageLoader />
+        <ScrollReveal />
         {children}
+        <CookieBanner />
+        <WhatsAppButton />
+        <ScrollToTop />
+        <ChatBot />
       </body>
     </html>
   );

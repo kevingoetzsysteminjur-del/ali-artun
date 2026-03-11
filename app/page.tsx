@@ -8,6 +8,8 @@ import Properties from "@/components/sections/properties";
 import About from "@/components/sections/about";
 import Testimonials from "@/components/sections/testimonials";
 import Contact from "@/components/sections/contact";
+import TrustBadges from "@/components/TrustBadges";
+import FAQSection from "@/components/FAQSection";
 
 function GoldDivider() {
   return (
@@ -22,6 +24,7 @@ export default function Home() {
         <VideoIntro />
         <Navbar />
         <Hero />
+        <TrustBadges />
         <GoldDivider />
         <Stats />
         <GoldDivider />
@@ -32,6 +35,8 @@ export default function Home() {
         <About />
         <GoldDivider />
         <Testimonials />
+        <GoldDivider />
+        <FAQSection />
         <GoldDivider />
         <Contact />
       </main>

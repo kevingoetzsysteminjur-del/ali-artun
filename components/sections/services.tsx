@@ -32,7 +32,7 @@ export default function Services() {
     <section id="leistungen" className="bg-[#FAF8F4] py-20 lg:py-28">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         {/* Header */}
-        <div className="max-w-2xl mb-14">
+        <div className="max-w-2xl mb-14 reveal">
           <div className="flex items-center gap-3 mb-5">
             <div className="h-0.5 w-10 bg-[#C9A96E]" />
             <span
@@ -58,7 +58,7 @@ export default function Services() {
             return (
               <div
                 key={i}
-                className="bg-white border border-[#C9A96E]/20 rounded-2xl p-8 hover:border-[#C9A96E]/50 hover:shadow-lg hover:shadow-[#C9A96E]/8 transition-all"
+                className={`reveal reveal-delay-${i + 1} bg-white border border-[#C9A96E]/20 rounded-2xl p-8 hover:border-[#C9A96E]/50 hover:shadow-lg hover:shadow-[#C9A96E]/8 transition-all`}
               >
                 <div
                   className="w-13 h-13 rounded-xl flex items-center justify-center mb-5 w-14 h-14"

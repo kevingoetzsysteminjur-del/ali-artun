@@ -18,7 +18,7 @@ export default function About() {
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
           {/* Photo */}
-          <div className="flex flex-col items-center lg:items-start gap-5 order-2 lg:order-1">
+          <div className="flex flex-col items-center lg:items-start gap-5 order-2 lg:order-1 reveal reveal-left">
             <div
               className="relative rounded-full overflow-hidden flex-shrink-0"
               style={{
@@ -41,7 +41,7 @@ export default function About() {
           </div>
 
           {/* Content */}
-          <div className="space-y-7 order-1 lg:order-2">
+          <div className="space-y-7 order-1 lg:order-2 reveal reveal-right">
             <div>
               <div className="flex items-center gap-3 mb-5">
                 <div className="h-0.5 w-10 bg-[#C9A96E]" />
