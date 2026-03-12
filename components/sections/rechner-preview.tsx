@@ -2,11 +2,13 @@
 
 import { useState, useMemo } from "react";
 import { Calculator } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const fmt = (n: number) =>
   n.toLocaleString("de-DE", { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " €";
 
 export default function RechnerPreview() {
+  const { t } = useLanguage();
   const [kaufpreis, setKaufpreis] = useState(350000);
 
   const nebenkosten = useMemo(() => {
@@ -24,22 +26,21 @@ export default function RechnerPreview() {
             <div className="flex items-center gap-3 mb-5">
               <div className="h-0.5 w-10 bg-[#C5A028]" />
               <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#C5A028]">
-                Kostenrechner
+                {t("rechner.eyebrow")}
               </span>
             </div>
             <h2 className="font-heading text-4xl lg:text-5xl font-bold text-stone-900 leading-[1.1] mb-5">
-              Berechnen Sie Ihre Kosten
+              {t("rechner.title")}
             </h2>
             <p className="text-stone-600 text-xl leading-[1.75] mb-6">
-              Wie viel kostet der Immobilienkauf wirklich? Nutzen Sie unseren
-              kostenlosen Rechner für Nebenkosten und Finanzierungsrate.
+              {t("rechner.sub")}
             </p>
             <ul className="space-y-2 text-stone-600 mb-8">
               {[
-                "Grunderwerbsteuer je Bundesland",
-                "Notar- und Grundbuchkosten",
-                "Maklerprovision",
-                "Monatliche Finanzierungsrate",
+                t("rechner.item1"),
+                t("rechner.item2"),
+                t("rechner.item3"),
+                t("rechner.item4"),
               ].map((p) => (
                 <li key={p} className="flex items-center gap-2">
                   <span style={{ color: "#C5A028" }}>✓</span>
@@ -48,7 +49,7 @@ export default function RechnerPreview() {
               ))}
             </ul>
             <a href="/rechner" className="btn-primary">
-              Zum vollständigen Rechner
+              {t("rechner.btnFull")}
               <span className="btn-arrow">→</span>
             </a>
           </div>
@@ -63,13 +64,13 @@ export default function RechnerPreview() {
                 >
                   <Calculator size={18} style={{ color: "#C5A028" }} />
                 </div>
-                <span className="font-semibold text-stone-900">Schnellrechner</span>
+                <span className="font-semibold text-stone-900">{t("rechner.quickTitle")}</span>
               </div>
 
               {/* Slider */}
               <div className="mb-6">
                 <div className="flex justify-between mb-2">
-                  <span className="text-stone-500 text-sm">Kaufpreis</span>
+                  <span className="text-stone-500 text-sm">{t("rechner.priceLabel")}</span>
                   <span className="font-bold text-stone-900 tabular-nums">{fmt(kaufpreis)}</span>
                 </div>
                 <div className="relative h-5 flex items-center">
@@ -86,7 +87,7 @@ export default function RechnerPreview() {
                     value={kaufpreis}
                     onChange={(e) => setKaufpreis(Number(e.target.value))}
                     className="gold-slider absolute w-full"
-                    aria-label="Kaufpreis"
+                    aria-label={t("rechner.priceLabel")}
                   />
                 </div>
                 <div className="flex justify-between mt-1">
@@ -97,23 +98,22 @@ export default function RechnerPreview() {
 
               {/* Ergebnis */}
               <div className="bg-gradient-to-br from-[#C5A028] to-[#A08020] rounded-2xl p-5 text-white mb-4">
-                <p className="text-white/80 text-sm mb-1">Geschätzte Nebenkosten (BW)</p>
+                <p className="text-white/80 text-sm mb-1">{t("rechner.resultLabel")}</p>
                 <p className="text-3xl font-bold tabular-nums">{fmt(nebenkosten)}</p>
                 <p className="text-white/70 text-xs mt-2">
-                  ca. {((nebenkosten / kaufpreis) * 100).toFixed(1)}% des Kaufpreises
+                  ca. {((nebenkosten / kaufpreis) * 100).toFixed(1)}%
                 </p>
               </div>
 
               <p className="text-stone-400 text-xs leading-relaxed mb-4">
-                Enthält: Grunderwerbsteuer (5%), Notar (1,5%), Grundbuch (0,5%),
-                Makler (3,57%)
+                {t("rechner.breakdown")}
               </p>
 
               <a
                 href="/rechner"
                 className="flex items-center justify-center gap-2 w-full py-3 rounded-xl border border-[#C5A028]/40 text-[#C5A028] text-sm font-medium hover:bg-[#C5A028]/5 transition-colors"
               >
-                Alle Bundesländer & Finanzierung berechnen
+                {t("rechner.btnAll")}
                 <span>→</span>
               </a>
             </div>

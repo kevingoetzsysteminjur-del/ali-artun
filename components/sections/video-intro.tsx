@@ -1,8 +1,11 @@
 "use client";
 
 import Image from "next/image";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function VideoIntro() {
+  const { t } = useLanguage();
+
   return (
     <section
       style={{
@@ -110,7 +113,7 @@ export default function VideoIntro() {
             margin: "0 0 6px 0",
             lineHeight: 1.5,
           }}>
-            Entscheidungen auf einem anderen Niveau.
+            {t("videoIntro.claim")}
           </p>
 
           <p style={{
@@ -120,8 +123,8 @@ export default function VideoIntro() {
             maxWidth: 280,
             margin: "0 0 28px 0",
           }}>
-            Immobilienverkauf mit geprüfter Käuferfinanzierung<br />
-            in Mosbach & Umgebung
+            {t("videoIntro.sub1")}<br />
+            {t("videoIntro.sub2")}
           </p>
 
           {/* Maskottchen — nur Desktop */}
@@ -145,7 +148,7 @@ export default function VideoIntro() {
               window.scrollBy({ top: window.innerHeight, behavior: "smooth" });
             }}
           >
-            Zur Website
+            {t("videoIntro.btn")}
             <span className="btn-arrow">→</span>
           </a>
         </div>
@@ -203,10 +206,10 @@ export default function VideoIntro() {
             </div>
             <div>
               <p style={{ margin: 0, fontSize: "0.85rem", fontWeight: 600, color: "#3D2C1A", lineHeight: 1.3 }}>
-                Ali Artun stellt sich vor
+                {t("videoIntro.videoName")}
               </p>
               <p style={{ margin: 0, fontSize: "0.75rem", color: "#8B7355" }}>
-                Ihr Immobilienberater · Mosbach
+                {t("videoIntro.videoSub")}
               </p>
             </div>
           </div>

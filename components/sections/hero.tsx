@@ -44,7 +44,7 @@ export default function Hero() {
                   color: "#8A6A18",
                 }}
               >
-                Strategie bestimmt den Preis
+                {t("heroExtra.strategyTag")}
               </span>
             </div>
 
@@ -79,14 +79,14 @@ export default function Hero() {
                 }}
               >
                 <MessageCircle size={18} />
-                Jetzt auf WhatsApp
+                {t("heroExtra.whatsappBtn")}
               </a>
               {/* Secondary: Kostenlose Bewertung */}
               <a
                 href="/immobilienbewertung"
                 className="btn-secondary"
               >
-                Kostenlose Bewertung
+                {t("heroExtra.valuationBtn")}
                 <span className="btn-arrow">→</span>
               </a>
             </div>
