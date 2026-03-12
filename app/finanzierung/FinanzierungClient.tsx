@@ -5,6 +5,7 @@ import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
 import { MAKLER } from "@/lib/config";
 import { Building2, BadgeCheck, Zap, HandshakeIcon } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 // ── Animated Counter ────────────────────────────────────────────────────────
 function AnimatedCounter({
@@ -60,109 +61,111 @@ function WhatsAppIcon() {
   );
 }
 
-// ── Tab data ─────────────────────────────────────────────────────────────────
-const TABS = [
-  {
-    id: "altbau",
-    label: "Altbaufinanzierung",
-    title: "Altbaufinanzierung",
-    description:
-      "Finanzierung für Bestandsimmobilien, Altbauten und sanierungsbedürftige Objekte. Wir finden den passenden Kredit auch für ältere Gebäude mit besonderem Charme. Individuelle Lösungen für Denkmalschutz, energetische Sanierung und Modernisierung.",
-    gradient: "linear-gradient(135deg, #7C6347 0%, #5C4A38 40%, #3D2E1E 100%)",
-    accentGradient: "linear-gradient(45deg, rgba(197,160,40,0.25) 0%, transparent 60%)",
-    imageAlt: "Altbau-Fassade",
-    icon: "🏛️",
-  },
-  {
-    id: "neubau",
-    label: "Neubaufinanzierung",
-    title: "Neubaufinanzierung",
-    description:
-      "Vom Grundstückskauf bis zur Schlüsselübergabe – wir begleiten Ihre Neubaufinanzierung mit den besten Konditionen. Stufenweise Auszahlung nach Baufortschritt, KfW-Fördermittel und Sondertilgungsoptionen inklusive.",
-    gradient: "linear-gradient(135deg, #2C4A6E 0%, #1E3A5A 40%, #122540 100%)",
-    accentGradient: "linear-gradient(45deg, rgba(100,180,255,0.2) 0%, transparent 60%)",
-    imageAlt: "Neubau",
-    icon: "🏗️",
-  },
-  {
-    id: "bautraeger",
-    label: "Bauträgerfinanzierung",
-    title: "Bauträgerfinanzierung",
-    description:
-      "Spezielle Finanzierungslösungen für Bauträger und Projektentwickler. Wir strukturieren Ihre Finanzierung so, dass Ihr Projekt von der Planung bis zum Verkauf optimal abgesichert ist.",
-    gradient: "linear-gradient(135deg, #2D3A4A 0%, #1E2B3A 40%, #121E2C 100%)",
-    accentGradient: "linear-gradient(45deg, rgba(197,160,40,0.2) 0%, transparent 60%)",
-    imageAlt: "Bauprojekt",
-    icon: "🏢",
-  },
-  {
-    id: "bausparen",
-    label: "Bausparfinanzierung",
-    title: "Bausparfinanzierung",
-    description:
-      "Bausparverträge als solide Grundlage für Ihre Immobilienfinanzierung. Niedrige Darlehenszinsen, staatliche Förderungen und planbare Raten – perfekt für langfristige Vorsorge und zukünftige Immobilienprojekte.",
-    gradient: "linear-gradient(135deg, #2A4A2A 0%, #1E361E 40%, #122212 100%)",
-    accentGradient: "linear-gradient(45deg, rgba(100,200,100,0.2) 0%, transparent 60%)",
-    imageAlt: "Familie vor Haus",
-    icon: "🏡",
-  },
-  {
-    id: "privatkredit",
-    label: "Privatkredite",
-    title: "Privatkredite",
-    description:
-      "Flexible Privatkredite für Renovierung, Modernisierung oder Eigenkapital-Aufstockung. Schnelle Bearbeitung, faire Konditionen und unabhängiger Vergleich aus über 300 Bankpartnern.",
-    gradient: "linear-gradient(135deg, #3A2A4A 0%, #2A1E3A 40%, #1A1228 100%)",
-    accentGradient: "linear-gradient(45deg, rgba(180,100,255,0.2) 0%, transparent 60%)",
-    imageAlt: "Beratungsgespräch",
-    icon: "🤝",
-  },
-];
-
-const features = [
-  {
-    icon: <Building2 size={28} />,
-    title: "300+ Partnerbanken",
-    desc: "Wir vergleichen für Sie – nicht an eine Bank gebunden. Das bedeutet echte Unabhängigkeit und die besten Konditionen.",
-  },
-  {
-    icon: <BadgeCheck size={28} />,
-    title: "Beste Konditionen",
-    desc: "Durch unser Netzwerk erhalten Sie Angebote, die Sie als Privatperson so nicht bekommen würden.",
-  },
-  {
-    icon: <Zap size={28} />,
-    title: "Schnelle Bearbeitung",
-    desc: "Typische Finanzierungszusage innerhalb von 24–48 Stunden. Wir sorgen dafür, dass kein Kauf platzt.",
-  },
-  {
-    icon: <HandshakeIcon size={28} />,
-    title: "Persönliche Beratung",
-    desc: `${MAKLER.name} begleitet Sie persönlich durch den gesamten Finanzierungsprozess – von der Anfrage bis zum Abschluss.`,
-  },
-];
-
-const processSteps = [
-  {
-    num: "01",
-    title: "Gespräch",
-    desc: "Wir lernen Ihre Situation und Wünsche kennen. Was möchten Sie kaufen? Was ist Ihre finanzielle Ausgangslage?",
-  },
-  {
-    num: "02",
-    title: "Vergleich",
-    desc: "Wir holen Angebote aus unserem Netzwerk von 300+ Banken und Finanzierungspartnern ein.",
-  },
-  {
-    num: "03",
-    title: "Abschluss",
-    desc: "Sie erhalten die beste Finanzierung – verständlich erklärt, transparent dokumentiert, sicher abgewickelt.",
-  },
-];
-
 export default function FinanzierungClient() {
+  const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState(0);
   const [visible, setVisible] = useState(false);
+
+  // ── Tab data (defined inside component to use t()) ──────────────────────
+  const TABS = [
+    {
+      id: "altbau",
+      label: t("finanzierung.tab1Label"),
+      title: t("finanzierung.tab1Title"),
+      description: t("finanzierung.tab1Desc"),
+      gradient: "linear-gradient(135deg, #7C6347 0%, #5C4A38 40%, #3D2E1E 100%)",
+      accentGradient: "linear-gradient(45deg, rgba(197,160,40,0.25) 0%, transparent 60%)",
+      imageAlt: "Altbau-Fassade",
+      icon: "🏛️",
+    },
+    {
+      id: "neubau",
+      label: t("finanzierung.tab2Label"),
+      title: t("finanzierung.tab2Title"),
+      description: t("finanzierung.tab2Desc"),
+      gradient: "linear-gradient(135deg, #2C4A6E 0%, #1E3A5A 40%, #122540 100%)",
+      accentGradient: "linear-gradient(45deg, rgba(100,180,255,0.2) 0%, transparent 60%)",
+      imageAlt: "Neubau",
+      icon: "🏗️",
+    },
+    {
+      id: "bautraeger",
+      label: t("finanzierung.tab3Label"),
+      title: t("finanzierung.tab3Title"),
+      description: t("finanzierung.tab3Desc"),
+      gradient: "linear-gradient(135deg, #2D3A4A 0%, #1E2B3A 40%, #121E2C 100%)",
+      accentGradient: "linear-gradient(45deg, rgba(197,160,40,0.2) 0%, transparent 60%)",
+      imageAlt: "Bauprojekt",
+      icon: "🏢",
+    },
+    {
+      id: "bausparen",
+      label: t("finanzierung.tab4Label"),
+      title: t("finanzierung.tab4Title"),
+      description: t("finanzierung.tab4Desc"),
+      gradient: "linear-gradient(135deg, #2A4A2A 0%, #1E361E 40%, #122212 100%)",
+      accentGradient: "linear-gradient(45deg, rgba(100,200,100,0.2) 0%, transparent 60%)",
+      imageAlt: "Familie vor Haus",
+      icon: "🏡",
+    },
+    {
+      id: "privatkredit",
+      label: t("finanzierung.tab5Label"),
+      title: t("finanzierung.tab5Title"),
+      description: t("finanzierung.tab5Desc"),
+      gradient: "linear-gradient(135deg, #3A2A4A 0%, #2A1E3A 40%, #1A1228 100%)",
+      accentGradient: "linear-gradient(45deg, rgba(180,100,255,0.2) 0%, transparent 60%)",
+      imageAlt: "Beratungsgespräch",
+      icon: "🤝",
+    },
+  ];
+
+  const features = [
+    {
+      icon: <Building2 size={28} />,
+      title: t("finanzierung.f1Title"),
+      desc: t("finanzierung.f1Desc"),
+    },
+    {
+      icon: <BadgeCheck size={28} />,
+      title: t("finanzierung.f2Title"),
+      desc: t("finanzierung.f2Desc"),
+    },
+    {
+      icon: <Zap size={28} />,
+      title: t("finanzierung.f3Title"),
+      desc: t("finanzierung.f3Desc"),
+    },
+    {
+      icon: <HandshakeIcon size={28} />,
+      title: t("finanzierung.f4Title"),
+      desc: t("finanzierung.f4Desc"),
+    },
+  ];
+
+  const processSteps = [
+    {
+      num: "01",
+      title: t("finanzierung.s1Title"),
+      desc: t("finanzierung.s1Desc"),
+    },
+    {
+      num: "02",
+      title: t("finanzierung.s2Title"),
+      desc: t("finanzierung.s2Desc"),
+    },
+    {
+      num: "03",
+      title: t("finanzierung.s3Title"),
+      desc: t("finanzierung.s3Desc"),
+    },
+  ];
+
+  const stats = [
+    { target: 300, suffix: "+", label: t("finanzierung.stat1Label"), sub: t("finanzierung.stat1Sub") },
+    { target: 100, suffix: "%", label: t("finanzierung.stat2Label"), sub: t("finanzierung.stat2Sub") },
+    { target: 24,  suffix: "h", label: t("finanzierung.stat3Label"), sub: t("finanzierung.stat3Sub") },
+  ];
 
   const handleTabChange = (idx: number) => {
     if (idx === activeTab) return;
@@ -175,8 +178,8 @@ export default function FinanzierungClient() {
 
   useEffect(() => {
     // trigger initial fade-in
-    const t = setTimeout(() => setVisible(true), 50);
-    return () => clearTimeout(t);
+    const timer = setTimeout(() => setVisible(true), 50);
+    return () => clearTimeout(timer);
   }, []);
 
   const tab = TABS[activeTab];
@@ -198,14 +201,14 @@ export default function FinanzierungClient() {
           />
           <div className="max-w-5xl mx-auto px-4 sm:px-8 relative text-center">
             <p className="text-[#C5A028] text-sm font-semibold tracking-[0.2em] uppercase mb-5">
-              Baufinanzierung & Privatkredite
+              {t("finanzierung.eyebrow")}
             </p>
             <h1 className="font-heading text-4xl lg:text-6xl font-bold text-white leading-[1.1] mb-6">
-              Ihre Finanzierung{" "}
-              <span className="italic" style={{ color: "#C5A028" }}>aus einer Hand</span>
+              {t("finanzierung.heroTitle")}{" "}
+              <span className="italic" style={{ color: "#C5A028" }}>{t("finanzierung.heroTitleItalic")}</span>
             </h1>
             <p className="text-stone-300 text-xl lg:text-2xl leading-relaxed max-w-3xl mx-auto mb-10">
-              Verbunden mit über 300 Banken deutschlandweit – unabhängig, transparent und auf Ihrer Seite
+              {t("finanzierung.heroSub")}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
@@ -216,7 +219,7 @@ export default function FinanzierungClient() {
                 style={{ background: "#25D366", boxShadow: "0 4px 18px rgba(37,211,102,0.35)", textDecoration: "none" }}
               >
                 <WhatsAppIcon />
-                Finanzierung anfragen
+                {t("finanzierung.ctaWhatsapp")}
               </a>
               <a
                 href={MAKLER.telefonHref}
@@ -238,9 +241,9 @@ export default function FinanzierungClient() {
               className="flex overflow-x-auto mb-10 border-b border-stone-200"
               style={{ scrollbarWidth: "none" }}
             >
-              {TABS.map((t, i) => (
+              {TABS.map((tabItem, i) => (
                 <button
-                  key={t.id}
+                  key={tabItem.id}
                   onClick={() => handleTabChange(i)}
                   className="flex-shrink-0 px-5 py-4 text-sm font-semibold transition-all duration-200 whitespace-nowrap relative"
                   style={{
@@ -251,7 +254,7 @@ export default function FinanzierungClient() {
                     outline: "none",
                   }}
                 >
-                  {t.label}
+                  {tabItem.label}
                   {activeTab === i && (
                     <span
                       className="absolute bottom-0 left-0 right-0 h-0.5"
@@ -279,7 +282,7 @@ export default function FinanzierungClient() {
                       className="text-xs font-semibold tracking-[0.2em] uppercase mb-3"
                       style={{ color: "#C5A028" }}
                     >
-                      Finanzierungsart
+                      {t("finanzierung.tabSubLabel")}
                     </p>
                     <h2 className="font-heading text-3xl lg:text-4xl font-bold text-stone-900 leading-[1.15] mb-5">
                       {tab.title}
@@ -302,7 +305,7 @@ export default function FinanzierungClient() {
                       }}
                     >
                       <WhatsAppIcon />
-                      Jetzt Finanzierung anfragen
+                      {t("finanzierung.tabCtaWhatsapp")}
                     </a>
                     <a
                       href="#kontakt"
@@ -313,7 +316,7 @@ export default function FinanzierungClient() {
                         textDecoration: "none",
                       }}
                     >
-                      Kontakt aufnehmen
+                      {t("finanzierung.tabCtaContact")}
                     </a>
                   </div>
                 </div>
@@ -400,10 +403,10 @@ export default function FinanzierungClient() {
                   <AnimatedCounter target={300} suffix="+" />
                 </div>
                 <h3 className="font-heading text-2xl lg:text-3xl font-bold text-white">
-                  Bankpartner deutschlandweit
+                  {t("finanzierung.highlightTitle")}
                 </h3>
                 <p className="text-stone-400 text-lg max-w-xl mx-auto">
-                  Wir finden den besten Kredit für Sie – aus einem Netzwerk von über 300 Partnerbanken.
+                  {t("finanzierung.highlightSub")}
                 </p>
                 <div
                   className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full mt-4"
@@ -414,7 +417,7 @@ export default function FinanzierungClient() {
                 >
                   <span style={{ color: "#C5A028", fontSize: 18 }}>✓</span>
                   <span className="text-stone-300 text-sm font-medium tracking-wide">
-                    Freier Kreditvergleich – unabhängig und transparent
+                    {t("finanzierung.highlightBadge")}
                   </span>
                 </div>
               </div>
@@ -426,11 +429,7 @@ export default function FinanzierungClient() {
         <section className="bg-white py-16">
           <div className="max-w-4xl mx-auto px-4 sm:px-8">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-              {[
-                { target: 300, suffix: "+", label: "Partnerbanken", sub: "für beste Konditionen" },
-                { target: 100, suffix: "%", label: "Unabhängig", sub: "keine Bankbindung" },
-                { target: 24, suffix: "h", label: "Entscheidung", sub: "typische Zusage" },
-              ].map((stat) => (
+              {stats.map((stat) => (
                 <div
                   key={stat.label}
                   className="text-center py-8 px-6 bg-[#FAF8F4] rounded-2xl border border-stone-100 hover:border-[#C5A028]/30 transition-colors"
@@ -450,8 +449,12 @@ export default function FinanzierungClient() {
         <section className="bg-[#FAF8F4] py-20">
           <div className="max-w-5xl mx-auto px-4 sm:px-8">
             <div className="text-center mb-14">
-              <p className="text-[#C5A028] text-sm font-semibold tracking-[0.2em] uppercase mb-3">Warum Plan A</p>
-              <h2 className="font-heading text-3xl lg:text-4xl font-bold text-stone-900">Ihre Vorteile auf einen Blick</h2>
+              <p className="text-[#C5A028] text-sm font-semibold tracking-[0.2em] uppercase mb-3">
+                {t("finanzierung.whyEyebrow")}
+              </p>
+              <h2 className="font-heading text-3xl lg:text-4xl font-bold text-stone-900">
+                {t("finanzierung.whyHeading")}
+              </h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {features.map((f) => (
@@ -479,8 +482,12 @@ export default function FinanzierungClient() {
         <section className="bg-white py-20">
           <div className="max-w-4xl mx-auto px-4 sm:px-8">
             <div className="text-center mb-14">
-              <p className="text-[#C5A028] text-sm font-semibold tracking-[0.2em] uppercase mb-3">Ablauf</p>
-              <h2 className="font-heading text-3xl lg:text-4xl font-bold text-stone-900">In 3 Schritten zur Finanzierung</h2>
+              <p className="text-[#C5A028] text-sm font-semibold tracking-[0.2em] uppercase mb-3">
+                {t("finanzierung.processEyebrow")}
+              </p>
+              <h2 className="font-heading text-3xl lg:text-4xl font-bold text-stone-900">
+                {t("finanzierung.processHeading")}
+              </h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {processSteps.map((step, i) => (
@@ -511,11 +518,11 @@ export default function FinanzierungClient() {
         <section className="bg-stone-900 py-20">
           <div className="max-w-3xl mx-auto px-4 sm:px-8 text-center space-y-7">
             <h2 className="font-heading text-3xl lg:text-4xl font-bold text-white">
-              Bereit für Ihre{" "}
-              <span className="italic" style={{ color: "#C5A028" }}>ideale Finanzierung?</span>
+              {t("finanzierung.ctaHeading")}{" "}
+              <span className="italic" style={{ color: "#C5A028" }}>{t("finanzierung.ctaHeadingItalic")}</span>
             </h2>
             <p className="text-stone-400 text-xl leading-relaxed">
-              Unverbindliches Erstgespräch – wir prüfen Ihre Möglichkeiten und finden das beste Angebot.
+              {t("finanzierung.ctaSub")}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
@@ -526,7 +533,7 @@ export default function FinanzierungClient() {
                 style={{ background: "#25D366", boxShadow: "0 4px 18px rgba(37,211,102,0.35)", textDecoration: "none" }}
               >
                 <WhatsAppIcon />
-                Jetzt anfragen
+                {t("finanzierung.ctaBtn")}
               </a>
               <a
                 href={MAKLER.telefonHref}

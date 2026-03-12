@@ -2,9 +2,10 @@
 
 import { MapPin } from "lucide-react";
 import { MAKLER } from "@/lib/config";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const CITIES = [
-  { name: "Mosbach", label: "Hauptsitz", highlight: true },
+  { name: "Mosbach", highlight: true },
   { name: "Heidelberg" },
   { name: "Mannheim" },
   { name: "Heilbronn" },
@@ -17,6 +18,8 @@ const CITIES = [
 ];
 
 export default function Regionen() {
+  const { t } = useLanguage();
+
   return (
     <section className="bg-[#FAF8F4] py-20 lg:py-28">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -29,19 +32,18 @@ export default function Regionen() {
               className="text-xs font-semibold tracking-[0.2em] uppercase"
               style={{ color: "#C5A028" }}
             >
-              Einzugsgebiet
+              {t("regionen.eyebrow")}
             </span>
             <div className="h-px w-10 bg-[#C5A028]" />
           </div>
           <h2 className="font-heading text-3xl lg:text-4xl font-bold text-stone-900 mb-4">
-            Unser{" "}
+            {t("regionen.title")}{" "}
             <span className="italic" style={{ color: "#C5A028" }}>
-              Großraum
+              {t("regionen.titleItalic")}
             </span>
           </h2>
           <p className="text-stone-500 text-xl max-w-2xl mx-auto leading-relaxed">
-            Ali Artun ist nicht nur in Mosbach aktiv – er betreut Eigentümer und Käufer im
-            gesamten Rhein-Neckar-Raum und darüber hinaus.
+            {t("regionen.sub")}
           </p>
         </div>
 
@@ -73,7 +75,7 @@ export default function Regionen() {
                     whiteSpace: "nowrap",
                   }}
                 >
-                  Hauptsitz
+                  {t("regionen.hauptsitz")}
                 </span>
               )}
 
@@ -108,10 +110,10 @@ export default function Regionen() {
             </div>
             <div>
               <p className="font-heading font-bold text-white text-lg leading-tight">
-                Auch außerhalb dieser Städte?
+                {t("regionen.calloutTitle")}
               </p>
               <p className="text-stone-400 text-sm mt-0.5">
-                Sprechen Sie uns an – wir helfen auch im gesamten Umland.
+                {t("regionen.calloutSub")}
               </p>
             </div>
           </div>
@@ -126,7 +128,7 @@ export default function Regionen() {
               textDecoration: "none",
             }}
           >
-            Anfrage stellen
+            {t("regionen.calloutBtn")}
           </a>
         </div>
 
