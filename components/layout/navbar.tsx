@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { Phone, Menu, X, ChevronDown } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
@@ -9,25 +10,40 @@ import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Navbar() {
   const { t } = useLanguage();
+  const pathname = usePathname();
   const [open, setOpen]       = useState(false);
-  const [visible, setVisible] = useState(false);
+  // On subpages the navbar is always visible; on / it appears after the VideoIntro
+  const [visible, setVisible] = useState(pathname !== "/");
   const [scrolled, setScrolled] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
 
+  // On subpages, anchor links must include the path so the browser navigates
+  // back to the homepage first and then scrolls to the right section.
+  const anchor = (hash: string) => pathname === "/" ? hash : `/${hash}`;
+
   const NAV_LINKS = [
-    { label: t("nav.services"),  href: "#leistungen" },
-    { label: t("nav.process"),   href: "#prozess" },
-    { label: t("nav.about"),     href: "#ueber-uns" },
+    { label: t("nav.services"),  href: anchor("#leistungen") },
+    { label: "Finanzierung",     href: "/finanzierung" },
+    { label: t("nav.process"),   href: anchor("#prozess") },
+    { label: t("nav.about"),     href: anchor("#ueber-uns") },
     { label: t("nav.ratgeber"),  href: "/ratgeber" },
-    { label: t("nav.contact"),   href: "#kontakt" },
+    { label: t("nav.contact"),   href: anchor("#kontakt") },
   ];
 
   const MORE_LINKS = [
-    { label: "Finanzierung", href: "/finanzierung" },
     { label: "Objektaufbereitung", href: "/aufbereitung" },
   ];
 
   useEffect(() => {
+    // On the homepage the VideoIntro is 100vh tall, so the navbar only appears
+    // after the user scrolls past it. On all other pages show it immediately.
+    if (pathname !== "/") {
+      setVisible(true);
+      const checkScroll = () => setScrolled(window.scrollY > 80);
+      checkScroll();
+      window.addEventListener("scroll", checkScroll, { passive: true });
+      return () => window.removeEventListener("scroll", checkScroll);
+    }
     const check = () => {
       setVisible(window.scrollY >= window.innerHeight - 10);
       setScrolled(window.scrollY > 80);
@@ -35,7 +51,7 @@ export default function Navbar() {
     check();
     window.addEventListener("scroll", check, { passive: true });
     return () => window.removeEventListener("scroll", check);
-  }, []);
+  }, [pathname]);
 
   // close "mehr" dropdown when clicking outside
   useEffect(() => {
@@ -136,7 +152,7 @@ export default function Navbar() {
               <LanguageSwitcher />
               {/* Partner werden highlighted CTA */}
               <a
-                href="/partner"
+                href="/partner/warum"
                 className="hidden xl:inline-flex items-center gap-1 px-4 py-2 rounded-lg text-xs font-semibold tracking-wide transition-all hover:scale-105"
                 style={{
                   background: "rgba(197,160,40,0.1)",
@@ -222,7 +238,7 @@ export default function Navbar() {
 
               {/* Partner werden - highlighted in mobile */}
               <a
-                href="/partner"
+                href="/partner/warum"
                 onClick={() => setOpen(false)}
                 className="flex items-center justify-center px-4 py-3.5 rounded-xl text-[15px] font-semibold mt-2 transition-all"
                 style={{

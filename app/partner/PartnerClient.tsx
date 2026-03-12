@@ -117,7 +117,7 @@ export default function PartnerClient() {
                     Jetzt bewerben
                   </a>
                   <a
-                    href="#bewerbung"
+                    href="/partner/warum"
                     className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl font-semibold text-sm tracking-wide transition-all duration-200 hover:scale-105"
                     style={{ border: "1.5px solid rgba(197,160,40,0.5)", color: "#C5A028", textDecoration: "none" }}
                   >

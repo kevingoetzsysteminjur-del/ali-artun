@@ -17,6 +17,7 @@ export default function Footer() {
   const companyLinks: [string, string][] = [
     [t("footer.nav1"), "#ueber-uns"],
     [t("footer.nav2"), "#prozess"],
+    ["Finanzierung", "/finanzierung"],
     [t("footer.nav3"), "/ratgeber"],
     [t("footer.nav4"), "/immobilienbewertung"],
     [t("footer.nav5"), "#kontakt"],
