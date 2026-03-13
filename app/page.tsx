@@ -18,7 +18,6 @@ import FAQSection from "@/components/FAQSection";
 import FinanzierungPreview from "@/components/sections/finanzierung-preview";
 import PartnerTeaser from "@/components/sections/partner-teaser";
 import VideoClip from "@/components/sections/video-clip";
-import VideoErklaer from "@/components/sections/video-erklaer";
 import Regionen from "@/components/sections/regionen";
 
 function GoldDivider() {
@@ -47,8 +46,6 @@ export default function Home() {
         <FinanzierungPreview />
         <GoldDivider />
         <Properties />
-        <GoldDivider />
-        <VideoErklaer />
         <GoldDivider />
         <RechnerPreview />
         <GoldDivider />

@@ -179,7 +179,7 @@ export default function VideoIntro() {
             >
               <iframe
                 style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}
-                src="https://www.youtube.com/embed/HxJ_R-bG22Q"
+                src="https://www.youtube.com/embed/TY9aF0GQq-U"
                 title="Plan A Immobilien & Finanzierung"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
