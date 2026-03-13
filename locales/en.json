@@ -472,6 +472,11 @@
     "stat2": "Free",
     "stat3": "Commission"
   },
+  "videoErklaer": {
+    "eyebrow": "Video",
+    "title": "Get to know Plan A",
+    "sub": "In 2 minutes, learn how we successfully sell your property."
+  },
   "aufbereitung": {
     "heroEyebrow": "Property Preparation",
     "heroTitle1": "We prepare your property",

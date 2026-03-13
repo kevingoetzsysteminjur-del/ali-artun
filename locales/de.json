@@ -472,6 +472,11 @@
     "stat2": "Kostenlos",
     "stat3": "Provision"
   },
+  "videoErklaer": {
+    "eyebrow": "Video",
+    "title": "Lernen Sie Plan A kennen",
+    "sub": "In 2 Minuten erfahren Sie, wie wir Ihre Immobilie erfolgreich verkaufen."
+  },
   "aufbereitung": {
     "heroEyebrow": "Objektaufbereitung",
     "heroTitle1": "Wir bereiten Ihr Objekt",
