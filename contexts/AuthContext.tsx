@@ -23,7 +23,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true);
   const supabase = createClient();
   const adminEmail =
-    process.env.NEXT_PUBLIC_ADMIN_EMAIL || "ali@plana-immobilien.de";
+    process.env.NEXT_PUBLIC_ADMIN_EMAIL || "Info@plana-immobilien-finanzierung.com";
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data: { user } }) => {

@@ -21,7 +21,7 @@ export default async function AdminLayout({
   }
 
   const adminEmail =
-    process.env.ADMIN_EMAIL || "ali@plana-immobilien.de";
+    process.env.ADMIN_EMAIL || "Info@plana-immobilien-finanzierung.com";
 
   if (user.email !== adminEmail) {
     redirect("/");

@@ -71,17 +71,17 @@ CREATE POLICY "Anyone can create inquiry"
 -- Users can view their own inquiries
 CREATE POLICY "Users can view own inquiries"
   ON public.inquiries FOR SELECT
-  USING (auth.uid() = user_id OR auth.jwt()->>'email' = 'ali@plana-immobilien.de');
+  USING (auth.uid() = user_id OR auth.jwt()->>'email' = 'Info@plana-immobilien-finanzierung.com');
 
 -- Admin can update inquiries
 CREATE POLICY "Admin can update inquiries"
   ON public.inquiries FOR UPDATE
-  USING (auth.jwt()->>'email' = 'ali@plana-immobilien.de');
+  USING (auth.jwt()->>'email' = 'Info@plana-immobilien-finanzierung.com');
 
 -- Admin can delete inquiries
 CREATE POLICY "Admin can delete inquiries"
   ON public.inquiries FOR DELETE
-  USING (auth.jwt()->>'email' = 'ali@plana-immobilien.de');
+  USING (auth.jwt()->>'email' = 'Info@plana-immobilien-finanzierung.com');
 
 -- ── Partner Applications ─────────────────────────────────────
 CREATE TABLE IF NOT EXISTS public.partner_applications (
@@ -108,12 +108,12 @@ CREATE POLICY "Anyone can create partner application"
 -- Admin can view all partner applications
 CREATE POLICY "Admin can view partner applications"
   ON public.partner_applications FOR SELECT
-  USING (auth.jwt()->>'email' = 'ali@plana-immobilien.de');
+  USING (auth.jwt()->>'email' = 'Info@plana-immobilien-finanzierung.com');
 
 -- Admin can update partner applications
 CREATE POLICY "Admin can update partner applications"
   ON public.partner_applications FOR UPDATE
-  USING (auth.jwt()->>'email' = 'ali@plana-immobilien.de');
+  USING (auth.jwt()->>'email' = 'Info@plana-immobilien-finanzierung.com');
 
 -- ── Site Images ──────────────────────────────────────────────
 CREATE TABLE IF NOT EXISTS public.site_images (
@@ -136,11 +136,11 @@ CREATE POLICY "Anyone can view site images"
 -- Admin can manage site images
 CREATE POLICY "Admin can insert site images"
   ON public.site_images FOR INSERT
-  WITH CHECK (auth.jwt()->>'email' = 'ali@plana-immobilien.de');
+  WITH CHECK (auth.jwt()->>'email' = 'Info@plana-immobilien-finanzierung.com');
 
 CREATE POLICY "Admin can delete site images"
   ON public.site_images FOR DELETE
-  USING (auth.jwt()->>'email' = 'ali@plana-immobilien.de');
+  USING (auth.jwt()->>'email' = 'Info@plana-immobilien-finanzierung.com');
 
 -- ── Site Content ─────────────────────────────────────────────
 CREATE TABLE IF NOT EXISTS public.site_content (
@@ -162,8 +162,8 @@ CREATE POLICY "Anyone can view site content"
 -- Admin can manage site content
 CREATE POLICY "Admin can upsert site content"
   ON public.site_content FOR ALL
-  USING (auth.jwt()->>'email' = 'ali@plana-immobilien.de')
-  WITH CHECK (auth.jwt()->>'email' = 'ali@plana-immobilien.de');
+  USING (auth.jwt()->>'email' = 'Info@plana-immobilien-finanzierung.com')
+  WITH CHECK (auth.jwt()->>'email' = 'Info@plana-immobilien-finanzierung.com');
 
 -- ── Storage Bucket ───────────────────────────────────────────
 -- Run in Supabase dashboard → Storage → Create bucket named "images" (public)
@@ -177,7 +177,7 @@ CREATE POLICY "Admin can upload images"
   ON storage.objects FOR INSERT
   WITH CHECK (
     bucket_id = 'images'
-    AND auth.jwt()->>'email' = 'ali@plana-immobilien.de'
+    AND auth.jwt()->>'email' = 'Info@plana-immobilien-finanzierung.com'
   );
 
 -- Allow admin to delete images
@@ -185,7 +185,7 @@ CREATE POLICY "Admin can delete images"
   ON storage.objects FOR DELETE
   USING (
     bucket_id = 'images'
-    AND auth.jwt()->>'email' = 'ali@plana-immobilien.de'
+    AND auth.jwt()->>'email' = 'Info@plana-immobilien-finanzierung.com'
   );
 
 -- Allow public read of images

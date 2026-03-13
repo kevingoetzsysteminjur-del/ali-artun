@@ -46,7 +46,7 @@ export async function middleware(request: NextRequest) {
       );
     }
     const adminEmail =
-      process.env.ADMIN_EMAIL || "ali@plana-immobilien.de";
+      process.env.ADMIN_EMAIL || "Info@plana-immobilien-finanzierung.com";
     if (user.email !== adminEmail) {
       return NextResponse.redirect(new URL("/", request.url));
     }
