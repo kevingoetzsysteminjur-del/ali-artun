@@ -516,5 +516,25 @@
     "ctaTitle": "En iyi satış fiyatına hazır mısınız?",
     "ctaSub": "Mülkünüz için neyin mantıklı olduğunu birlikte kontrol edelim.",
     "ctaBtn": "Ücretsiz danışın"
+  },
+  "auth": {
+    "signIn": "Giriş Yap",
+    "signOut": "Çıkış Yap",
+    "register": "Kayıt Ol",
+    "myAccount": "Hesabım",
+    "myInquiries": "Taleplerim",
+    "adminPanel": "Admin Paneli",
+    "email": "E-posta",
+    "password": "Şifre",
+    "name": "Ad Soyad",
+    "phone": "Telefon",
+    "forgotPassword": "Şifremi unuttum?",
+    "noAccount": "Hesabınız yok mu?",
+    "hasAccount": "Zaten kayıtlı mısınız?",
+    "createAccount": "Hesap Oluştur",
+    "confirmEmailSent": "Onay e-postası gönderildi. Lütfen gelen kutunuzu kontrol edin.",
+    "resetEmailSent": "Sıfırlama e-postası gönderildi.",
+    "error": "Bir hata oluştu.",
+    "loading": "Yükleniyor..."
   }
 }

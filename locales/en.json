@@ -516,5 +516,25 @@
     "ctaTitle": "Ready for the best possible selling price?",
     "ctaSub": "Let us together check what makes sense for your property.",
     "ctaBtn": "Get free advice"
+  },
+  "auth": {
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "register": "Register",
+    "myAccount": "My Account",
+    "myInquiries": "My Inquiries",
+    "adminPanel": "Admin Panel",
+    "email": "Email",
+    "password": "Password",
+    "name": "Full Name",
+    "phone": "Phone",
+    "forgotPassword": "Forgot password?",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already registered?",
+    "createAccount": "Create Account",
+    "confirmEmailSent": "Confirmation email sent. Please check your inbox.",
+    "resetEmailSent": "Reset email has been sent.",
+    "error": "An error occurred.",
+    "loading": "Loading..."
   }
 }

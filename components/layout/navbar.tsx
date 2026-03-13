@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
-import { Phone, Menu, X, ChevronDown, Sun, Moon } from "lucide-react";
+import { Phone, Menu, X, ChevronDown, Sun, Moon, User, LayoutDashboard, LogOut } from "lucide-react";
 import { useLanguage, type Lang } from "@/contexts/LanguageContext";
 import { useTheme } from "@/contexts/ThemeContext";
+import { useAuth } from "@/contexts/AuthContext";
 import { MAKLER } from "@/lib/config";
 
 const LANGS: { code: Lang; label: string }[] = [
@@ -17,12 +18,15 @@ const LANGS: { code: Lang; label: string }[] = [
 export default function Navbar() {
   const { t, lang, setLang } = useLanguage();
   const { theme, toggle } = useTheme();
+  const { user, loading: authLoading, isAdmin, signOut } = useAuth();
   const pathname = usePathname();
 
   const [open, setOpen]       = useState(false);
   const [visible, setVisible] = useState(pathname !== "/");
   const [scrolled, setScrolled] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
+  const [authOpen, setAuthOpen] = useState(false);
+  const authDropdownRef = useRef<HTMLDivElement>(null);
 
   // On subpages navbar is always visible; on / it appears after VideoIntro
   const anchor = (hash: string) => pathname === "/" ? hash : `/${hash}`;
@@ -64,6 +68,20 @@ export default function Navbar() {
     document.addEventListener("click", handler);
     return () => document.removeEventListener("click", handler);
   }, [moreOpen]);
+
+  useEffect(() => {
+    if (!authOpen) return;
+    const handler = (e: MouseEvent) => {
+      if (authDropdownRef.current && !authDropdownRef.current.contains(e.target as Node)) {
+        setAuthOpen(false);
+      }
+    };
+    document.addEventListener("click", handler);
+    return () => document.removeEventListener("click", handler);
+  }, [authOpen]);
+
+  const userName = user?.user_metadata?.name || user?.email?.split("@")[0] || "Konto";
+  const userInitial = userName.charAt(0).toUpperCase();
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -214,6 +232,78 @@ export default function Navbar() {
                   : <Moon size={16} style={{ color: "#9A8B7A" }} />}
               </button>
 
+              {/* Auth */}
+              {!authLoading && (
+                <>
+                  {!user ? (
+                    <a
+                      href="/anmelden"
+                      className="flex items-center gap-1.5 hover:text-[#B8860B] transition-colors whitespace-nowrap"
+                      style={{ fontSize: 13, color: "#7A6A56", textDecoration: "none" }}
+                    >
+                      <User size={13} style={{ color: "#C5A028", flexShrink: 0 }} />
+                      Anmelden
+                    </a>
+                  ) : (
+                    <div className="relative" ref={authDropdownRef} onClick={(e) => e.stopPropagation()}>
+                      <button
+                        onClick={() => setAuthOpen((v) => !v)}
+                        className="flex items-center justify-center w-8 h-8 rounded-full text-white text-sm font-semibold cursor-pointer border-none transition-all hover:ring-2 hover:ring-[#C5A028]/40"
+                        style={{ background: "linear-gradient(135deg, #C5A028, #d4b040)", flexShrink: 0 }}
+                        aria-label="Konto-Menü"
+                      >
+                        {userInitial}
+                      </button>
+
+                      {/* Auth dropdown */}
+                      <div
+                        className="absolute top-full right-0 mt-1.5 w-52 bg-white rounded-xl border border-[#B8860B]/12 overflow-hidden z-50"
+                        style={{
+                          boxShadow: "0 12px 40px rgba(0,0,0,0.10), 0 2px 8px rgba(184,134,11,0.08)",
+                          pointerEvents: authOpen ? "auto" : "none",
+                          opacity: authOpen ? 1 : 0,
+                          transform: authOpen ? "translateY(0) scale(1)" : "translateY(-8px) scale(0.97)",
+                          transition: "opacity 0.2s ease, transform 0.2s ease",
+                        }}
+                      >
+                        <div className="px-4 py-3 border-b border-[#B8860B]/08">
+                          <p className="text-xs font-medium text-stone-700 truncate">{userName}</p>
+                          <p className="text-xs text-stone-400 truncate">{user.email}</p>
+                        </div>
+                        <a
+                          href="/konto"
+                          className="flex items-center gap-2 px-4 py-2.5 hover:bg-[#FBF7EE] transition-colors"
+                          style={{ fontSize: 13, color: "#4A3728", textDecoration: "none" }}
+                          onClick={() => setAuthOpen(false)}
+                        >
+                          <User size={13} style={{ color: "#C5A028" }} />
+                          Mein Konto
+                        </a>
+                        {isAdmin && (
+                          <a
+                            href="/admin"
+                            className="flex items-center gap-2 px-4 py-2.5 hover:bg-[#FBF7EE] transition-colors"
+                            style={{ fontSize: 13, color: "#4A3728", textDecoration: "none" }}
+                            onClick={() => setAuthOpen(false)}
+                          >
+                            <LayoutDashboard size={13} style={{ color: "#C5A028" }} />
+                            Admin-Panel
+                          </a>
+                        )}
+                        <button
+                          onClick={() => { setAuthOpen(false); signOut(); }}
+                          className="flex items-center gap-2 w-full px-4 py-2.5 hover:bg-red-50 transition-colors border-t border-[#B8860B]/08"
+                          style={{ fontSize: 13, color: "#9a3535", textDecoration: "none", background: "transparent", border: "none", borderTop: "1px solid rgba(184,134,11,0.08)", cursor: "pointer", textAlign: "left" }}
+                        >
+                          <LogOut size={13} />
+                          Abmelden
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </>
+              )}
+
               {/* PARTNER WERDEN – outline */}
               <a href="/partner/warum" className="nav-btn-outline">
                 {t("nav.partnerBecome")}
@@ -363,6 +453,40 @@ export default function Navbar() {
 
           {/* Mobile bottom CTAs */}
           <div className="px-5 pb-8 pt-4 space-y-3 border-t border-white/10 flex-shrink-0">
+            {!authLoading && (
+              <>
+                {!user ? (
+                  <a
+                    href="/anmelden"
+                    onClick={() => setOpen(false)}
+                    className="flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm font-medium transition-colors"
+                    style={{
+                      background: "rgba(197,160,40,0.12)",
+                      color: "#C5A028",
+                      border: "1px solid rgba(197,160,40,0.25)",
+                      textDecoration: "none",
+                    }}
+                  >
+                    <User size={15} />
+                    Anmelden
+                  </a>
+                ) : (
+                  <div className="flex items-center justify-between px-4 py-3 rounded-xl" style={{ background: "rgba(197,160,40,0.08)", border: "1px solid rgba(197,160,40,0.15)" }}>
+                    <div className="flex items-center gap-2">
+                      <div className="w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-semibold" style={{ background: "linear-gradient(135deg, #C5A028, #d4b040)" }}>
+                        {userInitial}
+                      </div>
+                      <span style={{ fontSize: 13, color: "rgba(255,255,255,0.7)" }}>{userName}</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <a href="/konto" onClick={() => setOpen(false)} style={{ fontSize: 12, color: "#C5A028", textDecoration: "none", padding: "4px 8px" }}>Konto</a>
+                      {isAdmin && <a href="/admin" onClick={() => setOpen(false)} style={{ fontSize: 12, color: "#C5A028", textDecoration: "none", padding: "4px 8px" }}>Admin</a>}
+                      <button onClick={() => { setOpen(false); signOut(); }} style={{ fontSize: 12, color: "rgba(255,255,255,0.4)", background: "transparent", border: "none", cursor: "pointer", padding: "4px 8px" }}>Abmelden</button>
+                    </div>
+                  </div>
+                )}
+              </>
+            )}
             <a
               href="/partner/warum"
               onClick={() => setOpen(false)}

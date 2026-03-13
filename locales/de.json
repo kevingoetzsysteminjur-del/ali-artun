@@ -516,5 +516,25 @@
     "ctaTitle": "Bereit für den bestmöglichen Verkaufspreis?",
     "ctaSub": "Lassen Sie uns gemeinsam prüfen, was bei Ihrer Immobilie Sinn ergibt.",
     "ctaBtn": "Kostenlos beraten lassen"
+  },
+  "auth": {
+    "signIn": "Anmelden",
+    "signOut": "Abmelden",
+    "register": "Registrieren",
+    "myAccount": "Mein Konto",
+    "myInquiries": "Meine Anfragen",
+    "adminPanel": "Admin-Panel",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "name": "Vollständiger Name",
+    "phone": "Telefon",
+    "forgotPassword": "Passwort vergessen?",
+    "noAccount": "Noch kein Konto?",
+    "hasAccount": "Bereits registriert?",
+    "createAccount": "Konto erstellen",
+    "confirmEmailSent": "Bestätigungs-Email wurde gesendet. Bitte prüfen Sie Ihren Posteingang.",
+    "resetEmailSent": "Reset-Email wurde gesendet.",
+    "error": "Ein Fehler ist aufgetreten.",
+    "loading": "Laden..."
   }
 }

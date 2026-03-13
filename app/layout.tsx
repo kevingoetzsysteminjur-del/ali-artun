@@ -10,6 +10,8 @@ import ScrollReveal from "@/components/ScrollReveal";
 import ChatBot from "@/components/ChatBot";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { LanguageProvider } from "@/contexts/LanguageContext";
+import { AuthProvider } from "@/contexts/AuthContext";
+import AdminBadge from "@/components/admin/AdminBadge";
 
 const geist = Geist({
   variable: "--font-geist-sans",
@@ -104,17 +106,20 @@ export default function RootLayout({
         />
       </head>
       <body className={`${geist.variable} ${playfair.variable} antialiased`}>
-        <ThemeProvider>
-          <LanguageProvider>
-            <PageLoader />
-            <ScrollReveal />
-            {children}
-            <CookieBanner />
-            <WhatsAppButton />
-            <ScrollToTop />
-            <ChatBot />
-          </LanguageProvider>
-        </ThemeProvider>
+        <AuthProvider>
+          <ThemeProvider>
+            <LanguageProvider>
+              <PageLoader />
+              <ScrollReveal />
+              {children}
+              <CookieBanner />
+              <WhatsAppButton />
+              <ScrollToTop />
+              <ChatBot />
+              <AdminBadge />
+            </LanguageProvider>
+          </ThemeProvider>
+        </AuthProvider>
       </body>
     </html>
   );
