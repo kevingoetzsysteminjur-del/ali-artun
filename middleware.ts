@@ -45,9 +45,16 @@ export async function middleware(request: NextRequest) {
         new URL("/anmelden?redirect=/admin", request.url)
       );
     }
-    const adminEmail =
-      process.env.ADMIN_EMAIL || "Info@plana-immobilien-finanzierung.com";
-    if (user.email !== adminEmail) {
+    const ADMIN_EMAILS = [
+      "info@plana-immobilien-finanzierung.com",
+      (process.env.NEXT_PUBLIC_ADMIN_EMAIL || "").toLowerCase(),
+      (process.env.ADMIN_EMAIL || "").toLowerCase(),
+    ].filter(Boolean);
+
+    const userEmail = (user.email || "").toLowerCase();
+    console.log("[middleware] user email:", userEmail, "| admin list:", ADMIN_EMAILS);
+
+    if (!ADMIN_EMAILS.includes(userEmail)) {
       return NextResponse.redirect(new URL("/", request.url));
     }
   }

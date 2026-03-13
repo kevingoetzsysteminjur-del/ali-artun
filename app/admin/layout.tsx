@@ -20,10 +20,15 @@ export default async function AdminLayout({
     redirect("/anmelden?redirect=/admin");
   }
 
-  const adminEmail =
-    process.env.ADMIN_EMAIL || "Info@plana-immobilien-finanzierung.com";
+  const ADMIN_EMAILS = [
+    "info@plana-immobilien-finanzierung.com",
+    (process.env.NEXT_PUBLIC_ADMIN_EMAIL || "").toLowerCase(),
+    (process.env.ADMIN_EMAIL || "").toLowerCase(),
+  ].filter(Boolean);
 
-  if (user.email !== adminEmail) {
+  const userEmail = (user.email || "").toLowerCase();
+
+  if (!ADMIN_EMAILS.includes(userEmail)) {
     redirect("/");
   }
 
