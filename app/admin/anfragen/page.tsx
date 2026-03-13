@@ -88,6 +88,8 @@ export default function AdminAnfragenPage() {
   const [notes, setNotes] = useState<Record<string, string>>({});
   const [savingNotes, setSavingNotes] = useState<string | null>(null);
   const [isDemo, setIsDemo] = useState(false);
+  const [filterStatus, setFilterStatus] = useState<string>("alle");
+  const [filterType, setFilterType] = useState<string>("alle");
 
   useEffect(() => {
     const supabase = createClient();
@@ -153,9 +155,17 @@ export default function AdminAnfragenPage() {
     );
   }
 
+  const filtered = inquiries.filter((inq) => {
+    if (filterStatus !== "alle" && inq.status !== filterStatus) return false;
+    if (filterType !== "alle" && inq.type !== filterType) return false;
+    return true;
+  });
+
+  const countByStatus = (s: string) => inquiries.filter((i) => i.status === s).length;
+
   return (
     <div>
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex items-center justify-between mb-6">
         <div>
           <h1
             className="text-2xl font-bold mb-1"
@@ -184,8 +194,68 @@ export default function AdminAnfragenPage() {
         </div>
       </div>
 
+      {/* Filter bar */}
+      <div className="flex flex-wrap items-center gap-2 mb-5">
+        <div className="flex items-center gap-1.5">
+          {[
+            { value: "alle", label: "Alle" },
+            { value: "neu", label: "Neu", dot: "#92400e" },
+            { value: "in_bearbeitung", label: "In Bearbeitung", dot: "#1d4ed8" },
+            { value: "erledigt", label: "Erledigt", dot: "#166534" },
+          ].map((opt) => (
+            <button
+              key={opt.value}
+              onClick={() => setFilterStatus(opt.value)}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all"
+              style={{
+                background: filterStatus === opt.value ? "rgba(197,160,40,0.15)" : "rgba(255,255,255,0.05)",
+                color: filterStatus === opt.value ? "#C5A028" : "rgba(255,255,255,0.45)",
+                border: `1px solid ${filterStatus === opt.value ? "rgba(197,160,40,0.3)" : "rgba(255,255,255,0.08)"}`,
+                cursor: "pointer",
+              }}
+            >
+              {opt.dot && (
+                <span
+                  className="inline-block w-2 h-2 rounded-full"
+                  style={{ background: opt.dot }}
+                />
+              )}
+              {opt.label}
+              {opt.value !== "alle" && (
+                <span style={{ opacity: 0.6 }}>({countByStatus(opt.value)})</span>
+              )}
+            </button>
+          ))}
+        </div>
+
+        <div className="ml-auto">
+          <select
+            value={filterType}
+            onChange={(e) => setFilterType(e.target.value)}
+            className="text-xs rounded-lg px-2.5 py-1.5 border"
+            style={{
+              background: "rgba(255,255,255,0.06)",
+              color: "rgba(255,255,255,0.5)",
+              border: "1px solid rgba(255,255,255,0.1)",
+              outline: "none",
+              cursor: "pointer",
+            }}
+          >
+            <option value="alle" style={{ background: "#1a1a2e" }}>Alle Typen</option>
+            <option value="contact" style={{ background: "#1a1a2e" }}>Kontakt</option>
+            <option value="bewertung" style={{ background: "#1a1a2e" }}>Bewertung</option>
+            <option value="finanzierung" style={{ background: "#1a1a2e" }}>Finanzierung</option>
+          </select>
+        </div>
+      </div>
+
       <div className="space-y-2">
-        {inquiries.map((inq) => {
+        {filtered.length === 0 && (
+          <div className="text-center py-10" style={{ color: "rgba(255,255,255,0.25)", fontSize: 13 }}>
+            Keine Anfragen für diesen Filter.
+          </div>
+        )}
+        {filtered.map((inq) => {
           const statusCfg =
             STATUS_OPTIONS.find((s) => s.value === inq.status) ||
             STATUS_OPTIONS[0];

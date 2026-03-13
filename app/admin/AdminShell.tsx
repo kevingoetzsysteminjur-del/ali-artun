@@ -15,6 +15,8 @@ import {
   ExternalLink,
   LogOut,
   ChevronRight,
+  Video,
+  Building2,
 } from "lucide-react";
 
 type NavItem = {
@@ -43,9 +45,16 @@ const NAV_GROUPS: NavGroup[] = [
     ],
   },
   {
+    title: "Immobilien",
+    items: [
+      { label: "Objekte", href: "/admin/objekte", icon: Building2 },
+    ],
+  },
+  {
     title: "Website",
     items: [
       { label: "Bilder", href: "/admin/bilder", icon: ImageIcon },
+      { label: "Videos", href: "/admin/videos", icon: Video },
       { label: "Inhalte", href: "/admin/inhalte", icon: FileText },
     ],
   },

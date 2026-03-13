@@ -15,7 +15,7 @@ type Settings = {
 const DEFAULT_SETTINGS: Settings = {
   telefon: "06261 / 123 456",
   whatsapp: "496261123456",
-  email: "info@plana-immobilien.de",
+  email: "Info@plana-immobilien-finanzierung.com",
   oeffnungszeiten: "Mo–Fr: 9:00–18:00 Uhr",
   slogan: "Entscheidungen auf einem anderen Niveau.",
   adresse: "Mosbach, Neckar-Odenwald-Kreis",

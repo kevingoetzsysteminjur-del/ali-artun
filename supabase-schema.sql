@@ -165,6 +165,65 @@ CREATE POLICY "Admin can upsert site content"
   USING (auth.jwt()->>'email' = 'Info@plana-immobilien-finanzierung.com')
   WITH CHECK (auth.jwt()->>'email' = 'Info@plana-immobilien-finanzierung.com');
 
+-- ── Video Testimonials ───────────────────────────────────────
+CREATE TABLE IF NOT EXISTS public.video_testimonials (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  title_de TEXT,
+  title_en TEXT,
+  title_tr TEXT,
+  description_de TEXT,
+  description_en TEXT,
+  description_tr TEXT,
+  youtube_url TEXT,
+  active BOOLEAN DEFAULT true,
+  sort_order INTEGER DEFAULT 0,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+ALTER TABLE public.video_testimonials ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Anyone can view active video testimonials"
+  ON public.video_testimonials FOR SELECT
+  USING (true);
+
+CREATE POLICY "Admin can manage video testimonials"
+  ON public.video_testimonials FOR ALL
+  USING (auth.jwt()->>'email' = 'Info@plana-immobilien-finanzierung.com')
+  WITH CHECK (auth.jwt()->>'email' = 'Info@plana-immobilien-finanzierung.com');
+
+-- ── Properties ────────────────────────────────────────────────
+CREATE TABLE IF NOT EXISTS public.properties (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  title TEXT NOT NULL,
+  description_de TEXT,
+  description_en TEXT,
+  description_tr TEXT,
+  address TEXT,
+  price NUMERIC(12,2),
+  area NUMERIC(8,2),
+  rooms INTEGER,
+  year_built INTEGER,
+  property_type TEXT DEFAULT 'Haus', -- 'Haus' | 'Wohnung' | 'Grundstück' | 'Gewerbe'
+  status TEXT DEFAULT 'verfügbar', -- 'verfügbar' | 'reserviert' | 'verkauft'
+  images JSONB DEFAULT '[]',
+  features JSONB DEFAULT '[]',
+  active BOOLEAN DEFAULT true,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+ALTER TABLE public.properties ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Anyone can view active properties"
+  ON public.properties FOR SELECT
+  USING (true);
+
+CREATE POLICY "Admin can manage properties"
+  ON public.properties FOR ALL
+  USING (auth.jwt()->>'email' = 'Info@plana-immobilien-finanzierung.com')
+  WITH CHECK (auth.jwt()->>'email' = 'Info@plana-immobilien-finanzierung.com');
+
 -- ── Storage Bucket ───────────────────────────────────────────
 -- Run in Supabase dashboard → Storage → Create bucket named "images" (public)
 -- Or via SQL:
