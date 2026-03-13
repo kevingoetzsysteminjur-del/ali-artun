@@ -76,45 +76,49 @@ export default function Navbar() {
     <>
       {/* ── DESKTOP HEADER ──────────────────────────────────────────── */}
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "nav-glass border-[#B8860B]/15"
-            : "bg-[#FAF8F4] border-[#B8860B]/10"
+            ? "bg-white/90 backdrop-blur-md shadow-[0_1px_0_rgba(184,134,11,0.12),0_4px_24px_rgba(0,0,0,0.06)]"
+            : "bg-white/80 backdrop-blur-sm border-b border-[#B8860B]/08"
         }`}
       >
-        <div className="max-w-screen-xl mx-auto px-5 xl:px-10">
-          <div className={`flex items-center justify-between transition-all duration-300 ${scrolled ? "h-14" : "h-[72px]"}`}>
+        <div className="w-full pl-4 xl:pl-8 pr-4 xl:pr-6">
+          <div className={`flex items-center gap-8 xl:gap-10 transition-all duration-300 ${scrolled ? "h-[58px]" : "h-[70px]"}`}>
 
-            {/* Logo */}
+            {/* Logo — ganz links */}
             <a href="/" className="flex-shrink-0 flex items-center" style={{ textDecoration: "none" }}>
               <Image
                 src="/logo.png"
                 alt="Plan A Immobilien"
                 width={140}
                 height={40}
-                className="h-[36px] xl:h-[40px] w-auto object-contain"
+                className={`w-auto object-contain transition-all duration-300 ${scrolled ? "h-[32px]" : "h-[38px] xl:h-[42px]"}`}
                 priority
               />
             </a>
 
             {/* ── Desktop Nav ─────────────────────────────────────────── */}
-            <nav className="hidden lg:flex items-center gap-6 xl:gap-7">
+            <nav className="hidden lg:flex items-center gap-1 flex-1">
               {NAV_LINKS.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  className="nav-link whitespace-nowrap"
-                  style={{ fontSize: 13, fontWeight: 400 }}
+                  className="relative group whitespace-nowrap px-3 py-2 rounded-md transition-colors duration-200 hover:bg-[#B8860B]/06"
+                  style={{ fontSize: 13.5, fontWeight: 400, color: "#4A3728", textDecoration: "none", letterSpacing: "0.01em" }}
                 >
                   {link.label}
+                  <span
+                    className="absolute bottom-1 left-3 right-3 h-px bg-[#C5A028] scale-x-0 group-hover:scale-x-100 transition-transform duration-250 origin-left"
+                    aria-hidden="true"
+                  />
                 </a>
               ))}
 
               {/* Mehr dropdown */}
               <div className="relative" onClick={(e) => e.stopPropagation()}>
                 <button
-                  className="nav-link flex items-center gap-1 bg-transparent border-none cursor-pointer"
-                  style={{ fontSize: 13, fontWeight: 400 }}
+                  className="relative group flex items-center gap-1 px-3 py-2 rounded-md transition-colors duration-200 hover:bg-[#B8860B]/06 bg-transparent border-none cursor-pointer"
+                  style={{ fontSize: 13.5, fontWeight: 400, color: "#4A3728", letterSpacing: "0.01em" }}
                   onClick={() => setMoreOpen(v => !v)}
                   aria-expanded={moreOpen}
                 >
@@ -122,7 +126,8 @@ export default function Navbar() {
                   <ChevronDown
                     size={13}
                     style={{
-                      transition: "transform 0.22s ease",
+                      color: "#B8860B",
+                      transition: "transform 0.25s ease",
                       transform: moreOpen ? "rotate(180deg)" : "rotate(0deg)",
                     }}
                   />
@@ -130,12 +135,12 @@ export default function Navbar() {
 
                 {/* Dropdown panel */}
                 <div
-                  className="absolute top-full left-0 mt-2 w-52 bg-white rounded-lg border border-[#B8860B]/15 overflow-hidden z-50"
+                  className="absolute top-full left-0 mt-1.5 w-52 bg-white rounded-xl border border-[#B8860B]/12 overflow-hidden z-50"
                   style={{
-                    boxShadow: "0 8px 32px rgba(0,0,0,0.1)",
+                    boxShadow: "0 12px 40px rgba(0,0,0,0.10), 0 2px 8px rgba(184,134,11,0.08)",
                     pointerEvents: moreOpen ? "auto" : "none",
                     opacity: moreOpen ? 1 : 0,
-                    transform: moreOpen ? "translateY(0)" : "translateY(-6px)",
+                    transform: moreOpen ? "translateY(0) scale(1)" : "translateY(-8px) scale(0.97)",
                     transition: "opacity 0.2s ease, transform 0.2s ease",
                   }}
                 >
@@ -143,10 +148,11 @@ export default function Navbar() {
                     <a
                       key={link.href}
                       href={link.href}
-                      className="flex items-center px-4 py-3 text-[#4A3728] hover:bg-[#B8860B]/8 hover:text-[#B8860B] transition-colors"
-                      style={{ fontSize: 13, textDecoration: "none", fontWeight: 400 }}
+                      className="flex items-center gap-2 px-4 py-3 hover:bg-[#FBF7EE] transition-colors"
+                      style={{ fontSize: 13, color: "#4A3728", textDecoration: "none", fontWeight: 400 }}
                       onClick={() => setMoreOpen(false)}
                     >
+                      <span style={{ width: 4, height: 4, borderRadius: "50%", background: "#C5A028", flexShrink: 0, display: "inline-block" }} />
                       {link.label}
                     </a>
                   ))}
@@ -155,39 +161,42 @@ export default function Navbar() {
             </nav>
 
             {/* ── Desktop Right ────────────────────────────────────────── */}
-            <div className="hidden lg:flex items-center gap-4 xl:gap-5">
+            <div className="hidden lg:flex items-center gap-3 xl:gap-4 flex-shrink-0">
 
               {/* Phone */}
               <a
                 href={MAKLER.telefonHref}
                 className="flex items-center gap-1.5 hover:text-[#B8860B] transition-colors whitespace-nowrap"
-                style={{ fontSize: 13, color: "#6B5E4E", textDecoration: "none" }}
+                style={{ fontSize: 13, color: "#7A6A56", textDecoration: "none" }}
               >
-                <Phone size={13} style={{ color: "#B8860B", flexShrink: 0 }} />
+                <Phone size={13} style={{ color: "#C5A028", flexShrink: 0 }} />
                 {MAKLER.telefon}
               </a>
 
+              {/* Divider */}
+              <span style={{ width: 1, height: 20, background: "rgba(184,134,11,0.2)", flexShrink: 0 }} />
+
               {/* Language switcher */}
-              <div className="flex items-center gap-0 border-l border-stone-200 pl-4">
+              <div className="flex items-center gap-0.5">
                 {LANGS.map((l, i) => (
                   <span key={l.code} className="flex items-center">
                     <button
                       onClick={() => setLang(l.code)}
-                      className="cursor-pointer bg-transparent border-none transition-colors hover:text-[#4A3728]"
+                      className="cursor-pointer bg-transparent border-none transition-all duration-200 rounded hover:text-[#4A3728]"
                       style={{
                         fontSize: 11,
-                        color: lang === l.code ? "#4A3728" : "#9ca3af",
+                        color: lang === l.code ? "#4A3728" : "#b0a090",
                         fontWeight: lang === l.code ? 700 : 400,
-                        padding: "4px 3px",
-                        letterSpacing: "0.05em",
-                        minHeight: 44,
+                        padding: "4px 4px",
+                        letterSpacing: "0.06em",
+                        minHeight: 36,
                       }}
                       aria-label={`Sprache: ${l.label}`}
                     >
                       {l.label}
                     </button>
                     {i < LANGS.length - 1 && (
-                      <span style={{ fontSize: 10, color: "#d1d5db", margin: "0 1px", userSelect: "none" }}>|</span>
+                      <span style={{ fontSize: 10, color: "#ddd", margin: "0 1px", userSelect: "none" }}>·</span>
                     )}
                   </span>
                 ))}
@@ -197,12 +206,12 @@ export default function Navbar() {
               <button
                 onClick={toggle}
                 aria-label={theme === "dark" ? t("nav.lightMode") : t("nav.darkMode")}
-                className="flex items-center justify-center w-9 h-9 rounded-lg border border-stone-200 hover:border-[#B8860B]/40 transition-colors bg-transparent cursor-pointer"
+                className="flex items-center justify-center w-8 h-8 rounded-lg hover:bg-[#B8860B]/10 transition-colors bg-transparent cursor-pointer"
                 style={{ flexShrink: 0 }}
               >
                 {theme === "dark"
-                  ? <Sun size={18} style={{ color: "#B8860B" }} />
-                  : <Moon size={18} style={{ color: "#6B5E4E" }} />}
+                  ? <Sun size={16} style={{ color: "#B8860B" }} />
+                  : <Moon size={16} style={{ color: "#9A8B7A" }} />}
               </button>
 
               {/* PARTNER WERDEN – outline */}
@@ -217,13 +226,15 @@ export default function Navbar() {
             </div>
 
             {/* Mobile Hamburger */}
-            <button
-              onClick={() => setOpen(true)}
-              className="lg:hidden flex items-center justify-center w-11 h-11 rounded cursor-pointer transition-colors hover:bg-[#B8860B]/10"
-              aria-label="Menu öffnen"
-            >
-              <Menu size={22} style={{ color: "#4A3728" }} />
-            </button>
+            <div className="lg:hidden flex items-center ml-auto">
+              <button
+                onClick={() => setOpen(true)}
+                className="flex items-center justify-center w-10 h-10 rounded-lg cursor-pointer transition-colors hover:bg-[#B8860B]/10"
+                aria-label="Menu öffnen"
+              >
+                <Menu size={21} style={{ color: "#4A3728" }} />
+              </button>
+            </div>
 
           </div>
         </div>
