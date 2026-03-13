@@ -65,6 +65,4 @@ Next.js, Tailwind CSS, shadcn/ui
 ## Hinweise
 - Kevin ist Anfaenger, jeden Schritt erklaeren
 - Website muss BESSER sein als die Referenz df-immobilien-hn.de
-- Alles auf Deutsch1
-- Mobile-responsive
-- SEO-optimiert
+- Alles auf Deutsch11
