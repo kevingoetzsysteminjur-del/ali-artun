@@ -10,7 +10,7 @@ const FAQS = [
   { frage: "Wie lange dauert ein Verkauf?", antwort: "Mit unserer Methode dauert ein Verkauf in der Regel 2–4 Monate. Wir arbeiten effizient und transparent." },
   { frage: "Gilt das nur für Mosbach?", antwort: "Nein! Unser Schwerpunkt ist Mosbach und der gesamte Neckar-Odenwald-Kreis." },
   { frage: "Kostenlose Immobilienbewertung?", antwort: "Ja, kostenlos! Nutzen Sie unser Bewertungstool unter /immobilienbewertung oder rufen Sie uns an: 06261 / 123 456." },
-  { frage: "Wie kontaktiere ich Ali?", antwort: "📞 06261 / 123 456\n📧 info@plana-immobilien.de\nOder nutzen Sie das Kontaktformular auf dieser Seite." },
+  { frage: "Wie kontaktiere ich Ali?", antwort: "📞 06261 / 123 456\n📧 Info@plana-immobilien-finanzierung.com\nOder nutzen Sie das Kontaktformular auf dieser Seite." },
   { frage: "Welche Immobilien verkaufen Sie?", antwort: "Häuser, Wohnungen, Grundstücke und Gewerbeimmobilien – im gesamten Neckar-Odenwald-Kreis." },
 ];
 

@@ -26,7 +26,7 @@ export default function Contact() {
       label: t("contact.method3_label"),
       value: t("contact.method3_value"),
       sub: t("contact.method3_sub"),
-      href: "mailto:info@plana-immobilien.de",
+      href: "mailto:Info@plana-immobilien-finanzierung.com",
     },
     {
       icon: MapPin,

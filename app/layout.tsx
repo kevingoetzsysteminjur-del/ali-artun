@@ -73,7 +73,7 @@ const localBusinessSchema = {
     "Immobilienmakler in Mosbach mit geprüfter Käuferfinanzierung. Planbare Abschlüsse durch Strategie, Struktur und Finanzierungsprüfung.",
   url: "https://plan-a-immobilien.de",
   telephone: "+496261123456",
-  email: "info@plana-immobilien.de",
+  email: "Info@plana-immobilien-finanzierung.com",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Mosbach",

@@ -65,11 +65,11 @@ export default function Footer() {
                 06261 / 123 456
               </a>
               <a
-                href="mailto:info@plana-immobilien.de"
+                href="mailto:Info@plana-immobilien-finanzierung.com"
                 className="flex items-center gap-3 text-stone-400 text-base hover:text-white transition-colors"
               >
                 <Mail size={15} style={{ color: "#C5A028" }} />
-                info@plana-immobilien.de
+                Info@plana-immobilien-finanzierung.com
               </a>
               <div className="flex items-start gap-3 text-stone-500 text-base">
                 <MapPin

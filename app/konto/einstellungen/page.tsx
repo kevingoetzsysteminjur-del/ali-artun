@@ -138,7 +138,7 @@ export default function AdminEinstellungenPage() {
               onChange={(e) => update("email", e.target.value)}
               className={fieldClass}
               style={fieldStyle}
-              placeholder="info@plana-immobilien.de"
+              placeholder="Info@plana-immobilien-finanzierung.com"
             />
           </div>
 
