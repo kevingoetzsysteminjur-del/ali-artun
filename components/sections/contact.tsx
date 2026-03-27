@@ -12,14 +12,14 @@ export default function Contact() {
       label: t("contact.method1_label"),
       value: t("contact.method1_value"),
       sub: t("contact.method1_sub"),
-      href: "tel:+4962619123456",
+      href: "tel:+491736259429",
     },
     {
       icon: MessageCircle,
       label: t("contact.method2_label"),
       value: t("contact.method2_value"),
       sub: t("contact.method2_sub"),
-      href: "https://wa.me/4962619123456",
+      href: "https://wa.me/491736259429",
     },
     {
       icon: Mail,

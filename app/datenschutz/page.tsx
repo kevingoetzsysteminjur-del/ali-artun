@@ -46,17 +46,17 @@ export default function DatenschutzPage() {
                 <br />
                 Plan A Immobilien &amp; Finanzierung
                 <br />
-                Mosbach, Neckar-Odenwald-Kreis
+                Mosbacher Str. 75, 74821 Mosbach
                 <br />
                 E-Mail:{" "}
-                <span className="text-[#C5A028] font-medium">
-                  [E-Mail-Adresse – bitte eintragen]
-                </span>
+                <a
+                  href="mailto:Info@plana-immobilien-finanzierung.com"
+                  className="underline hover:text-stone-900 transition-colors"
+                >
+                  Info@plana-immobilien-finanzierung.com
+                </a>
                 <br />
-                Telefon:{" "}
-                <span className="text-[#C5A028] font-medium">
-                  [Telefonnummer – bitte eintragen]
-                </span>
+                Telefon: 0173-6259429
               </p>
             </section>
 

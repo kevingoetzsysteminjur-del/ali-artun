@@ -40,12 +40,14 @@ const lernInhalte = [
 ];
 
 const vorteile = [
-  "Nebenberuflich starten – kein Risiko",
-  "Professionelle Ausbildung inklusive",
-  "Attraktive Provisionsmodelle",
-  "Zugang zu 300+ Partnerbanken",
-  "Fertig aufbereitete Objekte",
-  "Volle Unterstützung bei Finanzierung und Verkauf",
+  "Möglichkeit den §34i und §34c Schein bei der IHK zu erwerben",
+  "Unterstützung bei der Selbstständigkeit",
+  "Schulungsmaterial (Videos und Dokumente) – digital",
+  "Persönliche Betreuung in der Anfangszeit",
+  "Leads für den Immobilienverkauf",
+  "Unterstützung bei Finanzierungen",
+  "Alles auf selbstständiger Basis – kein Anstellungsverhältnis",
+  "Deutschlandweit tätig – keine Regionalbeschränkung",
 ];
 
 interface FormData {
@@ -53,17 +55,19 @@ interface FormData {
   email: string;
   telefon: string;
   wohnort: string;
+  alter: string;
   erfahrung: string;
+  finanzerfahrung: string;
   warum: string;
 }
 
 export default function PartnerClient() {
   const [form, setForm] = useState<FormData>({
-    name: "", email: "", telefon: "", wohnort: "", erfahrung: "nein", warum: "",
+    name: "", email: "", telefon: "", wohnort: "", alter: "", erfahrung: "nein", finanzerfahrung: "nein", warum: "",
   });
   const [submitted, setSubmitted] = useState(false);
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
@@ -72,7 +76,7 @@ export default function PartnerClient() {
     console.log("Partner-Bewerbung:", form);
     // Open WhatsApp with pre-filled data
     const msg = encodeURIComponent(
-      `Hallo Ali,\n\nIch möchte Partner bei Plan A Immobilien werden.\n\nName: ${form.name}\nEmail: ${form.email}\nTelefon: ${form.telefon}\nWohnort: ${form.wohnort}\nImmobilienerfahrung: ${form.erfahrung}\n\nWarum Partner:\n${form.warum}`
+      `Hallo Ali,\n\nIch möchte Partner bei Plan A Immobilien werden.\n\nName: ${form.name}\nEmail: ${form.email}\nTelefon: ${form.telefon}\nWohnort: ${form.wohnort}\nAlter: ${form.alter}\nImmobilienerfahrung: ${form.erfahrung}\nFinanzerfahrung: ${form.finanzerfahrung}\n\nWarum Partner:\n${form.warum}`
     );
     window.open(`https://wa.me/${MAKLER.whatsapp.replace("https://wa.me/", "")}?text=${msg}`, "_blank");
     setSubmitted(true);
@@ -235,25 +239,16 @@ export default function PartnerClient() {
               {/* Provisionsmodell */}
               <div>
                 <p className="text-[#C5A028] text-sm font-semibold tracking-[0.2em] uppercase mb-4">Verdienstpotenzial</p>
-                <h2 className="font-heading text-3xl font-bold text-white mb-8">Beispielrechnung</h2>
+                <h2 className="font-heading text-3xl font-bold text-white mb-8">Attraktives Provisionsmodell</h2>
                 <div
                   className="rounded-2xl p-8 space-y-5"
                   style={{ background: "rgba(197,160,40,0.07)", border: "1px solid rgba(197,160,40,0.25)" }}
                 >
-                  <div className="space-y-3">
-                    {[
-                      { label: "Objektwert", val: "300.000 €" },
-                      { label: "Provision (3,57%)", val: "10.710 €" },
-                      { label: "Ihr Anteil", val: "Auf Anfrage" },
-                    ].map((row) => (
-                      <div key={row.label} className="flex justify-between items-center py-2 border-b border-stone-700/50">
-                        <span className="text-stone-400 text-sm">{row.label}</span>
-                        <span className="font-semibold text-white">{row.val}</span>
-                      </div>
-                    ))}
-                  </div>
+                  <p className="text-stone-300 text-base leading-relaxed">
+                    Wir bieten ein <strong className="text-white">attraktives Provisionsmodell</strong> – die genauen Konditionen besprechen wir in einem persönlichen Gespräch.
+                  </p>
                   <p className="text-stone-400 text-sm italic">
-                    * Individuelle Konditionen nach persönlichem Gespräch. Je nach Erfahrung und Abschlussvolumen.
+                    * Die Konditionen richten sich nach Erfahrung, Qualifikation und Abschlussvolumen. Details im Gespräch mit Ali Artun.
                   </p>
                   <a
                     href={MAKLER.whatsappMsg}
@@ -262,7 +257,7 @@ export default function PartnerClient() {
                     className="inline-flex items-center gap-2 w-full justify-center px-6 py-3 rounded-xl font-semibold text-sm text-white transition-all hover:scale-105"
                     style={{ background: "#25D366", textDecoration: "none", boxShadow: "0 4px 18px rgba(37,211,102,0.3)" }}
                   >
-                    Konditionen anfragen
+                    Jetzt Gespräch vereinbaren
                   </a>
                 </div>
               </div>
@@ -331,24 +326,39 @@ export default function PartnerClient() {
                       required
                       value={form.telefon}
                       onChange={handleChange}
-                      placeholder="0621 / 123 456"
+                      placeholder="0173 / 123 456"
                       className="w-full px-4 py-3 rounded-xl border border-stone-200 text-stone-900 text-sm outline-none focus:border-[#C5A028] transition-colors"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-stone-700 mb-1.5">Wohnort</label>
+                    <label className="block text-sm font-medium text-stone-700 mb-1.5">Wohnort *</label>
                     <input
                       type="text"
                       name="wohnort"
+                      required
                       value={form.wohnort}
                       onChange={handleChange}
                       placeholder="Ihre Stadt"
                       className="w-full px-4 py-3 rounded-xl border border-stone-200 text-stone-900 text-sm outline-none focus:border-[#C5A028] transition-colors"
                     />
                   </div>
+                  <div className="sm:col-span-2">
+                    <label className="block text-sm font-medium text-stone-700 mb-1.5">Alter *</label>
+                    <input
+                      type="number"
+                      name="alter"
+                      required
+                      min={18}
+                      max={99}
+                      value={form.alter}
+                      onChange={handleChange}
+                      placeholder="Ihr Alter"
+                      className="w-full px-4 py-3 rounded-xl border border-stone-200 text-stone-900 text-sm outline-none focus:border-[#C5A028] transition-colors"
+                    />
+                  </div>
                 </div>
 
-                {/* Erfahrung Radio */}
+                {/* Erfahrung Radios */}
                 <div>
                   <label className="block text-sm font-medium text-stone-700 mb-2">Immobilienerfahrung vorhanden?</label>
                   <div className="flex gap-6">
@@ -366,6 +376,43 @@ export default function PartnerClient() {
                       </label>
                     ))}
                   </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-stone-700 mb-2">Finanzerfahrung vorhanden?</label>
+                  <div className="flex gap-6">
+                    {["Ja", "Nein"].map((opt) => (
+                      <label key={opt} className="flex items-center gap-2 cursor-pointer">
+                        <input
+                          type="radio"
+                          name="finanzerfahrung"
+                          value={opt.toLowerCase()}
+                          checked={form.finanzerfahrung === opt.toLowerCase()}
+                          onChange={handleChange}
+                          className="w-4 h-4 accent-[#C5A028]"
+                        />
+                        <span className="text-stone-700 text-sm">{opt}</span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Lebenslauf */}
+                <div
+                  className="rounded-xl p-5 text-sm"
+                  style={{ background: "rgba(197,160,40,0.06)", border: "1px solid rgba(197,160,40,0.25)" }}
+                >
+                  <p className="font-semibold text-stone-700 mb-1">Lebenslauf</p>
+                  <p className="text-stone-500 leading-relaxed">
+                    Bitte senden Sie Ihren Lebenslauf nach dem Absenden per E-Mail an{" "}
+                    <a
+                      href="mailto:Info@plana-immobilien-finanzierung.com"
+                      className="text-[#C5A028] underline"
+                    >
+                      Info@plana-immobilien-finanzierung.com
+                    </a>
+                    {" "}mit dem Betreff „Bewerbung Partner".
+                  </p>
                 </div>
 
                 {/* Warum Textarea */}

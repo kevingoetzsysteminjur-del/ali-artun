@@ -76,6 +76,35 @@ export default function Services() {
             );
           })}
         </div>
+
+        {/* Immobilienarten */}
+        <div className="mt-12 pt-10 border-t border-stone-200">
+          <p
+            className="text-xs font-semibold tracking-[0.2em] uppercase mb-5"
+            style={{ color: "#C5A028" }}
+          >
+            Wir vermarkten alle Immobilienarten
+          </p>
+          <div className="flex flex-wrap gap-3">
+            {[
+              "Eigentumswohnungen",
+              "Einfamilienhäuser",
+              "Mehrfamilienhäuser",
+              "Gewerbeobjekte",
+              "Grundstücke",
+            ].map((typ) => (
+              <span
+                key={typ}
+                className="px-4 py-2 rounded-full text-sm font-medium text-stone-700 bg-white border border-[#C5A028]/25"
+              >
+                {typ}
+              </span>
+            ))}
+          </div>
+          <p className="text-stone-500 text-base mt-4">
+            Wir sind <strong className="text-stone-700">deutschlandweit</strong> für Sie da.
+          </p>
+        </div>
       </div>
     </section>
   );

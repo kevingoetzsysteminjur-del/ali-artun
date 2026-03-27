@@ -99,24 +99,24 @@ export default function FinanzierungClient() {
       icon: "🏢",
     },
     {
-      id: "bausparen",
+      id: "privatkredit",
       label: t("finanzierung.tab4Label"),
       title: t("finanzierung.tab4Title"),
       description: t("finanzierung.tab4Desc"),
-      gradient: "linear-gradient(135deg, #2A4A2A 0%, #1E361E 40%, #122212 100%)",
-      accentGradient: "linear-gradient(45deg, rgba(100,200,100,0.2) 0%, transparent 60%)",
-      imageAlt: "Familie vor Haus",
-      icon: "🏡",
-    },
-    {
-      id: "privatkredit",
-      label: t("finanzierung.tab5Label"),
-      title: t("finanzierung.tab5Title"),
-      description: t("finanzierung.tab5Desc"),
       gradient: "linear-gradient(135deg, #3A2A4A 0%, #2A1E3A 40%, #1A1228 100%)",
       accentGradient: "linear-gradient(45deg, rgba(180,100,255,0.2) 0%, transparent 60%)",
       imageAlt: "Beratungsgespräch",
       icon: "🤝",
+    },
+    {
+      id: "modernisierung",
+      label: t("finanzierung.tab5Label"),
+      title: t("finanzierung.tab5Title"),
+      description: t("finanzierung.tab5Desc"),
+      gradient: "linear-gradient(135deg, #2A3A2A 0%, #1E2E1E 40%, #122212 100%)",
+      accentGradient: "linear-gradient(45deg, rgba(100,200,100,0.2) 0%, transparent 60%)",
+      imageAlt: "Modernisierung",
+      icon: "🔨",
     },
   ];
 
@@ -376,6 +376,22 @@ export default function FinanzierungClient() {
                 </div>
 
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── UNABHÄNGIGKEITS-HINWEIS ───────────────────────────────────── */}
+        <section className="bg-[#FAF8F4] py-10">
+          <div className="max-w-5xl mx-auto px-4 sm:px-8">
+            <div
+              className="rounded-xl px-8 py-5 flex items-center gap-4"
+              style={{ background: "rgba(197,160,40,0.08)", border: "1.5px solid rgba(197,160,40,0.3)" }}
+            >
+              <span style={{ fontSize: 28, flexShrink: 0 }}>🏦</span>
+              <p className="text-stone-700 text-base leading-relaxed">
+                <strong className="text-stone-900">Ali Artun ist freier Makler</strong> – unabhängig von einzelnen Banken.
+                Wir vergleichen den gesamten Markt für Sie.
+              </p>
             </div>
           </div>
         </section>

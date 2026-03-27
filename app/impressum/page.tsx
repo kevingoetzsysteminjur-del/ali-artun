@@ -26,13 +26,12 @@ export default function ImpressumPage() {
                 <br />
                 Plan A Immobilien &amp; Finanzierung
                 <br />
-                <span className="text-[#C5A028] font-medium">
-                  [Straße und Hausnummer – bitte eintragen]
-                </span>
+                Mosbacher Str. 75
                 <br />
-                <span className="text-[#C5A028] font-medium">
-                  [PLZ] Mosbach, Neckar-Odenwald-Kreis
-                </span>
+                74821 Mosbach
+              </p>
+              <p className="mt-3 text-stone-500 text-base italic">
+                Hinweis: Die Geschäftsadresse kann sich in den kommenden Monaten ändern.
               </p>
             </div>
 
@@ -41,15 +40,15 @@ export default function ImpressumPage() {
                 Kontakt
               </h2>
               <p>
-                Telefon:{" "}
-                <span className="text-[#C5A028] font-medium">
-                  [Telefonnummer – bitte eintragen]
-                </span>
+                Telefon: 0173-6259429
                 <br />
                 E-Mail:{" "}
-                <span className="text-[#C5A028] font-medium">
-                  [E-Mail-Adresse – bitte eintragen]
-                </span>
+                <a
+                  href="mailto:Info@plana-immobilien-finanzierung.com"
+                  className="underline hover:text-stone-900 transition-colors"
+                >
+                  Info@plana-immobilien-finanzierung.com
+                </a>
               </p>
             </div>
 
@@ -57,23 +56,7 @@ export default function ImpressumPage() {
               <h2 className="font-semibold text-stone-900 text-xl mb-2">
                 Steuernummer
               </h2>
-              <p>
-                <span className="text-[#C5A028] font-medium">
-                  [Steuernummer – bitte eintragen]
-                </span>
-              </p>
-            </div>
-
-            <div>
-              <h2 className="font-semibold text-stone-900 text-xl mb-2">
-                Handelsregister
-              </h2>
-              <p>
-                <span className="text-[#C5A028] font-medium">
-                  [Handelsregisternummer und Registergericht – falls vorhanden,
-                  bitte eintragen, sonst diese Zeile entfernen]
-                </span>
-              </p>
+              <p>40154/31132</p>
             </div>
 
             <div>
@@ -81,11 +64,13 @@ export default function ImpressumPage() {
                 Berufsrechtliche Regelungen
               </h2>
               <p>
-                Gewerbetreibender gemäß § 34c GewO (Immobilienmakler).
-                Zuständige Behörde:{" "}
-                <span className="text-[#C5A028] font-medium">
-                  [zuständige Gewerbebehörde – bitte eintragen]
-                </span>
+                Erlaubnis nach § 34c Absatz 1 Satz 1 GewO (Immobilienmakler)
+                <br />
+                Erlaubnis nach § 34i Abs. 1 S. 1 GewO (Immobiliendarlehensvermittler)
+                <br />
+                Registrierungsnummer: D-W-153-TH95-12
+                <br />
+                Aufsichtsbehörde: IHK Rhein-Neckar
               </p>
             </div>
 
