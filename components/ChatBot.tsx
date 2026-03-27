@@ -5,12 +5,12 @@ import Image from "next/image";
 
 const FAQS = [
   { frage: "Wie läuft der Verkauf ab?", antwort: "Unser Prozess: 1. Kostenlose Bewertung → 2. Strategie & Unterlagen → 3. Vermarktung → 4. Käuferprüfung → 5. Notartermin. Wir begleiten Sie durch jeden Schritt." },
-  { frage: "Was kostet ein Makler?", antwort: "Die Provision wird gesetzlich zwischen Käufer und Verkäufer geteilt. Gerne besprechen wir die Konditionen persönlich. Tel: 06261 / 123 456." },
+  { frage: "Was kostet ein Makler?", antwort: "Die Provision wird gesetzlich zwischen Käufer und Verkäufer geteilt. Gerne besprechen wir die Konditionen persönlich. Tel: 0173-6259429." },
   { frage: "Was ist geprüfte Finanzierung?", antwort: "Vor der Vermittlung prüfen wir die Finanzierungsfähigkeit jedes Käufers. So platzen keine Deals kurz vor dem Notartermin." },
   { frage: "Wie lange dauert ein Verkauf?", antwort: "Mit unserer Methode dauert ein Verkauf in der Regel 2–4 Monate. Wir arbeiten effizient und transparent." },
   { frage: "Gilt das nur für Mosbach?", antwort: "Nein! Unser Schwerpunkt ist Mosbach und der gesamte Neckar-Odenwald-Kreis." },
-  { frage: "Kostenlose Immobilienbewertung?", antwort: "Ja, kostenlos! Nutzen Sie unser Bewertungstool unter /immobilienbewertung oder rufen Sie uns an: 06261 / 123 456." },
-  { frage: "Wie kontaktiere ich Ali?", antwort: "📞 06261 / 123 456\n📧 Info@plana-immobilien-finanzierung.com\nOder nutzen Sie das Kontaktformular auf dieser Seite." },
+  { frage: "Kostenlose Immobilienbewertung?", antwort: "Ja, kostenlos! Nutzen Sie unser Bewertungstool unter /immobilienbewertung oder rufen Sie uns an: 0173-6259429." },
+  { frage: "Wie kontaktiere ich Ali?", antwort: "📞 0173-6259429\n📧 Info@plana-immobilien-finanzierung.com\nOder nutzen Sie das Kontaktformular auf dieser Seite." },
   { frage: "Welche Immobilien verkaufen Sie?", antwort: "Häuser, Wohnungen, Grundstücke und Gewerbeimmobilien – im gesamten Neckar-Odenwald-Kreis." },
 ];
 
@@ -53,7 +53,7 @@ export default function ChatBot() {
     const text = input.trim();
     setInput("");
     setMessages((prev) => [...prev, { text, from: "user", time: getNow() }]);
-    addBotResponse("Danke für Ihre Nachricht! Wir melden uns schnellstmöglich. Sie können uns auch direkt anrufen: 06261 / 123 456");
+    addBotResponse("Danke für Ihre Nachricht! Wir melden uns schnellstmöglich. Sie können uns auch direkt anrufen: 0173-6259429");
   };
 
   const showFaqs = messages.length <= 1;
@@ -63,15 +63,50 @@ export default function ChatBot() {
       {/* Float Button */}
       <button
         onClick={() => setOpen(!open)}
-        className="fixed bottom-24 right-4 sm:bottom-6 sm:right-24 z-[201] w-14 h-14 rounded-full flex items-center justify-center transition-all hover:scale-105 duration-200 shadow-xl"
-        style={{ backgroundColor: "#1a1a1a", border: "2px solid #C5A028", color: "#C5A028" }}
         aria-label="Chat öffnen"
+        style={{
+          position: "fixed",
+          bottom: 92,
+          right: 24,
+          zIndex: 9999,
+          width: 56,
+          height: 56,
+          borderRadius: "50%",
+          backgroundColor: "#1A1A1A",
+          border: "1px solid #C4A882",
+          color: "#C4A882",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          boxShadow: "0 4px 15px rgba(0, 0, 0, 0.15)",
+          transition: "transform 300ms ease, box-shadow 300ms ease, border-color 300ms ease",
+          cursor: "pointer",
+        }}
+        onMouseEnter={(e) => {
+          (e.currentTarget as HTMLButtonElement).style.transform = "scale(1.1)";
+          (e.currentTarget as HTMLButtonElement).style.borderColor = "#E8C97A";
+          (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 6px 20px rgba(0, 0, 0, 0.25)";
+        }}
+        onMouseLeave={(e) => {
+          (e.currentTarget as HTMLButtonElement).style.transform = "scale(1)";
+          (e.currentTarget as HTMLButtonElement).style.borderColor = "#C4A882";
+          (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 4px 15px rgba(0, 0, 0, 0.15)";
+        }}
       >
-        <div className="transition-all duration-200">
-          {open ? <X size={22} /> : <MessageCircle size={22} />}
-        </div>
+        {open ? <X size={22} /> : <MessageCircle size={22} />}
         {!open && (
-          <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-green-400 rounded-full border-2 border-white" />
+          <span
+            style={{
+              position: "absolute",
+              top: -3,
+              right: -3,
+              width: 12,
+              height: 12,
+              backgroundColor: "#25D366",
+              borderRadius: "50%",
+              border: "2px solid #1A1A1A",
+            }}
+          />
         )}
       </button>
 
@@ -80,8 +115,8 @@ export default function ChatBot() {
         <div
           className="fixed z-[200] flex flex-col rounded-2xl overflow-hidden shadow-2xl"
           style={{
-            bottom: "112px",
-            right: "16px",
+            bottom: "164px",
+            right: "24px",
             width: "min(360px, calc(100vw - 32px))",
             maxHeight: "min(580px, calc(100vh - 140px))",
             backgroundColor: "#fff",
