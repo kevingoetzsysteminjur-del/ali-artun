@@ -3,7 +3,7 @@ export default function VideoClip() {
     <section className="bg-[#FAF8F4] py-16 px-4">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-8">
-          <p className="text-[#C5A028] text-sm font-semibold tracking-[0.2em] uppercase mb-3">
+          <p className="text-[#B8860B] text-sm font-semibold tracking-[0.2em] uppercase mb-3">
             Einblick
           </p>
           <h2 className="font-heading text-3xl font-bold text-stone-900">

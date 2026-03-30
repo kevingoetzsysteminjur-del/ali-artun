@@ -8,9 +8,9 @@ export default function AgbPage() {
     <>
       <Navbar />
       <main>
-        <section style={{ background: "linear-gradient(135deg,#1B3A4B,#0e2230)", padding: "100px 0 60px" }}>
+        <section style={{ background: "linear-gradient(135deg,#2C1A0E,#1A0E05)", padding: "100px 0 60px" }}>
           <div style={{ maxWidth: "900px", margin: "0 auto", padding: "0 24px" }}>
-            <p style={{ fontSize: "11px", color: "#C8A96E", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "12px" }}>RECHTLICHES</p>
+            <p style={{ fontSize: "11px", color: "#D4A017", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "12px" }}>RECHTLICHES</p>
             <h1 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "clamp(2rem, 4vw, 3rem)", color: "#fff" }}>Allgemeine Geschäftsbedingungen</h1>
           </div>
         </section>

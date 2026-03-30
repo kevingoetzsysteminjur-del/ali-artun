@@ -27,12 +27,12 @@ export default function PartnerTeaser() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left: Text content */}
           <div className="space-y-6">
-            <p className="text-[#C5A028] text-sm font-semibold tracking-[0.2em] uppercase">
+            <p className="text-[#B8860B] text-sm font-semibold tracking-[0.2em] uppercase">
               {t("partnerTeaser.eyebrow")}
             </p>
             <h2 className="font-heading text-3xl lg:text-4xl font-bold text-white leading-tight">
               {t("partnerTeaser.title1")}{" "}
-              <span className="italic" style={{ color: "#C5A028" }}>
+              <span className="italic" style={{ color: "#B8860B" }}>
                 {t("partnerTeaser.titleItalic")}
               </span>{" "}
               {t("partnerTeaser.title2")}
@@ -48,7 +48,7 @@ export default function PartnerTeaser() {
                     className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center"
                     style={{ background: "rgba(197,160,40,0.15)", border: "1px solid rgba(197,160,40,0.4)" }}
                   >
-                    <Check size={12} style={{ color: "#C5A028" }} />
+                    <Check size={12} style={{ color: "#B8860B" }} />
                   </span>
                   <span className="text-stone-300 text-sm">{b}</span>
                 </li>
@@ -85,7 +85,7 @@ export default function PartnerTeaser() {
               <div>
                 <p className="font-heading font-bold text-white text-xl">{t("partnerTeaser.cardTitle")}</p>
                 <p className="text-stone-400 text-sm mt-1">{MAKLER.name}</p>
-                <p className="text-[#C5A028] text-xs tracking-wide mt-1">{MAKLER.firma}</p>
+                <p className="text-[#B8860B] text-xs tracking-wide mt-1">{MAKLER.firma}</p>
               </div>
             </div>
 
@@ -93,7 +93,7 @@ export default function PartnerTeaser() {
             <div className="grid grid-cols-3 gap-4 w-full max-w-xs">
               {stats.map((s) => (
                 <div key={s.val} className="text-center">
-                  <p className="font-heading font-bold text-xl" style={{ color: "#C5A028" }}>{s.val}</p>
+                  <p className="font-heading font-bold text-xl" style={{ color: "#B8860B" }}>{s.val}</p>
                   <p className="text-stone-500 text-xs mt-0.5">{s.label}</p>
                 </div>
               ))}

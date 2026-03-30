@@ -96,12 +96,12 @@ export default function PartnerClient() {
           <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-16 py-20 lg:py-28 relative">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="space-y-6">
-                <p className="text-[#C5A028] text-sm font-semibold tracking-[0.2em] uppercase">
+                <p className="text-[#B8860B] text-sm font-semibold tracking-[0.2em] uppercase">
                   Partnerschaft
                 </p>
                 <h1 className="font-heading text-4xl lg:text-5xl font-bold text-white leading-[1.1]">
                   Werde Partner bei{" "}
-                  <span style={{ color: "#C5A028" }}>Plan A Immobilien</span>
+                  <span style={{ color: "#B8860B" }}>Plan A Immobilien</span>
                 </h1>
                 <p className="text-stone-300 text-xl leading-relaxed">
                   Verdiene nebenberuflich als selbstständiger Immobilienmakler – mit voller Unterstützung von{" "}
@@ -123,7 +123,7 @@ export default function PartnerClient() {
                   <a
                     href="/partner/warum"
                     className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl font-semibold text-sm tracking-wide transition-all duration-200 hover:scale-105"
-                    style={{ border: "1.5px solid rgba(197,160,40,0.5)", color: "#C5A028", textDecoration: "none" }}
+                    style={{ border: "1.5px solid rgba(197,160,40,0.5)", color: "#B8860B", textDecoration: "none" }}
                   >
                     Mehr erfahren
                     <ChevronRight size={16} />
@@ -138,7 +138,7 @@ export default function PartnerClient() {
                     { val: "Kostenlos", label: "Ausbildung" },
                   ].map(s => (
                     <div key={s.val} className="text-center">
-                      <p className="font-heading text-2xl font-bold" style={{ color: "#C5A028" }}>{s.val}</p>
+                      <p className="font-heading text-2xl font-bold" style={{ color: "#B8860B" }}>{s.val}</p>
                       <p className="text-stone-400 text-xs tracking-wide mt-0.5">{s.label}</p>
                     </div>
                   ))}
@@ -157,7 +157,7 @@ export default function PartnerClient() {
         <section className="bg-[#FAF8F4] py-20">
           <div className="max-w-5xl mx-auto px-4 sm:px-8">
             <div className="text-center mb-14">
-              <p className="text-[#C5A028] text-sm font-semibold tracking-[0.2em] uppercase mb-3">Ihr Weg zum Abschluss</p>
+              <p className="text-[#B8860B] text-sm font-semibold tracking-[0.2em] uppercase mb-3">Ihr Weg zum Abschluss</p>
               <h2 className="font-heading text-3xl lg:text-4xl font-bold text-stone-900">So funktioniert es</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -176,7 +176,7 @@ export default function PartnerClient() {
                   <p className="text-stone-600 text-sm leading-relaxed">{step.desc}</p>
                   <div
                     className="absolute bottom-0 left-0 right-0 h-0.5 rounded-b-2xl transition-all duration-300 group-hover:opacity-100 opacity-0"
-                    style={{ background: "linear-gradient(90deg, #C5A028, #A08020)" }}
+                    style={{ background: "linear-gradient(90deg, #B8860B, #A08020)" }}
                   />
                 </div>
               ))}
@@ -188,18 +188,18 @@ export default function PartnerClient() {
         <section className="bg-white py-20">
           <div className="max-w-5xl mx-auto px-4 sm:px-8">
             <div className="text-center mb-14">
-              <p className="text-[#C5A028] text-sm font-semibold tracking-[0.2em] uppercase mb-3">Ausbildungsinhalte</p>
+              <p className="text-[#B8860B] text-sm font-semibold tracking-[0.2em] uppercase mb-3">Ausbildungsinhalte</p>
               <h2 className="font-heading text-3xl lg:text-4xl font-bold text-stone-900">Was Sie lernen</h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {lernInhalte.map((item) => (
                 <div
                   key={item.title}
-                  className="flex items-start gap-4 bg-[#FAF8F4] rounded-xl p-6 border border-stone-100 hover:border-[#C5A028]/30 transition-colors duration-200"
+                  className="flex items-start gap-4 bg-[#FAF8F4] rounded-xl p-6 border border-stone-100 hover:border-[#B8860B]/30 transition-colors duration-200"
                 >
                   <div
                     className="flex-shrink-0 w-11 h-11 rounded-xl flex items-center justify-center"
-                    style={{ background: "rgba(197,160,40,0.1)", color: "#C5A028" }}
+                    style={{ background: "rgba(197,160,40,0.1)", color: "#B8860B" }}
                   >
                     {item.icon}
                   </div>
@@ -219,7 +219,7 @@ export default function PartnerClient() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-14">
               {/* Vorteile */}
               <div>
-                <p className="text-[#C5A028] text-sm font-semibold tracking-[0.2em] uppercase mb-4">Ihre Vorteile</p>
+                <p className="text-[#B8860B] text-sm font-semibold tracking-[0.2em] uppercase mb-4">Ihre Vorteile</p>
                 <h2 className="font-heading text-3xl font-bold text-white mb-8">Warum Partner werden?</h2>
                 <ul className="space-y-4">
                   {vorteile.map((v) => (
@@ -228,7 +228,7 @@ export default function PartnerClient() {
                         className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center mt-0.5"
                         style={{ background: "rgba(197,160,40,0.15)", border: "1px solid rgba(197,160,40,0.4)" }}
                       >
-                        <Check size={14} style={{ color: "#C5A028" }} />
+                        <Check size={14} style={{ color: "#B8860B" }} />
                       </span>
                       <span className="text-stone-300 text-base leading-relaxed">{v}</span>
                     </li>
@@ -238,7 +238,7 @@ export default function PartnerClient() {
 
               {/* Provisionsmodell */}
               <div>
-                <p className="text-[#C5A028] text-sm font-semibold tracking-[0.2em] uppercase mb-4">Verdienstpotenzial</p>
+                <p className="text-[#B8860B] text-sm font-semibold tracking-[0.2em] uppercase mb-4">Verdienstpotenzial</p>
                 <h2 className="font-heading text-3xl font-bold text-white mb-8">Attraktives Provisionsmodell</h2>
                 <div
                   className="rounded-2xl p-8 space-y-5"
@@ -269,7 +269,7 @@ export default function PartnerClient() {
         <section id="bewerbung" className="bg-[#FAF8F4] py-20">
           <div className="max-w-2xl mx-auto px-4 sm:px-8">
             <div className="text-center mb-12">
-              <p className="text-[#C5A028] text-sm font-semibold tracking-[0.2em] uppercase mb-3">Bewerbung</p>
+              <p className="text-[#B8860B] text-sm font-semibold tracking-[0.2em] uppercase mb-3">Bewerbung</p>
               <h2 className="font-heading text-3xl lg:text-4xl font-bold text-stone-900 mb-4">Jetzt Partner werden</h2>
               <p className="text-stone-600 text-lg">
                 Füllen Sie das Formular aus – Ali Artun meldet sich persönlich bei Ihnen.
@@ -303,7 +303,7 @@ export default function PartnerClient() {
                       value={form.name}
                       onChange={handleChange}
                       placeholder="Ihr vollständiger Name"
-                      className="w-full px-4 py-3 rounded-xl border border-stone-200 text-stone-900 text-sm outline-none focus:border-[#C5A028] transition-colors"
+                      className="w-full px-4 py-3 rounded-xl border border-stone-200 text-stone-900 text-sm outline-none focus:border-[#B8860B] transition-colors"
                     />
                   </div>
                   <div>
@@ -315,7 +315,7 @@ export default function PartnerClient() {
                       value={form.email}
                       onChange={handleChange}
                       placeholder="ihre@email.de"
-                      className="w-full px-4 py-3 rounded-xl border border-stone-200 text-stone-900 text-sm outline-none focus:border-[#C5A028] transition-colors"
+                      className="w-full px-4 py-3 rounded-xl border border-stone-200 text-stone-900 text-sm outline-none focus:border-[#B8860B] transition-colors"
                     />
                   </div>
                   <div>
@@ -327,7 +327,7 @@ export default function PartnerClient() {
                       value={form.telefon}
                       onChange={handleChange}
                       placeholder="0173 / 123 456"
-                      className="w-full px-4 py-3 rounded-xl border border-stone-200 text-stone-900 text-sm outline-none focus:border-[#C5A028] transition-colors"
+                      className="w-full px-4 py-3 rounded-xl border border-stone-200 text-stone-900 text-sm outline-none focus:border-[#B8860B] transition-colors"
                     />
                   </div>
                   <div>
@@ -339,7 +339,7 @@ export default function PartnerClient() {
                       value={form.wohnort}
                       onChange={handleChange}
                       placeholder="Ihre Stadt"
-                      className="w-full px-4 py-3 rounded-xl border border-stone-200 text-stone-900 text-sm outline-none focus:border-[#C5A028] transition-colors"
+                      className="w-full px-4 py-3 rounded-xl border border-stone-200 text-stone-900 text-sm outline-none focus:border-[#B8860B] transition-colors"
                     />
                   </div>
                   <div className="sm:col-span-2">
@@ -353,7 +353,7 @@ export default function PartnerClient() {
                       value={form.alter}
                       onChange={handleChange}
                       placeholder="Ihr Alter"
-                      className="w-full px-4 py-3 rounded-xl border border-stone-200 text-stone-900 text-sm outline-none focus:border-[#C5A028] transition-colors"
+                      className="w-full px-4 py-3 rounded-xl border border-stone-200 text-stone-900 text-sm outline-none focus:border-[#B8860B] transition-colors"
                     />
                   </div>
                 </div>
@@ -370,7 +370,7 @@ export default function PartnerClient() {
                           value={opt.toLowerCase()}
                           checked={form.erfahrung === opt.toLowerCase()}
                           onChange={handleChange}
-                          className="w-4 h-4 accent-[#C5A028]"
+                          className="w-4 h-4 accent-[#B8860B]"
                         />
                         <span className="text-stone-700 text-sm">{opt}</span>
                       </label>
@@ -389,7 +389,7 @@ export default function PartnerClient() {
                           value={opt.toLowerCase()}
                           checked={form.finanzerfahrung === opt.toLowerCase()}
                           onChange={handleChange}
-                          className="w-4 h-4 accent-[#C5A028]"
+                          className="w-4 h-4 accent-[#B8860B]"
                         />
                         <span className="text-stone-700 text-sm">{opt}</span>
                       </label>
@@ -407,7 +407,7 @@ export default function PartnerClient() {
                     Bitte senden Sie Ihren Lebenslauf nach dem Absenden per E-Mail an{" "}
                     <a
                       href="mailto:Info@plana-immobilien-finanzierung.com"
-                      className="text-[#C5A028] underline"
+                      className="text-[#B8860B] underline"
                     >
                       Info@plana-immobilien-finanzierung.com
                     </a>
@@ -424,7 +424,7 @@ export default function PartnerClient() {
                     onChange={handleChange}
                     placeholder="Erzählen Sie uns kurz von sich und Ihrer Motivation..."
                     rows={4}
-                    className="w-full px-4 py-3 rounded-xl border border-stone-200 text-stone-900 text-sm outline-none focus:border-[#C5A028] transition-colors resize-none"
+                    className="w-full px-4 py-3 rounded-xl border border-stone-200 text-stone-900 text-sm outline-none focus:border-[#B8860B] transition-colors resize-none"
                   />
                 </div>
 

@@ -8,16 +8,16 @@ const badges = ["§34c GewO", "§34i GewO", "IHK Rhein-Neckar"];
 
 const infos = [
   {
-    icon: <svg width="20" height="20" fill="none" stroke="#BFA36D" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>,
+    icon: <svg width="20" height="20" fill="none" stroke="#B8860B" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>,
     label: "Mosbacher Str. 75\n74821 Mosbach",
   },
   {
-    icon: <svg width="20" height="20" fill="none" stroke="#BFA36D" strokeWidth="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>,
+    icon: <svg width="20" height="20" fill="none" stroke="#B8860B" strokeWidth="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>,
     label: "0173-6259429",
     href: "tel:01736259429",
   },
   {
-    icon: <svg width="20" height="20" fill="none" stroke="#BFA36D" strokeWidth="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>,
+    icon: <svg width="20" height="20" fill="none" stroke="#B8860B" strokeWidth="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>,
     label: "Info@plana-immobilien-finanzierung.com",
     href: "mailto:Info@plana-immobilien-finanzierung.com",
   },
@@ -33,10 +33,10 @@ export default function KontaktClient() {
       <style>{`
         .k-inp {
           padding: 14px 18px;
-          border: 1.5px solid #E5DDD3;
+          border: 1.5px solid #E8D9C5;
           border-radius: 12px;
           font-size: 14px;
-          color: #1C1917;
+          color: #2C1A0E;
           outline: none;
           width: 100%;
           font-family: var(--font-inter, sans-serif);
@@ -46,15 +46,15 @@ export default function KontaktClient() {
           box-sizing: border-box;
         }
         .k-inp:focus {
-          border-color: #BFA36D;
-          box-shadow: 0 0 0 3px rgba(191,163,109,0.12);
+          border-color: #B8860B;
+          box-shadow: 0 0 0 3px rgba(184,134,11,0.12);
         }
         .k-lbl {
           font-size: 11px;
           font-weight: 500;
           letter-spacing: 0.1em;
           text-transform: uppercase;
-          color: #78716C;
+          color: #7A6548;
           display: block;
           margin-bottom: 7px;
           font-family: var(--font-inter, sans-serif);
@@ -64,7 +64,7 @@ export default function KontaktClient() {
           align-items: center;
           gap: 8px;
           padding: 15px 36px;
-          background: linear-gradient(135deg, #BFA36D, #D4B87E);
+          background: linear-gradient(135deg, #B8860B, #D4B87E);
           color: #fff;
           border: none;
           border-radius: 60px;
@@ -74,11 +74,11 @@ export default function KontaktClient() {
           text-transform: uppercase;
           cursor: pointer;
           transition: all 400ms cubic-bezier(0.4,0,0.2,1);
-          box-shadow: 0 4px 20px rgba(191,163,109,0.35);
+          box-shadow: 0 4px 20px rgba(184,134,11,0.35);
           font-family: var(--font-inter, sans-serif);
         }
         .k-send-btn:hover {
-          background: linear-gradient(135deg, #1A3040, #243E4F);
+          background: linear-gradient(135deg, #2C1A0E, #3D2512);
           transform: scale(1.03);
         }
         .info-box {
@@ -88,7 +88,7 @@ export default function KontaktClient() {
           gap: 10px;
           padding: 24px 20px;
           background: #fff;
-          border: 1px solid #E8E0D8;
+          border: 1px solid #E8D9C5;
           border-radius: 16px;
           text-align: center;
           flex: 1;
@@ -103,9 +103,9 @@ export default function KontaktClient() {
       `}</style>
 
       {/* Hero */}
-      <section style={{ background: "linear-gradient(135deg,#1A3040 0%,#0d1f29 100%)", padding: "120px 0 80px" }}>
+      <section style={{ background: "linear-gradient(135deg,#2C1A0E 0%,#1A0E05 100%)", padding: "120px 0 80px" }}>
         <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px" }}>
-          <p style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#BFA36D", marginBottom: "16px" }}>KONTAKT</p>
+          <p style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#B8860B", marginBottom: "16px" }}>KONTAKT</p>
           <h1 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "clamp(2.5rem, 5vw, 4rem)", color: "#FFFFFF", lineHeight: 1.1, marginBottom: "16px", maxWidth: "600px" }}>
             Kontakt.
           </h1>
@@ -116,7 +116,7 @@ export default function KontaktClient() {
       </section>
 
       {/* Main */}
-      <section style={{ backgroundColor: "#F5F1EC", padding: "72px 0 96px" }}>
+      <section style={{ backgroundColor: "#F5EDE0", padding: "72px 0 96px" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 24px" }}>
 
           {/* Card */}
@@ -129,12 +129,12 @@ export default function KontaktClient() {
             >
 
               {/* Left – Ali */}
-              <div style={{ backgroundColor: "#FEFDFB", borderRight: "1px solid #F0EBE3", padding: "48px 36px", display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
+              <div style={{ backgroundColor: "#FFFCF7", borderRight: "1px solid #E8D9C5", padding: "48px 36px", display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
 
                 {/* Bild */}
                 <div style={{
                   width: "160px", height: "160px", borderRadius: "50%",
-                  border: "3px solid #BFA36D",
+                  border: "3px solid #B8860B",
                   boxShadow: "0 8px 30px rgba(0,0,0,0.1)",
                   overflow: "hidden",
                   marginBottom: "20px",
@@ -150,10 +150,10 @@ export default function KontaktClient() {
                 </div>
 
                 {/* Name */}
-                <h2 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "1.5rem", color: "#1C1917", marginBottom: "4px" }}>
+                <h2 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "1.5rem", color: "#2C1A0E", marginBottom: "4px" }}>
                   Ali Artun
                 </h2>
-                <p style={{ fontSize: "13px", color: "#BFA36D", fontWeight: 500, marginBottom: "20px", fontFamily: "var(--font-inter, sans-serif)" }}>
+                <p style={{ fontSize: "13px", color: "#B8860B", fontWeight: 500, marginBottom: "20px", fontFamily: "var(--font-inter, sans-serif)" }}>
                   Plan A Immobilien & Finanzierung
                 </p>
 
@@ -163,9 +163,9 @@ export default function KontaktClient() {
                     <span key={b} style={{
                       fontSize: "11px",
                       fontFamily: "var(--font-inter, sans-serif)",
-                      color: "#78716C",
-                      background: "#F5F1EC",
-                      border: "1px solid #E5DDD3",
+                      color: "#7A6548",
+                      background: "#F5EDE0",
+                      border: "1px solid #E8D9C5",
                       borderRadius: "20px",
                       padding: "6px 14px",
                     }}>{b}</span>
@@ -173,15 +173,15 @@ export default function KontaktClient() {
                 </div>
 
                 {/* Reg-Nr + Typ */}
-                <p style={{ fontSize: "12px", color: "#A8A29E", fontFamily: "var(--font-inter, sans-serif)", fontWeight: 300, marginBottom: "4px" }}>
+                <p style={{ fontSize: "12px", color: "#A89070", fontFamily: "var(--font-inter, sans-serif)", fontWeight: 300, marginBottom: "4px" }}>
                   Reg.-Nr.: D-W-153-TH95-12
                 </p>
-                <p style={{ fontSize: "12px", color: "#A8A29E", fontFamily: "var(--font-inter, sans-serif)", fontWeight: 300, marginBottom: "32px" }}>
+                <p style={{ fontSize: "12px", color: "#A89070", fontFamily: "var(--font-inter, sans-serif)", fontWeight: 300, marginBottom: "32px" }}>
                   Freier & unabhängiger Makler
                 </p>
 
                 {/* Trennlinie */}
-                <div style={{ width: "40px", height: "1px", backgroundColor: "#E8E0D8", marginBottom: "24px" }} />
+                <div style={{ width: "40px", height: "1px", backgroundColor: "#E8D9C5", marginBottom: "24px" }} />
 
                 {/* WhatsApp */}
                 <a href="https://wa.me/491736259429" target="_blank" rel="noopener noreferrer"
@@ -190,27 +190,27 @@ export default function KontaktClient() {
                   WhatsApp
                 </a>
 
-                <p style={{ fontSize: "11px", color: "#A8A29E", marginTop: "16px", fontFamily: "var(--font-inter, sans-serif)" }}>
+                <p style={{ fontSize: "11px", color: "#A89070", marginTop: "16px", fontFamily: "var(--font-inter, sans-serif)" }}>
                   Mo–So · 8–20 Uhr
                 </p>
               </div>
 
               {/* Right – Formular */}
               <div style={{ padding: "48px 48px 40px" }}>
-                <h2 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "1.7rem", color: "#1C1917", marginBottom: "8px" }}>
+                <h2 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "1.7rem", color: "#2C1A0E", marginBottom: "8px" }}>
                   Schreiben Sie uns
                 </h2>
-                <p style={{ fontSize: "14px", color: "#78716C", fontWeight: 300, marginBottom: "32px", fontFamily: "var(--font-inter, sans-serif)" }}>
+                <p style={{ fontSize: "14px", color: "#7A6548", fontWeight: 300, marginBottom: "32px", fontFamily: "var(--font-inter, sans-serif)" }}>
                   Wir antworten in der Regel innerhalb von 24 Stunden.
                 </p>
 
                 {sent ? (
-                  <div style={{ padding: "48px 32px", backgroundColor: "#F5F1EC", borderRadius: "16px", textAlign: "center" }}>
-                    <div style={{ width: "52px", height: "52px", borderRadius: "50%", backgroundColor: "#BFA36D", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px" }}>
+                  <div style={{ padding: "48px 32px", backgroundColor: "#F5EDE0", borderRadius: "16px", textAlign: "center" }}>
+                    <div style={{ width: "52px", height: "52px", borderRadius: "50%", backgroundColor: "#B8860B", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px" }}>
                       <svg width="22" height="18" fill="none" stroke="#fff" strokeWidth="2.5" viewBox="0 0 24 20"><polyline points="2 10 8 16 22 2"/></svg>
                     </div>
-                    <p style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "1.3rem", color: "#1C1917", marginBottom: "8px" }}>Nachricht gesendet!</p>
-                    <p style={{ fontSize: "14px", color: "#78716C", fontWeight: 300 }}>Wir melden uns schnellstmöglich bei Ihnen.</p>
+                    <p style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "1.3rem", color: "#2C1A0E", marginBottom: "8px" }}>Nachricht gesendet!</p>
+                    <p style={{ fontSize: "14px", color: "#7A6548", fontWeight: 300 }}>Wir melden uns schnellstmöglich bei Ihnen.</p>
                   </div>
                 ) : (
                   <form onSubmit={(e) => { e.preventDefault(); setSent(true); }} style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
@@ -256,11 +256,11 @@ export default function KontaktClient() {
               <div key={i} className="info-box">
                 {info.icon}
                 {info.href ? (
-                  <a href={info.href} style={{ fontSize: "13px", color: "#1A3040", textDecoration: "none", fontWeight: 400, fontFamily: "var(--font-inter, sans-serif)", wordBreak: "break-all" }}>
+                  <a href={info.href} style={{ fontSize: "13px", color: "#2C1A0E", textDecoration: "none", fontWeight: 400, fontFamily: "var(--font-inter, sans-serif)", wordBreak: "break-all" }}>
                     {info.label}
                   </a>
                 ) : (
-                  <p style={{ fontSize: "13px", color: "#78716C", fontWeight: 300, margin: 0, fontFamily: "var(--font-inter, sans-serif)", whiteSpace: "pre-line" }}>
+                  <p style={{ fontSize: "13px", color: "#7A6548", fontWeight: 300, margin: 0, fontFamily: "var(--font-inter, sans-serif)", whiteSpace: "pre-line" }}>
                     {info.label}
                   </p>
                 )}

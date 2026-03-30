@@ -27,7 +27,7 @@ export default function About() {
             <div
               className="relative rounded-full overflow-hidden flex-shrink-0 w-[200px] h-[200px] sm:w-[240px] sm:h-[240px] lg:w-[280px] lg:h-[280px]"
               style={{
-                border: "3px solid #C5A028",
+                border: "3px solid #B8860B",
                 boxShadow: "0 0 0 6px rgba(197,160,40,0.12)",
               }}
             >
@@ -47,10 +47,10 @@ export default function About() {
           <div className="space-y-7 order-1 lg:order-2 reveal reveal-right">
             <div>
               <div className="flex items-center gap-3 mb-5">
-                <div className="h-0.5 w-10 bg-[#C5A028]" />
+                <div className="h-0.5 w-10 bg-[#B8860B]" />
                 <span
                   className="text-xs font-semibold tracking-[0.2em] uppercase"
-                  style={{ color: "#C5A028" }}
+                  style={{ color: "#B8860B" }}
                 >
                   {t("about.label")}
                 </span>
@@ -58,7 +58,7 @@ export default function About() {
               <h2 className="font-heading text-4xl lg:text-5xl font-bold text-stone-900 leading-[1.1] mb-5">
                 {t("about.heading1")}
                 <br />
-                <span className="italic" style={{ color: "#C5A028" }}>
+                <span className="italic" style={{ color: "#B8860B" }}>
                   {t("about.heading2")}
                 </span>
               </h2>
@@ -77,7 +77,7 @@ export default function About() {
                   <CheckCircle
                     size={20}
                     className="flex-shrink-0 mt-0.5"
-                    style={{ color: "#C5A028" }}
+                    style={{ color: "#B8860B" }}
                   />
                   <span className="text-stone-700 text-lg">{p}</span>
                 </li>
@@ -85,7 +85,7 @@ export default function About() {
             </ul>
 
             {/* Signatur mit rundem Profilbild */}
-            <div className="flex items-center gap-4 py-5 border-t border-b border-[#C5A028]/20">
+            <div className="flex items-center gap-4 py-5 border-t border-b border-[#B8860B]/20">
               <div
                 className="relative flex-shrink-0 rounded-full overflow-hidden"
                 style={{
@@ -128,7 +128,7 @@ export default function About() {
               </a>
               <a
                 href="tel:+4962619123456"
-                className="inline-flex items-center gap-2 text-stone-600 hover:text-[#C5A028] transition-colors text-lg"
+                className="inline-flex items-center gap-2 text-stone-600 hover:text-[#B8860B] transition-colors text-lg"
               >
                 <Phone size={17} />
                 06261 / 123 456

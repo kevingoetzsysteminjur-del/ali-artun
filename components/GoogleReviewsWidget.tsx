@@ -1,6 +1,6 @@
 export default function GoogleReviewsWidget() {
   return (
-    <div className="bg-white rounded-3xl border border-[#C5A028]/20 shadow-sm overflow-hidden max-w-sm w-full mx-auto">
+    <div className="bg-white rounded-3xl border border-[#B8860B]/20 shadow-sm overflow-hidden max-w-sm w-full mx-auto">
       {/* Top accent */}
       <div className="h-1 bg-gradient-to-r from-[#4285F4] via-[#34A853] to-[#FBBC05]" />
 
@@ -21,7 +21,7 @@ export default function GoogleReviewsWidget() {
           <p className="text-5xl font-bold text-stone-900 leading-none mb-2">5,0</p>
           <div className="flex justify-center gap-1 mb-2">
             {[1,2,3,4,5].map((s) => (
-              <svg key={s} width="22" height="22" viewBox="0 0 24 24" fill="#C5A028" aria-hidden="true">
+              <svg key={s} width="22" height="22" viewBox="0 0 24 24" fill="#B8860B" aria-hidden="true">
                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
               </svg>
             ))}

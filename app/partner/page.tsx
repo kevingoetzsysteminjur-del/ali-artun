@@ -31,13 +31,13 @@ export default function PartnerPage() {
       <main>
 
         {/* Hero */}
-        <section style={{ background: "linear-gradient(135deg,#1B3A4B 0%,#0e2230 100%)", padding: "120px 0 80px", position: "relative", overflow: "hidden" }}>
-          <div style={{ position: "absolute", top: "-10%", right: "-5%", width: "600px", height: "600px", borderRadius: "50%", border: "1px solid #C8A96E", opacity: 0.05 }} />
+        <section style={{ background: "linear-gradient(135deg,#2C1A0E 0%,#1A0E05 100%)", padding: "120px 0 80px", position: "relative", overflow: "hidden" }}>
+          <div style={{ position: "absolute", top: "-10%", right: "-5%", width: "600px", height: "600px", borderRadius: "50%", border: "1px solid #D4A017", opacity: 0.05 }} />
           <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px", position: "relative", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "60px", alignItems: "center" }} className="partner-hero-grid">
             <div>
-              <p style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C8A96E", marginBottom: "16px" }}>PARTNER WERDEN</p>
+              <p style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#D4A017", marginBottom: "16px" }}>PARTNER WERDEN</p>
               <h1 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "clamp(2.5rem, 5vw, 4rem)", color: "#FFFFFF", lineHeight: 1.1, marginBottom: "24px" }}>
-                Werden Sie Plan A{" "}<span style={{ color: "#C8A96E" }}>Vertreter.</span>
+                Werden Sie Plan A{" "}<span style={{ color: "#D4A017" }}>Vertreter.</span>
               </h1>
               <p style={{ fontSize: "16px", color: "rgba(255,255,255,0.7)", lineHeight: 1.8, maxWidth: "480px", marginBottom: "36px", fontWeight: 300 }}>
                 Starten Sie Ihre Karriere in der Immobilienbranche. Mit IHK-Qualifikation, verifizierten Leads und der Unterstützung von Plan A im Hintergrund.
@@ -47,7 +47,7 @@ export default function PartnerPage() {
               </p>
             </div>
             <div style={{ display: "flex", justifyContent: "center", position: "relative" }}>
-              <div style={{ position: "absolute", width: "320px", height: "320px", borderRadius: "50%", border: "1px solid rgba(200,169,110,0.2)" }} />
+              <div style={{ position: "absolute", width: "320px", height: "320px", borderRadius: "50%", border: "1px solid rgba(212,160,23,0.2)" }} />
               <Image src="/maskottchen.png" alt="Plan A Partner" width={260} height={260}
                 style={{ width: "clamp(180px,20vw,260px)", height: "auto", position: "relative", zIndex: 1, filter: "drop-shadow(0 16px 32px rgba(0,0,0,0.3))" }} />
             </div>
@@ -56,9 +56,9 @@ export default function PartnerPage() {
         <style>{`@media(max-width:768px){.partner-hero-grid{grid-template-columns:1fr!important;}}`}</style>
 
         {/* Context */}
-        <section style={{ backgroundColor: "#FEFDFB", padding: "48px 0 0" }}>
+        <section style={{ backgroundColor: "#FFFCF7", padding: "48px 0 0" }}>
           <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px", textAlign: "center" }}>
-            <p style={{ fontSize: "16px", color: "#78716C", lineHeight: 1.85, fontWeight: 300, maxWidth: "700px", margin: "0 auto" }}>
+            <p style={{ fontSize: "16px", color: "#7A6548", lineHeight: 1.85, fontWeight: 300, maxWidth: "700px", margin: "0 auto" }}>
               Werden Sie Teil des Plan A Netzwerks. Mit IHK-Qualifikation und unserer Unterstützung starten Sie als selbstständiger Immobilien-Vertreter – ohne teuren Kurs, ohne Risiko. Plan A steht hinter Ihnen.
             </p>
           </div>
@@ -67,16 +67,16 @@ export default function PartnerPage() {
         {/* Bildungsweg */}
         <section style={{ backgroundColor: "#FFFFFF", padding: "80px 0" }}>
           <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px" }}>
-            <p style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C8A96E", marginBottom: "12px" }}>IHR WEG</p>
-            <h2 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "clamp(1.8rem, 3vw, 2.5rem)", color: "#1A1A1A", marginBottom: "56px" }}>Ihr Bildungsweg</h2>
+            <p style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#D4A017", marginBottom: "12px" }}>IHR WEG</p>
+            <h2 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "clamp(1.8rem, 3vw, 2.5rem)", color: "#2C1A0E", marginBottom: "56px" }}>Ihr Bildungsweg</h2>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "32px" }} className="steps-grid">
               {steps.map((s, i) => (
                 <div key={i} style={{ display: "flex", flexDirection: "column", gap: "16px", position: "relative" }}>
-                  <div style={{ width: "52px", height: "52px", borderRadius: "50%", backgroundColor: "#1B3A4B", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <span style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "1rem", color: "#C8A96E" }}>{s.num}</span>
+                  <div style={{ width: "52px", height: "52px", borderRadius: "50%", backgroundColor: "#2C1A0E", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <span style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "1rem", color: "#D4A017" }}>{s.num}</span>
                   </div>
-                  <h3 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "1.2rem", color: "#1A1A1A" }}>{s.title}</h3>
-                  <p style={{ fontSize: "13px", color: "#6B7280", lineHeight: 1.7, fontWeight: 300 }}>{s.text}</p>
+                  <h3 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "1.2rem", color: "#2C1A0E" }}>{s.title}</h3>
+                  <p style={{ fontSize: "13px", color: "#7A6548", lineHeight: 1.7, fontWeight: 300 }}>{s.text}</p>
                 </div>
               ))}
             </div>
@@ -85,16 +85,16 @@ export default function PartnerPage() {
         </section>
 
         {/* Was Sie bekommen */}
-        <section style={{ backgroundColor: "#F7F5F2", padding: "80px 0" }}>
+        <section style={{ backgroundColor: "#F5EDE0", padding: "80px 0" }}>
           <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px" }}>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "60px", alignItems: "center" }} className="leist-grid">
               <div>
-                <p style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C8A96E", marginBottom: "12px" }}>IHRE VORTEILE</p>
-                <h2 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "clamp(1.8rem, 3vw, 2.5rem)", color: "#1A1A1A", marginBottom: "36px" }}>Was Sie bekommen</h2>
+                <p style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#D4A017", marginBottom: "12px" }}>IHRE VORTEILE</p>
+                <h2 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "clamp(1.8rem, 3vw, 2.5rem)", color: "#2C1A0E", marginBottom: "36px" }}>Was Sie bekommen</h2>
                 <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
                   {leistungen.map((l) => (
-                    <div key={l} style={{ display: "flex", alignItems: "center", gap: "12px", fontSize: "15px", color: "#374151", fontWeight: 300 }}>
-                      <span style={{ width: "22px", height: "22px", borderRadius: "50%", backgroundColor: "#C8A96E", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                    <div key={l} style={{ display: "flex", alignItems: "center", gap: "12px", fontSize: "15px", color: "#2C1A0E", fontWeight: 300 }}>
+                      <span style={{ width: "22px", height: "22px", borderRadius: "50%", backgroundColor: "#D4A017", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                         <svg width="10" height="8" fill="none" stroke="#fff" strokeWidth="2.5" viewBox="0 0 12 10"><polyline points="1 5 4 8 11 1"/></svg>
                       </span>
                       {l}
@@ -102,7 +102,7 @@ export default function PartnerPage() {
                   ))}
                 </div>
               </div>
-              <div style={{ backgroundColor: "#1B3A4B", borderRadius: "20px", padding: "40px" }}>
+              <div style={{ backgroundColor: "#2C1A0E", borderRadius: "20px", padding: "40px" }}>
                 <p style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "1.5rem", color: "#fff", marginBottom: "16px", lineHeight: 1.4 }}>Wir melden uns persönlich.</p>
                 <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.6)", lineHeight: 1.7, fontWeight: 300, marginBottom: "28px" }}>
                   Schreiben Sie uns – wir besprechen alles Weitere gemeinsam und unverbindlich.

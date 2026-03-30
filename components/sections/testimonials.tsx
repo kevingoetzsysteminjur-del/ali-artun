@@ -28,17 +28,17 @@ export default function Testimonials() {
   return (
     <section
       id="referenzen"
-      className="bg-[#EDE8DF] border-y border-[#C5A028]/25 py-20 lg:py-28"
+      className="bg-[#EDE8DF] border-y border-[#B8860B]/25 py-20 lg:py-28"
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-14 reveal">
           <div className="flex items-center justify-center gap-3 mb-5">
-            <div className="h-0.5 w-10 bg-[#C5A028]" />
-            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#C5A028]">
+            <div className="h-0.5 w-10 bg-[#B8860B]" />
+            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#B8860B]">
               {t("testimonials.label")}
             </span>
-            <div className="h-0.5 w-10 bg-[#C5A028]" />
+            <div className="h-0.5 w-10 bg-[#B8860B]" />
           </div>
           <h2 className="font-heading text-4xl lg:text-5xl font-bold text-stone-900 leading-[1.1] mb-4">
             {t("testimonials.heading")}
@@ -52,12 +52,12 @@ export default function Testimonials() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-16 reveal reveal-delay-1 items-start">
 
         {/* Text-Platzhalter */}
-        <div className="bg-white rounded-3xl border border-[#C5A028]/20 shadow-sm overflow-hidden">
-          <div className="h-1 bg-gradient-to-r from-[#C5A028]/40 via-[#C5A028] to-[#C5A028]/40" />
+        <div className="bg-white rounded-3xl border border-[#B8860B]/20 shadow-sm overflow-hidden">
+          <div className="h-1 bg-gradient-to-r from-[#B8860B]/40 via-[#B8860B] to-[#B8860B]/40" />
           <div className="px-5 py-8 sm:px-10 sm:py-12 text-center">
             <div
               className="text-[80px] leading-none font-heading font-bold mb-4"
-              style={{ color: "#C5A028", opacity: 0.35 }}
+              style={{ color: "#B8860B", opacity: 0.35 }}
               aria-hidden="true"
             >
               ❝
@@ -66,9 +66,9 @@ export default function Testimonials() {
               {t("testimonials.placeholder")}
             </p>
             <div className="flex items-center gap-4 justify-center mb-8">
-              <div className="h-px flex-1 max-w-[80px] bg-[#C5A028]/25" />
-              <div className="w-1.5 h-1.5 rounded-full bg-[#C5A028]/50" />
-              <div className="h-px flex-1 max-w-[80px] bg-[#C5A028]/25" />
+              <div className="h-px flex-1 max-w-[80px] bg-[#B8860B]/25" />
+              <div className="w-1.5 h-1.5 rounded-full bg-[#B8860B]/50" />
+              <div className="h-px flex-1 max-w-[80px] bg-[#B8860B]/25" />
             </div>
             <div className="inline-flex items-center gap-3 bg-stone-50 border border-stone-200 rounded-2xl px-6 py-3.5 mb-8">
               <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
@@ -80,7 +80,7 @@ export default function Testimonials() {
               <div className="text-left">
                 <div className="flex gap-0.5 mb-0.5">
                   {[1, 2, 3, 4, 5].map((s) => (
-                    <span key={s} style={{ color: "#C5A028", fontSize: "15px" }}>★</span>
+                    <span key={s} style={{ color: "#B8860B", fontSize: "15px" }}>★</span>
                   ))}
                 </div>
                 <p className="text-stone-500 text-xs">{t("testimonials.rateOnGoogle")}</p>
@@ -112,11 +112,11 @@ export default function Testimonials() {
         <div className="reveal reveal-delay-2">
           <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-3 mb-3">
-              <div className="h-px w-8 bg-[#C5A028]/40" />
+              <div className="h-px w-8 bg-[#B8860B]/40" />
               <span className="text-xs font-semibold tracking-[0.18em] uppercase text-stone-400">
                 {t("testimonials.videoLabel")}
               </span>
-              <div className="h-px w-8 bg-[#C5A028]/40" />
+              <div className="h-px w-8 bg-[#B8860B]/40" />
             </div>
             <p className="text-stone-500 text-base">
               {t("testimonials.videoSoon")}
@@ -127,14 +127,14 @@ export default function Testimonials() {
             {VIDEO_PLATZHALTER.map((v, i) => (
               <div
                 key={i}
-                className="group relative overflow-hidden rounded-2xl border border-[#C5A028]/15 bg-white shadow-sm"
+                className="group relative overflow-hidden rounded-2xl border border-[#B8860B]/15 bg-white shadow-sm"
               >
                 {/* Thumbnail-Platzhalter */}
                 <div className={`aspect-video bg-gradient-to-br ${v.gradient} relative`}>
                   {/* Play-Button */}
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="w-14 h-14 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-200">
-                      <Play size={20} style={{ color: "#C5A028", marginLeft: "2px" }} fill="#C5A028" />
+                      <Play size={20} style={{ color: "#B8860B", marginLeft: "2px" }} fill="#B8860B" />
                     </div>
                   </div>
                   {/* Coming soon badge */}

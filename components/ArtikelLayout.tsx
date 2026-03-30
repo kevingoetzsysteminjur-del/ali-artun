@@ -36,7 +36,7 @@ export default function ArtikelLayout({ kategorie, kategorieColor, titel, datum,
           <h1 style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 400, color: "#1a1a1a", lineHeight: 1.25, letterSpacing: "0.04em", marginBottom: "24px" }}>
             {titel}
           </h1>
-          <div style={{ width: "60px", height: "2px", background: "linear-gradient(90deg, #C5A028, #A08020)" }} />
+          <div style={{ width: "60px", height: "2px", background: "linear-gradient(90deg, #B8860B, #A08020)" }} />
         </header>
 
         {/* Artikel Inhalt */}
@@ -45,8 +45,8 @@ export default function ArtikelLayout({ kategorie, kategorieColor, titel, datum,
         </div>
 
         {/* CTA Box */}
-        <div style={{ marginTop: "56px", padding: "36px 40px", border: "1px solid rgba(197,160,40,0.3)", backgroundColor: "#FAF8F4", borderLeft: "4px solid #C5A028" }}>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: "11px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#C5A028", marginBottom: "10px" }}>Kostenlose Beratung</p>
+        <div style={{ marginTop: "56px", padding: "36px 40px", border: "1px solid rgba(197,160,40,0.3)", backgroundColor: "#FAF8F4", borderLeft: "4px solid #B8860B" }}>
+          <p style={{ fontFamily: "var(--font-body)", fontSize: "11px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#B8860B", marginBottom: "10px" }}>Kostenlose Beratung</p>
           <h3 style={{ fontFamily: "var(--font-heading)", fontSize: "1.5rem", fontWeight: 400, color: "#1a1a1a", marginBottom: "10px" }}>Haben Sie Fragen zu Ihrer Immobilie?</h3>
           <p style={{ fontFamily: "var(--font-body)", fontSize: "14px", color: "#6B5E4E", marginBottom: "20px", lineHeight: 1.6 }}>
             Ali Artun berät Sie persönlich, unverbindlich und kostenlos. Rufen Sie jetzt an oder nutzen Sie das Kontaktformular.
@@ -64,7 +64,7 @@ export default function ArtikelLayout({ kategorie, kategorieColor, titel, datum,
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: "16px" }}>
               {weitereArtikel.map(a => (
                 <Link key={a.slug} href={`/ratgeber/${a.slug}`} style={{ textDecoration: "none", display: "block", padding: "20px", border: "1px solid rgba(197,160,40,0.2)", backgroundColor: "#fff", transition: "border-color 0.2s" }}>
-                  <span style={{ fontFamily: "var(--font-body)", fontSize: "10px", letterSpacing: "0.15em", textTransform: "uppercase", color: "#C5A028", display: "block", marginBottom: "8px" }}>{a.kategorie}</span>
+                  <span style={{ fontFamily: "var(--font-body)", fontSize: "10px", letterSpacing: "0.15em", textTransform: "uppercase", color: "#B8860B", display: "block", marginBottom: "8px" }}>{a.kategorie}</span>
                   <span style={{ fontFamily: "var(--font-heading)", fontSize: "0.95rem", color: "#1a1a1a", lineHeight: 1.4 }}>{a.titel}</span>
                 </Link>
               ))}

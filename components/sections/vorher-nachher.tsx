@@ -63,9 +63,9 @@ const REFERENZEN = [
 ];
 
 const KATEGORIE_FARBE: Record<string, string> = {
-  Aufbereitung: "#C5A028",
-  Objekt: "#6B7280",
-  Wertoptimierung: "#C5A028",
+  Aufbereitung: "#B8860B",
+  Objekt: "#7A6548",
+  Wertoptimierung: "#B8860B",
   Außenbereich: "#92835A",
 };
 
@@ -82,11 +82,11 @@ export default function VorherNachher() {
         {/* Header */}
         <div className="text-center mb-14 reveal">
           <div className="flex items-center justify-center gap-3 mb-5">
-            <div className="h-0.5 w-10 bg-[#C5A028]" />
-            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#C5A028]">
+            <div className="h-0.5 w-10 bg-[#B8860B]" />
+            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#B8860B]">
               {t("vorherNachher.eyebrow")}
             </span>
-            <div className="h-0.5 w-10 bg-[#C5A028]" />
+            <div className="h-0.5 w-10 bg-[#B8860B]" />
           </div>
           <h2 className="font-heading text-4xl lg:text-5xl font-bold text-stone-900 leading-[1.1] mb-4">
             {t("vorherNachher.title")}
@@ -114,7 +114,7 @@ export default function VorherNachher() {
               <div className="absolute bottom-0 left-0 right-0 p-5">
                 <span
                   className="inline-block text-[10px] font-semibold uppercase tracking-[0.18em] px-2.5 py-1 mb-2"
-                  style={{ backgroundColor: KATEGORIE_FARBE[item.kategorie] ?? "#C5A028", color: "#fff", borderRadius: "4px" }}
+                  style={{ backgroundColor: KATEGORIE_FARBE[item.kategorie] ?? "#B8860B", color: "#fff", borderRadius: "4px" }}
                 >
                   {item.kategorie}
                 </span>
@@ -143,7 +143,7 @@ export default function VorherNachher() {
               <div className="absolute bottom-0 left-0 right-0 p-4">
                 <span
                   className="inline-block text-[9px] font-semibold uppercase tracking-[0.15em] px-2 py-0.5 mb-1.5"
-                  style={{ backgroundColor: KATEGORIE_FARBE[item.kategorie] ?? "#C5A028", color: "#fff", borderRadius: "3px" }}
+                  style={{ backgroundColor: KATEGORIE_FARBE[item.kategorie] ?? "#B8860B", color: "#fff", borderRadius: "3px" }}
                 >
                   {item.kategorie}
                 </span>

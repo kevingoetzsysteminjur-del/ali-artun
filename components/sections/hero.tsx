@@ -15,7 +15,7 @@ export default function Hero() {
           {/* Left: Text */}
           <div className="space-y-8">
             {/* Eyebrow */}
-            <p className="text-[#C5A028] text-sm font-semibold tracking-[0.2em] uppercase">
+            <p className="text-[#B8860B] text-sm font-semibold tracking-[0.2em] uppercase">
               {t("hero.eyebrow")}
             </p>
 
@@ -24,7 +24,7 @@ export default function Hero() {
               {t("hero.headline1")}
               <br />
               {t("hero.headline2")}{" "}
-              <span className="italic" style={{ color: "#C5A028" }}>
+              <span className="italic" style={{ color: "#B8860B" }}>
                 {t("hero.headline3")}
                 <br />
                 {t("hero.headline4")}
@@ -32,7 +32,7 @@ export default function Hero() {
             </h1>
 
             {/* Divider */}
-            <div className="w-16 h-0.5 bg-[#C5A028]" />
+            <div className="w-16 h-0.5 bg-[#B8860B]" />
 
             {/* Second tagline / slogan */}
             <div className="inline-flex items-center gap-2">
@@ -94,9 +94,9 @@ export default function Hero() {
             {/* Phone hint */}
             <a
               href={MAKLER.telefonHref}
-              className="inline-flex items-center gap-3 text-stone-500 hover:text-[#C5A028] transition-colors"
+              className="inline-flex items-center gap-3 text-stone-500 hover:text-[#B8860B] transition-colors"
             >
-              <Phone size={17} className="text-[#C5A028]" />
+              <Phone size={17} className="text-[#B8860B]" />
               <span className="text-lg">
                 {t("hero.callLabel")}{" "}
                 <span className="font-semibold text-stone-700">
@@ -114,7 +114,7 @@ export default function Hero() {
               <div
                 className="relative rounded-full overflow-hidden flex-shrink-0 w-[200px] h-[200px] sm:w-[240px] sm:h-[240px] lg:w-[280px] lg:h-[280px]"
                 style={{
-                  border: "3px solid #C5A028",
+                  border: "3px solid #B8860B",
                   boxShadow: "0 0 0 6px rgba(197,160,40,0.12)",
                 }}
               >

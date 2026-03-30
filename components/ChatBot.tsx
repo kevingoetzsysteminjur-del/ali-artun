@@ -75,20 +75,20 @@ export default function ChatBot() {
     <>
       {/* Floating button */}
       <button onClick={() => setOpen(v => !v)} aria-label="Chat"
-        style={{ position: "fixed", bottom: "24px", left: "24px", zIndex: 800, width: "56px", height: "56px", borderRadius: "50%", backgroundColor: "#1B3A4B", border: "2.5px solid #C8A96E", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 4px 20px rgba(27,58,75,0.4)", transition: "transform 0.2s" }}
+        style={{ position: "fixed", bottom: "24px", left: "24px", zIndex: 800, width: "56px", height: "56px", borderRadius: "50%", backgroundColor: "#2C1A0E", border: "2.5px solid #D4A017", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 4px 20px rgba(44,26,14,0.4)", transition: "transform 0.2s" }}
         onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.1)")}
         onMouseLeave={e => (e.currentTarget.style.transform = "scale(1)")}>
         {open
           ? <svg width="20" height="20" fill="none" stroke="#fff" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
-          : <svg width="20" height="20" fill="none" stroke="#C8A96E" strokeWidth="1.8" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>}
+          : <svg width="20" height="20" fill="none" stroke="#D4A017" strokeWidth="1.8" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>}
       </button>
 
       {/* Chat window */}
       {open && (
         <div style={{ position: "fixed", bottom: "92px", left: "24px", zIndex: 800, width: "340px", maxHeight: "520px", backgroundColor: "#fff", borderRadius: "20px", boxShadow: "0 20px 60px rgba(0,0,0,0.2)", display: "flex", flexDirection: "column", overflow: "hidden" }}>
           {/* Header */}
-          <div style={{ backgroundColor: "#1B3A4B", padding: "16px 20px", display: "flex", alignItems: "center", gap: "12px", flexShrink: 0 }}>
-            <div style={{ width: "36px", height: "36px", borderRadius: "50%", overflow: "hidden", border: "2px solid #C8A96E", flexShrink: 0, backgroundColor: "#0e2230" }}>
+          <div style={{ backgroundColor: "#2C1A0E", padding: "16px 20px", display: "flex", alignItems: "center", gap: "12px", flexShrink: 0 }}>
+            <div style={{ width: "36px", height: "36px", borderRadius: "50%", overflow: "hidden", border: "2px solid #D4A017", flexShrink: 0, backgroundColor: "#1A0E05" }}>
               <Image src="/maskottchen.png" alt="Plan A" width={36} height={36} style={{ width: "36px", height: "auto" }} />
             </div>
             <div>
@@ -105,20 +105,20 @@ export default function ChatBot() {
             {msgs.map((m, i) => (
               <div key={i} style={{ display: "flex", justifyContent: m.from === "user" ? "flex-end" : "flex-start", gap: "8px", alignItems: "flex-end" }}>
                 {m.from === "bot" && (
-                  <div style={{ width: "26px", height: "26px", borderRadius: "50%", overflow: "hidden", flexShrink: 0, backgroundColor: "#1B3A4B" }}>
+                  <div style={{ width: "26px", height: "26px", borderRadius: "50%", overflow: "hidden", flexShrink: 0, backgroundColor: "#2C1A0E" }}>
                     <Image src="/maskottchen.png" alt="" width={26} height={26} style={{ width: "26px", height: "auto" }} />
                   </div>
                 )}
-                <div style={{ maxWidth: "220px", padding: "10px 14px", borderRadius: m.from === "user" ? "18px 18px 4px 18px" : "18px 18px 18px 4px", backgroundColor: m.from === "user" ? "#1B3A4B" : "#F7F5F2", color: m.from === "user" ? "#fff" : "#1A1A1A", fontSize: "13px", lineHeight: 1.6, fontWeight: 300, whiteSpace: "pre-line" as const }}>
+                <div style={{ maxWidth: "220px", padding: "10px 14px", borderRadius: m.from === "user" ? "18px 18px 4px 18px" : "18px 18px 18px 4px", backgroundColor: m.from === "user" ? "#2C1A0E" : "#F5EDE0", color: m.from === "user" ? "#fff" : "#2C1A0E", fontSize: "13px", lineHeight: 1.6, fontWeight: 300, whiteSpace: "pre-line" as const }}>
                   {m.text}
                 </div>
               </div>
             ))}
             {typing && (
               <div style={{ display: "flex", gap: "8px", alignItems: "flex-end" }}>
-                <div style={{ width: "26px", height: "26px", borderRadius: "50%", overflow: "hidden", backgroundColor: "#1B3A4B" }}><Image src="/maskottchen.png" alt="" width={26} height={26} style={{ width: "26px", height: "auto" }} /></div>
-                <div style={{ padding: "12px 16px", backgroundColor: "#F7F5F2", borderRadius: "18px 18px 18px 4px", display: "flex", gap: "4px", alignItems: "center" }}>
-                  {[0, 0.2, 0.4].map((d, i) => <span key={i} style={{ width: "6px", height: "6px", borderRadius: "50%", backgroundColor: "#C8A96E", display: "inline-block", animation: `cbounce 1s ${d}s infinite` }} />)}
+                <div style={{ width: "26px", height: "26px", borderRadius: "50%", overflow: "hidden", backgroundColor: "#2C1A0E" }}><Image src="/maskottchen.png" alt="" width={26} height={26} style={{ width: "26px", height: "auto" }} /></div>
+                <div style={{ padding: "12px 16px", backgroundColor: "#F5EDE0", borderRadius: "18px 18px 18px 4px", display: "flex", gap: "4px", alignItems: "center" }}>
+                  {[0, 0.2, 0.4].map((d, i) => <span key={i} style={{ width: "6px", height: "6px", borderRadius: "50%", backgroundColor: "#D4A017", display: "inline-block", animation: `cbounce 1s ${d}s infinite` }} />)}
                 </div>
               </div>
             )}
@@ -127,12 +127,12 @@ export default function ChatBot() {
 
           {/* Quick replies */}
           {!typing && QUICK[step]?.length > 0 && (
-            <div style={{ padding: "8px 12px", display: "flex", flexWrap: "wrap", gap: "6px", borderTop: "1px solid #F3F4F6", flexShrink: 0 }}>
+            <div style={{ padding: "8px 12px", display: "flex", flexWrap: "wrap", gap: "6px", borderTop: "1px solid #F5EDE0", flexShrink: 0 }}>
               {QUICK[step].map(q => (
                 <button key={q.next} onClick={() => handleQuick(q)}
-                  style={{ padding: "6px 12px", backgroundColor: "transparent", border: "1px solid #C8A96E", borderRadius: "50px", fontSize: "12px", color: "#1B3A4B", cursor: "pointer", transition: "all 0.2s" }}
-                  onMouseEnter={e => { e.currentTarget.style.backgroundColor = "#C8A96E"; e.currentTarget.style.color = "#fff"; }}
-                  onMouseLeave={e => { e.currentTarget.style.backgroundColor = "transparent"; e.currentTarget.style.color = "#1B3A4B"; }}>
+                  style={{ padding: "6px 12px", backgroundColor: "transparent", border: "1px solid #D4A017", borderRadius: "50px", fontSize: "12px", color: "#2C1A0E", cursor: "pointer", transition: "all 0.2s" }}
+                  onMouseEnter={e => { e.currentTarget.style.backgroundColor = "#D4A017"; e.currentTarget.style.color = "#fff"; }}
+                  onMouseLeave={e => { e.currentTarget.style.backgroundColor = "transparent"; e.currentTarget.style.color = "#2C1A0E"; }}>
                   {q.label}
                 </button>
               ))}
@@ -140,17 +140,17 @@ export default function ChatBot() {
           )}
 
           {/* Input */}
-          <div style={{ padding: "12px 16px", borderTop: "1px solid #F3F4F6", display: "flex", gap: "8px", flexShrink: 0 }}>
+          <div style={{ padding: "12px 16px", borderTop: "1px solid #F5EDE0", display: "flex", gap: "8px", flexShrink: 0 }}>
             <input value={input} onChange={e => setInput(e.target.value)} onKeyDown={e => e.key === "Enter" && handleSend()} placeholder="Ihre Frage..."
-              style={{ flex: 1, padding: "9px 14px", border: "1px solid #E5E7EB", borderRadius: "50px", fontSize: "13px", color: "#1A1A1A", outline: "none", fontFamily: "var(--font-inter, sans-serif)" }} />
-            <button onClick={handleSend} style={{ width: "36px", height: "36px", borderRadius: "50%", backgroundColor: "#C8A96E", border: "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+              style={{ flex: 1, padding: "9px 14px", border: "1px solid #E8D9C5", borderRadius: "50px", fontSize: "13px", color: "#2C1A0E", outline: "none", fontFamily: "var(--font-inter, sans-serif)" }} />
+            <button onClick={handleSend} style={{ width: "36px", height: "36px", borderRadius: "50%", backgroundColor: "#D4A017", border: "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
               <svg width="14" height="14" fill="none" stroke="#fff" strokeWidth="2.5" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
             </button>
           </div>
 
           {/* Footer */}
-          <div style={{ padding: "10px 16px 14px", backgroundColor: "#F7F5F2", display: "flex", gap: "8px", justifyContent: "center", flexShrink: 0 }}>
-            <a href="tel:01736259429" style={{ display: "flex", alignItems: "center", gap: "5px", padding: "7px 14px", backgroundColor: "#1B3A4B", color: "#fff", borderRadius: "50px", textDecoration: "none", fontSize: "12px", fontWeight: 500 }}>
+          <div style={{ padding: "10px 16px 14px", backgroundColor: "#F5EDE0", display: "flex", gap: "8px", justifyContent: "center", flexShrink: 0 }}>
+            <a href="tel:01736259429" style={{ display: "flex", alignItems: "center", gap: "5px", padding: "7px 14px", backgroundColor: "#2C1A0E", color: "#fff", borderRadius: "50px", textDecoration: "none", fontSize: "12px", fontWeight: 500 }}>
               <svg width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
               Anrufen
             </a>

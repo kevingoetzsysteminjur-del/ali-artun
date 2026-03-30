@@ -6,17 +6,17 @@ export default function VideoErklaer() {
   const { t } = useLanguage();
 
   return (
-    <section className="bg-[#F9F8F5] py-20 lg:py-28">
+    <section className="bg-[#FFFCF7] py-20 lg:py-28">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
         <div className="text-center mb-10 reveal">
           <div className="flex items-center justify-center gap-3 mb-5">
-            <div className="h-0.5 w-10 bg-[#C5A028]" />
-            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#C5A028]">
+            <div className="h-0.5 w-10 bg-[#B8860B]" />
+            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#B8860B]">
               {t("videoErklaer.eyebrow")}
             </span>
-            <div className="h-0.5 w-10 bg-[#C5A028]" />
+            <div className="h-0.5 w-10 bg-[#B8860B]" />
           </div>
           <h2 className="font-heading text-4xl lg:text-5xl font-bold text-stone-900 leading-[1.1] mb-4">
             {t("videoErklaer.title")}

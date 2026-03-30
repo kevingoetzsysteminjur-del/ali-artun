@@ -10,7 +10,7 @@ export default function VideoIntro() {
     <section
       style={{
         minHeight: "100vh",
-        background: "linear-gradient(160deg, #F9F8F5 0%, #F0EBE0 60%, #EDE5D6 100%)",
+        background: "linear-gradient(160deg, #FFFCF7 0%, #F0EBE0 60%, #EDE5D6 100%)",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -41,9 +41,9 @@ export default function VideoIntro() {
           border: "1px solid rgba(197,160,40,0.1)",
         }} />
         {/* Gold-Punkte */}
-        <div style={{ position: "absolute", top: "15%", right: "8%", width: 6, height: 6, borderRadius: "50%", background: "#C5A028", opacity: 0.3 }} />
-        <div style={{ position: "absolute", top: "30%", right: "14%", width: 4, height: 4, borderRadius: "50%", background: "#C5A028", opacity: 0.2 }} />
-        <div style={{ position: "absolute", bottom: "25%", left: "6%", width: 5, height: 5, borderRadius: "50%", background: "#C5A028", opacity: 0.25 }} />
+        <div style={{ position: "absolute", top: "15%", right: "8%", width: 6, height: 6, borderRadius: "50%", background: "#B8860B", opacity: 0.3 }} />
+        <div style={{ position: "absolute", top: "30%", right: "14%", width: 4, height: 4, borderRadius: "50%", background: "#B8860B", opacity: 0.2 }} />
+        <div style={{ position: "absolute", bottom: "25%", left: "6%", width: 5, height: 5, borderRadius: "50%", background: "#B8860B", opacity: 0.25 }} />
       </div>
 
       <style>{`
@@ -98,7 +98,7 @@ export default function VideoIntro() {
           {/* Trennlinie Gold */}
           <div style={{
             width: 48, height: 2,
-            background: "linear-gradient(90deg, transparent, #C5A028, transparent)",
+            background: "linear-gradient(90deg, transparent, #B8860B, transparent)",
             margin: "16px auto",
             borderRadius: 2,
           }} />
@@ -199,7 +199,7 @@ export default function VideoIntro() {
               width: 36, height: 36,
               borderRadius: "50%",
               overflow: "hidden",
-              border: "2px solid #C5A028",
+              border: "2px solid #B8860B",
               flexShrink: 0,
             }}>
               <Image src="/ali.png" alt="Ali Artun" width={36} height={36} style={{ objectFit: "cover", width: "100%", height: "100%" }} />
@@ -224,7 +224,7 @@ export default function VideoIntro() {
           height="26"
           viewBox="0 0 24 24"
           fill="none"
-          stroke="#C5A028"
+          stroke="#B8860B"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"

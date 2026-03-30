@@ -27,18 +27,18 @@ export default function Regionen() {
         {/* Heading */}
         <div className="text-center mb-14">
           <div className="flex items-center justify-center gap-3 mb-5">
-            <div className="h-px w-10 bg-[#C5A028]" />
+            <div className="h-px w-10 bg-[#B8860B]" />
             <span
               className="text-xs font-semibold tracking-[0.2em] uppercase"
-              style={{ color: "#C5A028" }}
+              style={{ color: "#B8860B" }}
             >
               {t("regionen.eyebrow")}
             </span>
-            <div className="h-px w-10 bg-[#C5A028]" />
+            <div className="h-px w-10 bg-[#B8860B]" />
           </div>
           <h2 className="font-heading text-3xl lg:text-4xl font-bold text-stone-900 mb-4">
             {t("regionen.title")}{" "}
-            <span className="italic" style={{ color: "#C5A028" }}>
+            <span className="italic" style={{ color: "#B8860B" }}>
               {t("regionen.titleItalic")}
             </span>
           </h2>
@@ -70,7 +70,7 @@ export default function Regionen() {
                 <span
                   className="absolute -top-2.5 left-1/2 -translate-x-1/2 text-[10px] font-bold tracking-[0.15em] uppercase px-2.5 py-0.5 rounded-full"
                   style={{
-                    background: "#C5A028",
+                    background: "#B8860B",
                     color: "white",
                     whiteSpace: "nowrap",
                   }}
@@ -81,8 +81,8 @@ export default function Regionen() {
 
               <MapPin
                 size={20}
-                style={{ color: city.highlight ? "#C5A028" : "#A09080" }}
-                className="group-hover:text-[#C5A028] transition-colors"
+                style={{ color: city.highlight ? "#B8860B" : "#A09080" }}
+                className="group-hover:text-[#B8860B] transition-colors"
               />
               <span
                 className="font-semibold text-sm leading-snug"
@@ -106,7 +106,7 @@ export default function Regionen() {
               className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
               style={{ background: "rgba(197,160,40,0.15)" }}
             >
-              <MapPin size={22} style={{ color: "#C5A028" }} />
+              <MapPin size={22} style={{ color: "#B8860B" }} />
             </div>
             <div>
               <p className="font-heading font-bold text-white text-lg leading-tight">

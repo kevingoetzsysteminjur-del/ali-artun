@@ -24,11 +24,11 @@ export default function FAQSection() {
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-3 mb-5">
-            <div className="h-0.5 w-10 bg-[#C5A028]" />
-            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#C5A028]">
+            <div className="h-0.5 w-10 bg-[#B8860B]" />
+            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#B8860B]">
               {t("faq.label")}
             </span>
-            <div className="h-0.5 w-10 bg-[#C5A028]" />
+            <div className="h-0.5 w-10 bg-[#B8860B]" />
           </div>
           <h2 className="font-heading text-4xl lg:text-5xl font-bold text-stone-900 leading-[1.1] mb-4">
             {t("faq.heading")}
@@ -42,7 +42,7 @@ export default function FAQSection() {
           {faqs.map((faq, i) => (
             <div
               key={i}
-              className="bg-white rounded-xl border border-[#C5A028]/20 overflow-hidden hover:border-[#C5A028]/40 transition-colors"
+              className="bg-white rounded-xl border border-[#B8860B]/20 overflow-hidden hover:border-[#B8860B]/40 transition-colors"
             >
               <button
                 type="button"
@@ -64,7 +64,7 @@ export default function FAQSection() {
                   {open === i ? (
                     <Minus size={14} className="text-white" />
                   ) : (
-                    <Plus size={14} style={{ color: "#C5A028" }} />
+                    <Plus size={14} style={{ color: "#B8860B" }} />
                   )}
                 </span>
               </button>

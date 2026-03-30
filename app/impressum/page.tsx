@@ -10,7 +10,7 @@ export default function ImpressumPage() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-[#F9F8F5] pt-28 pb-20">
+      <main className="min-h-screen bg-[#FFFCF7] pt-28 pb-20">
         <div className="max-w-3xl mx-auto px-6 lg:px-8">
           <h1 className="font-heading text-4xl font-bold text-stone-900 mb-10">
             Impressum

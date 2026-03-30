@@ -15,7 +15,7 @@ export default function TrustBadges() {
   ];
 
   return (
-    <section className="bg-stone-50 border-y border-[#C5A028]/15 py-10">
+    <section className="bg-stone-50 border-y border-[#B8860B]/15 py-10">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-wrap justify-center gap-8 lg:gap-12">
           {badges.map((badge) => {
@@ -29,7 +29,7 @@ export default function TrustBadges() {
                   className="w-11 h-11 rounded-full flex items-center justify-center"
                   style={{ backgroundColor: "rgba(197,160,40,0.12)" }}
                 >
-                  <Icon size={20} style={{ color: "#C5A028" }} />
+                  <Icon size={20} style={{ color: "#B8860B" }} />
                 </div>
                 <p className="text-stone-800 font-semibold text-sm leading-tight">
                   {badge.label}

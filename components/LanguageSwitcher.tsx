@@ -17,7 +17,7 @@ export default function LanguageSwitcher() {
             onClick={() => setLang(l.code)}
             className={`text-xs font-semibold px-1.5 py-1 rounded transition-all ${
               lang === l.code
-                ? "text-[#C5A028]"
+                ? "text-[#B8860B]"
                 : "text-stone-400 hover:text-stone-600"
             }`}
             style={{ letterSpacing: "0.05em" }}

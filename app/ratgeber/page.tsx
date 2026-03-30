@@ -65,10 +65,10 @@ const artikel = [
 ];
 
 const kategoriefarbe: Record<string, string> = {
-  Verkauf: "#1A3040",
-  Finanzierung: "#BFA36D",
-  Bewertung: "#1A3040",
-  Partner: "#BFA36D",
+  Verkauf: "#2C1A0E",
+  Finanzierung: "#B8860B",
+  Bewertung: "#2C1A0E",
+  Partner: "#B8860B",
 };
 
 export default function RatgeberPage() {
@@ -77,11 +77,11 @@ export default function RatgeberPage() {
       <Navbar />
       <main>
         {/* Hero */}
-        <section style={{ background: "linear-gradient(135deg,#1A3040 0%,#0d1f29 100%)", padding: "120px 0 80px" }}>
+        <section style={{ background: "linear-gradient(135deg,#2C1A0E 0%,#1A0E05 100%)", padding: "120px 0 80px" }}>
           <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px" }}>
-            <p style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#BFA36D", marginBottom: "16px" }}>WISSEN & RATGEBER</p>
+            <p style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#B8860B", marginBottom: "16px" }}>WISSEN & RATGEBER</p>
             <h1 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "clamp(2.5rem, 5vw, 4rem)", color: "#FFFFFF", lineHeight: 1.1, marginBottom: "20px", maxWidth: "700px" }}>
-              Immobilien-<span style={{ color: "#BFA36D" }}>Ratgeber.</span>
+              Immobilien-<span style={{ color: "#B8860B" }}>Ratgeber.</span>
             </h1>
             <p style={{ fontSize: "16px", color: "rgba(255,255,255,0.7)", lineHeight: 1.8, maxWidth: "520px", fontWeight: 300 }}>
               Expertenwissen rund um Immobilienverkauf, Finanzierung und staatliche Förderungen – verständlich erklärt.
@@ -90,16 +90,16 @@ export default function RatgeberPage() {
         </section>
 
         {/* Context */}
-        <section style={{ backgroundColor: "#FEFDFB", padding: "48px 0 0" }}>
+        <section style={{ backgroundColor: "#FFFCF7", padding: "48px 0 0" }}>
           <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px", textAlign: "center" }}>
-            <p style={{ fontSize: "16px", color: "#78716C", lineHeight: 1.85, fontWeight: 300, maxWidth: "700px", margin: "0 auto" }}>
+            <p style={{ fontSize: "16px", color: "#7A6548", lineHeight: 1.85, fontWeight: 300, maxWidth: "700px", margin: "0 auto" }}>
               Wissen ist der erste Schritt zur richtigen Entscheidung. Unser Ratgeber bietet Ihnen fundierte Informationen rund um Immobilien, Finanzierung und Förderungen.
             </p>
           </div>
         </section>
 
         {/* Artikel Grid */}
-        <section style={{ backgroundColor: "#FEFDFB", padding: "64px 0 80px" }}>
+        <section style={{ backgroundColor: "#FFFCF7", padding: "64px 0 80px" }}>
           <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px" }}>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "28px" }} className="ratgeber-grid">
               {artikel.map((a) => (
@@ -109,7 +109,7 @@ export default function RatgeberPage() {
                   style={{ textDecoration: "none", display: "block" }}
                   className="ratgeber-card"
                 >
-                  <article style={{ backgroundColor: "#fff", borderRadius: "16px", overflow: "hidden", border: "1px solid #E8E0D8", height: "100%" }}>
+                  <article style={{ backgroundColor: "#fff", borderRadius: "16px", overflow: "hidden", border: "1px solid #E8D9C5", height: "100%" }}>
                     {/* Cover-Bild */}
                     <div style={{ height: "210px", overflow: "hidden" }}>
                       <img
@@ -128,15 +128,15 @@ export default function RatgeberPage() {
                           textTransform: "uppercase",
                           color: "#FFFFFF",
                           padding: "3px 10px",
-                          backgroundColor: kategoriefarbe[a.kategorie] ?? "#1A3040",
+                          backgroundColor: kategoriefarbe[a.kategorie] ?? "#2C1A0E",
                           borderRadius: "50px"
                         }}>{a.kategorie}</span>
-                        <span style={{ fontSize: "11px", color: "#78716C" }}>{a.datum}</span>
-                        <span style={{ fontSize: "11px", color: "#78716C" }}>· {a.lesedauer}</span>
+                        <span style={{ fontSize: "11px", color: "#7A6548" }}>{a.datum}</span>
+                        <span style={{ fontSize: "11px", color: "#7A6548" }}>· {a.lesedauer}</span>
                       </div>
-                      <h2 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "1.1rem", color: "#1C1917", marginBottom: "10px", lineHeight: 1.35 }}>{a.titel}</h2>
-                      <p style={{ fontSize: "13px", color: "#78716C", lineHeight: 1.75, fontWeight: 300, marginBottom: "20px", margin: "0 0 20px" }}>{a.excerpt}</p>
-                      <span style={{ fontSize: "13px", color: "#1A3040", fontWeight: 600, display: "inline-flex", alignItems: "center", gap: "6px" }}>
+                      <h2 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "1.1rem", color: "#2C1A0E", marginBottom: "10px", lineHeight: 1.35 }}>{a.titel}</h2>
+                      <p style={{ fontSize: "13px", color: "#7A6548", lineHeight: 1.75, fontWeight: 300, marginBottom: "20px", margin: "0 0 20px" }}>{a.excerpt}</p>
+                      <span style={{ fontSize: "13px", color: "#2C1A0E", fontWeight: 600, display: "inline-flex", alignItems: "center", gap: "6px" }}>
                         Artikel lesen
                         <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                       </span>
@@ -149,9 +149,9 @@ export default function RatgeberPage() {
         </section>
 
         {/* CTA */}
-        <section style={{ backgroundColor: "#1A3040", padding: "80px 0" }}>
+        <section style={{ backgroundColor: "#2C1A0E", padding: "80px 0" }}>
           <div style={{ maxWidth: "800px", margin: "0 auto", padding: "0 24px", textAlign: "center" }}>
-            <p style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#BFA36D", marginBottom: "16px" }}>FRAGEN?</p>
+            <p style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#B8860B", marginBottom: "16px" }}>FRAGEN?</p>
             <h2 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "clamp(1.6rem, 3vw, 2.2rem)", color: "#FFFFFF", marginBottom: "16px" }}>Haben Sie Fragen zu unseren Themen?</h2>
             <p style={{ fontSize: "16px", color: "rgba(255,255,255,0.65)", fontWeight: 300, marginBottom: "0" }}>
               Nutzen Sie den Kontakt-Button am rechten Rand der Seite →

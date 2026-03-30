@@ -29,19 +29,19 @@ export default function Properties() {
   ];
 
   return (
-    <section id="prozess" className="bg-[#EDE8DF] border-y border-[#C5A028]/25 py-20 lg:py-28">
+    <section id="prozess" className="bg-[#EDE8DF] border-y border-[#B8860B]/25 py-20 lg:py-28">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <div className="flex items-center justify-center gap-3 mb-5">
-            <div className="h-0.5 w-10 bg-[#C5A028]" />
+            <div className="h-0.5 w-10 bg-[#B8860B]" />
             <span
               className="text-xs font-semibold tracking-[0.2em] uppercase"
-              style={{ color: "#C5A028" }}
+              style={{ color: "#B8860B" }}
             >
               {t("process.label")}
             </span>
-            <div className="h-0.5 w-10 bg-[#C5A028]" />
+            <div className="h-0.5 w-10 bg-[#B8860B]" />
           </div>
           <h2 className="font-heading text-4xl lg:text-5xl font-bold text-stone-900 leading-[1.1] mb-4">
             {t("process.heading")}
@@ -56,13 +56,13 @@ export default function Properties() {
           {steps.map((step, i) => (
             <div
               key={i}
-              className="bg-[#FAF8F4] rounded-2xl p-5 sm:p-8 border border-[#C5A028]/20 shadow-sm hover:border-[#C5A028]/45 hover:shadow-md transition-all flex gap-4 sm:gap-6 items-start"
+              className="bg-[#FAF8F4] rounded-2xl p-5 sm:p-8 border border-[#B8860B]/20 shadow-sm hover:border-[#B8860B]/45 hover:shadow-md transition-all flex gap-4 sm:gap-6 items-start"
             >
               {/* Step number */}
-              <div className="flex-shrink-0 w-14 h-14 rounded-full border-2 border-[#C5A028]/30 flex items-center justify-center">
+              <div className="flex-shrink-0 w-14 h-14 rounded-full border-2 border-[#B8860B]/30 flex items-center justify-center">
                 <span
                   className="font-heading font-bold text-xl"
-                  style={{ color: "#C5A028" }}
+                  style={{ color: "#B8860B" }}
                 >
                   {step.number}
                 </span>
@@ -83,7 +83,7 @@ export default function Properties() {
         <div className="text-center mt-12">
           <a
             href="#kontakt"
-            className="inline-flex items-center gap-2 bg-[#C5A028] hover:bg-[#B8952A] text-white font-semibold px-8 py-4 rounded-full transition-all hover:shadow-xl hover:shadow-[#C5A028]/30 hover:ring-4 hover:ring-[#C5A028]/15 text-lg"
+            className="inline-flex items-center gap-2 bg-[#B8860B] hover:bg-[#B8952A] text-white font-semibold px-8 py-4 rounded-full transition-all hover:shadow-xl hover:shadow-[#B8860B]/30 hover:ring-4 hover:ring-[#B8860B]/15 text-lg"
           >
             {t("process.cta")}
           </a>

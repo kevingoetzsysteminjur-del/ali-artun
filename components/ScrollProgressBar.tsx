@@ -17,7 +17,7 @@ export default function ScrollProgressBar() {
 
   return (
     <div style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 9999, height: "2px", backgroundColor: "transparent", pointerEvents: "none" }}>
-      <div style={{ height: "100%", backgroundColor: "#C8A96E", width: `${progress}%`, transition: "width 0.1s linear", boxShadow: "0 0 6px rgba(200,169,110,0.6)" }} />
+      <div style={{ height: "100%", backgroundColor: "#D4A017", width: `${progress}%`, transition: "width 0.1s linear", boxShadow: "0 0 6px rgba(212,160,23,0.6)" }} />
     </div>
   );
 }

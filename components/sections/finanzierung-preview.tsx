@@ -37,12 +37,12 @@ export default function FinanzierungPreview() {
               style={{ background: "radial-gradient(ellipse at 0% 80%, rgba(197,160,40,0.15) 0%, transparent 60%)" }}
             />
             <div className="relative space-y-5">
-              <p className="text-[#C5A028] text-xs font-semibold tracking-[0.2em] uppercase">
+              <p className="text-[#B8860B] text-xs font-semibold tracking-[0.2em] uppercase">
                 {t("finanzierungPreview.eyebrow")}
               </p>
               <h2 className="font-heading text-3xl lg:text-4xl font-bold text-white leading-tight">
                 {t("finanzierungPreview.title")}{" "}
-                <span className="italic" style={{ color: "#C5A028" }}>
+                <span className="italic" style={{ color: "#B8860B" }}>
                   {t("finanzierungPreview.titleItalic")}
                 </span>
               </h2>
@@ -54,7 +54,7 @@ export default function FinanzierungPreview() {
             <div className="relative space-y-3">
               {highlights.map((h) => (
                 <div key={h.text} className="flex items-center gap-3">
-                  <span style={{ color: "#C5A028" }}>{h.icon}</span>
+                  <span style={{ color: "#B8860B" }}>{h.icon}</span>
                   <span className="text-stone-300 text-sm font-medium">{h.text}</span>
                 </div>
               ))}
@@ -72,7 +72,7 @@ export default function FinanzierungPreview() {
                   <div key={step.num} className="flex items-start gap-4">
                     <div
                       className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold text-white"
-                      style={{ background: "linear-gradient(135deg, #C5A028 0%, #A08020 100%)" }}
+                      style={{ background: "linear-gradient(135deg, #B8860B 0%, #A08020 100%)" }}
                     >
                       {step.num}
                     </div>
@@ -100,7 +100,7 @@ export default function FinanzierungPreview() {
               </a>
               <a
                 href="/finanzierung"
-                className="inline-flex w-full items-center justify-center gap-2 px-6 py-3 rounded-xl font-medium text-sm transition-all hover:bg-[#C5A028]/10"
+                className="inline-flex w-full items-center justify-center gap-2 px-6 py-3 rounded-xl font-medium text-sm transition-all hover:bg-[#B8860B]/10"
                 style={{ border: "1px solid rgba(197,160,40,0.3)", color: "#8A6A18", textDecoration: "none" }}
               >
                 {t("finanzierungPreview.btnMore")}

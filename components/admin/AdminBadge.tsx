@@ -17,7 +17,7 @@ export default function AdminBadge() {
       href="/admin"
       className="fixed bottom-6 left-6 z-50 flex items-center gap-2 px-3.5 py-2 rounded-xl shadow-lg transition-all hover:scale-105 hover:shadow-xl"
       style={{
-        background: "linear-gradient(135deg, #C5A028 0%, #d4b040 100%)",
+        background: "linear-gradient(135deg, #B8860B 0%, #d4b040 100%)",
         color: "#fff",
         textDecoration: "none",
         boxShadow: "0 4px 20px rgba(197,160,40,0.4)",

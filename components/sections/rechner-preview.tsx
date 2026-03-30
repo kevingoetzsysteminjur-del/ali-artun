@@ -24,8 +24,8 @@ export default function RechnerPreview() {
           {/* Text */}
           <div className="reveal">
             <div className="flex items-center gap-3 mb-5">
-              <div className="h-0.5 w-10 bg-[#C5A028]" />
-              <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#C5A028]">
+              <div className="h-0.5 w-10 bg-[#B8860B]" />
+              <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#B8860B]">
                 {t("rechner.eyebrow")}
               </span>
             </div>
@@ -43,7 +43,7 @@ export default function RechnerPreview() {
                 t("rechner.item4"),
               ].map((p) => (
                 <li key={p} className="flex items-center gap-2">
-                  <span style={{ color: "#C5A028" }}>✓</span>
+                  <span style={{ color: "#B8860B" }}>✓</span>
                   {p}
                 </li>
               ))}
@@ -56,13 +56,13 @@ export default function RechnerPreview() {
 
           {/* Mini-Rechner */}
           <div className="reveal reveal-delay-1">
-            <div className="bg-white rounded-3xl border border-[#C5A028]/20 shadow-sm p-7">
+            <div className="bg-white rounded-3xl border border-[#B8860B]/20 shadow-sm p-7">
               <div className="flex items-center gap-3 mb-6">
                 <div
                   className="w-10 h-10 rounded-xl flex items-center justify-center"
                   style={{ background: "rgba(197,160,40,0.12)" }}
                 >
-                  <Calculator size={18} style={{ color: "#C5A028" }} />
+                  <Calculator size={18} style={{ color: "#B8860B" }} />
                 </div>
                 <span className="font-semibold text-stone-900">{t("rechner.quickTitle")}</span>
               </div>
@@ -76,7 +76,7 @@ export default function RechnerPreview() {
                 <div className="relative h-5 flex items-center">
                   <div className="absolute left-0 right-0 h-1.5 bg-[#EDE8DF] rounded-full" />
                   <div
-                    className="absolute left-0 h-1.5 bg-[#C5A028] rounded-full"
+                    className="absolute left-0 h-1.5 bg-[#B8860B] rounded-full"
                     style={{ width: `${pct}%` }}
                   />
                   <input
@@ -97,7 +97,7 @@ export default function RechnerPreview() {
               </div>
 
               {/* Ergebnis */}
-              <div className="bg-gradient-to-br from-[#C5A028] to-[#A08020] rounded-2xl p-5 text-white mb-4">
+              <div className="bg-gradient-to-br from-[#B8860B] to-[#A08020] rounded-2xl p-5 text-white mb-4">
                 <p className="text-white/80 text-sm mb-1">{t("rechner.resultLabel")}</p>
                 <p className="text-3xl font-bold tabular-nums">{fmt(nebenkosten)}</p>
                 <p className="text-white/70 text-xs mt-2">
@@ -111,7 +111,7 @@ export default function RechnerPreview() {
 
               <a
                 href="/rechner"
-                className="flex items-center justify-center gap-2 w-full py-3 rounded-xl border border-[#C5A028]/40 text-[#C5A028] text-sm font-medium hover:bg-[#C5A028]/5 transition-colors"
+                className="flex items-center justify-center gap-2 w-full py-3 rounded-xl border border-[#B8860B]/40 text-[#B8860B] text-sm font-medium hover:bg-[#B8860B]/5 transition-colors"
               >
                 {t("rechner.btnAll")}
                 <span>→</span>

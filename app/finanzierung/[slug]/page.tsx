@@ -180,10 +180,10 @@ export default async function FinanzierungSubPage({ params }: { params: Promise<
             alt={s.titel}
             style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
           />
-          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(26,48,64,0.5) 0%, rgba(13,31,41,0.88) 100%)" }} />
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(44,26,14,0.5) 0%, rgba(44,26,14,0.88) 100%)" }} />
           <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "flex-end", padding: "0 0 52px" }}>
             <div style={{ maxWidth: "860px", margin: "0 auto", padding: "0 24px", width: "100%" }}>
-              <p style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#BFA36D", marginBottom: "12px" }}>FINANZIERUNG</p>
+              <p style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#B8860B", marginBottom: "12px" }}>FINANZIERUNG</p>
               <h1 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "clamp(2rem, 4vw, 3.2rem)", color: "#FFFFFF", lineHeight: 1.15, margin: 0 }}>
                 {s.titel}
               </h1>
@@ -192,36 +192,36 @@ export default async function FinanzierungSubPage({ params }: { params: Promise<
         </section>
 
         {/* Kontext */}
-        <section style={{ backgroundColor: "#FEFDFB", padding: "48px 0 0" }}>
+        <section style={{ backgroundColor: "#FFFCF7", padding: "48px 0 0" }}>
           <div style={{ maxWidth: "860px", margin: "0 auto", padding: "0 24px", textAlign: "center" }}>
-            <p style={{ fontSize: "17px", color: "#78716C", lineHeight: 1.85, fontWeight: 300, margin: 0 }}>
+            <p style={{ fontSize: "17px", color: "#7A6548", lineHeight: 1.85, fontWeight: 300, margin: 0 }}>
               {s.kontext}
             </p>
           </div>
         </section>
 
         {/* Inhalt */}
-        <section style={{ backgroundColor: "#FEFDFB", padding: "64px 0 96px" }}>
+        <section style={{ backgroundColor: "#FFFCF7", padding: "64px 0 96px" }}>
           <div style={{ maxWidth: "760px", margin: "0 auto", padding: "0 24px" }}>
             {s.inhalt.map((block, i) => (
               <div key={i} style={{ marginBottom: "36px" }}>
                 {block.heading && (
-                  <h2 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "1.35rem", color: "#1A3040", marginBottom: "10px", paddingLeft: "16px", borderLeft: "3px solid #BFA36D" }}>
+                  <h2 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "1.35rem", color: "#2C1A0E", marginBottom: "10px", paddingLeft: "16px", borderLeft: "3px solid #B8860B" }}>
                     {block.heading}
                   </h2>
                 )}
-                <p style={{ fontSize: "17px", color: "#44403C", lineHeight: 1.85, fontWeight: 300, margin: 0 }}>
+                <p style={{ fontSize: "17px", color: "#7A6548", lineHeight: 1.85, fontWeight: 300, margin: 0 }}>
                   {block.text}
                 </p>
               </div>
             ))}
 
             {/* Hint */}
-            <div style={{ marginTop: "64px", padding: "32px", backgroundColor: "#F5F1EC", borderRadius: "16px", textAlign: "center" }}>
-              <p style={{ fontSize: "14px", color: "#78716C", fontWeight: 300, margin: "0 0 8px" }}>Haben Sie Fragen?</p>
+            <div style={{ marginTop: "64px", padding: "32px", backgroundColor: "#F5EDE0", borderRadius: "16px", textAlign: "center" }}>
+              <p style={{ fontSize: "14px", color: "#7A6548", fontWeight: 300, margin: "0 0 8px" }}>Haben Sie Fragen?</p>
               <div style={{ display: "inline-flex", alignItems: "center", gap: "10px" }}>
-                <p style={{ fontSize: "16px", fontWeight: 500, color: "#1A3040", margin: 0 }}>Nutzen Sie den Kontakt-Button am rechten Rand</p>
-                <svg width="18" height="18" fill="none" stroke="#BFA36D" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                <p style={{ fontSize: "16px", fontWeight: 500, color: "#2C1A0E", margin: 0 }}>Nutzen Sie den Kontakt-Button am rechten Rand</p>
+                <svg width="18" height="18" fill="none" stroke="#B8860B" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </div>
             </div>
 
@@ -229,7 +229,7 @@ export default async function FinanzierungSubPage({ params }: { params: Promise<
             <div style={{ marginTop: "40px" }}>
               <Link
                 href="/finanzierung"
-                style={{ display: "inline-flex", alignItems: "center", gap: "8px", fontSize: "14px", fontWeight: 500, color: "#1A3040", textDecoration: "none" }}
+                style={{ display: "inline-flex", alignItems: "center", gap: "8px", fontSize: "14px", fontWeight: 500, color: "#2C1A0E", textDecoration: "none" }}
               >
                 <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path d="M19 12H5M12 19l-7-7 7-7" />

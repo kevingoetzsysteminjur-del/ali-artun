@@ -12,28 +12,28 @@ export default function Auszeichnungen() {
       titel: t("auszeichnungen.z1_titel"),
       untertitel: t("auszeichnungen.z1_untertitel"),
       beschreibung: t("auszeichnungen.z1_desc"),
-      farbe: "#C5A028",
+      farbe: "#B8860B",
     },
     {
       icon: Award,
       titel: t("auszeichnungen.z2_titel"),
       untertitel: t("auszeichnungen.z2_untertitel"),
       beschreibung: t("auszeichnungen.z2_desc"),
-      farbe: "#C5A028",
+      farbe: "#B8860B",
     },
     {
       icon: Users,
       titel: t("auszeichnungen.z3_titel"),
       untertitel: t("auszeichnungen.z3_untertitel"),
       beschreibung: t("auszeichnungen.z3_desc"),
-      farbe: "#C5A028",
+      farbe: "#B8860B",
     },
     {
       icon: ShieldCheck,
       titel: t("auszeichnungen.z4_titel"),
       untertitel: t("auszeichnungen.z4_untertitel"),
       beschreibung: t("auszeichnungen.z4_desc"),
-      farbe: "#C5A028",
+      farbe: "#B8860B",
     },
   ];
 
@@ -43,11 +43,11 @@ export default function Auszeichnungen() {
         {/* Header */}
         <div className="text-center mb-10 reveal">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="h-0.5 w-10 bg-[#C5A028]" />
-            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#C5A028]">
+            <div className="h-0.5 w-10 bg-[#B8860B]" />
+            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#B8860B]">
               {t("auszeichnungen.label")}
             </span>
-            <div className="h-0.5 w-10 bg-[#C5A028]" />
+            <div className="h-0.5 w-10 bg-[#B8860B]" />
           </div>
           <h2 className="font-heading text-3xl lg:text-4xl font-bold text-stone-900 leading-tight mb-3">
             {t("auszeichnungen.heading")}
@@ -64,7 +64,7 @@ export default function Auszeichnungen() {
             return (
               <div
                 key={z.titel}
-                className={`reveal reveal-delay-${i + 1} bg-white rounded-2xl border border-[#C5A028]/20 p-6 flex flex-col hover:shadow-md transition-shadow duration-200`}
+                className={`reveal reveal-delay-${i + 1} bg-white rounded-2xl border border-[#B8860B]/20 p-6 flex flex-col hover:shadow-md transition-shadow duration-200`}
               >
                 {/* Icon */}
                 <div
@@ -79,7 +79,7 @@ export default function Auszeichnungen() {
 
                 {/* Titel */}
                 <p className="text-stone-900 font-bold text-base mb-0.5">{z.titel}</p>
-                <p className="text-[#C5A028] text-xs font-semibold mb-3 tracking-wide">
+                <p className="text-[#B8860B] text-xs font-semibold mb-3 tracking-wide">
                   {z.untertitel}
                 </p>
 
@@ -87,7 +87,7 @@ export default function Auszeichnungen() {
                 <p className="text-stone-500 text-sm leading-relaxed flex-1">{z.beschreibung}</p>
 
                 {/* Gold bottom accent */}
-                <div className="mt-4 h-0.5 w-8 bg-[#C5A028]/40 rounded-full" />
+                <div className="mt-4 h-0.5 w-8 bg-[#B8860B]/40 rounded-full" />
               </div>
             );
           })}
