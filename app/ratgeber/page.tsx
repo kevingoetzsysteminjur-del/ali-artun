@@ -1,5 +1,6 @@
 import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
+import Link from "next/link";
 
 export const metadata = {
   title: "Immobilien-Ratgeber",
@@ -8,64 +9,66 @@ export const metadata = {
 
 const artikel = [
   {
-    id: "immobilie-verkaufen-tipps",
+    slug: "immobilie-verkaufen-tipps",
     titel: "Immobilie verkaufen: 7 Tipps für den besten Preis",
     excerpt: "Der Verkauf einer Immobilie ist eine der wichtigsten finanziellen Entscheidungen. Mit der richtigen Strategie erzielen Sie deutlich mehr.",
     kategorie: "Verkauf",
     datum: "12. März 2026",
     lesedauer: "5 Min.",
-    farbe: "#1B3A4B",
+    bild: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80",
   },
   {
-    id: "kfw-foerderung-2026",
+    slug: "kfw-foerderung-2026",
     titel: "KFW-Förderung 2026: Was sich ändert",
     excerpt: "Die KFW-Programme werden 2026 angepasst. Wir erklären, welche Fördertöpfe jetzt besonders attraktiv sind und wie Sie profitieren.",
     kategorie: "Finanzierung",
     datum: "5. März 2026",
     lesedauer: "4 Min.",
-    farbe: "#C8A96E",
+    bild: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80",
   },
   {
-    id: "immobilienbewertung",
+    slug: "immobilienbewertung",
     titel: "Was ist meine Immobilie wert? So funktioniert die Bewertung",
     excerpt: "Lage, Zustand, Ausstattung – was bestimmt den Wert Ihrer Immobilie wirklich? Ein verständlicher Überblick über die wichtigsten Faktoren.",
     kategorie: "Bewertung",
     datum: "22. Feb. 2026",
     lesedauer: "6 Min.",
-    farbe: "#1B3A4B",
+    bild: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=80",
   },
   {
-    id: "eigenkapital-hauskauf",
+    slug: "eigenkapital-hauskauf",
     titel: "Eigenkapital beim Hauskauf: Wie viel brauche ich?",
     excerpt: "Banken erwarten mindestens 20 % Eigenkapital. Doch es gibt Wege, mit weniger zu starten. Was wirklich zählt – und worauf Sie achten müssen.",
     kategorie: "Finanzierung",
     datum: "14. Feb. 2026",
     lesedauer: "5 Min.",
-    farbe: "#C8A96E",
+    bild: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=800&q=80",
   },
   {
-    id: "home-staging",
-    titel: "Home Staging: So verkaufen Sie Ihre Immobilie schneller",
-    excerpt: "Professionelle Aufbereitung kann den Verkaufspreis um 5–15 % steigern. Wir zeigen, was wirklich wirkt – und was Plan A kostenlos übernimmt.",
+    slug: "home-staging",
+    titel: "Home Staging: So verkaufen Sie schneller",
+    excerpt: "Professionelle Aufbereitung kann den Verkaufspreis deutlich steigern. Wir zeigen, was wirklich wirkt – und was Plan A kostenlos übernimmt.",
     kategorie: "Verkauf",
     datum: "2. Feb. 2026",
     lesedauer: "4 Min.",
-    farbe: "#1B3A4B",
+    bild: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&q=80",
   },
   {
-    id: "partner-werden",
+    slug: "partner-werden",
     titel: "Partner werden: Ihr Weg in die Immobilienbranche",
     excerpt: "Selbstständig als Immobilienmakler starten – ohne teure Ausbildung, ohne Vorerfahrung. Was Plan A bietet und was Sie mitbringen sollten.",
     kategorie: "Partner",
     datum: "20. Jan. 2026",
     lesedauer: "3 Min.",
-    farbe: "#C8A96E",
+    bild: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=80",
   },
 ];
 
-const gradients: Record<string, string> = {
-  "#1B3A4B": "linear-gradient(135deg,#1B3A4B,#0e2230)",
-  "#C8A96E": "linear-gradient(135deg,#C8A96E,#a07840)",
+const kategoriefarbe: Record<string, string> = {
+  Verkauf: "#1A3040",
+  Finanzierung: "#BFA36D",
+  Bewertung: "#1A3040",
+  Partner: "#BFA36D",
 };
 
 export default function RatgeberPage() {
@@ -74,11 +77,11 @@ export default function RatgeberPage() {
       <Navbar />
       <main>
         {/* Hero */}
-        <section style={{ background: "linear-gradient(135deg,#1B3A4B 0%,#0e2230 100%)", padding: "120px 0 80px" }}>
+        <section style={{ background: "linear-gradient(135deg,#1A3040 0%,#0d1f29 100%)", padding: "120px 0 80px" }}>
           <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px" }}>
-            <p style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C8A96E", marginBottom: "16px" }}>WISSEN & RATGEBER</p>
+            <p style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#BFA36D", marginBottom: "16px" }}>WISSEN & RATGEBER</p>
             <h1 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "clamp(2.5rem, 5vw, 4rem)", color: "#FFFFFF", lineHeight: 1.1, marginBottom: "20px", maxWidth: "700px" }}>
-              Immobilien-<span style={{ color: "#C8A96E" }}>Ratgeber.</span>
+              Immobilien-<span style={{ color: "#BFA36D" }}>Ratgeber.</span>
             </h1>
             <p style={{ fontSize: "16px", color: "rgba(255,255,255,0.7)", lineHeight: 1.8, maxWidth: "520px", fontWeight: 300 }}>
               Expertenwissen rund um Immobilienverkauf, Finanzierung und staatliche Förderungen – verständlich erklärt.
@@ -96,28 +99,50 @@ export default function RatgeberPage() {
         </section>
 
         {/* Artikel Grid */}
-        <section style={{ backgroundColor: "#F7F5F2", padding: "80px 0" }}>
+        <section style={{ backgroundColor: "#FEFDFB", padding: "64px 0 80px" }}>
           <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px" }}>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "28px" }} className="ratgeber-grid">
               {artikel.map((a) => (
-                <article key={a.id} className="ratgeber-card" style={{ backgroundColor: "#fff", borderRadius: "16px", overflow: "hidden", border: "1px solid #E5E7EB" }}>
-                  {/* Image placeholder */}
-                  <div style={{ height: "200px", background: gradients[a.farbe], display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <svg width="48" height="48" fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="1" viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
-                  </div>
-                  <div style={{ padding: "24px" }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "12px" }}>
-                      <span style={{ fontSize: "10px", fontWeight: 500, letterSpacing: "0.12em", textTransform: "uppercase", color: "#C8A96E", padding: "3px 10px", backgroundColor: "rgba(200,169,110,0.1)", borderRadius: "50px" }}>{a.kategorie}</span>
-                      <span style={{ fontSize: "11px", color: "#9CA3AF" }}>{a.datum}</span>
-                      <span style={{ fontSize: "11px", color: "#9CA3AF" }}>· {a.lesedauer}</span>
+                <Link
+                  key={a.slug}
+                  href={`/ratgeber/${a.slug}`}
+                  style={{ textDecoration: "none", display: "block" }}
+                  className="ratgeber-card"
+                >
+                  <article style={{ backgroundColor: "#fff", borderRadius: "16px", overflow: "hidden", border: "1px solid #E8E0D8", height: "100%" }}>
+                    {/* Cover-Bild */}
+                    <div style={{ height: "210px", overflow: "hidden" }}>
+                      <img
+                        src={a.bild}
+                        alt={a.titel}
+                        style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.4s ease" }}
+                        className="ratgeber-img"
+                      />
                     </div>
-                    <h2 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "1.15rem", color: "#1A1A1A", marginBottom: "10px", lineHeight: 1.3 }}>{a.titel}</h2>
-                    <p style={{ fontSize: "13px", color: "#6B7280", lineHeight: 1.7, fontWeight: 300, marginBottom: "20px" }}>{a.excerpt}</p>
-                    <span style={{ fontSize: "13px", color: "#1B3A4B", fontWeight: 500, display: "flex", alignItems: "center", gap: "4px" }}>
-                      Artikel lesen →
-                    </span>
-                  </div>
-                </article>
+                    <div style={{ padding: "24px" }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "12px", flexWrap: "wrap" }}>
+                        <span style={{
+                          fontSize: "10px",
+                          fontWeight: 600,
+                          letterSpacing: "0.12em",
+                          textTransform: "uppercase",
+                          color: "#FFFFFF",
+                          padding: "3px 10px",
+                          backgroundColor: kategoriefarbe[a.kategorie] ?? "#1A3040",
+                          borderRadius: "50px"
+                        }}>{a.kategorie}</span>
+                        <span style={{ fontSize: "11px", color: "#78716C" }}>{a.datum}</span>
+                        <span style={{ fontSize: "11px", color: "#78716C" }}>· {a.lesedauer}</span>
+                      </div>
+                      <h2 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "1.1rem", color: "#1C1917", marginBottom: "10px", lineHeight: 1.35 }}>{a.titel}</h2>
+                      <p style={{ fontSize: "13px", color: "#78716C", lineHeight: 1.75, fontWeight: 300, marginBottom: "20px", margin: "0 0 20px" }}>{a.excerpt}</p>
+                      <span style={{ fontSize: "13px", color: "#1A3040", fontWeight: 600, display: "inline-flex", alignItems: "center", gap: "6px" }}>
+                        Artikel lesen
+                        <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                      </span>
+                    </div>
+                  </article>
+                </Link>
               ))}
             </div>
           </div>
@@ -138,8 +163,9 @@ export default function RatgeberPage() {
       <style>{`
         @media(max-width:900px){.ratgeber-grid{grid-template-columns:1fr 1fr!important;}}
         @media(max-width:560px){.ratgeber-grid{grid-template-columns:1fr!important;}}
-        .ratgeber-card{transition:box-shadow 0.3s,transform 0.3s;}
-        .ratgeber-card:hover{box-shadow:0 16px 48px rgba(0,0,0,0.1);transform:translateY(-4px);}
+        .ratgeber-card{transition:transform 0.3s,box-shadow 0.3s;}
+        .ratgeber-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,0.1);}
+        .ratgeber-card:hover .ratgeber-img{transform:scale(1.04);}
       `}</style>
     </>
   );
