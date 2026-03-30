@@ -101,12 +101,12 @@ export default function FinanzierungClient() {
           <h2 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "clamp(1.8rem, 3vw, 2.5rem)", color: "#1A1A1A", marginBottom: "8px" }}>Wie viel kostet Ihre Finanzierung?</h2>
           <p style={{ fontSize: "14px", color: "#9CA3AF", marginBottom: "48px" }}>Orientierungswert – für ein persönliches Angebot kontaktieren Sie uns.</p>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "48px", alignItems: "start" }} className="rechner-grid">
+            {/* Sliders */}
             <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
               {([
                 { label: "Kaufpreis", value: kaufpreis, min: 50000, max: 2000000, step: 10000, set: setKaufpreis, format: (v: number) => `${v.toLocaleString("de-DE")} €` },
                 { label: "Eigenkapital", value: eigenkapital, min: 0, max: kaufpreis, step: 5000, set: setEigenkapital, format: (v: number) => `${v.toLocaleString("de-DE")} €` },
                 { label: "Zinssatz (% p.a.)", value: zinssatz, min: 1, max: 8, step: 0.1, set: setZinssatz, format: (v: number) => `${v.toFixed(1)} %` },
-                { label: "Laufzeit (Jahre)", value: laufzeit, min: 5, max: 35, step: 1, set: setLaufzeit, format: (v: number) => `${v} Jahre` },
               ] as Array<{ label: string; value: number; min: number; max: number; step: number; set: (v: number) => void; format: (v: number) => string }>).map((s) => (
                 <div key={s.label}>
                   <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "10px" }}>
@@ -118,28 +118,115 @@ export default function FinanzierungClient() {
                     style={{ width: "100%", height: "4px", background: `linear-gradient(to right, #C8A96E ${((s.value - s.min) / (s.max - s.min)) * 100}%, #E5E7EB ${((s.value - s.min) / (s.max - s.min)) * 100}%)`, borderRadius: "4px", outline: "none" }} />
                 </div>
               ))}
-            </div>
-            <div style={{ backgroundColor: "#1B3A4B", borderRadius: "20px", padding: "40px", textAlign: "center" }}>
-              <p style={{ fontSize: "11px", letterSpacing: "0.15em", textTransform: "uppercase", color: "#C8A96E", marginBottom: "8px" }}>MONATLICHE RATE</p>
-              <div style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "3.5rem", color: "#FFFFFF", lineHeight: 1, marginBottom: "4px" }}>{monatlicheRate.toLocaleString("de-DE")}</div>
-              <p style={{ fontSize: "16px", color: "#C8A96E", marginBottom: "32px" }}>€ / Monat</p>
-              <div style={{ borderTop: "1px solid rgba(255,255,255,0.1)", paddingTop: "24px", display: "flex", flexDirection: "column", gap: "10px" }}>
+              {/* Laufzeit Buttons */}
+              <div>
+                <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "12px" }}>
+                  <label style={{ fontSize: "13px", fontWeight: 500, color: "#374151" }}>Laufzeit</label>
+                  <span style={{ fontSize: "13px", color: "#C8A96E", fontWeight: 500 }}>{laufzeit} Jahre</span>
+                </div>
+                <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+                  {[10, 15, 20, 25, 30].map((y) => (
+                    <button key={y} onClick={() => setLaufzeit(y)}
+                      style={{ flex: 1, minWidth: "52px", padding: "10px 8px", border: `1.5px solid ${laufzeit === y ? "#C8A96E" : "#E5E7EB"}`, borderRadius: "8px", backgroundColor: laufzeit === y ? "#C8A96E" : "#fff", color: laufzeit === y ? "#fff" : "#6B7280", fontSize: "13px", fontWeight: laufzeit === y ? 500 : 400, cursor: "pointer", transition: "all 0.2s" }}>
+                      {y}J
+                    </button>
+                  ))}
+                </div>
+              </div>
+              {/* Nebenkosten Box */}
+              <div style={{ backgroundColor: "#fff", borderRadius: "14px", padding: "20px 24px", border: "1px solid #E5E7EB" }}>
+                <p style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.12em", textTransform: "uppercase", color: "#C8A96E", marginBottom: "14px" }}>KAUFNEBENKOSTEN (ca.)</p>
                 {[
-                  { label: "Darlehensbetrag", value: `${darlehen.toLocaleString("de-DE")} €` },
-                  { label: "Zinssatz", value: `${zinssatz.toFixed(1)} % p.a.` },
-                  { label: "Laufzeit", value: `${laufzeit} Jahre` },
-                ].map((r) => (
-                  <div key={r.label} style={{ display: "flex", justifyContent: "space-between" }}>
-                    <span style={{ fontSize: "13px", color: "rgba(255,255,255,0.5)" }}>{r.label}</span>
-                    <span style={{ fontSize: "13px", color: "#fff", fontWeight: 500 }}>{r.value}</span>
+                  { label: "Grunderwerbsteuer BW (5,0 %)", val: Math.round(kaufpreis * 0.05) },
+                  { label: "Notarkosten (ca. 1,5 %)", val: Math.round(kaufpreis * 0.015) },
+                  { label: "Maklerprovision (3,57 % inkl. MwSt.)", val: Math.round(kaufpreis * 0.0357) },
+                ].map(({ label, val }) => (
+                  <div key={label} style={{ display: "flex", justifyContent: "space-between", padding: "8px 0", borderBottom: "1px solid #F3F4F6" }}>
+                    <span style={{ fontSize: "12px", color: "#6B7280", fontWeight: 300 }}>{label}</span>
+                    <span style={{ fontSize: "12px", color: "#1A1A1A", fontWeight: 500 }}>{val.toLocaleString("de-DE")} €</span>
                   </div>
                 ))}
+                <div style={{ display: "flex", justifyContent: "space-between", paddingTop: "10px" }}>
+                  <span style={{ fontSize: "13px", color: "#1A1A1A", fontWeight: 500 }}>Gesamt Nebenkosten</span>
+                  <span style={{ fontSize: "13px", color: "#C8A96E", fontWeight: 600 }}>{Math.round(kaufpreis * 0.1007).toLocaleString("de-DE")} €</span>
+                </div>
               </div>
-              <Link href="/kontakt?betreff=Finanzierung"
-                style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", marginTop: "28px", padding: "14px", backgroundColor: "#C8A96E", color: "#fff", borderRadius: "10px", textDecoration: "none", fontSize: "14px", fontWeight: 500 }}>
-                Persönliches Angebot anfragen →
-              </Link>
-              <p style={{ fontSize: "11px", color: "rgba(255,255,255,0.3)", marginTop: "12px" }}>Orientierungswert ohne Gewähr</p>
+            </div>
+
+            {/* Result Panel */}
+            <div>
+              <div style={{ backgroundColor: "#1B3A4B", borderRadius: "20px", padding: "36px", textAlign: "center", marginBottom: "16px" }}>
+                <p style={{ fontSize: "11px", letterSpacing: "0.15em", textTransform: "uppercase", color: "#C8A96E", marginBottom: "8px" }}>MONATLICHE RATE</p>
+                <div style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "3.5rem", color: "#FFFFFF", lineHeight: 1, marginBottom: "4px" }}>{monatlicheRate.toLocaleString("de-DE")}</div>
+                <p style={{ fontSize: "16px", color: "#C8A96E", marginBottom: "28px" }}>€ / Monat</p>
+                {/* Donut Chart */}
+                <div style={{ display: "flex", justifyContent: "center", marginBottom: "24px" }}>
+                  {(() => {
+                    const total = kaufpreis;
+                    const ekPct = Math.max(0, Math.min(100, (eigenkapital / total) * 100));
+                    const zinsTotal = darlehen * (zinssatz / 100) * laufzeit;
+                    const tilgTotal = darlehen;
+                    const sumRest = zinsTotal + tilgTotal;
+                    const zinsPct = sumRest > 0 ? (zinsTotal / (total + zinsTotal)) * 100 : 0;
+                    const tilgPct = sumRest > 0 ? (tilgTotal / (total + zinsTotal)) * 100 : 0;
+                    const r = 54, cx = 70, cy = 70, circ = 2 * Math.PI * r;
+                    const segments = [
+                      { pct: ekPct, color: "#C8A96E" },
+                      { pct: tilgPct, color: "#4A90A4" },
+                      { pct: zinsPct, color: "#6B7280" },
+                    ];
+                    let offset = 0;
+                    return (
+                      <div style={{ position: "relative", width: "140px", height: "140px" }}>
+                        <svg width="140" height="140" viewBox="0 0 140 140">
+                          <circle cx={cx} cy={cy} r={r} fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="16" />
+                          {segments.map((seg, i) => {
+                            const dash = (seg.pct / 100) * circ;
+                            const gap = circ - dash;
+                            const el = (
+                              <circle key={i} cx={cx} cy={cy} r={r} fill="none" stroke={seg.color} strokeWidth="16"
+                                strokeDasharray={`${dash} ${gap}`} strokeDashoffset={-offset * circ / 100}
+                                transform="rotate(-90 70 70)" />
+                            );
+                            offset += seg.pct;
+                            return el;
+                          })}
+                        </svg>
+                        <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+                          <span style={{ fontSize: "10px", color: "rgba(255,255,255,0.5)", letterSpacing: "0.05em" }}>Gesamt</span>
+                          <span style={{ fontSize: "13px", color: "#fff", fontWeight: 500 }}>{(kaufpreis + zinsTotal).toLocaleString("de-DE", { maximumFractionDigits: 0 })} €</span>
+                        </div>
+                      </div>
+                    );
+                  })()}
+                </div>
+                <div style={{ display: "flex", justifyContent: "center", gap: "16px", marginBottom: "24px", flexWrap: "wrap" }}>
+                  {[{ color: "#C8A96E", label: "Eigenkapital" }, { color: "#4A90A4", label: "Tilgung" }, { color: "#6B7280", label: "Zinsen" }].map(({ color, label }) => (
+                    <div key={label} style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+                      <div style={{ width: "10px", height: "10px", borderRadius: "50%", backgroundColor: color }} />
+                      <span style={{ fontSize: "11px", color: "rgba(255,255,255,0.6)" }}>{label}</span>
+                    </div>
+                  ))}
+                </div>
+                <div style={{ borderTop: "1px solid rgba(255,255,255,0.1)", paddingTop: "20px", display: "flex", flexDirection: "column", gap: "10px" }}>
+                  {[
+                    { label: "Darlehensbetrag", value: `${darlehen.toLocaleString("de-DE")} €` },
+                    { label: "Zinssatz", value: `${zinssatz.toFixed(1)} % p.a.` },
+                    { label: "Laufzeit", value: `${laufzeit} Jahre` },
+                    { label: "Gesamtkosten Zinsen", value: `${Math.round(darlehen * (zinssatz / 100) * laufzeit).toLocaleString("de-DE")} €` },
+                  ].map((r) => (
+                    <div key={r.label} style={{ display: "flex", justifyContent: "space-between" }}>
+                      <span style={{ fontSize: "13px", color: "rgba(255,255,255,0.5)" }}>{r.label}</span>
+                      <span style={{ fontSize: "13px", color: "#fff", fontWeight: 500 }}>{r.value}</span>
+                    </div>
+                  ))}
+                </div>
+                <Link href="/kontakt?betreff=Finanzierung"
+                  style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", marginTop: "24px", padding: "14px", backgroundColor: "#C8A96E", color: "#fff", borderRadius: "10px", textDecoration: "none", fontSize: "14px", fontWeight: 500 }}>
+                  Persönliches Angebot anfragen →
+                </Link>
+                <p style={{ fontSize: "11px", color: "rgba(255,255,255,0.3)", marginTop: "10px" }}>Orientierungswert ohne Gewähr</p>
+              </div>
             </div>
           </div>
         </div>

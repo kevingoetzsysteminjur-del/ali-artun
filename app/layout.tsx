@@ -6,6 +6,9 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import ScrollToTop from "@/components/ScrollToTop";
 import ScrollReveal from "@/components/ScrollReveal";
 import FloatingActions from "@/components/FloatingActions";
+import ChatBot from "@/components/ChatBot";
+import LiveNotification from "@/components/LiveNotification";
+import ScrollProgressBar from "@/components/ScrollProgressBar";
 import { AuthProvider } from "@/contexts/AuthContext";
 
 const dmSerif = DM_Serif_Display({
@@ -100,9 +103,12 @@ export default function RootLayout({
       </head>
       <body className={`${dmSerif.variable} ${inter.variable} antialiased`}>
         <AuthProvider>
+          <ScrollProgressBar />
           <ScrollReveal />
           {children}
           <FloatingActions />
+          <ChatBot />
+          <LiveNotification />
           <CookieBanner />
           <WhatsAppButton />
           <ScrollToTop />

@@ -1,6 +1,7 @@
 import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
 import Link from "next/link";
+import VorherNachherSlider from "@/components/VorherNachherSlider";
 
 export const metadata = {
   title: "Immobilienverkauf",
@@ -132,13 +133,17 @@ export default function ImmobilienverkaufPage() {
                   Jetzt anfragen →
                 </Link>
               </div>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
-                {["Vorher", "Nachher", "Vorher", "Nachher"].map((label, i) => (
-                  <div key={i} style={{ aspectRatio: "4/3", borderRadius: "12px", backgroundColor: "#F7F5F2", border: "1px solid #E5E7EB", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "6px" }}>
-                    <span style={{ fontSize: "11px", fontWeight: 500, color: i % 2 === 1 ? "#C8A96E" : "#9CA3AF", letterSpacing: "0.1em", textTransform: "uppercase" }}>{label}</span>
-                    <span style={{ fontSize: "11px", color: "#C8C9CA" }}>Bild folgt</span>
-                  </div>
-                ))}
+              <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+                <VorherNachherSlider
+                  vorherSrc="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=80"
+                  nachherSrc="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80"
+                  label="Wohnzimmer – vor und nach der Aufbereitung"
+                />
+                <VorherNachherSlider
+                  vorherSrc="https://images.unsplash.com/photo-1556911220-bda9dc7f5498?w=800&q=80"
+                  nachherSrc="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80"
+                  label="Küche – vor und nach dem Home Staging"
+                />
               </div>
             </div>
           </div>

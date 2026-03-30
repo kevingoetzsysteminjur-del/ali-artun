@@ -152,6 +152,24 @@ export default function HomeClient() {
   const [wertTyp, setWertTyp] = useState("Haus");
   const [wertPlz, setWertPlz] = useState("");
 
+  /* FAQ */
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  /* Countdown */
+  const countdownEnd = new Date();
+  countdownEnd.setDate(countdownEnd.getDate() + (7 - countdownEnd.getDay()));
+  countdownEnd.setHours(23, 59, 59, 0);
+  const [cdTime, setCdTime] = useState({ d: 0, h: 0, m: 0, s: 0 });
+  useEffect(() => {
+    const tick = () => {
+      const diff = Math.max(0, countdownEnd.getTime() - Date.now());
+      setCdTime({ d: Math.floor(diff / 86400000), h: Math.floor((diff % 86400000) / 3600000), m: Math.floor((diff % 3600000) / 60000), s: Math.floor((diff % 60000) / 1000) });
+    };
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, []);
+
   const inp = { padding: "11px 14px", border: "1px solid #E5E7EB", borderRadius: "8px", fontSize: "14px", color: "#1A1A1A", outline: "none", fontFamily: "var(--font-inter, sans-serif)", fontWeight: 300, backgroundColor: "#fff" };
   const inpW = { ...inp, backgroundColor: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)", color: "#fff" };
 
@@ -797,6 +815,137 @@ export default function HomeClient() {
               </div>
             </form>
           )}
+        </div>
+      </section>
+
+      {/* ══ VERGLEICHSTABELLE ════════════════════════════════════════ */}
+      <section style={{ backgroundColor: "#F7F5F2", padding: "96px 0" }}>
+        <div style={S.wrap}>
+          <div className="rv" style={{ textAlign: "center", marginBottom: "48px" }}>
+            <p style={S.label}>WARUM PLAN A?</p>
+            <h2 style={S.h2}>Plan A im Vergleich</h2>
+            <GoldLine />
+            <p style={{ ...S.body, maxWidth: "500px", margin: "0 auto" }}>Sehen Sie selbst, warum Eigentümer uns einem Privatverkauf oder klassischen Makler vorziehen.</p>
+          </div>
+          <div className="rv" style={{ overflowX: "auto" }}>
+            <table style={{ width: "100%", borderCollapse: "collapse", minWidth: "560px", backgroundColor: "#fff", borderRadius: "16px", overflow: "hidden", boxShadow: "0 4px 24px rgba(0,0,0,0.06)" }}>
+              <thead>
+                <tr>
+                  <th style={{ padding: "20px 24px", textAlign: "left", fontSize: "13px", color: "#6B7280", fontWeight: 400, borderBottom: "1px solid #F3F4F6", width: "40%" }}>Leistung</th>
+                  <th style={{ padding: "20px 16px", textAlign: "center", fontSize: "13px", color: "#9CA3AF", fontWeight: 400, borderBottom: "1px solid #F3F4F6" }}>Privatverkauf</th>
+                  <th style={{ padding: "20px 16px", textAlign: "center", fontSize: "13px", color: "#9CA3AF", fontWeight: 400, borderBottom: "1px solid #F3F4F6" }}>Klass. Makler</th>
+                  <th style={{ padding: "20px 16px", textAlign: "center", fontSize: "13px", fontWeight: 600, borderBottom: "1px solid #F3F4F6", background: "linear-gradient(180deg,rgba(200,169,110,0.08) 0%,rgba(200,169,110,0.03) 100%)" }}>
+                    <span style={{ color: "#C8A96E" }}>Plan A</span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  ["Kostenlose Wertermittlung", false, true, true],
+                  ["Finanzierungsprüfung der Käufer", false, false, true],
+                  ["Geprüfte Käufer-Datenbank", false, false, true],
+                  ["Professionelles Exposé & Fotos", false, true, true],
+                  ["Kombination Verkauf + Finanzierung", false, false, true],
+                  ["Persönliche Begleitung bis Notar", false, true, true],
+                  ["Weniger Rückabwicklungen", false, false, true],
+                  ["Kostenloser Erstcheck", false, false, true],
+                ].map(([label, priv, klass, plana], i) => (
+                  <tr key={i} style={{ backgroundColor: i % 2 === 0 ? "#fff" : "#FAFAF9" }}>
+                    <td style={{ padding: "16px 24px", fontSize: "14px", color: "#374151", fontWeight: 300, borderBottom: "1px solid #F3F4F6" }}>{label as string}</td>
+                    {[priv, klass].map((v, j) => (
+                      <td key={j} style={{ padding: "16px", textAlign: "center", borderBottom: "1px solid #F3F4F6" }}>
+                        {v
+                          ? <svg width="18" height="18" fill="none" stroke="#22c55e" strokeWidth="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                          : <svg width="18" height="18" fill="none" stroke="#E5E7EB" strokeWidth="2.5" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>}
+                      </td>
+                    ))}
+                    <td style={{ padding: "16px", textAlign: "center", borderBottom: "1px solid #F3F4F6", background: "linear-gradient(180deg,rgba(200,169,110,0.05) 0%,rgba(200,169,110,0.02) 100%)" }}>
+                      {plana
+                        ? <svg width="18" height="18" fill="none" stroke="#C8A96E" strokeWidth="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                        : <svg width="18" height="18" fill="none" stroke="#E5E7EB" strokeWidth="2.5" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="rv" style={{ textAlign: "center", marginTop: "36px" }}>
+            <Link href="/kontakt?betreff=Immobilienbewertung"
+              style={{ display: "inline-flex", alignItems: "center", gap: "8px", padding: "14px 36px", backgroundColor: "#1B3A4B", color: "#fff", borderRadius: "50px", textDecoration: "none", fontSize: "14px", fontWeight: 500 }}>
+              Kostenlose Bewertung anfragen →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ══ COUNTDOWN / URGENCY ══════════════════════════════════════ */}
+      <section style={{ backgroundColor: "#1B3A4B", padding: "48px 0" }}>
+        <div style={{ ...S.wrap, textAlign: "center" }}>
+          <div className="rv">
+            <p style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.18em", textTransform: "uppercase", color: "#C8A96E", marginBottom: "12px" }}>BEGRENZTE KAPAZITÄTEN</p>
+            <h2 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "clamp(1.4rem, 2.5vw, 2rem)", color: "#fff", marginBottom: "8px" }}>
+              Nächste kostenlose Bewertungsslots – diese Woche:
+            </h2>
+            <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.55)", marginBottom: "28px", fontWeight: 300 }}>Sichern Sie sich jetzt Ihren Platz</p>
+            <div style={{ display: "flex", justifyContent: "center", gap: "16px", marginBottom: "32px", flexWrap: "wrap" }}>
+              {[["Tage", cdTime.d], ["Stunden", cdTime.h], ["Minuten", cdTime.m], ["Sekunden", cdTime.s]].map(([label, val]) => (
+                <div key={label as string} style={{ width: "90px", backgroundColor: "rgba(255,255,255,0.07)", border: "1px solid rgba(200,169,110,0.25)", borderRadius: "12px", padding: "16px 8px" }}>
+                  <div style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "2rem", color: "#C8A96E", lineHeight: 1 }}>{String(val as number).padStart(2, "0")}</div>
+                  <div style={{ fontSize: "10px", color: "rgba(255,255,255,0.45)", marginTop: "6px", letterSpacing: "0.1em", textTransform: "uppercase" }}>{label as string}</div>
+                </div>
+              ))}
+            </div>
+            <Link href="/wertermittlung"
+              style={{ display: "inline-flex", alignItems: "center", gap: "8px", padding: "14px 36px", backgroundColor: "#C8A96E", color: "#fff", borderRadius: "50px", textDecoration: "none", fontSize: "14px", fontWeight: 500 }}>
+              Slot sichern – Kostenlos →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ══ FAQ ══════════════════════════════════════════════════════ */}
+      <section style={{ backgroundColor: "#fff", padding: "96px 0" }}>
+        <div style={S.wrap}>
+          <div className="rv" style={{ textAlign: "center", marginBottom: "48px" }}>
+            <p style={S.label}>FAQ</p>
+            <h2 style={S.h2}>Häufig gestellte Fragen</h2>
+            <GoldLine />
+          </div>
+          <div style={{ maxWidth: "800px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "12px" }} className="rv">
+            {[
+              { q: "Was kostet eine Immobilienbewertung bei Plan A?", a: "Die Immobilienbewertung ist für Sie vollständig kostenlos und unverbindlich. Wir ermitteln den Wert Ihrer Immobilie auf Basis aktueller Marktdaten und melden uns innerhalb von 24 Stunden mit einer ersten Einschätzung." },
+              { q: "Wie lange dauert es, eine Immobilie über Plan A zu verkaufen?", a: "Die Vermarktungsdauer hängt von Lage, Preis und Objektart ab. In der Regel erzielen wir durch unsere vorqualifizierten Käufer und Finanzierungsprüfung deutlich kürzere Vermarktungszeiten als der Marktdurchschnitt." },
+              { q: "Was ist der Unterschied zu einem klassischen Makler?", a: "Plan A kombiniert Immobilienverkauf mit direkter Käuferfinanzierung. Das bedeutet: Wir prüfen die Bonität und Finanzierungsfähigkeit jedes Interessenten bevor dieser Ihre Immobilie besichtigt. Das vermeidet Rückabwicklungen und spart allen Beteiligten Zeit." },
+              { q: "In welchen Regionen ist Plan A tätig?", a: "Unser Hauptsitz ist in Mosbach, Baden-Württemberg. Wir sind überwiegend im Neckar-Odenwald-Kreis und der Region Rhein-Neckar tätig, begleiten aber Kunden deutschlandweit – größtenteils digital." },
+              { q: "Wie funktioniert die kostenlose Wertermittlung?", a: "Füllen Sie unser Online-Formular aus oder rufen Sie uns an. Wir analysieren Lage, Zustand, Baujahr und aktuelle Vergleichswerte aus der Region. Innerhalb von 24 Stunden erhalten Sie unsere fundierte Einschätzung – persönlich und kostenlos." },
+              { q: "Welche Unterlagen brauche ich für den Verkauf?", a: "In der Regel benötigen wir Grundbuchauszug, Energieausweis, Wohnflächenberechnung und ggf. Baupläne. Wir helfen Ihnen dabei, alle nötigen Unterlagen zusammenzustellen – verständlich und unkompliziert." },
+            ].map(({ q, a }, i) => (
+              <div key={i}
+                style={{ borderRadius: "12px", border: `1px solid ${openFaq === i ? "#C8A96E" : "#E5E7EB"}`, overflow: "hidden", transition: "border-color 0.2s" }}>
+                <button onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                  style={{ width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center", padding: "20px 24px", backgroundColor: openFaq === i ? "rgba(200,169,110,0.04)" : "#fff", border: "none", cursor: "pointer", textAlign: "left", gap: "16px", transition: "background 0.2s" }}>
+                  <span style={{ fontSize: "15px", fontWeight: 400, color: "#1A1A1A", lineHeight: 1.5 }}>{q}</span>
+                  <svg width="16" height="16" fill="none" stroke="#C8A96E" strokeWidth="2.5" viewBox="0 0 24 24"
+                    style={{ flexShrink: 0, transform: openFaq === i ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.2s" }}>
+                    <polyline points="6 9 12 15 18 9"/>
+                  </svg>
+                </button>
+                {openFaq === i && (
+                  <div style={{ padding: "0 24px 20px", fontSize: "14px", color: "#6B7280", lineHeight: 1.8, fontWeight: 300 }}>{a}</div>
+                )}
+              </div>
+            ))}
+          </div>
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              { "@type": "Question", "name": "Was kostet eine Immobilienbewertung bei Plan A?", "acceptedAnswer": { "@type": "Answer", "text": "Die Immobilienbewertung ist vollständig kostenlos und unverbindlich." } },
+              { "@type": "Question", "name": "Wie lange dauert es, eine Immobilie über Plan A zu verkaufen?", "acceptedAnswer": { "@type": "Answer", "text": "Durch vorqualifizierte Käufer und Finanzierungsprüfung erzielen wir deutlich kürzere Vermarktungszeiten." } },
+              { "@type": "Question", "name": "Was ist der Unterschied zu einem klassischen Makler?", "acceptedAnswer": { "@type": "Answer", "text": "Plan A kombiniert Immobilienverkauf mit direkter Käuferfinanzierungsprüfung zur Vermeidung von Rückabwicklungen." } },
+              { "@type": "Question", "name": "In welchen Regionen ist Plan A tätig?", "acceptedAnswer": { "@type": "Answer", "text": "Hauptsitz Mosbach, schwerpunktmäßig Neckar-Odenwald-Kreis und Rhein-Neckar, deutschlandweit tätig." } },
+            ]
+          }) }} />
         </div>
       </section>
 

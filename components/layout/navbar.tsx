@@ -35,6 +35,7 @@ const navItems = [
     href: "/ratgeber",
     children: [
       { label: "Ratgeber", href: "/ratgeber" },
+      { label: "Wertermittlung", href: "/wertermittlung" },
       { label: "Energieausweis", href: "/immobilienverkauf#energieausweis" },
       { label: "Suchauftrag", href: "/#suchauftrag" },
     ],
