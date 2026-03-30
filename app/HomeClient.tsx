@@ -53,7 +53,7 @@ export default function HomeClient() {
         <video
           autoPlay muted loop playsInline
           style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }}
-          src="/plana-video.mp4"
+          src="/images/video.mp4"
         />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0.65) 100%)", zIndex: 1 }} />
         <div style={{ position: "relative", zIndex: 2, textAlign: "center", padding: "0 24px", maxWidth: "860px" }} className="rv">
