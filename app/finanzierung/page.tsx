@@ -1,11 +1,20 @@
-import type { Metadata } from "next";
+import Navbar from "@/components/layout/navbar";
+import Footer from "@/components/layout/footer";
 import FinanzierungClient from "./FinanzierungClient";
 
-export const metadata: Metadata = {
-  title: "Baufinanzierung | Plan A Immobilien & Finanzierung",
-  description: "Unabhängige Baufinanzierung aus einer Hand. Zugang zu 300+ Partnerbanken – schnelle Entscheidung, beste Konditionen. Mosbach & Neckar-Odenwald-Kreis.",
+export const metadata = {
+  title: "Finanzierung",
+  description: "KFW-Beratung, BAFA, staatliche Förderungen und Privatkredite. Plan A Immobilien berät Sie unabhängig und unverbindlich.",
 };
 
 export default function FinanzierungPage() {
-  return <FinanzierungClient />;
+  return (
+    <>
+      <Navbar />
+      <main className="pt-16">
+        <FinanzierungClient />
+      </main>
+      <Footer />
+    </>
+  );
 }

@@ -1,569 +1,143 @@
 "use client";
+import { useState } from "react";
+import Link from "next/link";
 
-import { useEffect, useRef, useState } from "react";
-import Navbar from "@/components/layout/navbar";
-import Footer from "@/components/layout/footer";
-import { MAKLER } from "@/lib/config";
-import { Building2, BadgeCheck, Zap, HandshakeIcon } from "lucide-react";
-import { useLanguage } from "@/contexts/LanguageContext";
-
-// ── Animated Counter ────────────────────────────────────────────────────────
-function AnimatedCounter({
-  target,
-  suffix = "",
-  duration = 1800,
-}: {
-  target: number;
-  suffix?: string;
-  duration?: number;
-}) {
-  const [count, setCount] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  const started = useRef(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !started.current) {
-          started.current = true;
-          const startTime = performance.now();
-          const step = (now: number) => {
-            const elapsed = now - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            const eased = 1 - Math.pow(1 - progress, 3);
-            setCount(Math.round(eased * target));
-            if (progress < 1) requestAnimationFrame(step);
-          };
-          requestAnimationFrame(step);
-        }
-      },
-      { threshold: 0.5 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [target, duration]);
-
-  return (
-    <span ref={ref}>
-      {count}{suffix}
-    </span>
-  );
-}
-
-// ── WhatsApp Icon ────────────────────────────────────────────────────────────
-function WhatsAppIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-    </svg>
-  );
-}
+const tabs = [
+  {
+    id: "kfw-beratung",
+    label: "KFW-Beratung",
+    title: "KFW-Beratung",
+    content: "Wir beraten Sie zu allen KFW-Förderprogrammen für Neubau und Sanierung – unabhängig und unverbindlich. Als freier Makler vergleichen wir den gesamten Markt für Sie.",
+    bullets: [
+      "Beratung zu KFW-Programmen für Neubau",
+      "Fördermöglichkeiten für energetische Sanierung",
+      "Unabhängig und kostenlos",
+    ],
+  },
+  {
+    id: "kfw-kredite",
+    label: "KFW-Kredite",
+    title: "KFW-Kreditprogramme",
+    content: "KFW-Kredite bieten besonders günstige Zinssätze für Neubauten und Sanierungen. Wir helfen Ihnen, das richtige Programm zu finden und den Antrag zu stellen.",
+    bullets: [
+      "Neubauprogramme (KFW 261, KFW 300)",
+      "Sanierungsprogramme (KFW 261, KFW 151/152)",
+      "Zinsgünstige Laufzeiten bis 30 Jahre",
+    ],
+  },
+  {
+    id: "bafa",
+    label: "BAFA Einzelmaßnahmen",
+    title: "BAFA Einzelmaßnahmen",
+    content: "Das Bundesamt für Wirtschaft und Ausfuhrkontrolle (BAFA) fördert energetische Einzelmaßnahmen an Bestandsgebäuden. Wir beraten Sie, welche Maßnahmen förderfähig sind.",
+    bullets: [
+      "Heizungsoptimierung und -tausch",
+      "Dämmung von Fassade, Dach und Keller",
+      "Fenster- und Türenaustausch",
+    ],
+  },
+  {
+    id: "staatlich",
+    label: "Staatliche Förderung",
+    title: "Staatliche Förderungen",
+    content: "Neben KFW und BAFA gibt es weitere staatliche Förderprogramme auf Bundes- und Landesebene. Wir beraten Sie zu allen verfügbaren Förderprogrammen.",
+    bullets: [
+      "Bundesförderung für effiziente Gebäude (BEG)",
+      "Landesförderprogramme Baden-Württemberg",
+      "Kombinationsmöglichkeiten verschiedener Programme",
+    ],
+  },
+  {
+    id: "privatkredite",
+    label: "Privatkredite",
+    title: "Privatkreditvergleich",
+    content: "Wir vergleichen für Sie die am Markt verfügbaren Kredite und finden den günstigsten Zinssatz. Schnell, transparent und ohne versteckte Kosten.",
+    bullets: [
+      "Vergleich aller verfügbaren Anbieter",
+      "Günstigster Zinssatz für Ihre Situation",
+      "Schnelle Bearbeitung und Auszahlung",
+    ],
+  },
+  {
+    id: "modernisierung",
+    label: "Modernisierungsdarlehen",
+    title: "Modernisierungsdarlehen",
+    content: "Kredite für Modernisierungen am Bestandsobjekt. Lange Laufzeiten und niedrige Raten machen Modernisierungen planbar und erschwinglich.",
+    bullets: [
+      "Lange Laufzeiten für niedrige Monatsraten",
+      "Für alle Modernisierungsmaßnahmen geeignet",
+      "Schnelle Genehmigung ohne Grundbucheintrag",
+    ],
+  },
+];
 
 export default function FinanzierungClient() {
-  const { t } = useLanguage();
-  const [activeTab, setActiveTab] = useState(0);
-  const [visible, setVisible] = useState(false);
-
-  // ── Tab data (defined inside component to use t()) ──────────────────────
-  const TABS = [
-    {
-      id: "altbau",
-      label: t("finanzierung.tab1Label"),
-      title: t("finanzierung.tab1Title"),
-      description: t("finanzierung.tab1Desc"),
-      gradient: "linear-gradient(135deg, #7C6347 0%, #5C4A38 40%, #3D2E1E 100%)",
-      accentGradient: "linear-gradient(45deg, rgba(197,160,40,0.25) 0%, transparent 60%)",
-      imageAlt: "Altbau-Fassade",
-      icon: "🏛️",
-    },
-    {
-      id: "neubau",
-      label: t("finanzierung.tab2Label"),
-      title: t("finanzierung.tab2Title"),
-      description: t("finanzierung.tab2Desc"),
-      gradient: "linear-gradient(135deg, #2C4A6E 0%, #1E3A5A 40%, #122540 100%)",
-      accentGradient: "linear-gradient(45deg, rgba(100,180,255,0.2) 0%, transparent 60%)",
-      imageAlt: "Neubau",
-      icon: "🏗️",
-    },
-    {
-      id: "bautraeger",
-      label: t("finanzierung.tab3Label"),
-      title: t("finanzierung.tab3Title"),
-      description: t("finanzierung.tab3Desc"),
-      gradient: "linear-gradient(135deg, #2D3A4A 0%, #1E2B3A 40%, #121E2C 100%)",
-      accentGradient: "linear-gradient(45deg, rgba(197,160,40,0.2) 0%, transparent 60%)",
-      imageAlt: "Bauprojekt",
-      icon: "🏢",
-    },
-    {
-      id: "privatkredit",
-      label: t("finanzierung.tab4Label"),
-      title: t("finanzierung.tab4Title"),
-      description: t("finanzierung.tab4Desc"),
-      gradient: "linear-gradient(135deg, #3A2A4A 0%, #2A1E3A 40%, #1A1228 100%)",
-      accentGradient: "linear-gradient(45deg, rgba(180,100,255,0.2) 0%, transparent 60%)",
-      imageAlt: "Beratungsgespräch",
-      icon: "🤝",
-    },
-    {
-      id: "modernisierung",
-      label: t("finanzierung.tab5Label"),
-      title: t("finanzierung.tab5Title"),
-      description: t("finanzierung.tab5Desc"),
-      gradient: "linear-gradient(135deg, #2A3A2A 0%, #1E2E1E 40%, #122212 100%)",
-      accentGradient: "linear-gradient(45deg, rgba(100,200,100,0.2) 0%, transparent 60%)",
-      imageAlt: "Modernisierung",
-      icon: "🔨",
-    },
-  ];
-
-  const features = [
-    {
-      icon: <Building2 size={28} />,
-      title: t("finanzierung.f1Title"),
-      desc: t("finanzierung.f1Desc"),
-    },
-    {
-      icon: <BadgeCheck size={28} />,
-      title: t("finanzierung.f2Title"),
-      desc: t("finanzierung.f2Desc"),
-    },
-    {
-      icon: <Zap size={28} />,
-      title: t("finanzierung.f3Title"),
-      desc: t("finanzierung.f3Desc"),
-    },
-    {
-      icon: <HandshakeIcon size={28} />,
-      title: t("finanzierung.f4Title"),
-      desc: t("finanzierung.f4Desc"),
-    },
-  ];
-
-  const processSteps = [
-    {
-      num: "01",
-      title: t("finanzierung.s1Title"),
-      desc: t("finanzierung.s1Desc"),
-    },
-    {
-      num: "02",
-      title: t("finanzierung.s2Title"),
-      desc: t("finanzierung.s2Desc"),
-    },
-    {
-      num: "03",
-      title: t("finanzierung.s3Title"),
-      desc: t("finanzierung.s3Desc"),
-    },
-  ];
-
-  const stats = [
-    { target: 300, suffix: "+", label: t("finanzierung.stat1Label"), sub: t("finanzierung.stat1Sub") },
-    { target: 100, suffix: "%", label: t("finanzierung.stat2Label"), sub: t("finanzierung.stat2Sub") },
-    { target: 24,  suffix: "h", label: t("finanzierung.stat3Label"), sub: t("finanzierung.stat3Sub") },
-  ];
-
-  const handleTabChange = (idx: number) => {
-    if (idx === activeTab) return;
-    setVisible(false);
-    setTimeout(() => {
-      setActiveTab(idx);
-      setVisible(true);
-    }, 180);
-  };
-
-  useEffect(() => {
-    // trigger initial fade-in
-    const timer = setTimeout(() => setVisible(true), 50);
-    return () => clearTimeout(timer);
-  }, []);
-
-  const tab = TABS[activeTab];
+  const [active, setActive] = useState("kfw-beratung");
+  const tab = tabs.find((t) => t.id === active)!;
 
   return (
     <>
-      <Navbar />
-      <main className="pt-20">
+      {/* Hero */}
+      <section style={{ backgroundColor: "#F7F5F2", paddingTop: "60px", paddingBottom: "60px" }}>
+        <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px" }}>
+          <p style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C8A96E", marginBottom: "12px" }}>FINANZIERUNG</p>
+          <h1 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "clamp(2rem, 4vw, 3.2rem)", color: "#1A1A1A", marginBottom: "16px", lineHeight: 1.2 }}>
+            Finanzierungsberatung
+          </h1>
+          <p style={{ fontSize: "16px", color: "#6B7280", lineHeight: 1.75, maxWidth: "520px", fontWeight: 300 }}>
+            Plan A berät Sie unabhängig und unverbindlich. Als freier Makler vergleichen wir den gesamten Markt für Sie.
+          </p>
+        </div>
+      </section>
 
-        {/* ── HERO ──────────────────────────────────────────────────────── */}
-        <section
-          className="relative overflow-hidden py-24 lg:py-32"
-          style={{ background: "linear-gradient(135deg, #1a1614 0%, #2d2520 50%, #1a1614 100%)" }}
-        >
-          {/* Gold glow */}
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{ background: "radial-gradient(ellipse at 30% 60%, rgba(197,160,40,0.15) 0%, transparent 60%)" }}
-          />
-          <div className="max-w-5xl mx-auto px-4 sm:px-8 relative text-center">
-            <p className="text-[#C5A028] text-sm font-semibold tracking-[0.2em] uppercase mb-5">
-              {t("finanzierung.eyebrow")}
-            </p>
-            <h1 className="font-heading text-4xl lg:text-6xl font-bold text-white leading-[1.1] mb-6">
-              {t("finanzierung.heroTitle")}{" "}
-              <span className="italic" style={{ color: "#C5A028" }}>{t("finanzierung.heroTitleItalic")}</span>
-            </h1>
-            <p className="text-stone-300 text-xl lg:text-2xl leading-relaxed max-w-3xl mx-auto mb-10">
-              {t("finanzierung.heroSub")}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href={MAKLER.whatsappMsg}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-white text-sm tracking-wide transition-all hover:scale-105"
-                style={{ background: "#25D366", boxShadow: "0 4px 18px rgba(37,211,102,0.35)", textDecoration: "none" }}
+      {/* Tabs */}
+      <section style={{ backgroundColor: "#FFFFFF", paddingTop: "60px", paddingBottom: "80px" }}>
+        <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px" }}>
+          {/* Tab Navigation */}
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginBottom: "48px", borderBottom: "1px solid #E5E7EB", paddingBottom: "0" }}>
+            {tabs.map((t) => (
+              <button
+                key={t.id}
+                onClick={() => setActive(t.id)}
+                style={{
+                  padding: "12px 20px",
+                  fontSize: "13px",
+                  fontWeight: 500,
+                  color: active === t.id ? "#1B3A4B" : "#6B7280",
+                  border: "none",
+                  borderBottom: active === t.id ? "2px solid #C8A96E" : "2px solid transparent",
+                  background: "transparent",
+                  cursor: "pointer",
+                  transition: "color 0.2s ease, border-color 0.2s ease",
+                  marginBottom: "-1px",
+                  letterSpacing: "0.02em",
+                }}
               >
-                <WhatsAppIcon />
-                {t("finanzierung.ctaWhatsapp")}
-              </a>
-              <a
-                href={MAKLER.telefonHref}
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-sm transition-all hover:scale-105"
-                style={{ border: "1.5px solid rgba(197,160,40,0.4)", color: "#C5A028", textDecoration: "none" }}
-              >
-                {MAKLER.telefon}
-              </a>
-            </div>
+                {t.label}
+              </button>
+            ))}
           </div>
-        </section>
 
-        {/* ── TABS ──────────────────────────────────────────────────────── */}
-        <section className="bg-white py-16 lg:py-24">
-          <div className="max-w-6xl mx-auto px-4 sm:px-8">
-
-            {/* Tab bar */}
-            <div
-              className="flex overflow-x-auto mb-10 border-b border-stone-200"
-              style={{ scrollbarWidth: "none" }}
-            >
-              {TABS.map((tabItem, i) => (
-                <button
-                  key={tabItem.id}
-                  onClick={() => handleTabChange(i)}
-                  className="flex-shrink-0 px-5 py-4 text-sm font-semibold transition-all duration-200 whitespace-nowrap relative"
-                  style={{
-                    color: activeTab === i ? "#C5A028" : "#6B7280",
-                    background: "none",
-                    border: "none",
-                    cursor: "pointer",
-                    outline: "none",
-                  }}
-                >
-                  {tabItem.label}
-                  {activeTab === i && (
-                    <span
-                      className="absolute bottom-0 left-0 right-0 h-0.5"
-                      style={{ background: "#C5A028" }}
-                    />
-                  )}
-                </button>
-              ))}
-            </div>
-
-            {/* Tab content */}
-            <div
-              style={{
-                opacity: visible ? 1 : 0,
-                transform: visible ? "translateY(0)" : "translateY(8px)",
-                transition: "opacity 0.25s ease, transform 0.25s ease",
-              }}
-            >
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-
-                {/* Left: text */}
-                <div className="space-y-6">
-                  <div>
-                    <p
-                      className="text-xs font-semibold tracking-[0.2em] uppercase mb-3"
-                      style={{ color: "#C5A028" }}
-                    >
-                      {t("finanzierung.tabSubLabel")}
-                    </p>
-                    <h2 className="font-heading text-3xl lg:text-4xl font-bold text-stone-900 leading-[1.15] mb-5">
-                      {tab.title}
-                    </h2>
-                    <p className="text-stone-600 text-lg leading-[1.8]">
-                      {tab.description}
-                    </p>
-                  </div>
-
-                  <div className="flex flex-col sm:flex-row gap-3 pt-2">
-                    <a
-                      href={MAKLER.whatsappMsg}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-white text-sm transition-all hover:scale-105"
-                      style={{
-                        background: "#25D366",
-                        boxShadow: "0 4px 14px rgba(37,211,102,0.3)",
-                        textDecoration: "none",
-                      }}
-                    >
-                      <WhatsAppIcon />
-                      {t("finanzierung.tabCtaWhatsapp")}
-                    </a>
-                    <a
-                      href="#kontakt"
-                      className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm transition-all hover:scale-105"
-                      style={{
-                        border: "1.5px solid rgba(197,160,40,0.4)",
-                        color: "#C5A028",
-                        textDecoration: "none",
-                      }}
-                    >
-                      {t("finanzierung.tabCtaContact")}
-                    </a>
-                  </div>
-                </div>
-
-                {/* Right: image placeholder */}
-                <div
-                  className="relative rounded-2xl overflow-hidden h-[220px] sm:h-[280px] lg:h-[340px]"
-                >
-                  {/* Base gradient */}
-                  <div
-                    className="absolute inset-0"
-                    style={{ background: tab.gradient }}
-                  />
-                  {/* Accent overlay */}
-                  <div
-                    className="absolute inset-0"
-                    style={{ background: tab.accentGradient }}
-                  />
-                  {/* Decorative circles */}
-                  <div
-                    className="absolute"
-                    style={{
-                      width: 200,
-                      height: 200,
-                      borderRadius: "50%",
-                      border: "1px solid rgba(197,160,40,0.2)",
-                      top: "10%",
-                      right: "10%",
-                    }}
-                  />
-                  <div
-                    className="absolute"
-                    style={{
-                      width: 120,
-                      height: 120,
-                      borderRadius: "50%",
-                      border: "1px solid rgba(197,160,40,0.15)",
-                      bottom: "15%",
-                      left: "15%",
-                    }}
-                  />
-                  {/* Icon + label */}
-                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
-                    <span style={{ fontSize: 72, lineHeight: 1 }}>{tab.icon}</span>
-                    <span
-                      className="text-sm font-semibold tracking-[0.15em] uppercase px-4 py-1.5 rounded-full"
-                      style={{
-                        background: "rgba(197,160,40,0.18)",
-                        border: "1px solid rgba(197,160,40,0.35)",
-                        color: "rgba(255,220,120,0.9)",
-                        backdropFilter: "blur(4px)",
-                      }}
-                    >
-                      {tab.imageAlt}
-                    </span>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ── UNABHÄNGIGKEITS-HINWEIS ───────────────────────────────────── */}
-        <section className="bg-[#FAF8F4] py-10">
-          <div className="max-w-5xl mx-auto px-4 sm:px-8">
-            <div
-              className="rounded-xl px-8 py-5 flex items-center gap-4"
-              style={{ background: "rgba(197,160,40,0.08)", border: "1.5px solid rgba(197,160,40,0.3)" }}
-            >
-              <span style={{ fontSize: 28, flexShrink: 0 }}>🏦</span>
-              <p className="text-stone-700 text-base leading-relaxed">
-                <strong className="text-stone-900">Ali Artun ist freier Makler</strong> – unabhängig von einzelnen Banken.
-                Wir vergleichen den gesamten Markt für Sie.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* ── HIGHLIGHT BOX (300+ Bankpartner) ──────────────────────────── */}
-        <section className="bg-[#FAF8F4] py-16">
-          <div className="max-w-5xl mx-auto px-4 sm:px-8">
-            <div
-              className="rounded-2xl p-10 lg:p-14 text-center relative overflow-hidden"
-              style={{
-                background: "linear-gradient(135deg, #1a1614 0%, #2d2520 100%)",
-                boxShadow: "0 20px 60px rgba(0,0,0,0.15)",
-              }}
-            >
-              {/* Gold glow */}
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(197,160,40,0.2) 0%, transparent 65%)" }}
-              />
-              <div className="relative space-y-4">
-                <div
-                  className="font-heading font-bold text-5xl sm:text-6xl lg:text-8xl mb-2"
-                  style={{ color: "#C5A028" }}
-                >
-                  <AnimatedCounter target={300} suffix="+" />
-                </div>
-                <h3 className="font-heading text-2xl lg:text-3xl font-bold text-white">
-                  {t("finanzierung.highlightTitle")}
-                </h3>
-                <p className="text-stone-400 text-lg max-w-xl mx-auto">
-                  {t("finanzierung.highlightSub")}
-                </p>
-                <div
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full mt-4"
-                  style={{
-                    background: "rgba(197,160,40,0.12)",
-                    border: "1px solid rgba(197,160,40,0.3)",
-                  }}
-                >
-                  <span style={{ color: "#C5A028", fontSize: 18 }}>✓</span>
-                  <span className="text-stone-300 text-sm font-medium tracking-wide">
-                    {t("finanzierung.highlightBadge")}
+          {/* Tab Content */}
+          <div style={{ maxWidth: "720px" }}>
+            <h2 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "clamp(1.5rem, 3vw, 2.2rem)", color: "#1A1A1A", marginBottom: "16px" }}>{tab.title}</h2>
+            <p style={{ fontSize: "16px", color: "#6B7280", lineHeight: 1.75, fontWeight: 300, marginBottom: "28px" }}>{tab.content}</p>
+            <ul style={{ display: "flex", flexDirection: "column", gap: "12px", marginBottom: "40px" }}>
+              {tab.bullets.map((b, i) => (
+                <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: "12px", fontSize: "15px", color: "#374151", fontWeight: 300 }}>
+                  <span style={{ width: "20px", height: "20px", borderRadius: "50%", backgroundColor: "#C8A96E", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: "2px" }}>
+                    <svg width="10" height="8" fill="none" stroke="#fff" strokeWidth="2" viewBox="0 0 12 10">
+                      <polyline points="1 5 4 8 11 1"/>
+                    </svg>
                   </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ── ANIMATED COUNTERS ─────────────────────────────────────────── */}
-        <section className="bg-white py-16">
-          <div className="max-w-4xl mx-auto px-4 sm:px-8">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-              {stats.map((stat) => (
-                <div
-                  key={stat.label}
-                  className="text-center py-8 px-6 bg-[#FAF8F4] rounded-2xl border border-stone-100 hover:border-[#C5A028]/30 transition-colors"
-                >
-                  <div className="font-heading font-bold text-5xl lg:text-6xl mb-2" style={{ color: "#C5A028" }}>
-                    <AnimatedCounter target={stat.target} suffix={stat.suffix} />
-                  </div>
-                  <p className="font-semibold text-stone-900 text-lg">{stat.label}</p>
-                  <p className="text-stone-400 text-sm mt-1">{stat.sub}</p>
-                </div>
+                  {b}
+                </li>
               ))}
-            </div>
+            </ul>
+            <Link href="/kontakt?betreff=Finanzierung" className="btn-primary">Jetzt anfragen</Link>
           </div>
-        </section>
-
-        {/* ── FEATURE CARDS ─────────────────────────────────────────────── */}
-        <section className="bg-[#FAF8F4] py-20">
-          <div className="max-w-5xl mx-auto px-4 sm:px-8">
-            <div className="text-center mb-14">
-              <p className="text-[#C5A028] text-sm font-semibold tracking-[0.2em] uppercase mb-3">
-                {t("finanzierung.whyEyebrow")}
-              </p>
-              <h2 className="font-heading text-3xl lg:text-4xl font-bold text-stone-900">
-                {t("finanzierung.whyHeading")}
-              </h2>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {features.map((f) => (
-                <div
-                  key={f.title}
-                  className="flex items-start gap-5 bg-white rounded-2xl p-7 border border-stone-100 hover:border-[#C5A028]/30 hover:-translate-y-1 transition-all duration-200"
-                >
-                  <div
-                    className="flex-shrink-0 w-14 h-14 rounded-xl flex items-center justify-center"
-                    style={{ background: "rgba(197,160,40,0.1)", color: "#C5A028" }}
-                  >
-                    {f.icon}
-                  </div>
-                  <div>
-                    <h3 className="font-heading font-bold text-stone-900 text-xl mb-2">{f.title}</h3>
-                    <p className="text-stone-500 text-base leading-relaxed">{f.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ── PROZESS ───────────────────────────────────────────────────── */}
-        <section className="bg-white py-20">
-          <div className="max-w-4xl mx-auto px-4 sm:px-8">
-            <div className="text-center mb-14">
-              <p className="text-[#C5A028] text-sm font-semibold tracking-[0.2em] uppercase mb-3">
-                {t("finanzierung.processEyebrow")}
-              </p>
-              <h2 className="font-heading text-3xl lg:text-4xl font-bold text-stone-900">
-                {t("finanzierung.processHeading")}
-              </h2>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {processSteps.map((step, i) => (
-                <div key={step.num} className="relative">
-                  {i < processSteps.length - 1 && (
-                    <div
-                      className="hidden md:block absolute top-8 left-full w-8 h-0.5 -translate-x-4 z-10"
-                      style={{ background: "linear-gradient(90deg, #C5A028, rgba(197,160,40,0.3))" }}
-                    />
-                  )}
-                  <div className="bg-[#FAF8F4] rounded-2xl p-8 border border-stone-100 text-center hover:-translate-y-1 transition-transform duration-200">
-                    <div
-                      className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-5 font-heading font-bold text-xl"
-                      style={{ background: "linear-gradient(135deg, #C5A028 0%, #A08020 100%)", color: "white" }}
-                    >
-                      {step.num}
-                    </div>
-                    <h3 className="font-heading font-bold text-stone-900 text-xl mb-3">{step.title}</h3>
-                    <p className="text-stone-500 text-sm leading-relaxed">{step.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ── CTA ───────────────────────────────────────────────────────── */}
-        <section className="bg-stone-900 py-20">
-          <div className="max-w-3xl mx-auto px-4 sm:px-8 text-center space-y-7">
-            <h2 className="font-heading text-3xl lg:text-4xl font-bold text-white">
-              {t("finanzierung.ctaHeading")}{" "}
-              <span className="italic" style={{ color: "#C5A028" }}>{t("finanzierung.ctaHeadingItalic")}</span>
-            </h2>
-            <p className="text-stone-400 text-xl leading-relaxed">
-              {t("finanzierung.ctaSub")}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href={MAKLER.whatsappMsg}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-white text-sm tracking-wide transition-all hover:scale-105"
-                style={{ background: "#25D366", boxShadow: "0 4px 18px rgba(37,211,102,0.35)", textDecoration: "none" }}
-              >
-                <WhatsAppIcon />
-                {t("finanzierung.ctaBtn")}
-              </a>
-              <a
-                href={MAKLER.telefonHref}
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-sm transition-all hover:scale-105"
-                style={{ border: "1.5px solid rgba(197,160,40,0.4)", color: "#C5A028", textDecoration: "none" }}
-              >
-                {MAKLER.telefon}
-              </a>
-            </div>
-          </div>
-        </section>
-
-      </main>
-      <Footer />
+        </div>
+      </section>
     </>
   );
 }
