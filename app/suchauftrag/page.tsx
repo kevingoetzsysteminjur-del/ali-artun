@@ -3,11 +3,32 @@ import { useState } from "react";
 import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
 import Link from "next/link";
+import { createClient } from "@/utils/supabase/client";
 
 export default function SuchauftragPage() {
   const [form, setForm] = useState({ was: "Haus", kaufMiete: "Kaufen", region: "", budgetVon: "", budgetBis: "", zimmer: "", flaeche: "", email: "", datenschutz: false });
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
   const up = (k: string, v: string | boolean) => setForm(f => ({ ...f, [k]: v }));
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSending(true);
+    const sb = createClient();
+    await sb.from("search_requests").insert({
+      property_type: form.was,
+      listing_type: form.kaufMiete === "Kaufen" ? "buy" : "rent",
+      region: form.region,
+      budget_min: form.budgetVon ? Number(form.budgetVon.replace(/\./g, "")) : null,
+      budget_max: form.budgetBis ? Number(form.budgetBis.replace(/\./g, "")) : null,
+      min_rooms: form.zimmer ? Number(form.zimmer) : null,
+      min_area: form.flaeche ? Number(form.flaeche) : null,
+      email: form.email,
+      status: "neu",
+    });
+    setSending(false);
+    setSent(true);
+  };
 
   const inp: React.CSSProperties = { width: "100%", padding: "12px 16px", border: "1px solid #E8D9C5", borderRadius: "10px", fontSize: "14px", color: "#2C1A0E", outline: "none", fontFamily: "var(--font-outfit, sans-serif)", fontWeight: 300, backgroundColor: "#FFFCF7", boxSizing: "border-box" as const };
   const lbl: React.CSSProperties = { fontSize: "11px", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase", color: "#7A6548", display: "block", marginBottom: "6px" };
@@ -57,7 +78,7 @@ export default function SuchauftragPage() {
                 </Link>
               </div>
             ) : (
-              <form onSubmit={(e) => { e.preventDefault(); setSent(true); }}
+              <form onSubmit={handleSubmit}
                 style={{ backgroundColor: "#fff", borderRadius: "20px", padding: "44px", border: "1px solid #E8D9C5", display: "flex", flexDirection: "column", gap: "20px", boxShadow: "0 4px 24px rgba(44,26,14,0.05)" }}>
                 <h2 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "1.6rem", color: "#2C1A0E", marginBottom: "4px" }}>Suchauftrag stellen</h2>
                 <p style={{ fontSize: "14px", color: "#7A6548", fontWeight: 300, marginTop: 0 }}>Kostenlos und unverbindlich – wir melden uns persönlich.</p>
@@ -122,11 +143,11 @@ export default function SuchauftragPage() {
                   <Link href="/datenschutz" style={{ color: "#B8860B" }}>Datenschutzerklärung</Link> zu.
                 </label>
 
-                <button type="submit"
-                  style={{ padding: "16px 36px", background: "linear-gradient(135deg,#2C1A0E,#3D2512)", color: "#fff", border: "none", borderRadius: "60px", fontSize: "13px", fontWeight: 500, cursor: "pointer", letterSpacing: "0.05em", textTransform: "uppercase", transition: "all 400ms cubic-bezier(0.4,0,0.2,1)", boxShadow: "0 4px 20px rgba(44,26,14,0.2)" }}
-                  onMouseEnter={e => { e.currentTarget.style.background = "linear-gradient(135deg,#B8860B,#D4B87E)"; e.currentTarget.style.transform = "scale(1.02)"; }}
+                <button type="submit" disabled={sending}
+                  style={{ padding: "16px 36px", background: "linear-gradient(135deg,#2C1A0E,#3D2512)", color: "#fff", border: "none", borderRadius: "60px", fontSize: "13px", fontWeight: 500, cursor: sending ? "not-allowed" : "pointer", letterSpacing: "0.05em", textTransform: "uppercase", transition: "all 400ms cubic-bezier(0.4,0,0.2,1)", boxShadow: "0 4px 20px rgba(44,26,14,0.2)", opacity: sending ? 0.7 : 1 }}
+                  onMouseEnter={e => { if (!sending) { e.currentTarget.style.background = "linear-gradient(135deg,#B8860B,#D4B87E)"; e.currentTarget.style.transform = "scale(1.02)"; } }}
                   onMouseLeave={e => { e.currentTarget.style.background = "linear-gradient(135deg,#2C1A0E,#3D2512)"; e.currentTarget.style.transform = "scale(1)"; }}>
-                  Suchauftrag absenden →
+                  {sending ? "Wird gesendet…" : "Suchauftrag absenden →"}
                 </button>
               </form>
             )}

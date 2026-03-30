@@ -1,42 +1,110 @@
--- ============================================================
--- Plan A Immobilien – Supabase Schema
--- Run this in your Supabase SQL editor
--- ============================================================
+-- Plan A Immobilien & Finanzierung – Supabase Schema
+-- Ausführen im Supabase SQL Editor
 
--- ── Profiles ────────────────────────────────────────────────
-CREATE TABLE IF NOT EXISTS public.profiles (
-  id UUID PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
-  full_name TEXT,
-  phone TEXT,
-  avatar_url TEXT,
-  created_at TIMESTAMPTZ DEFAULT NOW(),
-  updated_at TIMESTAMPTZ DEFAULT NOW()
+-- Profiles (extends auth.users)
+CREATE TABLE IF NOT EXISTS profiles (
+  id UUID REFERENCES auth.users ON DELETE CASCADE PRIMARY KEY,
+  name TEXT,
+  email TEXT,
+  role TEXT DEFAULT 'user',
+  created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
-ALTER TABLE public.profiles ENABLE ROW LEVEL SECURITY;
+-- Contact inquiries (Kontaktformular)
+CREATE TABLE IF NOT EXISTS contact_inquiries (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  name TEXT,
+  email TEXT,
+  phone TEXT,
+  subject TEXT,
+  message TEXT,
+  status TEXT DEFAULT 'neu',
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
 
-CREATE POLICY "Users can view own profile"
-  ON public.profiles FOR SELECT
-  USING (auth.uid() = id);
+-- Properties (Immobilien)
+CREATE TABLE IF NOT EXISTS properties (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  title TEXT,
+  description TEXT,
+  price NUMERIC(12,2),
+  property_type TEXT,
+  listing_type TEXT DEFAULT 'sale',
+  bedrooms INTEGER,
+  bathrooms INTEGER,
+  area_sqm NUMERIC(10,2),
+  year_built INTEGER,
+  address TEXT,
+  images JSONB DEFAULT '[]',
+  status TEXT DEFAULT 'active',
+  featured BOOLEAN DEFAULT false,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
 
-CREATE POLICY "Users can update own profile"
-  ON public.profiles FOR UPDATE
-  USING (auth.uid() = id);
+-- Search requests (Suchaufträge)
+CREATE TABLE IF NOT EXISTS search_requests (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  property_type TEXT,
+  listing_type TEXT,
+  region TEXT,
+  budget_min NUMERIC(12,2),
+  budget_max NUMERIC(12,2),
+  min_rooms INTEGER,
+  min_area NUMERIC(10,2),
+  email TEXT,
+  status TEXT DEFAULT 'neu',
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
 
-CREATE POLICY "Users can insert own profile"
-  ON public.profiles FOR INSERT
-  WITH CHECK (auth.uid() = id);
+-- Callback requests (Rückruf-Anfragen)
+CREATE TABLE IF NOT EXISTS callback_requests (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  salutation TEXT,
+  first_name TEXT,
+  last_name TEXT,
+  phone TEXT,
+  subject TEXT,
+  preferred_time TEXT,
+  status TEXT DEFAULT 'neu',
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- Row Level Security
+ALTER TABLE profiles ENABLE ROW LEVEL SECURITY;
+ALTER TABLE contact_inquiries ENABLE ROW LEVEL SECURITY;
+ALTER TABLE properties ENABLE ROW LEVEL SECURITY;
+ALTER TABLE search_requests ENABLE ROW LEVEL SECURITY;
+ALTER TABLE callback_requests ENABLE ROW LEVEL SECURITY;
+
+-- Profiles
+CREATE POLICY "Users can view own profile" ON profiles FOR SELECT USING (auth.uid() = id);
+CREATE POLICY "Users can update own profile" ON profiles FOR UPDATE USING (auth.uid() = id);
+
+-- Contact inquiries: public insert, authenticated read/update
+CREATE POLICY "Anyone can insert contact inquiry" ON contact_inquiries FOR INSERT WITH CHECK (true);
+CREATE POLICY "Authenticated can read contact inquiries" ON contact_inquiries FOR SELECT USING (auth.role() = 'authenticated');
+CREATE POLICY "Authenticated can update contact inquiries" ON contact_inquiries FOR UPDATE USING (auth.role() = 'authenticated');
+
+-- Properties: public read active, authenticated manage all
+CREATE POLICY "Anyone can view active properties" ON properties FOR SELECT USING (status = 'active' OR auth.role() = 'authenticated');
+CREATE POLICY "Authenticated can manage properties" ON properties FOR ALL USING (auth.role() = 'authenticated');
+
+-- Search requests: public insert, authenticated read/update
+CREATE POLICY "Anyone can insert search request" ON search_requests FOR INSERT WITH CHECK (true);
+CREATE POLICY "Authenticated can read search requests" ON search_requests FOR SELECT USING (auth.role() = 'authenticated');
+CREATE POLICY "Authenticated can update search requests" ON search_requests FOR UPDATE USING (auth.role() = 'authenticated');
+
+-- Callback requests: public insert, authenticated read/update
+CREATE POLICY "Anyone can insert callback request" ON callback_requests FOR INSERT WITH CHECK (true);
+CREATE POLICY "Authenticated can read callback requests" ON callback_requests FOR SELECT USING (auth.role() = 'authenticated');
+CREATE POLICY "Authenticated can update callback requests" ON callback_requests FOR UPDATE USING (auth.role() = 'authenticated');
 
 -- Auto-create profile on signup
 CREATE OR REPLACE FUNCTION public.handle_new_user()
-RETURNS TRIGGER AS $$
+RETURNS trigger AS $$
 BEGIN
-  INSERT INTO public.profiles (id, full_name, phone)
-  VALUES (
-    NEW.id,
-    NEW.raw_user_meta_data->>'name',
-    NEW.raw_user_meta_data->>'phone'
-  );
+  INSERT INTO public.profiles (id, email, name)
+  VALUES (NEW.id, NEW.email, NEW.raw_user_meta_data->>'name');
   RETURN NEW;
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
@@ -44,210 +112,4 @@ $$ LANGUAGE plpgsql SECURITY DEFINER;
 DROP TRIGGER IF EXISTS on_auth_user_created ON auth.users;
 CREATE TRIGGER on_auth_user_created
   AFTER INSERT ON auth.users
-  FOR EACH ROW EXECUTE FUNCTION public.handle_new_user();
-
--- ── Inquiries ────────────────────────────────────────────────
-CREATE TABLE IF NOT EXISTS public.inquiries (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  user_id UUID REFERENCES auth.users(id) ON DELETE SET NULL,
-  name TEXT NOT NULL,
-  email TEXT NOT NULL,
-  phone TEXT,
-  message TEXT NOT NULL,
-  type TEXT DEFAULT 'contact', -- 'contact' | 'bewertung' | 'finanzierung'
-  status TEXT DEFAULT 'neu', -- 'neu' | 'in_bearbeitung' | 'erledigt'
-  admin_notes TEXT,
-  created_at TIMESTAMPTZ DEFAULT NOW(),
-  updated_at TIMESTAMPTZ DEFAULT NOW()
-);
-
-ALTER TABLE public.inquiries ENABLE ROW LEVEL SECURITY;
-
--- Anyone can create an inquiry
-CREATE POLICY "Anyone can create inquiry"
-  ON public.inquiries FOR INSERT
-  WITH CHECK (true);
-
--- Users can view their own inquiries
-CREATE POLICY "Users can view own inquiries"
-  ON public.inquiries FOR SELECT
-  USING (auth.uid() = user_id OR auth.jwt()->>'email' = 'Info@plana-immobilien-finanzierung.com');
-
--- Admin can update inquiries
-CREATE POLICY "Admin can update inquiries"
-  ON public.inquiries FOR UPDATE
-  USING (auth.jwt()->>'email' = 'Info@plana-immobilien-finanzierung.com');
-
--- Admin can delete inquiries
-CREATE POLICY "Admin can delete inquiries"
-  ON public.inquiries FOR DELETE
-  USING (auth.jwt()->>'email' = 'Info@plana-immobilien-finanzierung.com');
-
--- ── Partner Applications ─────────────────────────────────────
-CREATE TABLE IF NOT EXISTS public.partner_applications (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  name TEXT NOT NULL,
-  email TEXT NOT NULL,
-  phone TEXT,
-  location TEXT,
-  experience BOOLEAN DEFAULT false,
-  motivation TEXT,
-  status TEXT DEFAULT 'neu', -- 'neu' | 'angenommen' | 'abgelehnt'
-  admin_notes TEXT,
-  created_at TIMESTAMPTZ DEFAULT NOW(),
-  updated_at TIMESTAMPTZ DEFAULT NOW()
-);
-
-ALTER TABLE public.partner_applications ENABLE ROW LEVEL SECURITY;
-
--- Anyone can submit a partner application
-CREATE POLICY "Anyone can create partner application"
-  ON public.partner_applications FOR INSERT
-  WITH CHECK (true);
-
--- Admin can view all partner applications
-CREATE POLICY "Admin can view partner applications"
-  ON public.partner_applications FOR SELECT
-  USING (auth.jwt()->>'email' = 'Info@plana-immobilien-finanzierung.com');
-
--- Admin can update partner applications
-CREATE POLICY "Admin can update partner applications"
-  ON public.partner_applications FOR UPDATE
-  USING (auth.jwt()->>'email' = 'Info@plana-immobilien-finanzierung.com');
-
--- ── Site Images ──────────────────────────────────────────────
-CREATE TABLE IF NOT EXISTS public.site_images (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  storage_path TEXT NOT NULL,
-  public_url TEXT NOT NULL,
-  section TEXT NOT NULL, -- 'hero' | 'ueber-mich' | 'objekte' | 'galerie' | 'referenzen'
-  label TEXT,
-  sort_order INT DEFAULT 0,
-  created_at TIMESTAMPTZ DEFAULT NOW()
-);
-
-ALTER TABLE public.site_images ENABLE ROW LEVEL SECURITY;
-
--- Anyone can view site images
-CREATE POLICY "Anyone can view site images"
-  ON public.site_images FOR SELECT
-  USING (true);
-
--- Admin can manage site images
-CREATE POLICY "Admin can insert site images"
-  ON public.site_images FOR INSERT
-  WITH CHECK (auth.jwt()->>'email' = 'Info@plana-immobilien-finanzierung.com');
-
-CREATE POLICY "Admin can delete site images"
-  ON public.site_images FOR DELETE
-  USING (auth.jwt()->>'email' = 'Info@plana-immobilien-finanzierung.com');
-
--- ── Site Content ─────────────────────────────────────────────
-CREATE TABLE IF NOT EXISTS public.site_content (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  section TEXT NOT NULL, -- 'hero' | 'ueber-ali' | 'leistungen' | 'prozess' | 'kontakt'
-  lang TEXT NOT NULL, -- 'de' | 'en' | 'tr'
-  content TEXT NOT NULL,
-  updated_at TIMESTAMPTZ DEFAULT NOW(),
-  UNIQUE(section, lang)
-);
-
-ALTER TABLE public.site_content ENABLE ROW LEVEL SECURITY;
-
--- Anyone can view site content
-CREATE POLICY "Anyone can view site content"
-  ON public.site_content FOR SELECT
-  USING (true);
-
--- Admin can manage site content
-CREATE POLICY "Admin can upsert site content"
-  ON public.site_content FOR ALL
-  USING (auth.jwt()->>'email' = 'Info@plana-immobilien-finanzierung.com')
-  WITH CHECK (auth.jwt()->>'email' = 'Info@plana-immobilien-finanzierung.com');
-
--- ── Video Testimonials ───────────────────────────────────────
-CREATE TABLE IF NOT EXISTS public.video_testimonials (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  title_de TEXT,
-  title_en TEXT,
-  title_tr TEXT,
-  description_de TEXT,
-  description_en TEXT,
-  description_tr TEXT,
-  youtube_url TEXT,
-  active BOOLEAN DEFAULT true,
-  sort_order INTEGER DEFAULT 0,
-  created_at TIMESTAMPTZ DEFAULT NOW(),
-  updated_at TIMESTAMPTZ DEFAULT NOW()
-);
-
-ALTER TABLE public.video_testimonials ENABLE ROW LEVEL SECURITY;
-
-CREATE POLICY "Anyone can view active video testimonials"
-  ON public.video_testimonials FOR SELECT
-  USING (true);
-
-CREATE POLICY "Admin can manage video testimonials"
-  ON public.video_testimonials FOR ALL
-  USING (auth.jwt()->>'email' = 'Info@plana-immobilien-finanzierung.com')
-  WITH CHECK (auth.jwt()->>'email' = 'Info@plana-immobilien-finanzierung.com');
-
--- ── Properties ────────────────────────────────────────────────
-CREATE TABLE IF NOT EXISTS public.properties (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  title TEXT NOT NULL,
-  description_de TEXT,
-  description_en TEXT,
-  description_tr TEXT,
-  address TEXT,
-  price NUMERIC(12,2),
-  area NUMERIC(8,2),
-  rooms INTEGER,
-  year_built INTEGER,
-  property_type TEXT DEFAULT 'Haus', -- 'Haus' | 'Wohnung' | 'Grundstück' | 'Gewerbe'
-  status TEXT DEFAULT 'verfügbar', -- 'verfügbar' | 'reserviert' | 'verkauft'
-  images JSONB DEFAULT '[]',
-  features JSONB DEFAULT '[]',
-  active BOOLEAN DEFAULT true,
-  created_at TIMESTAMPTZ DEFAULT NOW(),
-  updated_at TIMESTAMPTZ DEFAULT NOW()
-);
-
-ALTER TABLE public.properties ENABLE ROW LEVEL SECURITY;
-
-CREATE POLICY "Anyone can view active properties"
-  ON public.properties FOR SELECT
-  USING (true);
-
-CREATE POLICY "Admin can manage properties"
-  ON public.properties FOR ALL
-  USING (auth.jwt()->>'email' = 'Info@plana-immobilien-finanzierung.com')
-  WITH CHECK (auth.jwt()->>'email' = 'Info@plana-immobilien-finanzierung.com');
-
--- ── Storage Bucket ───────────────────────────────────────────
--- Run in Supabase dashboard → Storage → Create bucket named "images" (public)
--- Or via SQL:
-INSERT INTO storage.buckets (id, name, public)
-VALUES ('images', 'images', true)
-ON CONFLICT (id) DO NOTHING;
-
--- Allow admin to upload
-CREATE POLICY "Admin can upload images"
-  ON storage.objects FOR INSERT
-  WITH CHECK (
-    bucket_id = 'images'
-    AND auth.jwt()->>'email' = 'Info@plana-immobilien-finanzierung.com'
-  );
-
--- Allow admin to delete images
-CREATE POLICY "Admin can delete images"
-  ON storage.objects FOR DELETE
-  USING (
-    bucket_id = 'images'
-    AND auth.jwt()->>'email' = 'Info@plana-immobilien-finanzierung.com'
-  );
-
--- Allow public read of images
-CREATE POLICY "Public can view images"
-  ON storage.objects FOR SELECT
-  USING (bucket_id = 'images');
+  FOR EACH ROW EXECUTE PROCEDURE public.handle_new_user();

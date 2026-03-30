@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
+import { createClient } from "@/utils/supabase/client";
 
 const betreffs = ["Immobilienverkauf", "Immobilienbewertung", "Finanzierung", "Partner werden", "Sonstiges"];
 
@@ -26,7 +27,24 @@ const infos = [
 export default function KontaktClient() {
   const [form, setForm] = useState({ name: "", email: "", telefon: "", betreff: "Immobilienverkauf", nachricht: "" });
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
   const up = (k: string, v: string) => setForm((f) => ({ ...f, [k]: v }));
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSending(true);
+    const sb = createClient();
+    await sb.from("contact_inquiries").insert({
+      name: form.name,
+      email: form.email,
+      phone: form.telefon,
+      subject: form.betreff,
+      message: form.nachricht,
+      status: "neu",
+    });
+    setSending(false);
+    setSent(true);
+  };
 
   return (
     <>
@@ -213,7 +231,7 @@ export default function KontaktClient() {
                     <p style={{ fontSize: "14px", color: "#7A6548", fontWeight: 300 }}>Wir melden uns schnellstmöglich bei Ihnen.</p>
                   </div>
                 ) : (
-                  <form onSubmit={(e) => { e.preventDefault(); setSent(true); }} style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
+                  <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
                     <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }} className="form-name-tel">
                       <div>
                         <label className="k-lbl">Name</label>
@@ -239,9 +257,9 @@ export default function KontaktClient() {
                       <textarea className="k-inp" style={{ resize: "vertical" }} rows={5} placeholder="Wie können wir Ihnen helfen?" value={form.nachricht} onChange={(e) => up("nachricht", e.target.value)} />
                     </div>
                     <div>
-                      <button type="submit" className="k-send-btn">
-                        Nachricht senden
-                        <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                      <button type="submit" className="k-send-btn" disabled={sending}>
+                        {sending ? "Wird gesendet…" : "Nachricht senden"}
+                        {!sending && <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>}
                       </button>
                     </div>
                   </form>

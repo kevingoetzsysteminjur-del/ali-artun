@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
+import { useAuth } from "@/contexts/AuthContext";
 
 const navItems = [
   { label: "Startseite", href: "/" },
@@ -48,6 +49,7 @@ export default function Navbar() {
   const [merkCount, setMerkCount] = useState(0);
   const [scrolled, setScrolled] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const { user, isAdmin } = useAuth();
 
   useEffect(() => {
     const update = () => {
@@ -155,6 +157,17 @@ export default function Navbar() {
           </nav>
 
           <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            <Link href={user && isAdmin ? "/admin" : "/anmelden"}
+              title={user ? "Admin-Bereich" : "Anmelden"}
+              style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "38px", height: "38px", borderRadius: "50%", textDecoration: "none", color: user ? "#B8860B" : "#2C1A0E", transition: "background 0.2s" }}
+              onMouseEnter={e => (e.currentTarget.style.backgroundColor = "#F5EDE0")}
+              onMouseLeave={e => (e.currentTarget.style.backgroundColor = "transparent")}>
+              {user ? (
+                <svg width="18" height="18" fill="#B8860B" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              ) : (
+                <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              )}
+            </Link>
             <Link href="/merkzettel"
               style={{ position: "relative", display: "flex", alignItems: "center", justifyContent: "center", width: "38px", height: "38px", borderRadius: "50%", textDecoration: "none", color: "#2C1A0E", transition: "background 0.2s" }}
               onMouseEnter={e => (e.currentTarget.style.backgroundColor = "#F5EDE0")}
