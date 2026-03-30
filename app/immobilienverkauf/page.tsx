@@ -145,6 +145,85 @@ export default function ImmobilienverkaufPage() {
           <style>{`@media(max-width:768px){.aufb-grid{grid-template-columns:1fr!important;}}`}</style>
         </section>
 
+        {/* Käuferfinder */}
+        <section id="kaeufer" style={{ backgroundColor: "#F7F5F2", padding: "80px 0" }}>
+          <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "60px", alignItems: "start" }} className="kauf-grid">
+              <div>
+                <p style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C8A96E", marginBottom: "12px" }}>KÄUFERFINDER</p>
+                <h2 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "clamp(1.8rem, 3vw, 2.5rem)", color: "#1A1A1A", marginBottom: "16px" }}>
+                  Wir finden den passenden Käufer.
+                </h2>
+                <div style={{ width: "48px", height: "2px", backgroundColor: "#C8A96E", margin: "16px 0 24px" }} />
+                <p style={{ fontSize: "15px", color: "#6B7280", lineHeight: 1.8, fontWeight: 300, marginBottom: "28px" }}>
+                  Kein Besichtigungstourismus. Nur qualifizierte Interessenten mit bestätigter Finanzierungszusage.
+                </p>
+                {[
+                  "Qualifizierte Interessenten-Datenbank",
+                  "Bonitätsprüfung vor der Besichtigung",
+                  "Nur Käufer mit Finanzierungszusage",
+                  "Diskrete Vermarktung auf Wunsch",
+                ].map(b => (
+                  <div key={b} style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "14px", color: "#374151", fontWeight: 300, marginBottom: "12px" }}>
+                    <span style={{ width: "20px", height: "20px", borderRadius: "50%", backgroundColor: "#C8A96E", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                      <svg width="10" height="8" fill="none" stroke="#fff" strokeWidth="2.5" viewBox="0 0 12 10"><polyline points="1 5 4 8 11 1"/></svg>
+                    </span>
+                    {b}
+                  </div>
+                ))}
+              </div>
+              <div>
+                <p style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C8A96E", marginBottom: "12px" }}>UNSERE VERMARKTUNGSSTRATEGIE</p>
+                <h3 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "1.4rem", color: "#1A1A1A", marginBottom: "24px" }}>7 Schritte zum Erfolg</h3>
+                <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+                  {[
+                    "Kostenlose Wertermittlung",
+                    "Professionelles Exposé mit Fotos",
+                    "Vermarktung auf allen großen Portalen",
+                    "Qualifizierte Besichtigungen",
+                    "Bonitätsprüfung der Interessenten",
+                    "Begleitung bis zum Notartermin",
+                    "After-Sale Service",
+                  ].map((s, i) => (
+                    <div key={s} style={{ display: "flex", alignItems: "center", gap: "16px", padding: "14px 20px", backgroundColor: "#fff", borderRadius: "10px", border: "1px solid #E5E7EB" }}>
+                      <span style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "1.1rem", color: "#C8A96E", minWidth: "28px" }}>0{i + 1}</span>
+                      <span style={{ fontSize: "14px", color: "#374151", fontWeight: 300 }}>{s}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+          <style>{`@media(max-width:768px){.kauf-grid{grid-template-columns:1fr!important;}}`}</style>
+        </section>
+
+        {/* Energieausweis */}
+        <section id="energieausweis" style={{ backgroundColor: "#FFFFFF", padding: "80px 0" }}>
+          <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px" }}>
+            <div style={{ backgroundColor: "#F7F5F2", borderRadius: "20px", padding: "48px", display: "grid", gridTemplateColumns: "1fr auto", gap: "40px", alignItems: "center" }} className="ener-grid">
+              <div>
+                <div style={{ display: "inline-flex", alignItems: "center", gap: "8px", padding: "5px 14px", backgroundColor: "rgba(200,169,110,0.1)", borderRadius: "50px", marginBottom: "16px", border: "1px solid rgba(200,169,110,0.2)" }}>
+                  <svg width="14" height="14" fill="none" stroke="#C8A96E" strokeWidth="2" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                  <span style={{ fontSize: "11px", fontWeight: 500, color: "#C8A96E", letterSpacing: "0.1em" }}>ENERGIEAUSWEIS SERVICE</span>
+                </div>
+                <h2 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "clamp(1.6rem, 2.5vw, 2.2rem)", color: "#1A1A1A", marginBottom: "12px" }}>
+                  Benötigen Sie einen Energieausweis?
+                </h2>
+                <p style={{ fontSize: "15px", color: "#6B7280", lineHeight: 1.8, fontWeight: 300, maxWidth: "560px" }}>
+                  Seit 2014 ist ein Energieausweis beim Verkauf oder der Vermietung einer Immobilie Pflicht. Der Ausweis informiert über den energetischen Zustand des Gebäudes und ist für Kaufinteressenten relevant. Wir helfen Ihnen, den richtigen Energieausweis zu beantragen.
+                </p>
+              </div>
+              <div style={{ flexShrink: 0 }}>
+                <Link href="/kontakt?betreff=Energieausweis"
+                  style={{ display: "inline-flex", alignItems: "center", gap: "8px", padding: "14px 28px", backgroundColor: "#1B3A4B", color: "#fff", borderRadius: "50px", textDecoration: "none", fontSize: "14px", fontWeight: 500, whiteSpace: "nowrap" }}>
+                  Jetzt anfragen →
+                </Link>
+              </div>
+            </div>
+          </div>
+          <style>{`@media(max-width:768px){.ener-grid{grid-template-columns:1fr!important;}}`}</style>
+        </section>
+
         {/* CTA */}
         <section style={{ backgroundColor: "#1B3A4B", padding: "80px 0" }}>
           <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px", textAlign: "center" }}>

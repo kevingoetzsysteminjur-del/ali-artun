@@ -5,6 +5,7 @@ import CookieBanner from "@/components/CookieBanner";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ScrollToTop from "@/components/ScrollToTop";
 import ScrollReveal from "@/components/ScrollReveal";
+import FloatingActions from "@/components/FloatingActions";
 import { AuthProvider } from "@/contexts/AuthContext";
 
 const dmSerif = DM_Serif_Display({
@@ -101,6 +102,7 @@ export default function RootLayout({
         <AuthProvider>
           <ScrollReveal />
           {children}
+          <FloatingActions />
           <CookieBanner />
           <WhatsAppButton />
           <ScrollToTop />
