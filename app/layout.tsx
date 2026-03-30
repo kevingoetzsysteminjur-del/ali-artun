@@ -25,6 +25,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://plan-a-immobilien.de"),
   title: {
     default: "Plan A Immobilien & Finanzierung | Mosbach – Deutschlandweit",
     template: "%s | Plan A Immobilien",
@@ -51,6 +52,7 @@ export const metadata: Metadata = {
     description:
       "Unabhängige Beratung für Immobilienverkauf, Finanzierung und staatliche Förderungen. Hauptsitz Mosbach – deutschlandweit tätig.",
     url: "https://plan-a-immobilien.de",
+    images: [{ url: "/images/plan-a-logo.png", width: 888, height: 382, alt: "Plan A Immobilien & Finanzierung" }],
   },
   twitter: {
     card: "summary_large_image",
