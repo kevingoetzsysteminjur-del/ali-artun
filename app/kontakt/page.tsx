@@ -11,7 +11,7 @@ export default function KontaktPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-16">
+      <main>
         <KontaktClient />
       </main>
       <Footer />
