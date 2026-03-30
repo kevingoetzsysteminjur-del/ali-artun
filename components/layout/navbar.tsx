@@ -103,9 +103,16 @@ export default function Navbar() {
       <header style={{ position: "sticky", top: 0, zIndex: 1000, backgroundColor: "#fff", borderBottom: scrolled ? "1px solid #E5E7EB" : "1px solid transparent", boxShadow: scrolled ? "0 2px 20px rgba(0,0,0,0.06)" : "none", transition: "box-shadow 0.3s, border-color 0.3s" }}>
         <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px", display: "flex", alignItems: "center", justifyContent: "space-between", height: "70px" }}>
 
-          <Link href="/" style={{ display: "flex", alignItems: "center", gap: "10px", textDecoration: "none" }}>
-            <Image src="/logo.png" alt="Plan A" width={28} height={28} style={{ height: "28px", width: "auto" }} />
-            <span style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "16px", color: "#1A3040" }}>Plan A</span>
+          <Link href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
+            <Image
+              src="/images/plan-a-logo.png"
+              alt="Plan A Immobilien"
+              width={220}
+              height={95}
+              className="nav-logo"
+              style={{ height: "50px", width: "auto", objectFit: "contain", display: "block" }}
+              priority
+            />
           </Link>
 
           <nav className="desktop-nav" style={{ display: "flex", alignItems: "center", gap: "2px" }}>
@@ -194,6 +201,7 @@ export default function Navbar() {
         @media(max-width:1100px){.desktop-nav{display:none!important;}}
         .mobile-menu-btn{display:none!important;}
         @media(max-width:1100px){.mobile-menu-btn{display:flex!important;}}
+        @media(max-width:768px){.nav-logo{height:40px!important;}}
       `}</style>
     </>
   );

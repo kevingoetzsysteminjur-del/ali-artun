@@ -55,7 +55,7 @@ export default function HomeClient() {
           style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }}
           src="/plana-video.mp4"
         />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(13,31,41,0.5) 0%, rgba(13,31,41,0.72) 100%)", zIndex: 1 }} />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0.65) 100%)", zIndex: 1 }} />
         <div style={{ position: "relative", zIndex: 2, textAlign: "center", padding: "0 24px", maxWidth: "860px" }} className="rv">
           <p style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.25em", textTransform: "uppercase", color: "#BFA36D", marginBottom: "20px" }}>PLAN A IMMOBILIEN & FINANZIERUNG · MOSBACH</p>
           <h1 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "clamp(2.4rem, 6vw, 4.8rem)", color: "#FFFFFF", lineHeight: 1.1, marginBottom: "24px", fontWeight: 400 }}>
