@@ -2,7 +2,6 @@ import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
 import Link from "next/link";
 import Image from "next/image";
-import PartnerForm from "./PartnerForm";
 
 export const metadata = {
   title: "Partner werden",
@@ -57,6 +56,15 @@ export default function PartnerPage() {
         </section>
         <style>{`@media(max-width:768px){.partner-hero-grid{grid-template-columns:1fr!important;}}`}</style>
 
+        {/* Context */}
+        <section style={{ backgroundColor: "#FEFDFB", padding: "48px 0 0" }}>
+          <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px", textAlign: "center" }}>
+            <p style={{ fontSize: "16px", color: "#78716C", lineHeight: 1.85, fontWeight: 300, maxWidth: "700px", margin: "0 auto" }}>
+              Werden Sie Teil des Plan A Netzwerks. Mit IHK-Qualifikation und unserer Unterstützung starten Sie als selbstständiger Immobilien-Vertreter – ohne teuren Kurs, ohne Risiko. Plan A steht hinter Ihnen.
+            </p>
+          </div>
+        </section>
+
         {/* Bildungsweg */}
         <section style={{ backgroundColor: "#FFFFFF", padding: "80px 0" }}>
           <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px" }}>
@@ -110,15 +118,6 @@ export default function PartnerPage() {
           <style>{`@media(max-width:768px){.leist-grid{grid-template-columns:1fr!important;}}`}</style>
         </section>
 
-        {/* Bewerbungsformular */}
-        <section style={{ backgroundColor: "#FFFFFF", padding: "80px 0" }}>
-          <div style={{ maxWidth: "800px", margin: "0 auto", padding: "0 24px" }}>
-            <p style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C8A96E", marginBottom: "12px" }}>SCHNELL-ANFRAGE</p>
-            <h2 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "clamp(1.8rem, 3vw, 2.5rem)", color: "#1A1A1A", marginBottom: "8px" }}>Interesse? Kurz melden.</h2>
-            <p style={{ fontSize: "15px", color: "#6B7280", lineHeight: 1.7, fontWeight: 300, marginBottom: "40px" }}>Wir melden uns persönlich bei Ihnen – ohne Verpflichtung.</p>
-            <PartnerForm />
-          </div>
-        </section>
 
       </main>
       <Footer />

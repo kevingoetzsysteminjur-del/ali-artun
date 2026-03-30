@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DM_Serif_Display, Inter } from "next/font/google";
+import { Playfair_Display, Outfit } from "next/font/google";
 import "./globals.css";
 import CookieBanner from "@/components/CookieBanner";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -11,14 +11,14 @@ import LiveNotification from "@/components/LiveNotification";
 import ScrollProgressBar from "@/components/ScrollProgressBar";
 import { AuthProvider } from "@/contexts/AuthContext";
 
-const dmSerif = DM_Serif_Display({
+const playfair = Playfair_Display({
   variable: "--font-dm-serif",
   subsets: ["latin"],
-  weight: "400",
+  weight: ["400", "500"],
   style: ["normal", "italic"],
 });
 
-const inter = Inter({
+const outfit = Outfit({
   variable: "--font-inter",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600"],
@@ -101,7 +101,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
         />
       </head>
-      <body className={`${dmSerif.variable} ${inter.variable} antialiased`}>
+      <body className={`${playfair.variable} ${outfit.variable} antialiased`}>
         <AuthProvider>
           <ScrollProgressBar />
           <ScrollReveal />

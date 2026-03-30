@@ -43,6 +43,15 @@ export default function FinanzierungClient() {
         </div>
       </section>
 
+      {/* Context */}
+      <section style={{ backgroundColor: "#FEFDFB", padding: "48px 0 0" }}>
+        <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px", textAlign: "center" }}>
+          <p style={{ fontSize: "16px", color: "#78716C", lineHeight: 1.85, fontWeight: 300, maxWidth: "700px", margin: "0 auto" }}>
+            Plan A berät Sie unabhängig zu allen Finanzierungsmöglichkeiten. Als freier Makler vergleichen wir den gesamten Markt – von KFW-Krediten über BAFA-Förderungen bis hin zu Privatkrediten. Unser Ziel: Der günstigste Zinssatz für Sie.
+          </p>
+        </div>
+      </section>
+
       {/* Tabs */}
       <section style={{ backgroundColor: "#FFFFFF", padding: "80px 0" }}>
         <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px" }}>

@@ -87,6 +87,15 @@ export default function RatgeberPage() {
           </div>
         </section>
 
+        {/* Context */}
+        <section style={{ backgroundColor: "#FEFDFB", padding: "48px 0 0" }}>
+          <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px", textAlign: "center" }}>
+            <p style={{ fontSize: "16px", color: "#78716C", lineHeight: 1.85, fontWeight: 300, maxWidth: "700px", margin: "0 auto" }}>
+              Wissen ist der erste Schritt zur richtigen Entscheidung. Unser Ratgeber bietet Ihnen fundierte Informationen rund um Immobilien, Finanzierung und Förderungen.
+            </p>
+          </div>
+        </section>
+
         {/* Artikel Grid */}
         <section style={{ backgroundColor: "#F7F5F2", padding: "80px 0" }}>
           <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px" }}>
