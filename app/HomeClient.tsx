@@ -170,7 +170,29 @@ export default function HomeClient() {
         </div>
       </section>
 
-      {/* ══ 5. BRAND SECTION ════════════════════════════════════ */}
+      {/* ══ 5. YOUTUBE VIDEO ════════════════════════════════════ */}
+      <section style={{ backgroundColor: "#2C1A0E", padding: "96px 0" }}>
+        <div style={{ maxWidth: "960px", margin: "0 auto", padding: "0 24px" }}>
+          <div className="rv" style={{ textAlign: "center", marginBottom: "48px" }}>
+            <p style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#B8860B", marginBottom: "12px" }}>PLAN A IM VIDEO</p>
+            <h2 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "clamp(1.8rem, 3vw, 2.8rem)", color: "#FFFFFF", lineHeight: 1.2, margin: 0 }}>
+              Lernen Sie uns kennen.
+            </h2>
+            <div style={{ width: "48px", height: "2px", backgroundColor: "#B8860B", margin: "20px auto 0" }} />
+          </div>
+          <div className="rv rv-d2" style={{ position: "relative", paddingBottom: "56.25%", height: 0, overflow: "hidden", borderRadius: "20px", boxShadow: "0 24px 64px rgba(0,0,0,0.5)", border: "1px solid rgba(184,134,11,0.2)" }}>
+            <iframe
+              src="https://www.youtube.com/embed/TY9aF0GQq-U?rel=0&modestbranding=1"
+              title="Plan A Immobilien & Finanzierung"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* ══ 7. BRAND SECTION ════════════════════════════════════ */}
       <section style={{ backgroundColor: "#2C1A0E", padding: "96px 0", overflow: "hidden", position: "relative" }}>
         <div style={{ position: "absolute", top: "-120px", right: "-120px", width: "600px", height: "600px", borderRadius: "50%", border: "1px solid rgba(184,134,11,0.1)", pointerEvents: "none" }} />
         <div style={{ position: "absolute", bottom: "-100px", left: "-60px", width: "360px", height: "360px", borderRadius: "50%", border: "1px solid rgba(184,134,11,0.07)", pointerEvents: "none" }} />
@@ -202,7 +224,7 @@ export default function HomeClient() {
         </div>
       </section>
 
-      {/* ══ 6. CTA ════════════════════════════════════════════════ */}
+      {/* ══ 8. CTA ════════════════════════════════════════════════ */}
       <section style={{ backgroundColor: "#FFFCF7", padding: "96px 0" }}>
         <div style={{ maxWidth: "680px", margin: "0 auto", padding: "0 24px", textAlign: "center" }}>
           <div className="rv">
