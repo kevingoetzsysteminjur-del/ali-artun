@@ -2,7 +2,6 @@
 import { useState } from "react";
 import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
-import Link from "next/link";
 
 /* ─── Price estimation ────────────────────────────────────────── */
 function estimate(plz: string, typ: string, flaeche: number, zustand: string, lage: string, extras: string[]) {
@@ -144,10 +143,6 @@ export default function WertermittlungPage() {
                     </p>
                   </div>
                   <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
-                    <Link href="/kontakt?betreff=Immobilienbewertung"
-                      style={{ display: "inline-flex", alignItems: "center", gap: "8px", padding: "14px 28px", backgroundColor: "#1B3A4B", color: "#fff", borderRadius: "50px", textDecoration: "none", fontSize: "14px", fontWeight: 500 }}>
-                      Beratungsgespräch buchen →
-                    </Link>
                     <button onClick={() => { setStep(1); setDone(false); setTyp(""); }}
                       style={{ padding: "14px 24px", backgroundColor: "transparent", border: "1.5px solid #E5E7EB", borderRadius: "50px", fontSize: "14px", color: "#6B7280", cursor: "pointer" }}>
                       Neue Bewertung

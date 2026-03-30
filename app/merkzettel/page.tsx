@@ -71,7 +71,7 @@ export default function MerkzettelPage() {
                       <h3 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "1.1rem", color: "#1A1A1A", margin: "8px 0 4px" }}>{p.titel}</h3>
                       <p style={{ fontSize: "13px", color: "#9CA3AF", margin: "0 0 12px", fontWeight: 300 }}>{p.ort}</p>
                       <p style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "1.2rem", color: "#1B3A4B", margin: 0 }}>{p.preis}</p>
-                      <Link href="/kontakt?betreff=Immobilienverkauf"
+                      <Link href="/verkaufen"
                         style={{ display: "flex", alignItems: "center", justifyContent: "center", marginTop: "16px", padding: "10px 20px", backgroundColor: "#1B3A4B", color: "#fff", borderRadius: "50px", textDecoration: "none", fontSize: "13px", fontWeight: 500 }}>
                         Anfrage senden →
                       </Link>

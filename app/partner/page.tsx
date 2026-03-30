@@ -42,10 +42,9 @@ export default function PartnerPage() {
               <p style={{ fontSize: "16px", color: "rgba(255,255,255,0.7)", lineHeight: 1.8, maxWidth: "480px", marginBottom: "36px", fontWeight: 300 }}>
                 Starten Sie Ihre Karriere in der Immobilienbranche. Mit IHK-Qualifikation, verifizierten Leads und der Unterstützung von Plan A im Hintergrund.
               </p>
-              <Link href="/kontakt?betreff=Partner werden"
-                style={{ display: "inline-flex", alignItems: "center", padding: "15px 36px", backgroundColor: "#C8A96E", color: "#fff", borderRadius: "50px", textDecoration: "none", fontSize: "14px", fontWeight: 500 }}>
-                Kontakt aufnehmen →
-              </Link>
+              <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.65)", marginTop: "8px", fontWeight: 300 }}>
+                Nutzen Sie den Kontakt-Button am rechten Rand →
+              </p>
             </div>
             <div style={{ display: "flex", justifyContent: "center", position: "relative" }}>
               <div style={{ position: "absolute", width: "320px", height: "320px", borderRadius: "50%", border: "1px solid rgba(200,169,110,0.2)" }} />
@@ -108,10 +107,9 @@ export default function PartnerPage() {
                 <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.6)", lineHeight: 1.7, fontWeight: 300, marginBottom: "28px" }}>
                   Schreiben Sie uns – wir besprechen alles Weitere gemeinsam und unverbindlich.
                 </p>
-                <Link href="/kontakt?betreff=Partner werden"
-                  style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", padding: "14px 28px", backgroundColor: "#C8A96E", color: "#fff", borderRadius: "50px", textDecoration: "none", fontSize: "14px", fontWeight: 500 }}>
-                  Kontakt aufnehmen →
-                </Link>
+                <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.65)", marginTop: "8px", fontWeight: 300 }}>
+                  Nutzen Sie den Kontakt-Button am rechten Rand →
+                </p>
               </div>
             </div>
           </div>

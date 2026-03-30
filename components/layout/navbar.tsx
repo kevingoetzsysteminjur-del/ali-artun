@@ -10,11 +10,11 @@ const navItems = [
     label: "Immobilienverkauf",
     href: "/immobilienverkauf",
     children: [
-      { label: "Verkaufen", href: "/immobilienverkauf" },
-      { label: "Vermieten", href: "/kontakt?betreff=Vermieten" },
+      { label: "Verkaufen", href: "/verkaufen" },
+      { label: "Vermieten", href: "/vermieten" },
       { label: "Wertermittlung", href: "/wertermittlung" },
       { label: "Objekt-Aufbereitung", href: "/immobilienverkauf#aufbereitung" },
-      { label: "Käuferfinder", href: "/immobilienverkauf#kaeufer" },
+      { label: "Käuferfinder", href: "/kaeuferfinder" },
     ],
   },
   {

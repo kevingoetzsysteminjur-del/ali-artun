@@ -1,6 +1,5 @@
 import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
-import Link from "next/link";
 
 export const metadata = {
   title: "Immobilien-Ratgeber",
@@ -114,10 +113,9 @@ export default function RatgeberPage() {
                     </div>
                     <h2 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "1.15rem", color: "#1A1A1A", marginBottom: "10px", lineHeight: 1.3 }}>{a.titel}</h2>
                     <p style={{ fontSize: "13px", color: "#6B7280", lineHeight: 1.7, fontWeight: 300, marginBottom: "20px" }}>{a.excerpt}</p>
-                    <Link href={`/kontakt?betreff=${encodeURIComponent(a.kategorie)}`}
-                      style={{ fontSize: "13px", color: "#1B3A4B", fontWeight: 500, textDecoration: "none", display: "flex", alignItems: "center", gap: "4px" }}>
+                    <span style={{ fontSize: "13px", color: "#1B3A4B", fontWeight: 500, display: "flex", alignItems: "center", gap: "4px" }}>
                       Artikel lesen →
-                    </Link>
+                    </span>
                   </div>
                 </article>
               ))}
@@ -126,17 +124,13 @@ export default function RatgeberPage() {
         </section>
 
         {/* CTA */}
-        <section style={{ backgroundColor: "#1B3A4B", padding: "80px 0" }}>
-          <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px", textAlign: "center" }}>
-            <p style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C8A96E", marginBottom: "16px" }}>KOSTENLOSE BERATUNG</p>
-            <h2 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", color: "#fff", marginBottom: "16px" }}>Fragen? Wir beraten Sie persönlich.</h2>
-            <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.65)", fontWeight: 300, marginBottom: "36px", maxWidth: "480px", margin: "0 auto 36px" }}>
-              Kostenlos und unverbindlich. Rufen Sie uns an oder schreiben Sie uns.
+        <section style={{ backgroundColor: "#1A3040", padding: "80px 0" }}>
+          <div style={{ maxWidth: "800px", margin: "0 auto", padding: "0 24px", textAlign: "center" }}>
+            <p style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#BFA36D", marginBottom: "16px" }}>FRAGEN?</p>
+            <h2 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "clamp(1.6rem, 3vw, 2.2rem)", color: "#FFFFFF", marginBottom: "16px" }}>Haben Sie Fragen zu unseren Themen?</h2>
+            <p style={{ fontSize: "16px", color: "rgba(255,255,255,0.65)", fontWeight: 300, marginBottom: "0" }}>
+              Nutzen Sie den Kontakt-Button am rechten Rand der Seite →
             </p>
-            <Link href="/kontakt"
-              style={{ display: "inline-flex", alignItems: "center", gap: "8px", padding: "15px 36px", backgroundColor: "#C8A96E", color: "#fff", borderRadius: "50px", textDecoration: "none", fontSize: "14px", fontWeight: 500 }}>
-              Jetzt Beratung anfragen →
-            </Link>
           </div>
         </section>
       </main>

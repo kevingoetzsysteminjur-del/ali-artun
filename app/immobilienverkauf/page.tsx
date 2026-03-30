@@ -44,16 +44,10 @@ export default function ImmobilienverkaufPage() {
             <p style={{ fontSize: "16px", color: "rgba(255,255,255,0.7)", lineHeight: 1.8, maxWidth: "520px", marginBottom: "36px", fontWeight: 300 }}>
               Wir beraten Sie strategisch und unverbindlich. Plan A verkauft Ihre Immobilie – professionell, sicher und zum besten Preis.
             </p>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "14px" }}>
-              <Link href="/kontakt?betreff=Immobilienbewertung"
-                style={{ display: "inline-flex", alignItems: "center", padding: "15px 36px", backgroundColor: "#BFA36D", color: "#fff", borderRadius: "50px", textDecoration: "none", fontSize: "14px", fontWeight: 500 }}>
-                Kostenlose Bewertung anfragen
-              </Link>
-              <Link href="/kontakt?betreff=Immobilienverkauf"
-                style={{ display: "inline-flex", alignItems: "center", padding: "15px 36px", backgroundColor: "transparent", color: "#fff", borderRadius: "50px", textDecoration: "none", fontSize: "14px", fontWeight: 500, border: "1.5px solid rgba(255,255,255,0.35)" }}>
-                Beratungsgespräch
-              </Link>
-            </div>
+            <Link href="/wertermittlung"
+              style={{ display: "inline-flex", alignItems: "center", padding: "15px 36px", background: "linear-gradient(135deg,#BFA36D,#D4B87E)", color: "#fff", borderRadius: "60px", textDecoration: "none", fontSize: "13px", fontWeight: 500, letterSpacing: "0.05em", textTransform: "uppercase" }}>
+              Kostenlose Wertermittlung →
+            </Link>
           </div>
         </section>
 
@@ -137,10 +131,7 @@ export default function ImmobilienverkaufPage() {
                     </div>
                   ))}
                 </div>
-                <Link href="/kontakt?betreff=Aufbereitung"
-                  style={{ display: "inline-flex", alignItems: "center", gap: "8px", padding: "14px 32px", backgroundColor: "#1A3040", color: "#fff", borderRadius: "50px", textDecoration: "none", fontSize: "14px", fontWeight: 500 }}>
-                  Jetzt anfragen →
-                </Link>
+                <></>
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
                 <VorherNachherSlider
@@ -228,10 +219,6 @@ export default function ImmobilienverkaufPage() {
                 </p>
               </div>
               <div style={{ flexShrink: 0 }}>
-                <Link href="/kontakt?betreff=Energieausweis"
-                  style={{ display: "inline-flex", alignItems: "center", gap: "8px", padding: "14px 28px", backgroundColor: "#1A3040", color: "#fff", borderRadius: "50px", textDecoration: "none", fontSize: "14px", fontWeight: 500, whiteSpace: "nowrap" }}>
-                  Jetzt anfragen →
-                </Link>
               </div>
             </div>
           </div>
@@ -244,9 +231,9 @@ export default function ImmobilienverkaufPage() {
             <p style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#BFA36D", marginBottom: "16px" }}>KOSTENLOSE BEWERTUNG</p>
             <h2 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "clamp(2rem, 3.5vw, 3rem)", color: "#fff", marginBottom: "12px" }}>Was ist Ihre Immobilie wert?</h2>
             <p style={{ fontSize: "16px", color: "rgba(255,255,255,0.65)", marginBottom: "36px", fontWeight: 300 }}>Kostenlose Bewertung in 24 Stunden.</p>
-            <Link href="/kontakt?betreff=Immobilienbewertung"
-              style={{ display: "inline-flex", alignItems: "center", gap: "8px", padding: "15px 40px", backgroundColor: "#BFA36D", color: "#fff", borderRadius: "50px", textDecoration: "none", fontSize: "14px", fontWeight: 500 }}>
-              Jetzt bewerten lassen →
+            <Link href="/wertermittlung"
+              style={{ display: "inline-flex", alignItems: "center", gap: "8px", padding: "15px 40px", backgroundColor: "#BFA36D", color: "#fff", borderRadius: "60px", textDecoration: "none", fontSize: "13px", fontWeight: 500, letterSpacing: "0.05em", textTransform: "uppercase" }}>
+              Zur kostenlosen Wertermittlung →
             </Link>
           </div>
         </section>

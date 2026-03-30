@@ -36,10 +36,6 @@ export default function FinanzierungClient() {
             Als freier Makler vergleichen wir den gesamten Markt für Sie. Unabhängig, unverbindlich, kostenlos.
           </p>
           <p style={{ fontSize: "13px", color: "rgba(200,169,110,0.7)", marginBottom: "36px" }}>Beratung überwiegend digital möglich.</p>
-          <Link href="/kontakt?betreff=Finanzierung"
-            style={{ display: "inline-flex", alignItems: "center", padding: "15px 36px", backgroundColor: "#C8A96E", color: "#fff", borderRadius: "50px", textDecoration: "none", fontSize: "14px", fontWeight: 500 }}>
-            Jetzt kostenlos beraten lassen
-          </Link>
         </div>
       </section>
 
@@ -81,10 +77,6 @@ export default function FinanzierungClient() {
                   </div>
                 ))}
               </div>
-              <Link href="/kontakt?betreff=Finanzierung"
-                style={{ display: "inline-flex", alignItems: "center", gap: "8px", padding: "14px 32px", backgroundColor: "#1B3A4B", color: "#fff", borderRadius: "50px", textDecoration: "none", fontSize: "14px", fontWeight: 500 }}>
-                Jetzt beraten lassen →
-              </Link>
             </div>
             <div style={{ backgroundColor: "#F7F5F2", borderRadius: "16px", padding: "32px" }}>
               <p style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.15em", textTransform: "uppercase", color: "#C8A96E", marginBottom: "8px" }}>PLAN A VORTEIL</p>
@@ -230,10 +222,9 @@ export default function FinanzierungClient() {
                     </div>
                   ))}
                 </div>
-                <Link href="/kontakt?betreff=Finanzierung"
-                  style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", marginTop: "24px", padding: "14px", backgroundColor: "#C8A96E", color: "#fff", borderRadius: "10px", textDecoration: "none", fontSize: "14px", fontWeight: 500 }}>
-                  Persönliches Angebot anfragen →
-                </Link>
+                <p style={{ fontSize: "12px", color: "rgba(255,255,255,0.5)", textAlign: "center", marginTop: "16px" }}>
+                  Nutzen Sie den Kontakt-Button am rechten Rand für ein persönliches Angebot →
+                </p>
                 <p style={{ fontSize: "11px", color: "rgba(255,255,255,0.3)", marginTop: "10px" }}>Orientierungswert ohne Gewähr</p>
               </div>
             </div>
