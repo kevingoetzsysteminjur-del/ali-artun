@@ -1,7 +1,7 @@
 import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
 import Link from "next/link";
-import VorherNachherSlider from "@/components/VorherNachherSlider";
+import Image from "next/image";
 
 export const metadata = {
   title: "Immobilienverkauf",
@@ -134,21 +134,27 @@ export default function ImmobilienverkaufPage() {
                 <></>
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-                <VorherNachherSlider
-                  vorherSrc="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=80"
-                  nachherSrc="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80"
-                  label="Wohnzimmer – vor und nach der Aufbereitung"
-                />
-                <VorherNachherSlider
-                  vorherSrc="https://images.unsplash.com/photo-1556911220-bda9dc7f5498?w=800&q=80"
-                  nachherSrc="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80"
-                  label="Küche – vor und nach dem Home Staging"
-                />
+                {[
+                  { src: "/images/referenzen/ali-1.png", label: "Hausfassade – vor und nach der Aufbereitung" },
+                  { src: "/images/referenzen/ali-2.png", label: "Reihenhausfassade – vor und nach der Reinigung" },
+                ].map((img) => (
+                  <div key={img.src} style={{ borderRadius: "16px", overflow: "hidden", border: "1px solid #E8D9C5" }}>
+                    <Image
+                      src={img.src}
+                      alt={img.label}
+                      width={800}
+                      height={450}
+                      style={{ width: "100%", height: "auto", display: "block" }}
+                    />
+                    <p style={{ fontSize: "12px", color: "#7A6548", fontWeight: 300, padding: "10px 14px", margin: 0, backgroundColor: "#FFFCF7" }}>{img.label}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
-          <style>{`@media(max-width:768px){.aufb-grid{grid-template-columns:1fr!important;}}`}</style>
+          <style>{`@media(max-width:768px){.aufb-grid{grid-template-columns:1fr!important;}.ref-grid{grid-template-columns:1fr!important;}}`}</style>
         </section>
+
 
         {/* Käuferfinder */}
         <section id="kaeufer" style={{ backgroundColor: "#F5EDE0", padding: "80px 0" }}>

@@ -20,6 +20,7 @@ const leistungen = [
   "Schulungsmaterial (digital)",
   "Persönliche Betreuung in der Anfangszeit",
   "Unterstützung bei Finanzierungen",
+  "Unterstützung bei Immobilienverkauf",
   "Kein teurer Kurs, keine versteckten Kosten",
   "Attraktives Provisionsmodell (Details im Gespräch)",
 ];

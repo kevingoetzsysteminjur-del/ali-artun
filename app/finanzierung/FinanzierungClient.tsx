@@ -9,6 +9,7 @@ const tabs = [
   { id: "staatlich", label: "Staatliche Förderung", icon: "🏛️", title: "Staatliche Förderprogramme", content: "Neben KFW und BAFA gibt es zahlreiche weitere Förderprogramme auf Bundes- und Landesebene. Wir beraten Sie zu allen verfügbaren Möglichkeiten.", bullets: ["Bundesförderung für effiziente Gebäude (BEG)", "Landesförderprogramme Baden-Württemberg", "Kombinationsmöglichkeiten optimal nutzen", "Aktuelle Fördersätze bis zu 45%"] },
   { id: "privatkredite", label: "Privatkredite", icon: "📊", title: "Privatkreditvergleich", content: "Wir vergleichen für Sie alle am Markt verfügbaren Privatkredit-Anbieter und finden den günstigsten Zinssatz für Ihre individuelle Situation.", bullets: ["Vergleich aller verfügbaren Anbieter", "Günstigster Zinssatz für Ihre Situation", "Schnelle Bearbeitung und Auszahlung", "Ohne Schufa-Beeinträchtigung beim Vergleich"] },
   { id: "modernisierung", label: "Modernisierung", icon: "🔧", title: "Modernisierungsdarlehen", content: "Günstige Kredite speziell für Modernisierungsmaßnahmen am Bestandsobjekt. Lange Laufzeiten ermöglichen niedrige monatliche Raten.", bullets: ["Für alle Modernisierungsmaßnahmen geeignet", "Laufzeiten bis zu 20 Jahre", "Keine Grundbucheintragung erforderlich", "Schnelle Genehmigung in 48 Stunden"] },
+  { id: "neubau", label: "Immobilien & Neubau", icon: "🏗️", title: "Immobilien & Neubau Finanzierung", content: "Ob Bestandsimmobilie oder Neubau – wir finden die passende Finanzierungslösung für Ihren Immobilienkauf. Als freier Makler vergleichen wir alle Anbieter und sichern Ihnen die besten Konditionen.", bullets: ["Finanzierung für Bestands- und Neubauprojekte", "Vergleich aller Banken und Kreditinstitute", "Optimale Kombination mit KFW-Programmen", "Persönliche Beratung – auch digital möglich"] },
 ];
 
 export default function FinanzierungClient() {
@@ -86,8 +87,9 @@ export default function FinanzierungClient() {
               <p style={{ fontSize: "13px", color: "#7A6548", lineHeight: 1.7, fontWeight: 300, marginBottom: "24px" }}>
                 Als freier Makler sind wir an keine Bank gebunden. Das bedeutet: Wir arbeiten ausschließlich in Ihrem Interesse.
               </p>
-              <div style={{ borderTop: "1px solid #E8D9C5", paddingTop: "20px" }}>
-                <p style={{ fontSize: "14px", color: "#16A34A", fontWeight: 500 }}>✓ Kostenlos & unverbindlich</p>
+              <div style={{ borderTop: "1px solid #E8D9C5", paddingTop: "20px", display: "flex", flexDirection: "column", gap: "8px" }}>
+                <p style={{ fontSize: "14px", color: "#16A34A", fontWeight: 500, margin: 0 }}>✓ Kostenlos & unverbindlich</p>
+                <p style={{ fontSize: "14px", color: "#16A34A", fontWeight: 500, margin: 0 }}>✓ Digitale Beratung möglich</p>
               </div>
             </div>
           </div>

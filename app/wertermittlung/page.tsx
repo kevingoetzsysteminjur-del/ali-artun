@@ -154,17 +154,30 @@ export default function WertermittlungPage() {
               {/* Result */}
               {done && result && (
                 <div>
-                  <div style={{ textAlign: "center", marginBottom: "32px" }}>
+                  {/* Header */}
+                  <div style={{ textAlign: "center", marginBottom: "28px" }}>
                     <div style={{ width: "52px", height: "52px", borderRadius: "50%", backgroundColor: "#D4A017", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px" }}>
                       <svg width="24" height="20" fill="none" stroke="#fff" strokeWidth="2.5" viewBox="0 0 24 20"><polyline points="2 10 8 16 22 2"/></svg>
                     </div>
-                    <p style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.15em", textTransform: "uppercase", color: "#D4A017", marginBottom: "8px" }}>GESCHÄTZTE PREISSPANNE</p>
-                    <p style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#2C1A0E", marginBottom: "4px" }}>
+                    <h2 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "clamp(1.4rem, 3vw, 1.9rem)", color: "#2C1A0E", marginBottom: "6px" }}>
+                      Ihre vorläufige Werteinschätzung
+                    </h2>
+                    <p style={{ fontSize: "13px", color: "#A89070", fontWeight: 300, margin: 0 }}>
+                      Basierend auf Ihren Angaben und aktuellen Marktdaten
+                    </p>
+                  </div>
+
+                  {/* Geschätzter Wert */}
+                  <div style={{ textAlign: "center", backgroundColor: "#F5EDE0", borderRadius: "16px", padding: "28px 24px", marginBottom: "20px" }}>
+                    <p style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.15em", textTransform: "uppercase", color: "#D4A017", marginBottom: "10px" }}>GESCHÄTZTE PREISSPANNE</p>
+                    <p style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#2C1A0E", marginBottom: "6px" }}>
                       {result.low.toLocaleString("de-DE")} € – {result.high.toLocaleString("de-DE")} €
                     </p>
-                    <p style={{ fontSize: "14px", color: "#7A6548", fontWeight: 300 }}>Ø m²-Preis in Ihrer Region: ca. {result.sqm.toLocaleString("de-DE")} €</p>
+                    <p style={{ fontSize: "13px", color: "#7A6548", fontWeight: 300, margin: 0 }}>Ø m²-Preis in Ihrer Region: ca. {result.sqm.toLocaleString("de-DE")} €</p>
                   </div>
-                  <div style={{ backgroundColor: "#F5EDE0", borderRadius: "14px", padding: "24px", marginBottom: "24px" }}>
+
+                  {/* Objekt-Details */}
+                  <div style={{ borderRadius: "14px", border: "1px solid #E8D9C5", padding: "20px 24px", marginBottom: "20px" }}>
                     <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
                       <div><p style={{ fontSize: "11px", color: "#A89070", margin: "0 0 4px" }}>Objektart</p><p style={{ fontSize: "14px", fontWeight: 500, color: "#2C1A0E", margin: 0 }}>{typ}</p></div>
                       <div><p style={{ fontSize: "11px", color: "#A89070", margin: "0 0 4px" }}>Wohnfläche</p><p style={{ fontSize: "14px", fontWeight: 500, color: "#2C1A0E", margin: 0 }}>{flaeche} m²</p></div>
@@ -172,12 +185,22 @@ export default function WertermittlungPage() {
                       <div><p style={{ fontSize: "11px", color: "#A89070", margin: "0 0 4px" }}>PLZ / Lage</p><p style={{ fontSize: "14px", fontWeight: 500, color: "#2C1A0E", margin: 0 }}>{plz} · {lage}</p></div>
                     </div>
                   </div>
-                  <div style={{ backgroundColor: "rgba(212,160,23,0.08)", border: "1px solid rgba(212,160,23,0.2)", borderRadius: "12px", padding: "16px 20px", marginBottom: "28px" }}>
-                    <p style={{ fontSize: "13px", color: "#2C1A0E", fontWeight: 400, margin: 0, lineHeight: 1.6 }}>
-                      ✓ Für eine <strong>exakte Bewertung</strong> kontaktiert Sie ein Plan A Berater innerhalb von 24 Stunden.<br />
-                      <span style={{ fontSize: "12px", color: "#A89070", fontWeight: 300 }}>Diese Schätzung ersetzt kein professionelles Gutachten.</span>
+
+                  {/* Hinweis-Box */}
+                  <div style={{ backgroundColor: "rgba(212,160,23,0.07)", border: "1px solid rgba(212,160,23,0.25)", borderRadius: "14px", padding: "20px 24px", marginBottom: "28px" }}>
+                    <div style={{ display: "flex", gap: "12px", alignItems: "flex-start", marginBottom: "12px" }}>
+                      <div style={{ width: "20px", height: "20px", borderRadius: "50%", backgroundColor: "#D4A017", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: "1px" }}>
+                        <svg width="10" height="8" fill="none" stroke="#fff" strokeWidth="2.5" viewBox="0 0 12 10"><polyline points="1 5 4 8 11 1"/></svg>
+                      </div>
+                      <p style={{ fontSize: "14px", color: "#2C1A0E", fontWeight: 400, margin: 0, lineHeight: 1.65 }}>
+                        Für eine <strong>exakte Bewertung</strong> Ihrer Immobilie wird sich ein Plan A Berater innerhalb von <strong>24 Stunden</strong> persönlich bei Ihnen melden.
+                      </p>
+                    </div>
+                    <p style={{ fontSize: "12px", color: "#A89070", fontWeight: 300, margin: 0, paddingLeft: "32px", lineHeight: 1.6 }}>
+                      Die kostenlose Bewertung ist unverbindlich. Diese Schätzung dient als erste Orientierung und ersetzt kein professionelles Gutachten.
                     </p>
                   </div>
+
                   <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
                     <button onClick={() => { setStep(1); setDone(false); setTyp(""); }}
                       style={{ padding: "14px 24px", backgroundColor: "transparent", border: "1.5px solid #E8D9C5", borderRadius: "50px", fontSize: "14px", color: "#7A6548", cursor: "pointer" }}>

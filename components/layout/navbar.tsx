@@ -4,14 +4,14 @@ import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { useAuth } from "@/contexts/AuthContext";
+import { Instagram } from "lucide-react";
 
 const navItems = [
   { label: "Startseite", href: "/" },
   {
     label: "Immobilienverkauf",
-    href: "/immobilienverkauf",
     children: [
-      { label: "Verkaufen", href: "/verkaufen" },
+      { label: "Verkaufen", href: "/immobilienverkauf" },
       { label: "Vermieten", href: "/vermieten" },
       { label: "Wertermittlung", href: "/wertermittlung" },
       { label: "Objekt-Aufbereitung", href: "/aufbereitung" },
@@ -20,8 +20,8 @@ const navItems = [
   },
   {
     label: "Finanzierung",
-    href: "/finanzierung",
     children: [
+      { label: "Immobilien Finanzierung", href: "/finanzierung" },
       { label: "KFW-Beratung", href: "/finanzierung/kfw-beratung" },
       { label: "KFW-Kredite", href: "/finanzierung/kfw-kredite" },
       { label: "BAFA-Förderung", href: "/finanzierung/bafa" },
@@ -122,23 +122,40 @@ export default function Navbar() {
               <div key={item.label} style={{ position: "relative" }}
                 onMouseEnter={() => item.children && openDrop(item.label)}
                 onMouseLeave={() => item.children && closeDrop()}>
-                <Link href={item.href}
-                  style={{
-                    display: "flex", alignItems: "center", gap: "4px", padding: "8px 12px 6px",
-                    fontSize: "13.5px",
-                    color: (pathname === item.href || (pathname.startsWith(item.href + "/") && item.href !== "/")) ? "#2C1A0E" : "#2C1A0E",
-                    textDecoration: "none", fontWeight: (pathname === item.href) ? 500 : 400,
-                    borderBottom: (pathname === item.href || (pathname.startsWith(item.href + "/") && item.href !== "/")) ? "2px solid #B8860B" : "2px solid transparent",
-                    transition: "color 0.2s, border-color 0.2s",
-                  }}>
-                  {item.label}
-                  {item.children && (
-                    <svg width="11" height="11" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"
-                      style={{ opacity: 0.5, transform: openDropdown === item.label ? "rotate(180deg)" : "rotate(0)", transition: "transform 0.2s" }}>
-                      <path d="M6 9l6 6 6-6"/>
-                    </svg>
-                  )}
-                </Link>
+                {item.href ? (
+                  <Link href={item.href}
+                    style={{
+                      display: "flex", alignItems: "center", gap: "4px", padding: "8px 12px 6px",
+                      fontSize: "13.5px",
+                      color: "#2C1A0E",
+                      textDecoration: "none", fontWeight: (pathname === item.href) ? 500 : 400,
+                      borderBottom: (pathname === item.href || (pathname.startsWith(item.href + "/") && item.href !== "/")) ? "2px solid #B8860B" : "2px solid transparent",
+                      transition: "color 0.2s, border-color 0.2s",
+                    }}>
+                    {item.label}
+                    {item.children && (
+                      <svg width="11" height="11" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"
+                        style={{ opacity: 0.5, transform: openDropdown === item.label ? "rotate(180deg)" : "rotate(0)", transition: "transform 0.2s" }}>
+                        <path d="M6 9l6 6 6-6"/>
+                      </svg>
+                    )}
+                  </Link>
+                ) : (
+                  <span
+                    style={{
+                      display: "flex", alignItems: "center", gap: "4px", padding: "8px 12px 6px",
+                      fontSize: "13.5px", color: "#2C1A0E", fontWeight: 400, cursor: "default",
+                      borderBottom: "2px solid transparent",
+                    }}>
+                    {item.label}
+                    {item.children && (
+                      <svg width="11" height="11" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"
+                        style={{ opacity: 0.5, transform: openDropdown === item.label ? "rotate(180deg)" : "rotate(0)", transition: "transform 0.2s" }}>
+                        <path d="M6 9l6 6 6-6"/>
+                      </svg>
+                    )}
+                  </span>
+                )}
                 {item.children && openDropdown === item.label && (
                   <div onMouseEnter={() => openDrop(item.label)} onMouseLeave={() => closeDrop()}
                     style={{ position: "absolute", top: "calc(100% + 4px)", left: "50%", transform: "translateX(-50%)", backgroundColor: "#fff", border: "1px solid #E8D9C5", borderRadius: "12px", boxShadow: "0 16px 48px rgba(0,0,0,0.12)", padding: "8px", minWidth: "210px", zIndex: 100 }}>
@@ -168,15 +185,13 @@ export default function Navbar() {
                 <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
               )}
             </Link>
-            <Link href="/merkzettel"
-              style={{ position: "relative", display: "flex", alignItems: "center", justifyContent: "center", width: "38px", height: "38px", borderRadius: "50%", textDecoration: "none", color: "#2C1A0E", transition: "background 0.2s" }}
+            <a href="https://www.instagram.com/plana_immobilien_finanzierung?igsh=a2dkeXprdWNzam41"
+              target="_blank" rel="noopener noreferrer"
+              style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "38px", height: "38px", borderRadius: "50%", textDecoration: "none", color: "#2C1A0E", transition: "background 0.2s" }}
               onMouseEnter={e => (e.currentTarget.style.backgroundColor = "#F5EDE0")}
               onMouseLeave={e => (e.currentTarget.style.backgroundColor = "transparent")}>
-              <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-              {merkCount > 0 && (
-                <span style={{ position: "absolute", top: "2px", right: "2px", width: "15px", height: "15px", borderRadius: "50%", backgroundColor: "#B8860B", color: "#fff", fontSize: "9px", fontWeight: 600, display: "flex", alignItems: "center", justifyContent: "center" }}>{merkCount}</span>
-              )}
-            </Link>
+              <Instagram size={18} strokeWidth={1.8} />
+            </a>
             <button className="mobile-menu-btn" onClick={() => setMobileOpen(v => !v)}
               style={{ background: "none", border: "none", cursor: "pointer", padding: "8px", color: "#2C1A0E" }}>
               {mobileOpen
@@ -190,10 +205,16 @@ export default function Navbar() {
           <div style={{ backgroundColor: "#fff", borderTop: "1px solid #F5EDE0", padding: "16px 24px 24px", maxHeight: "75vh", overflowY: "auto" }}>
             {navItems.map(item => (
               <div key={item.label}>
-                <Link href={item.href}
-                  style={{ display: "block", padding: "12px 0", fontSize: "15px", color: "#2C1A0E", textDecoration: "none", borderBottom: "1px solid #F5EDE0", fontWeight: pathname === item.href ? 500 : 300 }}>
-                  {item.label}
-                </Link>
+                {item.href ? (
+                  <Link href={item.href}
+                    style={{ display: "block", padding: "12px 0", fontSize: "15px", color: "#2C1A0E", textDecoration: "none", borderBottom: "1px solid #F5EDE0", fontWeight: pathname === item.href ? 500 : 300 }}>
+                    {item.label}
+                  </Link>
+                ) : (
+                  <span style={{ display: "block", padding: "12px 0", fontSize: "15px", color: "#2C1A0E", borderBottom: "1px solid #F5EDE0", fontWeight: 500, cursor: "default" }}>
+                    {item.label}
+                  </span>
+                )}
                 {item.children && (
                   <div style={{ paddingLeft: "16px" }}>
                     {item.children.map(child => (

@@ -25,6 +25,11 @@ export default function HomeClient() {
         .rv.rv-in { opacity:1; transform:translateY(0); }
         .rv-d1{transition-delay:0.1s;} .rv-d2{transition-delay:0.2s;}
         .rv-d3{transition-delay:0.3s;} .rv-d4{transition-delay:0.4s;}
+        @keyframes goldGlow {
+          0%, 100% { text-shadow: 0 0 10px rgba(200,164,90,0.3), 0 0 20px rgba(200,164,90,0.1); }
+          50% { text-shadow: 0 0 20px rgba(200,164,90,0.6), 0 0 40px rgba(200,164,90,0.3); }
+        }
+        .gold-glow { animation: goldGlow 3s ease-in-out infinite; }
         .hero-btn-primary { display:inline-flex;align-items:center;gap:8px;padding:16px 36px;background:linear-gradient(135deg,#B8860B,#D4A017);color:#fff;border-radius:60px;text-decoration:none;font-size:13px;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;box-shadow:0 4px 25px rgba(184,134,11,0.3);transition:all 400ms cubic-bezier(0.4,0,0.2,1); }
         .hero-btn-primary:hover { background:linear-gradient(135deg,#D4A017,#E8B820);transform:scale(1.03); }
         .hero-btn-secondary { display:inline-flex;align-items:center;gap:8px;padding:16px 36px;background:transparent;color:#D4A017;border-radius:60px;text-decoration:none;font-size:13px;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;border:1.5px solid #D4A017;transition:all 400ms cubic-bezier(0.4,0,0.2,1); }
@@ -52,15 +57,15 @@ export default function HomeClient() {
       <section style={{ position: "relative", height: "100svh", minHeight: "620px", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center" }}>
         <video
           autoPlay muted loop playsInline
-          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }}
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 30%", transform: "scale(1.18)", zIndex: 0 }}
           src="/images/video.mp4"
         />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0.65) 100%)", zIndex: 1 }} />
         <div style={{ position: "relative", zIndex: 2, textAlign: "center", padding: "0 24px", maxWidth: "860px" }} className="rv">
-          <p style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.25em", textTransform: "uppercase", color: "#B8860B", marginBottom: "20px" }}>PLAN A IMMOBILIEN & FINANZIERUNG · MOSBACH</p>
+          <p className="gold-glow" style={{ fontSize: "13px", fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: "#C8A45A", marginBottom: "20px" }}>PLAN A IMMOBILIEN & FINANZIERUNG · MOSBACH</p>
           <h1 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "clamp(2.4rem, 6vw, 4.8rem)", color: "#FFFFFF", lineHeight: 1.1, marginBottom: "24px", fontWeight: 400 }}>
             Immobilienverkauf mit<br />
-            <em style={{ color: "#B8860B", fontStyle: "italic" }}>geprüfter Käuferfinanzierung.</em>
+            <em className="gold-glow" style={{ color: "#B8860B", fontStyle: "italic" }}>geprüfter Käuferfinanzierung.</em>
           </h1>
           <p style={{ fontSize: "clamp(15px, 1.8vw, 17px)", color: "rgba(255,255,255,0.7)", lineHeight: 1.85, fontWeight: 300, maxWidth: "540px", margin: "0 auto 40px" }}>
             Entscheidungen auf einem anderen Niveau. Plan A begleitet Sie vom ersten Gespräch bis zum Notartermin.
@@ -100,8 +105,8 @@ export default function HomeClient() {
       <section style={{ backgroundColor: "#FFFCF7", padding: "96px 0" }}>
         <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px" }}>
           <div className="rv" style={{ textAlign: "center", marginBottom: "56px" }}>
-            <p style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#B8860B", marginBottom: "12px" }}>UNSERE LEISTUNGEN</p>
-            <h2 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "clamp(2rem, 3.5vw, 3rem)", color: "#2C1A0E", lineHeight: 1.2, margin: 0 }}>Was Plan A für Sie tut.</h2>
+            <p style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#B8860B", marginBottom: "12px" }}>WAS WIR BIETEN</p>
+            <h2 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "clamp(2rem, 3.5vw, 3rem)", color: "#2C1A0E", lineHeight: 1.2, margin: 0 }}>Unsere Leistungen.</h2>
             <div style={{ width: "48px", height: "2px", backgroundColor: "#B8860B", margin: "20px auto 0" }} />
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px" }} className="svc-grid">
