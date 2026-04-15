@@ -29,6 +29,7 @@ export default function WertermittlungPage() {
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
+  const [apiError, setApiError] = useState<string | null>(null);
 
   const [typ, setTyp] = useState("");
   const [flaeche, setFlaeche] = useState(100);
@@ -53,10 +54,45 @@ export default function WertermittlungPage() {
   const next = () => setStep(s => s + 1);
   const back = () => setStep(s => s - 1);
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setApiError(null);
     setLoading(true);
-    setTimeout(() => { setLoading(false); setDone(true); }, 3000);
+
+    const estimatedStr = result
+      ? `${result.low.toLocaleString("de-DE")} € – ${result.high.toLocaleString("de-DE")} €`
+      : undefined;
+
+    try {
+      const res = await fetch("/api/wertermittlung", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          objektart: typ,
+          wohnflaeche: flaeche,
+          zimmer,
+          baujahr,
+          zustand,
+          ausstattung: undefined,
+          plz,
+          ort,
+          strasse: undefined,
+          extras,
+          name,
+          email,
+          telefon,
+          estimatedValue: estimatedStr,
+        }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error ?? "Fehler beim Senden");
+    } catch (err) {
+      setApiError(err instanceof Error ? err.message : "Unbekannter Fehler");
+    }
+
+    setLoading(false);
+    setDone(true);
   };
 
   const inp = { padding: "11px 14px", border: "1px solid #E8D9C5", borderRadius: "8px", fontSize: "14px", color: "#2C1A0E", outline: "none", fontFamily: "var(--font-inter, sans-serif)", fontWeight: 300, width: "100%", boxSizing: "border-box" as const };
@@ -295,6 +331,11 @@ export default function WertermittlungPage() {
                       Ich stimme der Verarbeitung meiner Daten gemäß der Datenschutzerklärung zu.
                     </label>
                   </div>
+                  {apiError && (
+                    <div style={{ marginTop: "16px", padding: "12px 16px", backgroundColor: "#FEF2F2", border: "1px solid #FECACA", borderRadius: "10px" }}>
+                      <p style={{ margin: 0, fontSize: "13px", color: "#B91C1C" }}>⚠ {apiError}</p>
+                    </div>
+                  )}
                   <div style={{ display: "flex", gap: "12px", marginTop: "24px" }}>
                     <button type="button" onClick={back} style={{ padding: "13px 24px", backgroundColor: "transparent", border: "1.5px solid #E8D9C5", borderRadius: "50px", fontSize: "14px", color: "#7A6548", cursor: "pointer" }}>← Zurück</button>
                     <button type="submit"

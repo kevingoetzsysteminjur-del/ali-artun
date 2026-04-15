@@ -33,6 +33,8 @@ export default function KontaktClient() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSending(true);
+
+    // Supabase speichern (bestehend)
     const sb = createClient();
     await sb.from("contact_inquiries").insert({
       name: form.name,
@@ -42,6 +44,20 @@ export default function KontaktClient() {
       message: form.nachricht,
       status: "neu",
     });
+
+    // E-Mail via Resend senden
+    await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: form.name,
+        email: form.email,
+        telefon: form.telefon,
+        betreff: form.betreff,
+        nachricht: form.nachricht,
+      }),
+    });
+
     setSending(false);
     setSent(true);
   };
