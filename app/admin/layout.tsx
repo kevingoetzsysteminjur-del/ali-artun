@@ -1,4 +1,5 @@
 "use client";
+export const dynamic = "force-dynamic";
 import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
@@ -19,7 +20,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   useEffect(() => {
     if (!loading && (!user || !isAdmin)) {
-      router.replace("/anmelden");
+      router.replace(user ? "/konto" : "/login");
     }
   }, [user, loading, isAdmin, router]);
 
