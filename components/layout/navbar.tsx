@@ -174,8 +174,8 @@ export default function Navbar() {
           </nav>
 
           <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-            <Link href={user && isAdmin ? "/admin" : "/anmelden"}
-              title={user ? "Admin-Bereich" : "Anmelden"}
+            <Link href={user ? (isAdmin ? "/admin" : "/konto") : "/login"}
+              title={user ? (isAdmin ? "Admin-Bereich" : "Mein Konto") : "Anmelden"}
               style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "38px", height: "38px", borderRadius: "50%", textDecoration: "none", color: user ? "#B8860B" : "#2C1A0E", transition: "background 0.2s" }}
               onMouseEnter={e => (e.currentTarget.style.backgroundColor = "#F5EDE0")}
               onMouseLeave={e => (e.currentTarget.style.backgroundColor = "transparent")}>
