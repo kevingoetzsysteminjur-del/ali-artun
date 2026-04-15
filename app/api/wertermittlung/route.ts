@@ -142,7 +142,7 @@ export async function POST(req: NextRequest) {
 
   try {
     await getResend().emails.send({
-      from: "Plan A Webseite <onboarding@resend.dev>",
+      from: "Plan A Immobilien <noreply@plana-immobilien-finanzierung.com>",
       to: "Info@plana-immobilien-finanzierung.com",
       replyTo: email,
       subject: `Neue Wertermittlung: ${objektart ?? "Immobilie"} in ${plz ?? ""}${ort ? " " + ort : ""}`,
