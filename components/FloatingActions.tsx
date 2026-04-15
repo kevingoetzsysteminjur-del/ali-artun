@@ -5,6 +5,7 @@ import Link from "next/link";
 function KontaktPanel({ onClose }: { onClose: () => void }) {
   const [form, setForm] = useState({ name: "", telefon: "", email: "", anliegen: "Immobilienverkauf", datenschutz: false });
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
   const up = (k: string, v: string | boolean) => setForm(f => ({ ...f, [k]: v }));
 
   const inp: React.CSSProperties = { width: "100%", padding: "11px 14px", border: "1px solid #E8D9C5", borderRadius: "8px", fontSize: "14px", color: "#2C1A0E", outline: "none", fontFamily: "var(--font-outfit, sans-serif)", fontWeight: 300, backgroundColor: "#FFFCF7", boxSizing: "border-box" as const };
@@ -50,7 +51,23 @@ function KontaktPanel({ onClose }: { onClose: () => void }) {
               </button>
             </div>
           ) : (
-            <form onSubmit={(e) => { e.preventDefault(); setSent(true); }} style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+            <form onSubmit={async (e) => {
+              e.preventDefault();
+              setSending(true);
+              await fetch("/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  name: form.name,
+                  email: form.email,
+                  telefon: form.telefon,
+                  betreff: form.anliegen,
+                  nachricht: `Kontaktanfrage über das Floating-Panel.\nAnliegen: ${form.anliegen}`,
+                }),
+              });
+              setSending(false);
+              setSent(true);
+            }} style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
               <div>
                 <label style={lbl}>Name</label>
                 <input style={inp} required placeholder="Ihr Name" value={form.name} onChange={e => up("name", e.target.value)} />
@@ -74,11 +91,11 @@ function KontaktPanel({ onClose }: { onClose: () => void }) {
                 Ich stimme der Verarbeitung meiner Daten gemäß der{" "}
                 <Link href="/datenschutz" style={{ color: "#B8860B" }} target="_blank">Datenschutzerklärung</Link> zu.
               </label>
-              <button type="submit"
-                style={{ padding: "15px 32px", background: "linear-gradient(135deg,#2C1A0E,#3D2512)", color: "#fff", border: "none", borderRadius: "60px", fontSize: "13px", fontWeight: 500, cursor: "pointer", letterSpacing: "0.05em", textTransform: "uppercase", transition: "all 400ms cubic-bezier(0.4,0,0.2,1)", boxShadow: "0 4px 20px rgba(44,26,14,0.2)" }}
-                onMouseEnter={e => { e.currentTarget.style.background = "linear-gradient(135deg,#B8860B,#D4B87E)"; e.currentTarget.style.transform = "scale(1.02)"; }}
-                onMouseLeave={e => { e.currentTarget.style.background = "linear-gradient(135deg,#2C1A0E,#3D2512)"; e.currentTarget.style.transform = "scale(1)"; }}>
-                Anfrage senden →
+              <button type="submit" disabled={sending}
+                style={{ padding: "15px 32px", background: sending ? "#A89070" : "linear-gradient(135deg,#2C1A0E,#3D2512)", color: "#fff", border: "none", borderRadius: "60px", fontSize: "13px", fontWeight: 500, cursor: sending ? "not-allowed" : "pointer", letterSpacing: "0.05em", textTransform: "uppercase", transition: "all 400ms cubic-bezier(0.4,0,0.2,1)", boxShadow: "0 4px 20px rgba(44,26,14,0.2)" }}
+                onMouseEnter={e => { if (!sending) { e.currentTarget.style.background = "linear-gradient(135deg,#B8860B,#D4B87E)"; e.currentTarget.style.transform = "scale(1.02)"; } }}
+                onMouseLeave={e => { if (!sending) { e.currentTarget.style.background = "linear-gradient(135deg,#2C1A0E,#3D2512)"; e.currentTarget.style.transform = "scale(1)"; } }}>
+                {sending ? "Wird gesendet…" : "Anfrage senden →"}
               </button>
               <div style={{ borderTop: "1px solid #E8D9C5", paddingTop: "16px", display: "flex", gap: "12px" }}>
                 <a href="tel:01736259429"
