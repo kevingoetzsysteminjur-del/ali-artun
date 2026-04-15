@@ -1,7 +1,7 @@
 import { Resend } from "resend";
 import { NextRequest, NextResponse } from "next/server";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const getResend = () => new Resend(process.env.RESEND_API_KEY);
 
 function row(label: string, value: string) {
   return `
@@ -141,7 +141,7 @@ export async function POST(req: NextRequest) {
   `;
 
   try {
-    await resend.emails.send({
+    await getResend().emails.send({
       from: "Plan A Webseite <onboarding@resend.dev>",
       to: "Info@plana-immobilien-finanzierung.com",
       replyTo: email,
