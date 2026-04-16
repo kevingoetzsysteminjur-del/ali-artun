@@ -30,6 +30,7 @@ export default function WhatsAppButton() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat auf WhatsApp"
+        className="wa-float-btn"
         style={{
           position: "fixed",
           bottom: 24,
@@ -79,7 +80,7 @@ export default function WhatsAppButton() {
         {/* Mobile size override */}
         <style>{`
           @media (max-width: 640px) {
-            .wa-float-btn { width: 48px !important; height: 48px !important; bottom: 20px !important; right: 20px !important; }
+            .wa-float-btn { width: 48px !important; height: 48px !important; bottom: 88px !important; right: 16px !important; }
           }
         `}</style>
       </a>

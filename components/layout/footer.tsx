@@ -105,7 +105,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", marginTop: "48px", padding: "20px 0", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "12px" }}>
+        <div className="footer-bottom-bar" style={{ borderTop: "1px solid rgba(255,255,255,0.08)", marginTop: "48px", padding: "20px 0", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "12px" }}>
           <p style={{ fontSize: "12px", color: "rgba(255,255,255,0.35)", margin: 0 }}>
             © 2026 Plan A Immobilien & Finanzierung · Alle Rechte vorbehalten
           </p>
@@ -118,6 +118,7 @@ export default function Footer() {
       <style>{`
         @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr !important; } }
         @media (max-width: 560px) { .footer-grid { grid-template-columns: 1fr !important; } }
+        @media (max-width: 640px) { .footer-bottom-bar { padding-bottom: 88px !important; } }
       `}</style>
     </footer>
   );

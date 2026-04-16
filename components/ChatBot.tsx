@@ -73,8 +73,16 @@ export default function ChatBot() {
 
   return (
     <>
+      <style>{`
+        @media (max-width: 640px) {
+          .chatbot-btn { bottom: 88px !important; left: 16px !important; }
+          .chatbot-panel { bottom: 156px !important; left: 8px !important; width: calc(100vw - 16px) !important; }
+        }
+      `}</style>
+
       {/* Floating button */}
       <button onClick={() => setOpen(v => !v)} aria-label="Chat"
+        className="chatbot-btn"
         style={{ position: "fixed", bottom: "24px", left: "24px", zIndex: 800, width: "56px", height: "56px", borderRadius: "50%", backgroundColor: "#2C1A0E", border: "2.5px solid #D4A017", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 4px 20px rgba(44,26,14,0.4)", transition: "transform 0.2s" }}
         onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.1)")}
         onMouseLeave={e => (e.currentTarget.style.transform = "scale(1)")}>
@@ -85,7 +93,7 @@ export default function ChatBot() {
 
       {/* Chat window */}
       {open && (
-        <div style={{ position: "fixed", bottom: "92px", left: "24px", zIndex: 800, width: "340px", maxHeight: "520px", backgroundColor: "#fff", borderRadius: "20px", boxShadow: "0 20px 60px rgba(0,0,0,0.2)", display: "flex", flexDirection: "column", overflow: "hidden" }}>
+        <div className="chatbot-panel" style={{ position: "fixed", bottom: "92px", left: "24px", zIndex: 800, width: "340px", maxHeight: "520px", backgroundColor: "#fff", borderRadius: "20px", boxShadow: "0 20px 60px rgba(0,0,0,0.2)", display: "flex", flexDirection: "column", overflow: "hidden" }}>
           {/* Header */}
           <div style={{ backgroundColor: "#2C1A0E", padding: "16px 20px", display: "flex", alignItems: "center", gap: "12px", flexShrink: 0 }}>
             <div style={{ width: "36px", height: "36px", borderRadius: "50%", overflow: "hidden", border: "2px solid #D4A017", flexShrink: 0, backgroundColor: "#1A0E05" }}>
