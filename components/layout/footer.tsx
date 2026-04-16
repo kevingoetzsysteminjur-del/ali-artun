@@ -12,7 +12,7 @@ export default function Footer() {
           <div>
             <div style={{ marginBottom: "16px" }}>
               <Image src="/images/plan-a-logo.png" alt="Plan A Immobilien" width={220} height={95}
-                style={{ height: "45px", width: "auto", objectFit: "contain", mixBlendMode: "screen", display: "block" }} />
+                style={{ height: "63px", width: "auto", objectFit: "contain", mixBlendMode: "screen", display: "block" }} />
             </div>
             <p style={{ fontSize: "13px", color: "rgba(255,255,255,0.55)", lineHeight: 1.7, marginBottom: "16px", fontStyle: "italic", fontFamily: "var(--font-dm-serif, serif)" }}>
               „Strategie bestimmt den Preis."
@@ -22,7 +22,7 @@ export default function Footer() {
             </p>
             {/* Maskottchen */}
             <Image src="/maskottchen.png" alt="" width={120} height={120}
-              style={{ height: "60px", width: "auto", marginTop: "20px", opacity: 0.6, imageRendering: "auto" }} />
+              style={{ height: "84px", width: "auto", marginTop: "20px", opacity: 0.6, imageRendering: "auto" }} />
           </div>
 
           {/* Col 2 – Leistungen */}
