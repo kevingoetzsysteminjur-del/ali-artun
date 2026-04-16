@@ -63,7 +63,7 @@
   --ring: #B8860B;
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 
 @layer base {
   * { @apply border-border outline-ring/50; }
