@@ -112,6 +112,7 @@ export default function AufbereitungPage() {
                 { src: "/images/referenzen/ali-6.png", label: "Einfahrt – vor und nach der Pflasterreinigung" },
                 { src: "/images/referenzen/ali-7.png", label: "Gehweg – vor und nach der Reinigung" },
                 { src: "/images/referenzen/ali-8.png", label: "Vorgarten – vor und nach der Gartengestaltung" },
+                { src: "/images/referenzen/vorher-nachher-renovierung.jpg", label: "Vorher/Nachher – Renovierung & Aufbereitung für den Verkauf" },
               ].map((img) => (
                 <div key={img.src} style={{ borderRadius: "16px", overflow: "hidden", border: "1px solid #E8D9C5", backgroundColor: "#FFFCF7" }}>
                   <Image

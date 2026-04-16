@@ -8,14 +8,6 @@ export const metadata = {
   description: "Strategischer Immobilienverkauf mit Plan A. Von der Bewertung bis zum Notartermin – professionell, sicher und planbar.",
 };
 
-const leistungen = [
-  { title: "Kostenlose Wertermittlung", text: "Wir ermitteln den optimalen Marktpreis auf Basis aktueller Daten – kostenlos und unverbindlich." },
-  { title: "Professionelles Exposé", text: "Hochwertiges Exposé mit professionellen Fotos, Grundrissen und überzeugenden Texten." },
-  { title: "Vermarktung auf allen Portalen", text: "Maximale Reichweite durch Schaltung auf allen relevanten Immobilienportalen." },
-  { title: "Qualifizierte Besichtigungen", text: "Kein Besichtigungstourismus – nur vorqualifizierte, ernsthafte Kaufinteressenten." },
-  { title: "Bonitätsprüfung der Käufer", text: "Nur Käufer mit bestätigter Finanzierungszusage. Sicherheit für Sie als Verkäufer." },
-  { title: "Begleitung bis zum Notartermin", text: "Wir begleiten Sie durch den gesamten Prozess – vom ersten Gespräch bis zur Schlüsselübergabe." },
-];
 
 const immobilienarten = [
   { title: "Eigentumswohnungen", icon: "🏢" },
@@ -77,23 +69,6 @@ export default function ImmobilienverkaufPage() {
           </div>
         </section>
 
-        {/* Leistungen */}
-        <section style={{ backgroundColor: "#FFFFFF", padding: "80px 0" }}>
-          <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px" }}>
-            <p style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#B8860B", marginBottom: "12px" }}>LEISTUNGEN</p>
-            <h2 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "clamp(1.8rem, 3vw, 2.5rem)", color: "#2C1A0E", marginBottom: "48px" }}>Was Plan A für Sie übernimmt</h2>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "24px" }} className="leist-grid">
-              {leistungen.map((l, i) => (
-                <div key={i} style={{ padding: "28px", borderLeft: "3px solid #B8860B", backgroundColor: "#F5EDE0", borderRadius: "0 12px 12px 0" }}>
-                  <h3 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "1.1rem", color: "#2C1A0E", marginBottom: "10px" }}>{l.title}</h3>
-                  <p style={{ fontSize: "13px", color: "#7A6548", lineHeight: 1.7, fontWeight: 300, margin: 0 }}>{l.text}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-          <style>{`@media(max-width:900px){.leist-grid{grid-template-columns:1fr 1fr!important;}}@media(max-width:560px){.leist-grid{grid-template-columns:1fr!important;}}`}</style>
-        </section>
-
         {/* Immobilienarten */}
         <section style={{ backgroundColor: "#F5EDE0", padding: "80px 0" }}>
           <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px" }}>
@@ -110,72 +85,20 @@ export default function ImmobilienverkaufPage() {
         </section>
 
         {/* Objekt-Aufbereitung */}
-        <section id="aufbereitung" style={{ backgroundColor: "#FFFFFF", padding: "80px 0" }}>
+        <section id="aufbereitung" className="aufb-section" style={{ padding: "80px 0" }}>
           <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px" }}>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "60px", alignItems: "center" }} className="aufb-grid">
-              <div>
-                <div style={{ display: "inline-block", padding: "5px 14px", backgroundColor: "rgba(22,163,74,0.1)", borderRadius: "50px", marginBottom: "16px" }}>
-                  <span style={{ fontSize: "12px", color: "#16A34A", fontWeight: 500 }}>✓ Aktuell kostenlos</span>
-                </div>
-                <p style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#B8860B", marginBottom: "12px" }}>OBJEKT-AUFBEREITUNG</p>
-                <h2 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "clamp(1.8rem, 3vw, 2.5rem)", color: "#2C1A0E", marginBottom: "20px" }}>
-                  Professionelle Aufbereitung für den besten ersten Eindruck.
-                </h2>
-                <div style={{ display: "flex", flexDirection: "column", gap: "10px", marginBottom: "32px" }}>
-                  {["Home Staging & Einrichtungsberatung", "Professionelle Immobilienfotografie", "Virtuelle Rundgänge (3D)", "Hochwertiges digitales Exposé"].map((b) => (
-                    <div key={b} style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "14px", color: "#2C1A0E", fontWeight: 300 }}>
-                      <span style={{ width: "20px", height: "20px", borderRadius: "50%", backgroundColor: "#B8860B", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                        <svg width="10" height="8" fill="none" stroke="#fff" strokeWidth="2.5" viewBox="0 0 12 10"><polyline points="1 5 4 8 11 1"/></svg>
-                      </span>
-                      {b}
-                    </div>
-                  ))}
-                </div>
-                <></>
+            {/* Text */}
+            <div style={{ marginBottom: "48px" }}>
+              <div style={{ display: "inline-block", padding: "5px 14px", backgroundColor: "rgba(22,163,74,0.1)", borderRadius: "50px", marginBottom: "16px" }}>
+                <span style={{ fontSize: "12px", color: "#16A34A", fontWeight: 500 }}>✓ Aktuell kostenlos</span>
               </div>
-              <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-                {[
-                  { src: "/images/referenzen/ali-1.png", label: "Hausfassade – vor und nach der Aufbereitung" },
-                  { src: "/images/referenzen/ali-2.png", label: "Reihenhausfassade – vor und nach der Reinigung" },
-                ].map((img) => (
-                  <div key={img.src} style={{ borderRadius: "16px", overflow: "hidden", border: "1px solid #E8D9C5" }}>
-                    <Image
-                      src={img.src}
-                      alt={img.label}
-                      width={800}
-                      height={450}
-                      style={{ width: "100%", height: "auto", display: "block" }}
-                    />
-                    <p style={{ fontSize: "12px", color: "#7A6548", fontWeight: 300, padding: "10px 14px", margin: 0, backgroundColor: "#FFFCF7" }}>{img.label}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-          <style>{`@media(max-width:768px){.aufb-grid{grid-template-columns:1fr!important;}.ref-grid{grid-template-columns:1fr!important;}}`}</style>
-        </section>
-
-
-        {/* Käuferfinder */}
-        <section id="kaeufer" style={{ backgroundColor: "#F5EDE0", padding: "80px 0" }}>
-          <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px" }}>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "60px", alignItems: "start" }} className="kauf-grid">
-              <div>
-                <p style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#B8860B", marginBottom: "12px" }}>KÄUFERFINDER</p>
-                <h2 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "clamp(1.8rem, 3vw, 2.5rem)", color: "#2C1A0E", marginBottom: "16px" }}>
-                  Wir finden den passenden Käufer.
-                </h2>
-                <div style={{ width: "48px", height: "2px", backgroundColor: "#B8860B", margin: "16px 0 24px" }} />
-                <p style={{ fontSize: "15px", color: "#7A6548", lineHeight: 1.8, fontWeight: 300, marginBottom: "28px" }}>
-                  Kein Besichtigungstourismus. Nur qualifizierte Interessenten mit bestätigter Finanzierungszusage.
-                </p>
-                {[
-                  "Qualifizierte Interessenten-Datenbank",
-                  "Bonitätsprüfung vor der Besichtigung",
-                  "Nur Käufer mit Finanzierungszusage",
-                  "Diskrete Vermarktung auf Wunsch",
-                ].map(b => (
-                  <div key={b} style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "14px", color: "#2C1A0E", fontWeight: 300, marginBottom: "12px" }}>
+              <p style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#B8860B", marginBottom: "12px" }}>OBJEKT-AUFBEREITUNG</p>
+              <h2 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "clamp(1.8rem, 3vw, 2.5rem)", color: "#2C1A0E", marginBottom: "20px", maxWidth: "640px" }}>
+                Professionelle Aufbereitung für den besten ersten Eindruck.
+              </h2>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "10px 32px" }}>
+                {["Home Staging & Einrichtungsberatung", "Professionelle Immobilienfotografie", "Virtuelle Rundgänge (3D)", "Hochwertiges digitales Exposé"].map((b) => (
+                  <div key={b} style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "14px", color: "#2C1A0E", fontWeight: 300 }}>
                     <span style={{ width: "20px", height: "20px", borderRadius: "50%", backgroundColor: "#B8860B", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                       <svg width="10" height="8" fill="none" stroke="#fff" strokeWidth="2.5" viewBox="0 0 12 10"><polyline points="1 5 4 8 11 1"/></svg>
                     </span>
@@ -183,30 +106,42 @@ export default function ImmobilienverkaufPage() {
                   </div>
                 ))}
               </div>
-              <div>
-                <p style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#B8860B", marginBottom: "12px" }}>UNSERE VERMARKTUNGSSTRATEGIE</p>
-                <h3 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "1.4rem", color: "#2C1A0E", marginBottom: "24px" }}>7 Schritte zum Erfolg</h3>
-                <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-                  {[
-                    "Kostenlose Wertermittlung",
-                    "Professionelles Exposé mit Fotos",
-                    "Vermarktung auf allen großen Portalen",
-                    "Qualifizierte Besichtigungen",
-                    "Bonitätsprüfung der Interessenten",
-                    "Begleitung bis zum Notartermin",
-                    "After-Sale Service",
-                  ].map((s, i) => (
-                    <div key={s} style={{ display: "flex", alignItems: "center", gap: "16px", padding: "14px 20px", backgroundColor: "#fff", borderRadius: "10px", border: "1px solid #E8D9C5" }}>
-                      <span style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "1.1rem", color: "#B8860B", minWidth: "28px" }}>0{i + 1}</span>
-                      <span style={{ fontSize: "14px", color: "#2C1A0E", fontWeight: 300 }}>{s}</span>
-                    </div>
-                  ))}
+            </div>
+            {/* 2 Bilder nebeneinander */}
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px" }} className="aufb-img-grid">
+              {[
+                { src: "/images/referenzen/ali-1.png", label: "Hausfassade – vor und nach der Aufbereitung" },
+                { src: "/images/referenzen/ali-2.png", label: "Reihenhausfassade – vor und nach der Reinigung" },
+              ].map((img) => (
+                <div key={img.src} style={{ borderRadius: "16px", overflow: "hidden", border: "1px solid #E8D9C5", display: "flex", flexDirection: "column" }}>
+                  <div style={{ height: "320px", overflow: "hidden" }}>
+                    <Image src={img.src} alt={img.label} width={800} height={500} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+                  </div>
+                  <p style={{ fontSize: "12px", color: "#7A6548", fontWeight: 300, padding: "10px 14px", margin: 0, backgroundColor: "#FFFCF7" }}>{img.label}</p>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
-          <style>{`@media(max-width:768px){.kauf-grid{grid-template-columns:1fr!important;}}`}</style>
+          <style>{`
+            @keyframes aufbShimmer {
+              0%, 100% { background-position: 0% 50%; }
+              50% { background-position: 100% 50%; }
+            }
+            .aufb-section {
+              background: linear-gradient(
+                135deg,
+                #F5EDE0 0%,
+                rgba(200,164,90,0.08) 40%,
+                #F5EDE0 70%,
+                rgba(200,164,90,0.05) 100%
+              );
+              background-size: 300% 300%;
+              animation: aufbShimmer 9s ease-in-out infinite;
+            }
+            @media(max-width:768px){ .aufb-img-grid{ grid-template-columns: 1fr !important; } }
+          `}</style>
         </section>
+
 
         {/* Energieausweis */}
         <section id="energieausweis" style={{ backgroundColor: "#FFFFFF", padding: "80px 0" }}>

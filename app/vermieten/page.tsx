@@ -31,7 +31,7 @@ export default function VermietenPage() {
           <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px", position: "relative" }}>
             <p style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#B8860B", marginBottom: "16px" }}>VERMIETUNG</p>
             <h1 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#FFFFFF", lineHeight: 1.1, marginBottom: "24px", maxWidth: "640px" }}>
-              Immobilie vermieten <span style={{ color: "#B8860B" }}>mit Plan A.</span>
+              Immobilie vermieten <span style={{ color: "#B8860B", whiteSpace: "nowrap" }}>mit Plan A.</span>
             </h1>
             <p style={{ fontSize: "16px", color: "rgba(255,255,255,0.7)", lineHeight: 1.8, maxWidth: "520px", fontWeight: 300 }}>
               Sie suchen zuverlässige Mieter für Ihre Immobilie? Plan A findet den passenden Mieter – schnell, sicher und professionell.
