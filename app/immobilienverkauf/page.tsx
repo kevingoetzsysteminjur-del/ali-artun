@@ -109,13 +109,13 @@ export default function ImmobilienverkaufPage() {
         </section>
 
         {/* Context */}
-        <section style={{ backgroundColor: "#FFFCF7", padding: "0" }}>
-          <div style={{ maxWidth: "700px", margin: "60px auto", padding: "40px 24px", textAlign: "center" }}>
-            <div style={{ width: "80px", height: "1px", backgroundColor: "#B8860B", opacity: 0.15, margin: "0 auto 40px" }} />
-            <p style={{ fontSize: "18px", color: "#7A6548", lineHeight: 1.8, fontWeight: 300, margin: 0 }}>
+        <section style={{ backgroundColor: "#FFFCF7", padding: "40px 24px" }}>
+          <div style={{ maxWidth: "600px", margin: "0 auto", textAlign: "center" }}>
+            <div style={{ width: "40px", height: "1px", backgroundColor: "#B8860B", opacity: 0.2, margin: "0 auto 24px" }} />
+            <p style={{ fontSize: "16px", color: "#A89070", lineHeight: 1.7, fontWeight: 300, margin: 0 }}>
               Ihre Immobilie verdient eine strategische Vermarktung. Plan A begleitet Sie von der Bewertung über die professionelle Aufbereitung bis zum erfolgreichen Notartermin – deutschlandweit und mit persönlicher Betreuung.
             </p>
-            <div style={{ width: "80px", height: "1px", backgroundColor: "#B8860B", opacity: 0.15, margin: "40px auto 0" }} />
+            <div style={{ width: "40px", height: "1px", backgroundColor: "#B8860B", opacity: 0.2, margin: "24px auto 0" }} />
           </div>
         </section>
 
@@ -137,15 +137,21 @@ export default function ImmobilienverkaufPage() {
         </section>
 
         {/* Immobilienarten */}
-        <section style={{ backgroundColor: "#F5EDE0", padding: "80px 0" }}>
-          <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px" }}>
+        <section style={{ backgroundColor: "#F5EDE0", padding: "56px 0" }}>
+          <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px", textAlign: "center" }}>
             <p style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#B8860B", marginBottom: "12px" }}>OBJEKTARTEN</p>
             <h2 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "clamp(1.8rem, 3vw, 2.5rem)", color: "#2C1A0E", marginBottom: "36px" }}>Welche Immobilien wir verkaufen</h2>
             <div className="immo-arten-grid">
               {immobilienarten.map((art) => (
                 <div key={art.title} className="immo-arten-card">
-                  <div style={{ marginBottom: "16px" }}>{art.icon}</div>
-                  <p style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "18px", color: "#2C1A0E", margin: 0, lineHeight: 1.3 }}>{art.title}</p>
+                  <div style={{ display: "flex", justifyContent: "center", marginBottom: "14px" }}>
+                    {/* render icon scaled to 40px */}
+                    <div style={{ width: 40, height: 40, display: "flex", alignItems: "center", justifyContent: "center", transform: "scale(0.833)", transformOrigin: "center" }}>
+                      {art.icon}
+                    </div>
+                  </div>
+                  <div style={{ width: "30px", height: "2px", backgroundColor: "#B8860B", opacity: 0.3, margin: "0 auto 14px" }} />
+                  <p style={{ fontSize: "14px", fontWeight: 500, color: "#2C1A0E", margin: 0, lineHeight: 1.3 }}>{art.title}</p>
                 </div>
               ))}
             </div>
@@ -155,23 +161,28 @@ export default function ImmobilienverkaufPage() {
               display: grid;
               grid-template-columns: repeat(5, 1fr);
               gap: 16px;
+              justify-items: center;
             }
             .immo-arten-card {
-              background: #fff;
+              background: #FFFFFF;
               border: 1px solid #E8D9C5;
               border-radius: 16px;
-              padding: 30px;
+              padding: 24px;
               text-align: center;
               cursor: default;
-              transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+              width: 100%;
+              max-width: 180px;
+              transition: all 400ms cubic-bezier(0.4,0,0.2,1);
             }
             .immo-arten-card:hover {
               border-color: #B8860B;
-              transform: translateY(-4px);
-              box-shadow: 0 12px 32px rgba(184,134,11,0.12);
+              background: #FBF8F3;
+              transform: translateY(-6px);
+              box-shadow: 0 12px 30px rgba(44,26,14,0.08);
             }
             @media(max-width:900px){
               .immo-arten-grid { grid-template-columns: repeat(2, 1fr); }
+              .immo-arten-card { max-width: 100%; }
             }
             @media(max-width:480px){
               .immo-arten-grid { grid-template-columns: 1fr; }
@@ -184,8 +195,10 @@ export default function ImmobilienverkaufPage() {
           <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px" }}>
             {/* Text */}
             <div style={{ marginBottom: "48px" }}>
-              <div style={{ display: "inline-block", padding: "5px 14px", backgroundColor: "rgba(22,163,74,0.1)", borderRadius: "50px", marginBottom: "16px" }}>
-                <span style={{ fontSize: "12px", color: "#16A34A", fontWeight: 500 }}>✓ Aktuell kostenlos</span>
+              <div style={{ display: "flex", justifyContent: "center", marginBottom: "16px" }}>
+                <div style={{ display: "inline-block", padding: "8px 20px", backgroundColor: "#B8860B", borderRadius: "50px" }}>
+                  <span style={{ fontSize: "12px", color: "#FFFFFF", fontWeight: 500 }}>✓ Aktuell kostenlos</span>
+                </div>
               </div>
               <p style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#B8860B", marginBottom: "12px" }}>OBJEKT-AUFBEREITUNG</p>
               <h2 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "clamp(1.8rem, 3vw, 2.5rem)", color: "#2C1A0E", marginBottom: "20px", maxWidth: "640px" }}>
