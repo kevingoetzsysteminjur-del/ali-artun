@@ -10,11 +10,76 @@ export const metadata = {
 
 
 const immobilienarten = [
-  { title: "Eigentumswohnungen", icon: "🏢" },
-  { title: "Einfamilienhäuser", icon: "🏠" },
-  { title: "Mehrfamilienhäuser", icon: "🏘️" },
-  { title: "Gewerbeobjekte", icon: "🏪" },
-  { title: "Grundstücke", icon: "🌿" },
+  {
+    title: "Eigentumswohnungen",
+    icon: (
+      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#B8860B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="8" y="18" width="32" height="24" rx="2"/>
+        <path d="M8 22h32"/>
+        <path d="M8 30h32"/>
+        <rect x="14" y="34" width="8" height="8"/>
+        <rect x="26" y="34" width="8" height="8"/>
+        <rect x="14" y="24" width="8" height="4"/>
+        <rect x="26" y="24" width="8" height="4"/>
+        <path d="M24 6l-20 12h40z"/>
+      </svg>
+    ),
+  },
+  {
+    title: "Einfamilienhäuser",
+    icon: (
+      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#B8860B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M6 24L24 8l18 16"/>
+        <rect x="10" y="24" width="28" height="18" rx="1"/>
+        <rect x="19" y="32" width="10" height="10"/>
+        <rect x="15" y="26" width="6" height="5"/>
+        <rect x="27" y="26" width="6" height="5"/>
+        <path d="M32 14v-4h6v10"/>
+      </svg>
+    ),
+  },
+  {
+    title: "Mehrfamilienhäuser",
+    icon: (
+      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#B8860B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="6" y="10" width="16" height="32" rx="1"/>
+        <rect x="26" y="18" width="16" height="24" rx="1"/>
+        <rect x="10" y="14" width="4" height="4"/>
+        <rect x="10" y="22" width="4" height="4"/>
+        <rect x="10" y="30" width="4" height="4"/>
+        <rect x="30" y="22" width="4" height="4"/>
+        <rect x="30" y="30" width="4" height="4"/>
+        <rect x="12" y="36" width="6" height="6"/>
+        <rect x="32" y="36" width="6" height="6"/>
+      </svg>
+    ),
+  },
+  {
+    title: "Gewerbeobjekte",
+    icon: (
+      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#B8860B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="6" y="14" width="36" height="28" rx="2"/>
+        <path d="M6 22h36"/>
+        <path d="M16 14V8h16v6"/>
+        <rect x="18" y="26" width="12" height="8" rx="1"/>
+        <path d="M24 26v8"/>
+        <path d="M6 14l4-6h28l4 6"/>
+      </svg>
+    ),
+  },
+  {
+    title: "Grundstücke",
+    icon: (
+      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#B8860B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4 40h40"/>
+        <path d="M8 40c0-8 4-16 8-20s8-4 12-2 6 6 8 10 4 8 4 12"/>
+        <path d="M20 28c2-4 4-8 8-8"/>
+        <path d="M24 20v-8"/>
+        <path d="M20 14h8"/>
+        <circle cx="36" cy="12" r="4"/>
+      </svg>
+    ),
+  },
 ];
 
 export default function ImmobilienverkaufPage() {
@@ -44,11 +109,13 @@ export default function ImmobilienverkaufPage() {
         </section>
 
         {/* Context */}
-        <section style={{ backgroundColor: "#FFFCF7", padding: "48px 0 0" }}>
-          <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px", textAlign: "center" }}>
-            <p style={{ fontSize: "16px", color: "#7A6548", lineHeight: 1.85, fontWeight: 300, maxWidth: "700px", margin: "0 auto" }}>
+        <section style={{ backgroundColor: "#FFFCF7", padding: "0" }}>
+          <div style={{ maxWidth: "700px", margin: "60px auto", padding: "40px 24px", textAlign: "center" }}>
+            <div style={{ width: "80px", height: "1px", backgroundColor: "#B8860B", opacity: 0.15, margin: "0 auto 40px" }} />
+            <p style={{ fontSize: "18px", color: "#7A6548", lineHeight: 1.8, fontWeight: 300, margin: 0 }}>
               Ihre Immobilie verdient eine strategische Vermarktung. Plan A begleitet Sie von der Bewertung über die professionelle Aufbereitung bis zum erfolgreichen Notartermin – deutschlandweit und mit persönlicher Betreuung.
             </p>
+            <div style={{ width: "80px", height: "1px", backgroundColor: "#B8860B", opacity: 0.15, margin: "40px auto 0" }} />
           </div>
         </section>
 
@@ -74,14 +141,42 @@ export default function ImmobilienverkaufPage() {
           <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px" }}>
             <p style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#B8860B", marginBottom: "12px" }}>OBJEKTARTEN</p>
             <h2 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "clamp(1.8rem, 3vw, 2.5rem)", color: "#2C1A0E", marginBottom: "36px" }}>Welche Immobilien wir verkaufen</h2>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "12px" }}>
+            <div className="immo-arten-grid">
               {immobilienarten.map((art) => (
-                <div key={art.title} style={{ display: "flex", alignItems: "center", gap: "10px", padding: "12px 22px", backgroundColor: "#fff", border: "1px solid #E8D9C5", borderRadius: "50px", fontSize: "14px", color: "#2C1A0E", fontWeight: 400 }}>
-                  <span>{art.icon}</span> {art.title}
+                <div key={art.title} className="immo-arten-card">
+                  <div style={{ marginBottom: "16px" }}>{art.icon}</div>
+                  <p style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "18px", color: "#2C1A0E", margin: 0, lineHeight: 1.3 }}>{art.title}</p>
                 </div>
               ))}
             </div>
           </div>
+          <style>{`
+            .immo-arten-grid {
+              display: grid;
+              grid-template-columns: repeat(5, 1fr);
+              gap: 16px;
+            }
+            .immo-arten-card {
+              background: #fff;
+              border: 1px solid #E8D9C5;
+              border-radius: 16px;
+              padding: 30px;
+              text-align: center;
+              cursor: default;
+              transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            }
+            .immo-arten-card:hover {
+              border-color: #B8860B;
+              transform: translateY(-4px);
+              box-shadow: 0 12px 32px rgba(184,134,11,0.12);
+            }
+            @media(max-width:900px){
+              .immo-arten-grid { grid-template-columns: repeat(2, 1fr); }
+            }
+            @media(max-width:480px){
+              .immo-arten-grid { grid-template-columns: 1fr; }
+            }
+          `}</style>
         </section>
 
         {/* Objekt-Aufbereitung */}
