@@ -28,6 +28,7 @@ const navItems = [
       { label: "Staatliche Förderung", href: "/finanzierung/staatliche-foerderung" },
       { label: "Privatkredite", href: "/finanzierung/privatkredite" },
       { label: "Modernisierung", href: "/finanzierung/modernisierung" },
+      { label: "Anschlussfinanzierung", href: "/finanzierung/anschlussfinanzierung" },
     ],
   },
   { label: "Partner werden", href: "/partner" },

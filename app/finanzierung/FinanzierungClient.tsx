@@ -1,14 +1,39 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import type { ReactNode } from "react";
 
-const tabs = [
+const AnschlussIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B8860B" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74"/>
+    <path d="M3 3v4h4"/>
+  </svg>
+);
+
+const tabs: { id: string; label: string; icon: ReactNode; title: string; content: string; bullets: string[]; vorteilZitat?: string; vorteilText?: string }[] = [
   { id: "kfw-beratung", label: "KFW-Beratung", icon: "🏛️", title: "KFW-Beratung", content: "Als freier Makler beraten wir Sie zu allen KFW-Förderprogrammen – unabhängig und ohne Provision. Wir analysieren Ihre Situation und finden das passende Programm.", bullets: ["Beratung zu allen aktuellen KFW-Programmen", "Für Neubau und energetische Sanierung", "Kostenfrei und unverbindlich", "Antragstellung auf Wunsch"] },
   { id: "kfw-kredite", label: "KFW-Kredite", icon: "💰", title: "KFW-Kreditprogramme", content: "KFW-Kredite bieten besonders günstige Zinssätze und lange Laufzeiten. Wir helfen Ihnen, das richtige Programm zu identifizieren und den Antrag erfolgreich zu stellen.", bullets: ["KFW 261 – Bundesförderung Energieeffizienz", "KFW 300 – Klimafreundlicher Neubau", "KFW 151/152 – Energetische Sanierung", "Laufzeiten bis zu 30 Jahre"] },
   { id: "bafa", label: "BAFA Förderung", icon: "🌱", title: "BAFA Einzelmaßnahmen", content: "Das Bundesamt für Wirtschaft und Ausfuhrkontrolle fördert energetische Einzelmaßnahmen an Bestandsgebäuden mit attraktiven Zuschüssen.", bullets: ["Heizungsoptimierung & Wärmepumpe", "Dämmung von Fassade, Dach und Keller", "Fenster- und Türenaustausch", "Lüftungsanlagen & Klimatisierung"] },
   { id: "staatlich", label: "Staatliche Förderung", icon: "🏛️", title: "Staatliche Förderprogramme", content: "Neben KFW und BAFA gibt es zahlreiche weitere Förderprogramme auf Bundes- und Landesebene. Wir beraten Sie zu allen verfügbaren Möglichkeiten.", bullets: ["Bundesförderung für effiziente Gebäude (BEG)", "Landesförderprogramme Baden-Württemberg", "Kombinationsmöglichkeiten optimal nutzen", "Aktuelle Fördersätze bis zu 45%"] },
   { id: "privatkredite", label: "Privatkredite", icon: "📊", title: "Privatkreditvergleich", content: "Wir vergleichen für Sie alle am Markt verfügbaren Privatkredit-Anbieter und finden den günstigsten Zinssatz für Ihre individuelle Situation.", bullets: ["Vergleich aller verfügbaren Anbieter", "Günstigster Zinssatz für Ihre Situation", "Schnelle Bearbeitung und Auszahlung", "Ohne Schufa-Beeinträchtigung beim Vergleich"] },
   { id: "modernisierung", label: "Modernisierung", icon: "🔧", title: "Modernisierungsdarlehen", content: "Günstige Kredite speziell für Modernisierungsmaßnahmen am Bestandsobjekt. Lange Laufzeiten ermöglichen niedrige monatliche Raten.", bullets: ["Für alle Modernisierungsmaßnahmen geeignet", "Laufzeiten bis zu 20 Jahre", "Keine Grundbucheintragung erforderlich", "Schnelle Genehmigung in 48 Stunden"] },
+  {
+    id: "anschlussfinanzierung",
+    label: "Anschlussfinanzierung",
+    icon: <AnschlussIcon />,
+    title: "Anschlussfinanzierung",
+    content: "Ihre Zinsbindung läuft aus? Wir finden die beste Anschlussfinanzierung für Ihre Immobilie – bevor es die Bank tut.",
+    bullets: [
+      "Frühzeitige Planung – bis zu 5 Jahre vor Ablauf möglich (Forward-Darlehen)",
+      "Vergleich aller Banken – wir sind an keine Bank gebunden",
+      "Günstigere Zinsen als Ihr aktuelles Angebot",
+      "Umschuldung zu besseren Konditionen",
+      "Kostenfreie und unverbindliche Beratung",
+      "Sondertilgungsoptionen prüfen",
+    ],
+    vorteilZitat: "Viele Eigentümer verlängern einfach bei ihrer Bank – und zahlen zu viel. Wir vergleichen den gesamten Markt für Sie.",
+    vorteilText: "Die meisten Banken bieten bei der Verlängerung nicht den besten Zinssatz an. Ein unabhängiger Vergleich spart oft mehrere tausend Euro über die Laufzeit.",
+  },
   { id: "neubau", label: "Immobilien & Neubau", icon: "🏗️", title: "Immobilien & Neubau Finanzierung", content: "Ob Bestandsimmobilie oder Neubau – wir finden die passende Finanzierungslösung für Ihren Immobilienkauf. Als freier Makler vergleichen wir alle Anbieter und sichern Ihnen die besten Konditionen.", bullets: ["Finanzierung für Bestands- und Neubauprojekte", "Vergleich aller Banken und Kreditinstitute", "Optimale Kombination mit KFW-Programmen", "Persönliche Beratung – auch digital möglich"] },
 ];
 
@@ -82,10 +107,10 @@ export default function FinanzierungClient() {
             <div style={{ backgroundColor: "#F5EDE0", borderRadius: "16px", padding: "32px" }}>
               <p style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.15em", textTransform: "uppercase", color: "#D4A017", marginBottom: "8px" }}>PLAN A VORTEIL</p>
               <p style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "1.3rem", color: "#2C1A0E", marginBottom: "16px", lineHeight: 1.4 }}>
-                „Wir vergleichen den gesamten Markt – kostenlos und unabhängig."
+                „{tab.vorteilZitat ?? "Wir vergleichen den gesamten Markt – kostenlos und unabhängig."}"
               </p>
               <p style={{ fontSize: "13px", color: "#7A6548", lineHeight: 1.7, fontWeight: 300, marginBottom: "24px" }}>
-                Als freier Makler sind wir an keine Bank gebunden. Das bedeutet: Wir arbeiten ausschließlich in Ihrem Interesse.
+                {tab.vorteilText ?? "Als freier Makler sind wir an keine Bank gebunden. Das bedeutet: Wir arbeiten ausschließlich in Ihrem Interesse."}
               </p>
               <div style={{ borderTop: "1px solid #E8D9C5", paddingTop: "20px", display: "flex", flexDirection: "column", gap: "8px" }}>
                 <p style={{ fontSize: "14px", color: "#16A34A", fontWeight: 500, margin: 0 }}>✓ Kostenlos & unverbindlich</p>

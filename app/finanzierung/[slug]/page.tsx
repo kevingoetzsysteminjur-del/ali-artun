@@ -151,6 +151,29 @@ const seiten: Record<string, {
       },
     ],
   },
+  "anschlussfinanzierung": {
+    titel: "Anschlussfinanzierung",
+    kontext: "Ihre Zinsbindung läuft aus? Wechseln Sie nicht einfach – vergleichen Sie. Plan A findet die beste Anschlussfinanzierung für Ihre Immobilie.",
+    bild: "https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?w=1200&q=80",
+    inhalt: [
+      {
+        heading: "Was ist eine Anschlussfinanzierung?",
+        text: "Nach Ablauf der Zinsbindung Ihres Immobilienkredits benötigen Sie eine neue Vereinbarung für die Restschuld. Das ist die Anschlussfinanzierung. Sie haben drei Möglichkeiten: Prolongation bei der gleichen Bank, Umschuldung zu einer anderen Bank oder ein Forward-Darlehen zur frühzeitigen Sicherung.",
+      },
+      {
+        heading: "Wann sollten Sie sich kümmern?",
+        text: "Idealerweise 12 bis 36 Monate vor Ablauf der Zinsbindung. Mit einem Forward-Darlehen können Sie sich günstige Zinsen sogar bis zu 5 Jahre im Voraus sichern – besonders sinnvoll in einem Niedrigzinsumfeld.",
+      },
+      {
+        heading: "Warum über Plan A?",
+        text: "Ihre Bank wird Ihnen ein Angebot machen. Aber ist es das beste? Als freier Makler vergleichen wir Angebote aller Banken und finden den günstigsten Zinssatz für Ihre Restschuld. Ein unabhängiger Vergleich spart oft mehrere tausend Euro über die Laufzeit.",
+      },
+      {
+        heading: "Was wir für Sie tun",
+        text: "Analyse Ihrer aktuellen Finanzierung. Vergleich aller verfügbaren Angebote am Markt. Prüfung von Sondertilgungsoptionen. Begleitung durch den gesamten Umschuldungsprozess – von der ersten Beratung bis zur Unterzeichnung.",
+      },
+    ],
+  },
 };
 
 export async function generateStaticParams() {
