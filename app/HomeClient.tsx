@@ -205,20 +205,12 @@ export default function HomeClient() {
           <div className="rv">
             <p style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#B8860B", marginBottom: "16px" }}>PLAN A IMMOBILIEN</p>
             <h2 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "clamp(1.8rem, 3vw, 2.8rem)", color: "#FFFFFF", lineHeight: 1.3, marginBottom: "20px" }}>
-              „Entscheidungen auf einem anderen Niveau."
+              „Wie Strategie den Preis bestimmt."
             </h2>
             <div style={{ width: "48px", height: "2px", backgroundColor: "#B8860B", marginBottom: "24px" }} />
-            <p style={{ fontSize: "16px", color: "rgba(255,255,255,0.62)", lineHeight: 1.9, fontWeight: 300, marginBottom: "36px" }}>
+            <p style={{ fontSize: "16px", color: "rgba(255,255,255,0.62)", lineHeight: 1.9, fontWeight: 300 }}>
               Gegründet mit dem Anspruch, Immobilienverkauf und Käuferfinanzierung unter einem Dach zu vereinen. So entstehen planbare Abschlüsse und zufriedene Kunden auf beiden Seiten.
             </p>
-            <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-              <Image src="/ali.png" alt="Ali Artun" width={52} height={52}
-                style={{ width: "52px", height: "52px", borderRadius: "50%", objectFit: "cover", border: "2px solid #B8860B" }} />
-              <div>
-                <p style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "1rem", color: "#FFFFFF", margin: 0 }}>Ali Artun</p>
-                <p style={{ fontSize: "12px", color: "rgba(255,255,255,0.45)", margin: 0, fontWeight: 300 }}>Gründer & Geschäftsführer · Mosbach</p>
-              </div>
-            </div>
           </div>
           <div className="rv rv-d2 brand-img-col" style={{ display: "flex", justifyContent: "center", alignItems: "center", position: "relative" }}>
             <div style={{ position: "absolute", width: "340px", height: "340px", borderRadius: "50%", border: "1px solid rgba(184,134,11,0.2)" }} />
