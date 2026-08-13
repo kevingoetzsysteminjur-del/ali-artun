@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Home } from "lucide-react";
 
 function useReveal() {
   useEffect(() => {
@@ -34,6 +35,8 @@ export default function HomeClient() {
         .hero-btn-primary:hover { background:linear-gradient(135deg,#D4A017,#E8B820);transform:scale(1.03); }
         .hero-btn-secondary { display:inline-flex;align-items:center;gap:8px;padding:16px 36px;background:transparent;color:#D4A017;border-radius:60px;text-decoration:none;font-size:13px;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;border:1.5px solid #D4A017;transition:all 400ms cubic-bezier(0.4,0,0.2,1); }
         .hero-btn-secondary:hover { background:#D4A017;color:#fff; }
+        .hero-btn-featured { display:inline-flex;align-items:center;gap:10px;padding:20px 48px;background:linear-gradient(135deg,#C8960A,#E8B820);color:#fff;border-radius:60px;text-decoration:none;font-size:14px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;box-shadow:0 8px 40px rgba(200,150,10,0.5),0 0 30px rgba(232,184,32,0.25);transition:all 400ms cubic-bezier(0.4,0,0.2,1); }
+        .hero-btn-featured:hover { transform:scale(1.05);box-shadow:0 10px 50px rgba(200,150,10,0.65),0 0 40px rgba(232,184,32,0.4); }
         .svc-card { background:#FFFCF7;border:1px solid #E8D9C5;border-radius:20px;padding:40px;display:flex;flex-direction:column;gap:20px;height:100%;box-sizing:border-box;transition:all 0.3s ease;cursor:pointer;text-decoration:none;color:inherit; }
         .svc-card:hover { box-shadow:0 16px 48px rgba(44,26,14,0.1);transform:translateY(-4px);border-color:#B8860B; }
         .cta-btn { display:inline-flex;align-items:center;gap:8px;padding:16px 36px;background:linear-gradient(135deg,#B8860B,#D4A017);color:#fff;border-radius:60px;text-decoration:none;font-size:13px;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;box-shadow:0 4px 25px rgba(184,134,11,0.25);transition:all 400ms cubic-bezier(0.4,0,0.2,1); }
@@ -70,10 +73,15 @@ export default function HomeClient() {
           <p style={{ fontSize: "clamp(15px, 1.8vw, 17px)", color: "rgba(255,255,255,0.7)", lineHeight: 1.85, fontWeight: 300, maxWidth: "540px", margin: "0 auto 40px" }}>
             Entscheidungen auf einem anderen Niveau. Plan A begleitet Sie vom ersten Gespräch bis zum Notartermin.
           </p>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "14px", justifyContent: "center" }}>
-            <Link href="/immobilienverkauf" className="hero-btn-primary">Immobilie verkaufen</Link>
-            <Link href="/finanzierung" className="hero-btn-secondary">Finanzierung anfragen</Link>
-            <Link href="/unsere-expose" className="hero-btn-secondary">Unsere Immobilien</Link>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "20px" }}>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "14px", justifyContent: "center" }}>
+              <Link href="/immobilienverkauf" className="hero-btn-primary">Immobilie verkaufen</Link>
+              <Link href="/finanzierung" className="hero-btn-secondary">Finanzierung anfragen</Link>
+            </div>
+            <Link href="/unsere-expose" className="hero-btn-featured">
+              <Home size={18} strokeWidth={2} />
+              Unsere Immobilien
+            </Link>
           </div>
         </div>
         <div style={{ position: "absolute", bottom: "36px", left: "50%", transform: "translateX(-50%)", zIndex: 2, display: "flex", flexDirection: "column", alignItems: "center", gap: "8px" }}>
