@@ -175,7 +175,7 @@ export default function KontaktClient() {
                   flexShrink: 0,
                 }}>
                   <Image
-                    src="/ali.png"
+                    src="/ali-kontakt.jpg"
                     alt="Ali Artun"
                     width={200}
                     height={200}

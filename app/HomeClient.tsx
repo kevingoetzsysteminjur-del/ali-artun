@@ -73,6 +73,7 @@ export default function HomeClient() {
           <div style={{ display: "flex", flexWrap: "wrap", gap: "14px", justifyContent: "center" }}>
             <Link href="/immobilienverkauf" className="hero-btn-primary">Immobilie verkaufen</Link>
             <Link href="/finanzierung" className="hero-btn-secondary">Finanzierung anfragen</Link>
+            <Link href="/unsere-expose" className="hero-btn-secondary">Unsere Immobilien</Link>
           </div>
         </div>
         <div style={{ position: "absolute", bottom: "36px", left: "50%", transform: "translateX(-50%)", zIndex: 2, display: "flex", flexDirection: "column", alignItems: "center", gap: "8px" }}>

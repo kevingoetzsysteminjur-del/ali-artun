@@ -16,6 +16,7 @@ const navItems = [
       { label: "Wertermittlung", href: "/wertermittlung" },
       { label: "Objekt-Aufbereitung", href: "/aufbereitung" },
       { label: "Käuferfinder", href: "/kaeuferfinder" },
+      { label: "Unsere Exposés", href: "/unsere-expose" },
     ],
   },
   {
