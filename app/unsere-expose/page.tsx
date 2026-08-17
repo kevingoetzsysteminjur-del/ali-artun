@@ -56,7 +56,7 @@ export default function UnsereExposePage() {
                     {listing.kurzbeschreibung}
                   </p>
                   <a href={listing.url} target="_blank" rel="noopener noreferrer" className="cta-btn" style={{ alignSelf: "flex-start" }}>
-                    Exposé ansehen
+                    {listing.buttonLabel ?? "Exposé ansehen"}
                   </a>
                 </div>
               ))}
