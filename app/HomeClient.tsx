@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Home } from "lucide-react";
+import { Home, ArrowRight } from "lucide-react";
 import GermanyMap from "@/components/GermanyMap";
 
 function useReveal() {
@@ -76,7 +76,8 @@ export default function HomeClient() {
               </div>
               <Link href="/unsere-expose" className="hero-btn-featured">
                 <Home size={18} strokeWidth={2} />
-                Unsere Immobilien
+                Aktuelle Immobilien entdecken
+                <ArrowRight size={18} strokeWidth={2} />
               </Link>
             </div>
           </div>
@@ -93,7 +94,7 @@ export default function HomeClient() {
             {[
               { icon: "🌐", label: "Deutschlandweit tätig" },
               { icon: "🏛️", label: "Freier & unabhängiger Makler" },
-              { icon: "🕐", label: "Mo–So 8–20 Uhr" },
+              { icon: "🕐", label: "Mo–Fr · 8–17 Uhr" },
               { icon: "✓", label: "Kostenlose Erstberatung" },
             ].map((item, i, arr) => (
               <div key={i} className="trust-item"

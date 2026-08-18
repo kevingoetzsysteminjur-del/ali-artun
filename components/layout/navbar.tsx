@@ -104,12 +104,12 @@ export default function Navbar() {
       </div>
 
       {/* Main nav */}
-      <header style={{ position: "sticky", top: 0, zIndex: 1000, backgroundColor: "#fff", borderBottom: scrolled ? "1px solid #E8D9C5" : "1px solid transparent", boxShadow: scrolled ? "0 2px 20px rgba(0,0,0,0.06)" : "none", transition: "box-shadow 0.3s, border-color 0.3s" }}>
+      <header style={{ position: "sticky", top: 0, zIndex: 1000, backgroundColor: "#2C1A0E", borderBottom: scrolled ? "1px solid rgba(255,255,255,0.1)" : "1px solid transparent", boxShadow: scrolled ? "0 2px 20px rgba(0,0,0,0.2)" : "none", transition: "box-shadow 0.3s, border-color 0.3s" }}>
         <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px", display: "flex", alignItems: "center", justifyContent: "space-between", height: "70px" }}>
 
           <Link href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
             <Image
-              src="/images/plan-a-logo.png"
+              src="/images/plan-a-logo-white.png"
               alt="Plan A Immobilien"
               width={220}
               height={95}
@@ -129,7 +129,7 @@ export default function Navbar() {
                     style={{
                       display: "flex", alignItems: "center", gap: "4px", padding: "8px 12px 6px",
                       fontSize: "13.5px",
-                      color: "#2C1A0E",
+                      color: "rgba(255,255,255,0.85)",
                       textDecoration: "none", fontWeight: (pathname === item.href) ? 500 : 400,
                       borderBottom: (pathname === item.href || (pathname.startsWith(item.href + "/") && item.href !== "/")) ? "2px solid #B8860B" : "2px solid transparent",
                       transition: "color 0.2s, border-color 0.2s",
@@ -146,7 +146,7 @@ export default function Navbar() {
                   <span
                     style={{
                       display: "flex", alignItems: "center", gap: "4px", padding: "8px 12px 6px",
-                      fontSize: "13.5px", color: "#2C1A0E", fontWeight: 400, cursor: "default",
+                      fontSize: "13.5px", color: "rgba(255,255,255,0.85)", fontWeight: 400, cursor: "default",
                       borderBottom: "2px solid transparent",
                     }}>
                     {item.label}
@@ -178,8 +178,8 @@ export default function Navbar() {
           <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
             <Link href={user ? (isAdmin ? "/admin" : "/konto") : "/login"}
               title={user ? (isAdmin ? "Admin-Bereich" : "Mein Konto") : "Anmelden"}
-              style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "38px", height: "38px", borderRadius: "50%", textDecoration: "none", color: user ? "#B8860B" : "#2C1A0E", transition: "background 0.2s" }}
-              onMouseEnter={e => (e.currentTarget.style.backgroundColor = "#F5EDE0")}
+              style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "38px", height: "38px", borderRadius: "50%", textDecoration: "none", color: user ? "#D4A017" : "rgba(255,255,255,0.85)", transition: "background 0.2s" }}
+              onMouseEnter={e => (e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.12)")}
               onMouseLeave={e => (e.currentTarget.style.backgroundColor = "transparent")}>
               {user ? (
                 <svg width="18" height="18" fill="#B8860B" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
@@ -189,13 +189,13 @@ export default function Navbar() {
             </Link>
             <a href="https://www.instagram.com/plana_immobilien_finanzierung?igsh=a2dkeXprdWNzam41"
               target="_blank" rel="noopener noreferrer"
-              style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "38px", height: "38px", borderRadius: "50%", textDecoration: "none", color: "#2C1A0E", transition: "background 0.2s" }}
-              onMouseEnter={e => (e.currentTarget.style.backgroundColor = "#F5EDE0")}
+              style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "38px", height: "38px", borderRadius: "50%", textDecoration: "none", color: "rgba(255,255,255,0.85)", transition: "background 0.2s" }}
+              onMouseEnter={e => (e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.12)")}
               onMouseLeave={e => (e.currentTarget.style.backgroundColor = "transparent")}>
               <Instagram size={18} strokeWidth={1.8} />
             </a>
             <button className="mobile-menu-btn" onClick={() => setMobileOpen(v => !v)}
-              style={{ background: "none", border: "none", cursor: "pointer", padding: "8px", color: "#2C1A0E" }}>
+              style={{ background: "none", border: "none", cursor: "pointer", padding: "8px", color: "rgba(255,255,255,0.85)" }}>
               {mobileOpen
                 ? <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
                 : <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg>}
