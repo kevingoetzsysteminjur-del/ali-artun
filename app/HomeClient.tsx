@@ -67,7 +67,7 @@ export default function HomeClient() {
               <em style={{ color: "#B8860B", fontStyle: "italic" }}>geprüfter Käuferfinanzierung.</em>
             </h1>
             <p style={{ fontSize: "clamp(15px, 1.6vw, 17px)", color: "#7A6548", lineHeight: 1.85, fontWeight: 300, maxWidth: "480px", marginBottom: "40px" }}>
-              Entscheidungen auf einem anderen Niveau. Plan A begleitet Sie vom ersten Gespräch bis zum Notartermin.
+              Verkauf und Finanzierung aus einer Hand. Plan A begleitet Sie vom ersten Gespräch bis zum Notartermin.
             </p>
             <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "20px" }}>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "14px" }}>

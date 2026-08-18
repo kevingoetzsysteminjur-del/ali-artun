@@ -225,7 +225,7 @@ export default function KontaktClient() {
                 </a>
 
                 <p style={{ fontSize: "11px", color: "#A89070", marginTop: "16px", fontFamily: "var(--font-inter, sans-serif)" }}>
-                  Mo–So · 8–20 Uhr
+                  Mo–Fr · 8–17 Uhr
                 </p>
               </div>
 

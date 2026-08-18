@@ -28,10 +28,10 @@ const RESPONSES: Record<Step, string> = {
   wertermittlung: "Füllen Sie unser kurzes Formular auf /wertermittlung aus. Wir analysieren Lage, Zustand und Marktdaten und melden uns innerhalb von 24 Stunden mit einer Einschätzung.",
   finanzierung: "Wir vergleichen für Sie KFW-Kredite, BAFA-Förderungen und Privatkredite – kostenlos und unabhängig. Was interessiert Sie genauer?",
   partner: "Als Plan A Partner starten Sie selbstständig in der Immobilienbranche. Wir begleiten Sie mit IHK-Qualifikation und verifizierten Leads. Interessiert?",
-  kontakt: "Sie erreichen uns unter:\n📞 0173-6259429\n✉️ Info@plana-immobilien-finanzierung.com\nMo–So 8–20 Uhr. Oder direkt per WhatsApp!",
+  kontakt: "Sie erreichen uns unter:\n📞 0173-6259429\n✉️ Info@plana-immobilien-finanzierung.com\nMo–Fr · 8–17 Uhr. Oder direkt per WhatsApp!",
   kosten: "Unsere Erstberatung ist immer kostenlos und unverbindlich. Kosten entstehen nur bei einem erfolgreichen Vertragsabschluss.",
   region: "Unser Hauptsitz ist in Mosbach, Baden-Württemberg. Wir sind deutschlandweit für Sie tätig – überwiegend digital.",
-  done: "Danke für Ihre Nachricht! Für eine persönliche Antwort sind wir Mo–So 8–20 Uhr erreichbar.",
+  done: "Danke für Ihre Nachricht! Für eine persönliche Antwort sind wir Mo–Fr · 8–17 Uhr erreichbar.",
 };
 
 const COMMON_QS = [

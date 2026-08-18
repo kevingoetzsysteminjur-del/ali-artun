@@ -93,7 +93,7 @@ export default function Navbar() {
               0173-6259429
             </a>
             <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.4)" }}>|</span>
-            <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.5)" }}>Mo–So 8–20 Uhr</span>
+            <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.5)" }}>Mo–Fr · 8–17 Uhr</span>
           </div>
           <a href="https://wa.me/491736259429" target="_blank" rel="noopener noreferrer"
             style={{ fontSize: "11px", color: "#B8860B", textDecoration: "none", display: "flex", alignItems: "center", gap: "5px" }}>
