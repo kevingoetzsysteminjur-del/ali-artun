@@ -1,5 +1,6 @@
 import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
+import ExposeCard from "@/components/expose-card";
 import { exposeListings } from "@/lib/expose-listings";
 
 export const metadata = {
@@ -48,17 +49,7 @@ export default function UnsereExposePage() {
             </h2>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))", gap: "28px" }}>
               {exposeListings.map((listing) => (
-                <div key={listing.titel} style={{ backgroundColor: "#FFFCF7", border: "1px solid #E8D9C5", borderRadius: "20px", padding: "36px", display: "flex", flexDirection: "column", gap: "16px" }}>
-                  <h3 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "1.3rem", color: "#2C1A0E", margin: 0 }}>
-                    {listing.titel}
-                  </h3>
-                  <p style={{ fontSize: "15px", color: "#7A6548", lineHeight: 1.75, fontWeight: 300, margin: 0, flexGrow: 1 }}>
-                    {listing.kurzbeschreibung}
-                  </p>
-                  <a href={listing.url} target="_blank" rel="noopener noreferrer" className="cta-btn" style={{ alignSelf: "flex-start" }}>
-                    {listing.buttonLabel ?? "Exposé ansehen"}
-                  </a>
-                </div>
+                <ExposeCard key={listing.titel} listing={listing} />
               ))}
             </div>
           </div>
@@ -68,8 +59,38 @@ export default function UnsereExposePage() {
       <Footer />
 
       <style>{`
-        .cta-btn { display:inline-flex;align-items:center;gap:8px;padding:14px 30px;background:linear-gradient(135deg,#B8860B,#D4A017);color:#fff;border-radius:60px;text-decoration:none;font-size:13px;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;box-shadow:0 4px 25px rgba(184,134,11,0.25);transition:all 400ms cubic-bezier(0.4,0,0.2,1); }
-        .cta-btn:hover { background:linear-gradient(135deg,#D4A017,#E8B820);transform:scale(1.03); }
+        .expose-card {
+          display: flex;
+          flex-direction: column;
+          background-color: #FFFCF7;
+          border: 1.5px solid #B8860B;
+          border-radius: 20px;
+          overflow: hidden;
+          text-decoration: none;
+          transition: transform 400ms cubic-bezier(0.4,0,0.2,1), box-shadow 400ms cubic-bezier(0.4,0,0.2,1);
+        }
+        .expose-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(44,26,14,0.12); }
+
+        .expose-card-header {
+          display: flex;
+          align-items: center;
+          height: 72px;
+          padding: 0 28px;
+          background-color: #2C1A0E;
+        }
+
+        .expose-card-cover { position: relative; width: 100%; aspect-ratio: 4 / 3; overflow: hidden; }
+        .expose-card-cover img { transition: transform 600ms cubic-bezier(0.4,0,0.2,1); }
+        .expose-card:hover .expose-card-cover img { transform: scale(1.06); }
+
+        .expose-card-body { display: flex; flex-direction: column; gap: 16px; flex-grow: 1; padding: 28px 32px 32px; }
+        .expose-card-title { font-family: var(--font-dm-serif, serif); font-size: 1.3rem; color: #2C1A0E; margin: 0; }
+        .expose-card-desc { font-size: 15px; color: #7A6548; line-height: 1.75; font-weight: 300; margin: 0; flex-grow: 1; }
+
+        .expose-card-action { display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding-top:20px;border-top:1px solid #E8D9C5;font-size:12.5px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#B8860B;transition:color 400ms cubic-bezier(0.4,0,0.2,1); }
+        .expose-card-arrow { display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:#F5EDE0;color:#B8860B;flex-shrink:0;transition:all 400ms cubic-bezier(0.4,0,0.2,1); }
+        .expose-card:hover .expose-card-action { color:#8A6206; }
+        .expose-card:hover .expose-card-arrow { background:linear-gradient(135deg,#B8860B,#D4A017);color:#fff;transform:translateX(4px);box-shadow:0 6px 18px rgba(184,134,11,0.35); }
       `}</style>
     </>
   );
