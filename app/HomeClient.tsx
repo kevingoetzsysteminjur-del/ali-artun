@@ -47,6 +47,7 @@ export default function HomeClient() {
           .brand-img-col{display:none!important;}
           .hero-grid{grid-template-columns:1fr!important;gap:48px!important;}
           .hero-map-col{justify-content:center!important;}
+          .hero-graphic-wrap{max-width:260px!important;}
         }
         @media(max-width:600px) {
           .trust-band{flex-direction:column!important;gap:0!important;}
