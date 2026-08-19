@@ -18,7 +18,6 @@ const RAY_TARGETS = [
   { id: "e", x: 460, y: 400 }, // Sachsen / Osten
   { id: "se", x: 420, y: 630 }, // Bayern / Suedosten
   { id: "sw", x: 140, y: 560 }, // Saarland-Pfalz / Suedwesten
-  { id: "w", x: 120, y: 400 }, // NRW / Westen
 ];
 
 function curvedPath(from: { x: number; y: number }, to: { x: number; y: number }, bend: number) {
@@ -27,7 +26,7 @@ function curvedPath(from: { x: number; y: number }, to: { x: number; y: number }
   const dx = to.x - from.x;
   const dy = to.y - from.y;
   const len = Math.hypot(dx, dy) || 1;
-  // Senkrechter Versatz auf den Mittelpunkt fuer eine sanfte Kurve statt Geraden.
+  // Senkrechter Versatz auf den Mittelpunkt fuer eine deutlich sichtbare Kurve statt einer Geraden.
   const nx = (-dy / len) * len * bend;
   const ny = (dx / len) * len * bend;
   const cx = mx + nx;
@@ -35,25 +34,39 @@ function curvedPath(from: { x: number; y: number }, to: { x: number; y: number }
   return `M ${from.x},${from.y} Q ${cx.toFixed(1)},${cy.toFixed(1)} ${to.x},${to.y}`;
 }
 
-// Aeussere Komposition: offener Haus-Umriss (Fuenfeck) als Rahmen.
+// Aeussere Komposition: das Plan-A-Logo (Dach-Silhouette mit "A") stark
+// vergroessert als offener Umriss-Rahmen, dahinter/darum die Karte.
 const FRAME_W = 460;
 const FRAME_H = 560;
 const M = 20;
-const ROOF_H = 90;
 const X0 = M;
 const X1 = FRAME_W - M;
 const Y_APEX = M;
-const Y_EAVE = M + ROOF_H;
 const Y_BASE = FRAME_H - M;
 const X_MID = (X0 + X1) / 2;
-const HOUSE_PATH = `M ${X0},${Y_BASE} L ${X0},${Y_EAVE} L ${X_MID},${Y_APEX} L ${X1},${Y_EAVE} L ${X1},${Y_BASE}`;
 
-// Karten-Bereich innerhalb der Haus-Waende (mit Innenabstand).
-const INNER_PAD = 25;
-const MAP_X = X0 + INNER_PAD;
-const MAP_Y = Y_EAVE + INNER_PAD;
-const MAP_W = X1 - X0 - INNER_PAD * 2;
-const MAP_H = Y_BASE - Y_EAVE - INNER_PAD * 2;
+// Dach: einfaches, offenes Giebel-Dreieck (wie im Logo), kein Boden, keine Waende.
+const ROOF_PATH = `M ${X0},${Y_BASE} L ${X_MID},${Y_APEX} L ${X1},${Y_BASE}`;
+
+// "A": kleineres, tiefer ansetzendes Dreieck mit Querbalken, zentriert im Dach.
+const A_APEX_Y = Y_APEX + 70;
+const A_BASE_Y = Y_BASE - 10;
+const A_HALF_BASE = 95;
+const A_X0 = X_MID - A_HALF_BASE;
+const A_X1 = X_MID + A_HALF_BASE;
+const BAR_T = 0.55;
+const BAR_Y = A_APEX_Y + (A_BASE_Y - A_APEX_Y) * BAR_T;
+const BAR_X0 = X_MID - A_HALF_BASE * BAR_T;
+const BAR_X1 = X_MID + A_HALF_BASE * BAR_T;
+const A_LEFT_PATH = `M ${A_X0},${A_BASE_Y} L ${X_MID},${A_APEX_Y}`;
+const A_RIGHT_PATH = `M ${X_MID},${A_APEX_Y} L ${A_X1},${A_BASE_Y}`;
+const A_BAR_PATH = `M ${BAR_X0},${BAR_Y} L ${BAR_X1},${BAR_Y}`;
+
+// Karten-Bereich: mittig im breiteren, unteren Teil des Dachs platziert.
+const MAP_Y = 190;
+const MAP_H = 330;
+const MAP_W = 250;
+const MAP_X = X_MID - MAP_W / 2;
 
 export default function GermanyMap() {
   return (
@@ -61,18 +74,16 @@ export default function GermanyMap() {
       <svg
         viewBox={`0 0 ${FRAME_W} ${FRAME_H}`}
         role="img"
-        aria-label="Haus-Rahmen mit Karte von Deutschland, hervorgehobenem Arbeitsgebiet in Baden-Wuerttemberg und Standort Mosbach"
+        aria-label="Plan-A-Logo als Rahmen um eine Karte von Deutschland mit hervorgehobenem Arbeitsgebiet in Baden-Wuerttemberg und Standort Mosbach"
         className="w-full h-auto"
       >
-        {/* Haus-Rahmen: duenne goldene Outline, offen (kein Boden, kein Volltonhintergrund) */}
-        <path
-          d={HOUSE_PATH}
-          fill="none"
-          stroke="#C5A028"
-          strokeWidth={1.5}
-          strokeLinejoin="round"
-          strokeLinecap="round"
-        />
+        {/* Logo-Rahmen: duenne goldene Outline, offen, kein Volltonhintergrund */}
+        <g fill="none" stroke="#C5A028" strokeLinejoin="round" strokeLinecap="round">
+          <path d={ROOF_PATH} strokeWidth={2} />
+          <path d={A_LEFT_PATH} strokeWidth={1.5} />
+          <path d={A_RIGHT_PATH} strokeWidth={1.5} />
+          <path d={A_BAR_PATH} strokeWidth={1.5} />
+        </g>
 
         <svg
           x={MAP_X}
@@ -84,8 +95,8 @@ export default function GermanyMap() {
           overflow="visible"
         >
           <defs>
-            <filter id="rayGlow" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="1.1" />
+            <filter id="rayGlow" x="-60%" y="-60%" width="220%" height="220%">
+              <feGaussianBlur stdDeviation="2.4" />
             </filter>
             {RAY_TARGETS.map((t) => (
               <linearGradient
@@ -97,7 +108,7 @@ export default function GermanyMap() {
                 x2={t.x}
                 y2={t.y}
               >
-                <stop offset="0%" stopColor="#E8B820" stopOpacity={0.9} />
+                <stop offset="0%" stopColor="#F0C040" stopOpacity={0.95} />
                 <stop offset="100%" stopColor="#C5A028" stopOpacity={0} />
               </linearGradient>
             ))}
@@ -119,18 +130,30 @@ export default function GermanyMap() {
           })}
 
           {/* Lichtspuren: deutschlandweite Taetigkeit, ausgehend von Mosbach */}
-          <g filter="url(#rayGlow)">
-            {RAY_TARGETS.map((t, i) => (
-              <path
-                key={t.id}
-                d={curvedPath(MOSBACH, t, i % 2 === 0 ? 0.18 : -0.18)}
-                fill="none"
-                stroke={`url(#rayGrad-${t.id})`}
-                strokeWidth={1.4}
-                strokeLinecap="round"
-              />
-            ))}
-          </g>
+          {RAY_TARGETS.map((t, i) => {
+            const bend = 0.32 + (i % 2) * 0.1;
+            const d = curvedPath(MOSBACH, t, i % 2 === 0 ? bend : -bend);
+            return (
+              <g key={t.id}>
+                <path
+                  d={d}
+                  fill="none"
+                  stroke={`url(#rayGrad-${t.id})`}
+                  strokeWidth={3}
+                  strokeLinecap="round"
+                  filter="url(#rayGlow)"
+                  opacity={0.55}
+                />
+                <path
+                  d={d}
+                  fill="none"
+                  stroke={`url(#rayGrad-${t.id})`}
+                  strokeWidth={1.3}
+                  strokeLinecap="round"
+                />
+              </g>
+            );
+          })}
 
           {/* Standortmarkierung Mosbach */}
           <g transform={`translate(${MOSBACH.x} ${MOSBACH.y})`}>
